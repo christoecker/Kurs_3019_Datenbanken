@@ -56,8 +56,6 @@ die brauchst du gleich für die Aufgabe unten.
 6. Abschnitt 2.4, "Die Datenbanksprache SQL" (S. 18–19) — nur ein erster
    Eindruck, Details folgen ab Woche 9.
 
-Diese Woche findet **ohne KI-Unterstützung** statt (Stufe 0).
-
 ## Aufgabe
 
 Stell dir folgende Situation in deinem Ausbildungsbetrieb vor:
