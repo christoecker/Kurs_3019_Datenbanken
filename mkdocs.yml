@@ -1,0 +1,25 @@
+site_name: "Datenbanken (Kurs 3019) – Mechatronik/Automatisierung"
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: de
+  features:
+    - navigation.sections
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+exclude_docs: |
+  01-praxisphase/_template/
+  02-theoriephase/_templates/
+  00-projektsteuerung/stundenplan.md
+
+nav:
+  - Start: index.md
+  - Praxisphase:
+      - "Woche 1": 01-praxisphase/woche-01/woche-01.md
