@@ -13,6 +13,7 @@ quelle_lehrbuch: "keine"
 fallstudie: "keine"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: entworfen
+publish_date: 2026-07-20
 ---
 
 # Woche 1: Warum Datenbanken? Grundarchitektur eines DBMS
@@ -58,7 +59,7 @@ die brauchst du gleich für die Aufgabe unten.
 
 ## Aufgabe
 
-Stell dir folgende Situation in deinem Ausbildungsbetrieb vor:
+Stell dir folgende Situation in deinem Praxisbetrieb vor:
 
 > Ein Kollege schlägt vor, alle Maschinendaten (Wartungshistorie,
 > verbaute Ersatzteile, Standorte) weiterhin in einer wachsenden

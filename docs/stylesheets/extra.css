@@ -1,0 +1,28 @@
+/* Ausrichtung von umgebrochenem Text bei Quiz-Antworten:
+   Checkbox/Radio-Button und Text sollen nebeneinander stehen, umgebrochener
+   Text soll an der ersten Zeile ausgerichtet sein (nicht unter der Checkbox). */
+.md-typeset fieldset div:has(> input[type="checkbox"], > input[type="radio"]) {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+.md-typeset fieldset div:has(> input[type="checkbox"], > input[type="radio"]) input {
+  flex-shrink: 0;
+}
+
+.md-typeset fieldset div:has(> input[type="checkbox"], > input[type="radio"]) label {
+  flex: 1;
+}
+
+
+/* Geringerer vertikaler Abstand zwischen Begriff (dt) und Erklärung (dd)
+   im Glossar (Markdown-Definitionslisten) */
+.md-typeset dl dt {
+  margin-bottom: 0.15em;
+}
+
+.md-typeset dl dd {
+  margin-top: 0;
+  margin-bottom: 0.8em;
+}
