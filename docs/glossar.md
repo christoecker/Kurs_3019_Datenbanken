@@ -7,6 +7,13 @@ wächst im Laufe des Semesters mit.
 
 ## A
 
+**Abhängiger Entity-Typ (schwacher Entity-Typ)**
+: Ein Entity-Typ, dessen Objekte in ihrer Existenz von einem anderen
+("identifizierenden") Entity-Typ abhängen und keinen eigenen Schlüssel
+besitzen — sie werden erst durch die Kombination aus einem lokalen
+Attribut und der Beziehung zum identifizierenden Entity-Typ eindeutig
+identifizierbar.
+
 **Anforderungsanalyse**
 : Erste Phase des Datenbankentwurfs: informelles Erfassen und
 Dokumentieren, welche Daten gespeichert werden müssen und wer wie darauf
@@ -96,7 +103,20 @@ einer Anwendungswelt.
 Datenbankentwurf mit den Grundkonzepten Entity, Relationship und
 Attribut.
 
+## G
+
+**Generalisierung**
+: Die Sichtweise, bei der aus mehreren speziellen Entity-Typen ein
+gemeinsamer, allgemeinerer Entity-Typ (Supertyp) gebildet wird — die
+gedanklich umgekehrte Blickrichtung zur Spezialisierung, beschreibt aber
+dieselbe Struktur.
+
 ## I
+
+**Identifizierende Beziehung**
+: Die Beziehung zwischen einem abhängigen Entity-Typ und dem Entity-Typ,
+über den er eindeutig identifiziert wird; im ER-Diagramm durch
+Unterstreichen gekennzeichnet.
 
 **Informationssystem**
 : Ein Softwaresystem zur Erfassung, Verarbeitung, Speicherung,
@@ -162,10 +182,24 @@ benennt; besonders hilfreich bei rekursiven Beziehungen.
 : Ein Attribut (oder eine Kombination von Attributen) eines
 Entity-Typs, dessen Wert(e) jedes Entity eindeutig identifizieren.
 
+**Spezialisierung**
+: Die Ableitung eines neuen, spezielleren Entity-Typs (Subtyp) aus einem
+bereits bestehenden Entity-Typ (Supertyp); der Subtyp besitzt alle
+Attribute und Beziehungen des Supertyps zusätzlich zu seinen eigenen.
+
 **SQL (Structured Query Language)**
 : Die standardisierte, mengenorientierte und deskriptive
 Datenbanksprache zur Definition, Abfrage und Änderung von Daten in
 relationalen Datenbanken.
+
+**Subtyp**
+: Der speziellere Entity-Typ innerhalb einer Spezialisierung; jedes
+seiner Objekte ist automatisch auch ein Objekt des zugehörigen
+Supertyps, zusätzlich zu seinen eigenen Attributen.
+
+**Supertyp**
+: Der allgemeinere Entity-Typ innerhalb einer Spezialisierung, von dem
+ein oder mehrere Subtypen abgeleitet werden.
 
 ## U
 

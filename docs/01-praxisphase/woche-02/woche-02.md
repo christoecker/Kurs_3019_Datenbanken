@@ -32,6 +32,15 @@ Grundbausteine: Entity-Typen, Beziehungstypen und Attribute. Außerdem
 lernst du, wie man mit Kardinalitäten festlegt, in welchem
 zahlenmäßigen Verhältnis Objekte zueinander stehen dürfen.
 
+Die erste Phase, die **Anforderungsanalyse**, hast du dabei in gewisser
+Weise schon "geschenkt" bekommen: Die Aufgabenbeschreibungen, die dir
+in dieser und den folgenden Wochen begegnen, sind genau die Art von
+informellem Ergebnis, das diese Phase liefert. Eine systematische
+Anforderungserhebung (Interviews, Workshops, ...) ist eher Thema des
+Requirements Engineering als der Datenbanktechnik im engeren Sinn und
+wird hier deshalb nicht vertieft — der Lehrbrief steigt in Kapitel 3
+direkt mit Phase 2 ein, und das machen wir hier genauso.
+
 Der Lehrbrief nutzt für dieses Kapitel durchgängig eine eigene
 Fallstudie — **FH-Info**, ein fiktives Informationssystem zur Verwaltung
 von Studiengängen, Modulen, Studierenden und Dozenten an einer
@@ -132,13 +141,19 @@ Diagramm mit Stift und Papier ist optional):
 
     **2. UML-Notation**
 
-    ```
-    MASCHINE                     WARTUNGSAUFTRAG
-    --------------------------   --------------------------
-    maschinennr : int  (Schl.)   auftragsnr  : int  (Schl.)
-    bezeichnung : string         datum       : date
-    standort    : string         beschreibung: string
-    ```
+    ```mermaid
+    %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph LR
+    MASCHINE["<div style='text-align:left; font-size: 0.6rem;'><b>MASCHINE</b><hr/>maschinennr : int (PK)<br/>bezeichnung : string<br/>standort : string</div>"]
+    WARTUNGSAUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>WARTUNGSAUFTRAG</b><hr/>auftragsnr : int (PK)<br/>datum : date<br/>beschreibung : string</div>"]
+    betrifft{{betrifft}}
+    MASCHINE -- "1" --- betrifft
+    betrifft -- "N" --- WARTUNGSAUFTRAG
+    ``` 
+    
+    (`PK` markiert das Schlüsselattribut. Mermaid bildet Chen- bzw.
+    UML-Kardinalitäten nicht exakt ab — die genaue Schreibweise dazu
+    steht unten in "3. Beziehungstyp und Kardinalitäten".)
 
     **3. Beziehungstyp und Kardinalitäten**
 
