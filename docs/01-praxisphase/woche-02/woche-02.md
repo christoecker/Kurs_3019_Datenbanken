@@ -13,7 +13,7 @@ quelle_lehrbuch: "keine"
 fallstudie: "FH-Info (Lehrbrief-Fallstudie)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: entworfen
-publish_date: 2026-07-24
+publish_date: 2026-07-27
 ---
 
 # Woche 2: Konzeptueller Datenbankentwurf: Grundkonzepte des ER-Modells
