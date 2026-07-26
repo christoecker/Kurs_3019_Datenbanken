@@ -25,6 +25,7 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - def_list
+  - tables
 
 exclude_docs: |
   01-praxisphase/_template/
@@ -41,3 +42,4 @@ nav:
       - "Woche 1": 01-praxisphase/woche-01/woche-01.md
       - "Woche 2": 01-praxisphase/woche-02/woche-02.md
       - "Woche 3": 01-praxisphase/woche-03/woche-03.md
+      - "Woche 4": 01-praxisphase/woche-04/woche-04.md

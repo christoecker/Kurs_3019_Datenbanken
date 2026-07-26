@@ -72,6 +72,11 @@ ohne die verwaltende Software.
 : Letzte Phase des Datenbankentwurfs: die konkrete Umsetzung des
 logischen Schemas in Datenstrukturen einer Datenbanksprache (z. B. SQL).
 
+**Datensatz**
+: Eine einzelne Zeile einer Relation; repräsentiert ein konkretes
+Objekt der Anwendungswelt mit einem Wert für jedes Attribut der
+Relation.
+
 **Datenunabhängigkeit**
 : Eigenschaft der Drei-Ebenen-Schema-Architektur: Eine Ebene (z. B. die
 physische Speicherung) lässt sich ändern, ohne die anderen Ebenen (z. B.
@@ -89,6 +94,11 @@ erreichen.
 : Ein einzelnes, konkretes Objekt der Anwendungswelt, über das Daten
 gespeichert werden (z. B. eine bestimmte Maschine).
 
+**Entity-/Schlüsselintegrität**
+: Die vom Datenbanksystem überwachte Eigenschaft, dass keine zwei
+Datensätze einer Relation in den Werten ihres Primärschlüssels
+übereinstimmen dürfen.
+
 **Entity-Typ**
 : Die Schablone bzw. Menge aller gleichartigen Entities mit denselben
 Attributen; im ER-Diagramm als Rechteck dargestellt.
@@ -102,6 +112,18 @@ einer Anwendungswelt.
 : Ein grafischer, technikferner Formalismus für den konzeptuellen
 Datenbankentwurf mit den Grundkonzepten Entity, Relationship und
 Attribut.
+
+## F
+
+**Fremdschlüssel (FK)**
+: Ein Attribut (oder eine Attributkombination) einer Relation, das den
+Schlüssel einer anderen — oder derselben — Relation referenziert und
+damit eine Beziehung zwischen Datensätzen abbildet.
+
+**Fremdschlüsselintegrität**
+: Die vom Datenbanksystem überwachte Eigenschaft, dass zu jedem
+Fremdschlüsselwert ein passender Datensatz mit demselben Schlüsselwert
+in der referenzierten Relation existieren muss.
 
 ## G
 
@@ -152,6 +174,23 @@ Schemas in ein logisches Schema, i. d. R. das Relationenmodell.
 Datenbanksystem koordiniert diesen Zugriff, ein reiner Dateiansatz kann
 das kaum.
 
+## N
+
+**Nichtschlüsselattribut**
+: Ein Attribut einer Relation, das nicht Teil eines Schlüsselkandidaten
+ist.
+
+**NULL-Wert**
+: Kennzeichnet im Relationenmodell, dass ein optionales Attribut für
+einen bestimmten Datensatz keinen Wert hat.
+
+## P
+
+**Primärschlüssel (PK)**
+: Der aus den Schlüsselkandidaten einer Relation für die Implementierung
+ausgewählte Schlüssel; darf keine optionalen Attribute enthalten und
+wird in der Notation mit PK gekennzeichnet.
+
 ## R
 
 **Redundanz**
@@ -162,10 +201,26 @@ Ursache für Inkonsistenz.
 : Ein Beziehungstyp, bei dem beide beteiligten Seiten vom selben
 Entity-Typ sind.
 
+**Relation**
+: Im Relationenmodell die formale Bezeichnung für eine Tabelle; stellt
+eine konkrete Menge von Objekten der Anwendungswelt dar und wird durch
+ein Relationenschema beschrieben.
+
+**Relationale Datenbank**
+: Eine Menge von Relationen, deren Konsistenz (u. a. Entity-/Schlüssel-
+und Fremdschlüsselintegrität) von einem relationalen Datenbanksystem
+überwacht wird.
+
 **Relationenmodell**
 : Das Datenmodell, in das ein konzeptuelles Schema beim logischen
-Datenbankentwurf überführt wird; wird ab Praxisphase Woche 4 im Detail
-behandelt.
+Datenbankentwurf überführt wird — Standard zur Implementierung von
+Datenbanken, da dem ER-Modell eine Sprachkomponente für Anfragen und
+Änderungen fehlt.
+
+**Relationenschema**
+: Die Struktur-Beschreibung einer Relation: ein Name sowie eine Liste
+von Attributen, jeweils mit Wertebereich und Angabe, ob das Attribut
+optional ist.
 
 **Relationship**
 : Eine konkrete Beziehung zwischen zwei (oder mehr) Objekten der
@@ -181,6 +236,11 @@ benennt; besonders hilfreich bei rekursiven Beziehungen.
 **Schlüsselattribut**
 : Ein Attribut (oder eine Kombination von Attributen) eines
 Entity-Typs, dessen Wert(e) jedes Entity eindeutig identifizieren.
+
+**Schlüsselkandidat**
+: Eine minimale Menge von Attributen einer Relation, die jeden
+Datensatz eindeutig identifiziert; eine Relation kann mehrere
+Schlüsselkandidaten besitzen.
 
 **Spezialisierung**
 : Die Ableitung eines neuen, spezielleren Entity-Typs (Subtyp) aus einem
@@ -207,3 +267,15 @@ ein oder mehrere Subtypen abgeleitet werden.
 : Eine an das ER-Modell angelehnte grafische Notation, die zusätzlich zu
 Obergrenzen auch Untergrenzen für Kardinalitäten (Multiplizitäten)
 ausdrücken kann.
+
+**Unique Key (UK)**
+: Ein Schlüsselkandidat einer Relation, der nicht als Primärschlüssel
+gewählt wurde; kann im Gegensatz zum Primärschlüssel auch optionale
+Attribute enthalten.
+
+## W
+
+**Wertebereich (Domäne)**
+: Die Menge der für ein Attribut zulässigen Werte. Im Relationenmodell
+sind nur atomare Wertebereiche zulässig (z. B. Zahlen, Zeichenketten,
+Datumswerte) — Wertebereiche für Mengen oder Listen sind nicht erlaubt.
