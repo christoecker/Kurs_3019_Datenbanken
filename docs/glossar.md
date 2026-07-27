@@ -261,6 +261,12 @@ Supertyps, zusätzlich zu seinen eigenen Attributen.
 : Der allgemeinere Entity-Typ innerhalb einer Spezialisierung, von dem
 ein oder mehrere Subtypen abgeleitet werden.
 
+**Surrogatschlüssel (künstlicher Schlüssel)**
+: Ein eigens für die Implementierung ergänztes, meist numerisches
+Schlüsselattribut einer Relation, das anstelle eines aus mehreren
+Attributen zusammengesetzten Schlüssels zum Primärschlüssel erklärt
+wird; der ursprüngliche Schlüssel bleibt dabei als Unique Key erhalten.
+
 ## U
 
 **UML-Notation**

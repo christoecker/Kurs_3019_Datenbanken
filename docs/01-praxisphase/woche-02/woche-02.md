@@ -239,9 +239,9 @@ sinnvoll wäre, und begründe kurz, warum.
     beteiligten "Seiten" derselbe Entity-Typ sind — die
     Beziehungsraute wird also zweifach mit demselben Entity-Typ-Kasten
     verbunden (im Lehrbrief-Beispiel: `folgt_nach` zwischen zwei
-    Modulen desselben Entity-Typs MODUL).
+    Modulen desselben Entity-Typs `MODUL`).
 
-    Ein mögliches Beispiel: Im Entity-Typ MASCHINE könnte es eine
+    Ein mögliches Beispiel: Im Entity-Typ `MASCHINE` könnte es eine
     Beziehung `ist_ersatz_fuer` geben, wenn eine Maschine als
     Ersatz für eine andere, ausgefallene Maschine eingesetzt wird.
     Da beide beteiligten Rollen sonst nicht unterscheidbar wären
