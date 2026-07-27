@@ -13,8 +13,9 @@ quelle_lehrbuch: "keine"
 fallstudie: "eigene MEA-Szenarien (Maschinenpark/Wartung als Fortsetzung aus Woche 2, ergänzt um ein Mitarbeiter-Szenario) - siehe 04-fallstudien/README.md"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: entworfen
+publish_date: 2026-08-17
 ---
-<!-- publish_date: 2026-08-17 -->
+
 
 # Woche 5: Logischer Datenbankentwurf: Transformation von Entity- und Beziehungstypen in das Relationenmodell
 
