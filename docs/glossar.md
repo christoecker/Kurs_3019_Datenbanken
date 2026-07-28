@@ -108,6 +108,13 @@ Attributen; im ER-Diagramm als Rechteck dargestellt.
 Darstellung aller relevanten Entity-Typen, Beziehungstypen und Attribute
 einer Anwendungswelt.
 
+**Erhaltung der Informationskapazität**
+: Eigenschaft einer Schema-Transformation, bei der das logische
+(relationale) Schema genau dieselben Datenbankzustände zulässt wie das
+konzeptuelle (ER-)Schema — nicht mehr und nicht weniger. Bei den
+Standard-Transformationsregeln ist dies nicht immer der Fall, da
+Untergrenzen (Mindestteilnahmen) dabei verloren gehen können.
+
 **ER-Modell (Entity-Relationship-Modell, ERM)**
 : Ein grafischer, technikferner Formalismus für den konzeptuellen
 Datenbankentwurf mit den Grundkonzepten Entity, Relationship und
@@ -124,6 +131,12 @@ damit eine Beziehung zwischen Datensätzen abbildet.
 : Die vom Datenbanksystem überwachte Eigenschaft, dass zu jedem
 Fremdschlüsselwert ein passender Datensatz mit demselben Schlüsselwert
 in der referenzierten Relation existieren muss.
+
+**Funktionale Abhängigkeit**
+: Ein Zusammenhang zwischen zwei Attributen einer Relation, bei dem der
+Wert des einen Attributs den Wert des anderen eindeutig festlegt — zwei
+Datensätze mit gleichem Wert im ersten Attribut müssen dann auch im
+zweiten Attribut übereinstimmen.
 
 ## G
 
@@ -179,6 +192,21 @@ das kaum.
 **Nichtschlüsselattribut**
 : Ein Attribut einer Relation, das nicht Teil eines Schlüsselkandidaten
 ist.
+
+**Normalform**
+: Eines von mehreren aufeinander aufbauenden, prüfbaren Kriterien für
+die Qualität eines Relationenschemas. Die erste Normalform verlangt
+atomare Wertebereiche, die zweite verlangt, dass kein Nichtschlüsselattribut 
+nur von einem Teil eines zusammengesetzten Schlüssels abhängt,
+und die dritte verlangt, dass kein Nichtschlüsselattribut nur indirekt
+(transitiv) über ein anderes Nichtschlüsselattribut vom Schlüssel
+abhängt.
+
+**Normalisierung**
+: Die schrittweise Prüfung eines Relationenschemas auf Verletzung der
+Normalformen und die Beseitigung gefundener Verletzungen durch
+Zerlegung in mehrere Relationen, mit dem Ziel, unerwünschte Redundanz
+zu vermeiden.
 
 **NULL-Wert**
 : Kennzeichnet im Relationenmodell, dass ein optionales Attribut für

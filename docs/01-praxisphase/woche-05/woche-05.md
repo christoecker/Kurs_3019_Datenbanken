@@ -87,13 +87,20 @@ nächste Woche transformiert.
 Zwei Relationen aus deinem MEA-Umfeld sind bereits nach der
 Grundregel aus Woche 4 transformiert:
 
-| Relation | Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|---|
-| `MASCHINE` | PK | maschinennr | int | nein |
-| `MASCHINE` | – | bezeichnung | string | nein |
-| `MASCHINE` | – | standort | string | nein |
-| `MITARBEITER` | PK | personalnr | int | nein |
-| `MITARBEITER` | – | name | string | nein |
+**Relation `MASCHINE`**
+
+| Schlüssel | Attribut | Wertebereich | optional? |
+|---|---|---|---|
+| PK | maschinennr | int | nein |
+| – | bezeichnung | string | nein |
+| – | standort | string | nein |
+
+**Relation `MITARBEITER`**
+
+| Schlüssel | Attribut | Wertebereich | optional? |
+|---|---|---|---|
+| PK | personalnr | int | nein |
+| – | name | string | nein |
 
 (`MASCHINE` kennst du bereits aus Woche 2 — dort hast du sie zusammen
 mit `WARTUNGSAUFTRAG` modelliert.)
@@ -104,14 +111,21 @@ Aus Woche 2 kennst du bereits den Beziehungstyp `betrifft` zwischen
 `MASCHINE` und `WARTUNGSAUFTRAG`: Jeder Wartungsauftrag bezieht sich auf
 genau eine Maschine (verpflichtende Teilnahme), eine Maschine kann
 dagegen auch ganz ohne Wartungsauftrag existieren (optionale
-Teilnahme). `WARTUNGSAUFTRAG` ist bereits als Relation transformiert
-(PK `auftragsnr`, dazu `datum` und `beschreibung`, beide nicht
-optional).
+Teilnahme). `WARTUNGSAUFTRAG` ist bereits nach der Grundregel aus
+Woche 4 transformiert:
+
+**Relation `WARTUNGSAUFTRAG`**
+
+| Schlüssel | Attribut | Wertebereich | optional? |
+|---|---|---|---|
+| PK | auftragsnr | int | nein |
+| – | datum | date | nein |
+| – | beschreibung | string | nein |
 
 1. Wende Regel 3 an: Erweitere `WARTUNGSAUFTRAG` um das passende
    Fremdschlüsselattribut.
 2. Entscheide, ob dieses Attribut optional sein darf, und begründe
-   deine Entscheidung mit den Kardinalitäten aus Woche 2.
+   deine Entscheidung mit den oben angegebenen Kardinalitäten.
 
 ??? tip "Musterlösung anzeigen"
     **Teil A — `WARTUNGSAUFTRAG` nach Regel 3**
@@ -148,6 +162,16 @@ zusätzlich das Datum der Einweisung gespeichert (Beziehungsattribut
    entsteht (wähle einen sprechenden Namen), inkl. beider
    Fremdschlüssel, ihres gemeinsamen Primärschlüssels und des
    Beziehungsattributs.
+4. Der Betrieb berichtet dir folgende Einweisungen: Herr Hans
+   (Personalnr. `1234`) wurde am 17.03.2014 an der Maschine mit der
+   Nummer `4711` eingewiesen, und zusätzlich am 21.01.2019 an der
+   Maschine mit der Nummer `5542`. Frau Meyer (Personalnr. `5678`)
+   wurde am 02.11.2016 ebenfalls an der Maschine mit der Nummer `4711`
+   eingewiesen, und am 09.06.2020 an der Maschine mit der Nummer
+   `6001`. Trage diese vier Einweisungen in deine Relation
+   `EINWEISUNG` ein — **jede einzelne Einweisung als eigener
+   Datensatz (eigene Zeile)** — und sortiere die Zeilen absteigend
+   nach `eingewiesen_am` (die neueste Einweisung zuerst).
 
 ??? tip "Musterlösung anzeigen"
     **Teil B — Neue Relation `EINWEISUNG` nach Regel 2**
@@ -172,6 +196,24 @@ zusätzlich das Datum der Einweisung gespeichert (Beziehungsattribut
     umgekehrt), was ein einzelnes Attribut nicht leisten kann. Deshalb
     braucht es die eigenständige Relation `EINWEISUNG`.
 
+    **Datensätze für `EINWEISUNG`** (absteigend nach `eingewiesen_am`
+    sortiert)
+
+    | personalnr | maschinennr | eingewiesen_am |
+    |---|---|---|
+    | 5678 | 6001 | 09.06.2020 |
+    | 1234 | 5542 | 21.01.2019 |
+    | 5678 | 4711 | 02.11.2016 |
+    | 1234 | 4711 | 17.03.2014 |
+
+    An diesen vier Datensätzen ist beides ablesbar: Herr Hans
+    (Personalnr. `1234`) ist an zwei verschiedenen Maschinen eingewiesen
+    (`5542` und `4711`). Maschine `4711` wiederum wird
+    von zwei verschiedenen Mitarbeitern bedient (Herr Hans `1234` und
+    Frau Meyer `5678`). Jede Kombination aus
+    `personalnr` und `maschinennr` kommt dabei nur einmal vor, wie es
+    der gemeinsame Primärschlüssel verlangt.
+
 **Teil C — Rekursive 1:N-Beziehung**
 
 Zusätzlich wird für jede Maschine vermerkt, ob es eine Ersatzmaschine
@@ -180,11 +222,11 @@ für mehrere andere Maschinen als Ersatz dienen (rekursiver
 Beziehungstyp `ist_ersatz_fuer`, 1:N mit den Rollen `ersatzmaschine`
 auf der 1-Seite und `ersetzte_maschine` auf der N-Seite).
 
-4. Wende Regel 3 auf diesen rekursiven Fall an: Erweitere `MASCHINE`
+5. Wende Regel 3 auf diesen rekursiven Fall an: Erweitere `MASCHINE`
    um das passende Fremdschlüsselattribut. Wähle dabei einen zulässigen
    Namen und begründe, warum dieser Name nicht `maschinennr` lauten
    darf (das kennst du bereits aus Woche 4).
-5. Entscheide, ob dieses Attribut optional sein darf, und begründe.
+6. Entscheide, ob dieses Attribut optional sein darf, und begründe.
 
 ??? tip "Musterlösung anzeigen"
     **Teil C — `MASCHINE` erweitert um rekursiven Fremdschlüssel**
