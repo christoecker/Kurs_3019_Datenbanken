@@ -163,6 +163,13 @@ Benutzeroberfläche (z. B. ein Warenwirtschaftssystem).
 gespeicherte Daten bei einer Änderung nicht überall synchron
 aktualisiert werden.
 
+**Instanz (Datenbankinstanz)**
+: Eine einzelne, eigenständig laufende Kopie eines
+Datenbankmanagementsystems auf einem Rechner, die ihre eigenen
+Datenbanken (z. B. die Systemdatenbanken) verwaltet und über einen
+eigenen Namen ansprechbar ist; ein Rechner kann mehrere Instanzen
+parallel betreiben.
+
 ## K
 
 **Kardinalität**
@@ -280,6 +287,12 @@ Attribute und Beziehungen des Supertyps zusätzlich zu seinen eigenen.
 Datenbanksprache zur Definition, Abfrage und Änderung von Daten in
 relationalen Datenbanken.
 
+**SQL Server Management Studio (SSMS)**
+: Das grafische Administrations- und Abfragewerkzeug von Microsoft für
+den SQL Server; wird getrennt vom Datenbankmanagementsystem selbst
+installiert und dient u. a. dazu, sich mit einer Instanz zu verbinden
+und SQL-Skripte auszuführen.
+
 **Subtyp**
 : Der speziellere Entity-Typ innerhalb einer Spezialisierung; jedes
 seiner Objekte ist automatisch auch ein Objekt des zugehörigen
@@ -294,6 +307,12 @@ ein oder mehrere Subtypen abgeleitet werden.
 Schlüsselattribut einer Relation, das anstelle eines aus mehreren
 Attributen zusammengesetzten Schlüssels zum Primärschlüssel erklärt
 wird; der ursprüngliche Schlüssel bleibt dabei als Unique Key erhalten.
+
+**Systemdatenbank**
+: Eine der vom Datenbankmanagementsystem selbst zur Verwaltung
+benötigten Datenbanken (bei SQL Server z. B. `master`, `tempdb`,
+`model`, `msdb`), die bereits direkt nach der Installation vorhanden
+sind, unabhängig von eigenen Anwendungsdatenbanken.
 
 ## U
 
@@ -313,3 +332,9 @@ Attribute enthalten.
 : Die Menge der für ein Attribut zulässigen Werte. Im Relationenmodell
 sind nur atomare Wertebereiche zulässig (z. B. Zahlen, Zeichenketten,
 Datumswerte) — Wertebereiche für Mengen oder Listen sind nicht erlaubt.
+
+**Windows-Authentifizierung**
+: Ein Anmeldeverfahren, bei dem sich Nutzer mit ihrem bereits
+bestehenden Windows-Benutzerkonto bei einer Datenbankinstanz anmelden,
+ohne einen separaten Datenbank-Benutzernamen und ein eigenes Passwort
+einzugeben.
