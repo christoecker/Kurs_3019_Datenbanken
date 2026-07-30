@@ -15,6 +15,7 @@ Domänen zeigt.
 | `mea-produktionsauftraege` | eigen, MEA-Bezug | Fertigungsaufträge, Stücklisten, Ressourcen | Joins, Gruppierung, Prozeduren |
 | `mea-sensormessreihen` | eigen, MEA-Bezug | Zeitreihen aus Sensoren/SPS | SQLite/TwinCAT-Termin, später NoSQL-Ausblick |
 | `bestTec` / `eLibri` | aus dem Lehrbrief, optional | Handel / Bibliothek | Ergänzend, falls Abwechslung gewünscht |
+| `mea-pruefmittel` | eigen, MEA-Bezug | Prüfmittelverwaltung, Kalibrierung | 1:N-Beziehung, abhängiger Entity-Typ, Normalisierung (Transfer-Aufgabe Woche 9) |
 
 Jede Fallstudie bekommt bei Ausarbeitung einen eigenen Unterordner mit
 Schema (als SQL-Server-DDL-Skript) und einer kurzen Domänenbeschreibung.
