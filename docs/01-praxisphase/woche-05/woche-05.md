@@ -127,7 +127,7 @@ Woche 4 transformiert:
 2. Entscheide, ob dieses Attribut optional sein darf, und begründe
    deine Entscheidung mit den oben angegebenen Kardinalitäten.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     **Teil A — `WARTUNGSAUFTRAG` nach Regel 3**
 
     Regel 3 besagt: Die Beziehung und die Relation der N-Seite
@@ -173,7 +173,7 @@ zusätzlich das Datum der Einweisung gespeichert (Beziehungsattribut
    Datensatz (eigene Zeile)** — und sortiere die Zeilen absteigend
    nach `eingewiesen_am` (die neueste Einweisung zuerst).
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     **Teil B — Neue Relation `EINWEISUNG` nach Regel 2**
 
     Regel 2 besagt: Der Beziehungstyp wird auf eine eigene, neue
@@ -228,7 +228,7 @@ auf der 1-Seite und `ersetzte_maschine` auf der N-Seite).
    darf (das kennst du bereits aus Woche 4).
 6. Entscheide, ob dieses Attribut optional sein darf, und begründe.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     **Teil C — `MASCHINE` erweitert um rekursiven Fremdschlüssel**
 
     Auch der rekursive Fall folgt Regel 3: Beziehung und Relation der

@@ -108,7 +108,7 @@ gearbeitet hat.
   Zerlege sie bei Bedarf weiter in zwei Relationen, die die
   3NF erfüllen.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     **Schritt 1: Prüfung auf 2. Normalform**
 
     `maschinennr` und `standort` hängen beide nur von `auftragsnr` ab

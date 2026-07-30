@@ -92,7 +92,7 @@ Zwei kleine, voneinander unabhängige Szenarien aus deinem MEA-Umfeld.
    Notationen reicht). Kennzeichne, was zur eindeutigen Identifikation
    einer Auftragsposition beiträgt.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
 
     `AUFTRAGSPOSITION` ist ein abhängiger Entity-Typ, weil (1) eine
     Auftragsposition ohne ihren Fertigungsauftrag nicht existieren kann
@@ -148,7 +148,7 @@ Zwei kleine, voneinander unabhängige Szenarien aus deinem MEA-Umfeld.
 2. Erkläre in ein bis zwei Sätzen, was es *mengentheoretisch* bedeutet,
    dass `CNC_MASCHINE` ein Subtyp von `MASCHINE` ist.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
 
     ```mermaid
     %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%

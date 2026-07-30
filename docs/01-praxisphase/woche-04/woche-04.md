@@ -133,7 +133,7 @@ Die Relation `LIEFERANT` ist bereits fertig transformiert:
    grundsätzlich denselben Namen wie der referenzierte Schlüssel tragen
    darf.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     **1. Entity-Typ `ROHSTOFF` (ER-Modell, vor der Transformation)**
 
     ```mermaid

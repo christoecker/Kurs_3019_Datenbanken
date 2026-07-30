@@ -126,7 +126,7 @@ Diagramm mit Stift und Papier ist optional):
    `0..*`) an. Begründe in ein bis zwei Sätzen, warum genau diese
    Kardinalität und keine andere zutrifft.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     **1. Entity-Typen und Attribute**
 
     - **MASCHINE**: `maschinennr` (Schlüssel), `bezeichnung`, `standort`

@@ -2,8 +2,7 @@
 
 Hier findest du die wichtigsten Fachbegriffe aus dem Kurs kurz erklärt.
 Nutze diese Seite zum Nachschlagen, wenn dir ein Begriff aus einem
-Arbeitsauftrag oder einer Übung nicht mehr geläufig ist. Das Glossar
-wächst im Laufe des Semesters mit.
+Arbeitsauftrag oder einer Übung nicht mehr geläufig ist.
 
 ## A
 

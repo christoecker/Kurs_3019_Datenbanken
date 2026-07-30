@@ -79,7 +79,7 @@ der du:
 3. kurz skizzierst, in welchen Phasen der Entwurf einer solchen Datenbank
    ablaufen würde, wenn man es "richtig" machen wollte.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     Eine mögliche Stellungnahme:
 
     Die Excel-Lösung wirkt kurzfristig praktikabel, bringt aber mit

@@ -61,7 +61,7 @@ Lade das Installationsprogramm von der offiziellen Microsoft-Seite herunter:
 Wähle dort die **Express**-Edition (kostenlos, für unsere Zwecke völlig
 ausreichend).
 
-!!! note "Installationstyp: Basic"
+!!! info "Installationstyp: Basic"
     Wähle im Installationsprogramm den Installationstyp **"Basic"** — die
     einfachste der angebotenen Optionen. Damit vergibt der Installer
     automatisch den Instanznamen `SQLEXPRESS` und richtet die
@@ -99,7 +99,7 @@ Starte SSMS. Im Dialog "Mit Server verbinden" trägst du ein:
   voreingestellt und muss nicht geändert werden — du meldest dich mit
   deinem angemeldeten Windows-Benutzerkonto an, ohne separates Passwort.
 
-!!! note "Zertifikatswarnung"
+!!! info "Zertifikatswarnung"
     Erscheint beim Verbindungsaufbau eine Warnung zum
     Server-Zertifikat, aktiviere die Option **"Trust server
     certificate"** und verbinde dich erneut. Das ist bei einer rein

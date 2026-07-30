@@ -103,7 +103,7 @@ umfasst -- "N" --- AUFTRAGSPOSITION
   Relationenschema. Kennzeichne bei `AUFTRAGSPOSITION`, aus welchen
   Attributen sich der Primärschlüssel zusammensetzt.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     **Teil A — `AUFTRAGSPOSITION` nach Regel 5**
 
     `FERTIGUNGSAUFTRAG` wird nach Regel 1 ganz normal transformiert.
@@ -155,7 +155,7 @@ spez --- MONTAGESTATION
   der übernommene Schlüssel gleichzeitig Fremd- und Primärschlüssel
   ist.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     **Teil B — Spezialisierung `MASCHINE` nach Regel 6**
 
     Für Supertyp und beide Subtypen entsteht je eine eigene Relation;

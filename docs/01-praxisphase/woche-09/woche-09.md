@@ -96,7 +96,7 @@ Diagramm-Tool ist nicht nötig.
     Entity-Typs* `KALIBRIERUNG` modelliert werden — nicht als eigener
     Entity-Typ.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     `KALIBRIERUNG` ist ein abhängiger Entity-Typ: Die Kalibriernummer
     ist nur innerhalb eines Prüfmittels eindeutig, und ohne das
     zugehörige Prüfmittel kann eine Kalibrierung nicht existieren.
@@ -129,7 +129,7 @@ Diagramm-Tool ist nicht nötig.
 Überführe dein ER-Modell aus Teil A vollständig in ein
 Relationenmodell.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     `PRUEFMITTELART` wird nach Regel 1 transformiert. Die 1:N-Beziehung
     `gehört_zu` wird nach Regel 3 abgebildet: Sie verschmilzt mit der
     Relation der N-Seite (`PRUEFMITTEL`), die dabei den Schlüssel
@@ -179,7 +179,7 @@ Verletzung der dritten Normalform. Begründe deine Analyse. Zerlege die
 Relation bei Bedarf, sodass beide entstehenden Relationen die 3NF
 erfüllen.
 
-??? tip "Musterlösung anzeigen"
+??? note "Musterlösung anzeigen"
     `laborname` und `laboradresse` hängen nicht direkt vom
     (zusammengesetzten) Schlüssel (`prüfmittelnr`, `kalibriernr`) ab,
     sondern nur *indirekt*: Name und Adresse sind Eigenschaften des
