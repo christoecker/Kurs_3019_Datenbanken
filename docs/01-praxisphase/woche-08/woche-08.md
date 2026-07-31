@@ -44,7 +44,7 @@ Anders als die Arbeitsaufträge der letzten Wochen findest du dieses
 Quiz **nicht auf dieser Kurswebseite**, sondern in ILIAS.
 
 **Link zum ILIAS-Quiz:**
-<https://www.hsbi.de/elearning/ilias.php?baseClass=ilrepositorygui&ref_id=1700711>
+<a href="https://www.hsbi.de/elearning/ilias.php?baseClass=ilrepositorygui&ref_id=1700711" target="_blank" rel="noopener">ILIAS-Kursraum</a>
 
 **Bearbeitungszeitraum:** Du kannst das Quiz bis zum **27.09.2026**
 bearbeiten — dafür stehen dir also insgesamt drei Wochen zur Verfügung.
