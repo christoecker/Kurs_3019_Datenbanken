@@ -2,13 +2,13 @@
 typ: theoriephase-block
 termin: 1
 block_id: "02"
-datum: "2026-10-20"
+datum: "2026-10-12"
 kurztitel: "Transformation ins Relationenmodell"
 thema: "Transformation des ER-Modells in das Relationenmodell anwenden"
 lernziele:
   - "Ihr könnt ein gegebenes ER-Modell (inkl. Spezialisierung, abhängigem Entity-Typ und mehreren Beziehungstypen) systematisch und in der empfohlenen Reihenfolge in ein vollständiges Relationenschema überführen."
   - "Ihr könnt begründen, warum bei einer N:M-Beziehung eine eigene Relation entsteht, bei einer 1:N-Beziehung dagegen nicht."
-musterloesungen_sichtbar: true
+musterloesungen_sichtbar: false
 fallstudie: "eLibri (Fortsetzung des ER-Modells aus Block 01)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: entworfen

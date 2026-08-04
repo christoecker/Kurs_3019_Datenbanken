@@ -1,7 +1,7 @@
 ---
 typ: theoriephase-termin-uebersicht
 termin: 1
-datum: "2026-10-20"
+datum: "2026-10-12"
 thema_termin: "ER-Modell & Transformation"
 workload_minuten: 15
 lernziele:
