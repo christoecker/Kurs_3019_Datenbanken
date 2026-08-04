@@ -7,10 +7,12 @@ theme:
   language: de
   features:
     - navigation.sections
+    - navigation.indexes
     - content.code.copy
 
 hooks:
   - hooks/publish_scheduler.py
+  - hooks/solution_toggle.py
 
 plugins:
   - search
@@ -26,6 +28,9 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.snippets:
+      base_path: ["docs"]
+      check_paths: true
   - def_list
   - tables
 
@@ -53,3 +58,8 @@ nav:
       - "Woche 10": 01-praxisphase/woche-10/woche-10.md
       - "Woche 11": 01-praxisphase/woche-11/woche-11.md
       - "Woche 12": 01-praxisphase/woche-12/woche-12.md
+  - Theoriephase:
+      - "Termin 1":
+          - 02-theoriephase/termin-01/index.md
+          - "ER-Modell aufstellen": 02-theoriephase/termin-01/block-01.md
+          - "Transformation ins Relationenmodell": 02-theoriephase/termin-01/block-02.md

@@ -26,3 +26,13 @@
   margin-top: 0;
   margin-bottom: 0.8em;
 }
+
+
+/* Zeitangaben in Theoriephase-Dokumenten (z. B. "(ca. 5 Min.)") optisch
+   zurücknehmen, damit sie als grobe Orientierung dienen, ohne den
+   Lesefluss zu dominieren. */
+.zeitangabe {
+  color: #aaa;
+  font-size: 0.85em;
+  float: right;
+}
