@@ -2,23 +2,22 @@
 typ: theoriephase-block
 termin: 1
 block_id: "01"
-datum: "2026-10-12s"
+datum: "2026-10-20"
 kurztitel: "ER-Modell aufstellen"
 thema: "ER-Modell aufstellen (Fallbeispiel aus dem Lehrbrief, Live-Modellierung)"
 lernziele:
   - "Ihr könnt zu einer neuen, unbekannten Beschreibung einer Anwendungswelt selbstständig ein ER-Modell entwerfen, das Spezialisierung, abhängige Entity-Typen und (rekursive) N:M-Beziehungen korrekt integriert."
   - "Ihr könnt begründen, warum ein Attribut oder eine Beziehung nur bei einem Subtyp und nicht beim gesamten Supertyp modelliert wird."
-musterloesungen_sichtbar: false
+musterloesungen_sichtbar: true
 fallstudie: "eLibri (Lehrbrief-Projektaufgabe 3.5.2)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: entworfen
+publish_date: 2026-10-12
 ---
 
 # ER-Modell aufstellen (20.10.2026)
 
----
-
-## Übung: ER-Modell aufstellen
+## ER-Modell aufstellen { .modus-uebung }
 
 ### Worum geht es?
 
@@ -36,38 +35,40 @@ komplett neues Beispiel an, das ihr noch nicht kennt.
     - Ihr könnt erklären, warum bestimmte Attribute oder Beziehungen an
       einem Subtyp und nicht am Supertyp hängen.
 
-### Kurzer Rückblick <span class="zeitangabe">(ca. 5 Min.)</span>
+### Kurzer Rückblick <span class="zeitangabe">ca. 5 Min.</span> { data-toc-label="Kurzer Rückblick" }
 
-**1. Wozu dient ein ER-Diagramm eigentlich?**
+1.  Wozu dient ein ER-Diagramm eigentlich?
 
-<!-- MUSTERLOESUNG-START -->
-??? tip "Antwort anzeigen"
-    Es ist das zentrale Werkzeug des konzeptuellen Datenbankentwurfs —
-    ein grafisches, technikfernes Modell, mit dem man sich mit
-    Anwender:innen über die relevanten Daten einer Anwendungswelt
-    verständigen kann, bevor man sich um die technische Umsetzung
-    (Tabellen, SQL) kümmert.
-<!-- MUSTERLOESUNG-ENDE -->
+    <!-- MUSTERLOESUNG-START -->
+    ??? question "Antwort anzeigen"
+        Es ist das zentrale Werkzeug des konzeptuellen Datenbankentwurfs —
+        ein grafisches, technikfernes Modell, mit dem man sich mit
+        Anwender:innen über die relevanten Daten einer Anwendungswelt
+        verständigen kann, bevor man sich um die technische Umsetzung
+        (Tabellen, SQL) kümmert.
+    <!-- MUSTERLOESUNG-ENDE -->
 
-**2. Was macht einen Entity-Typ zu einem abhängigen Entity-Typ?**
+2.  Was macht einen Entity-Typ zu einem abhängigen Entity-Typ?
 
-<!-- MUSTERLOESUNG-START -->
-??? tip "Antwort anzeigen"
-    Er hat keinen eigenen Schlüssel und ist in seiner Existenz von
-    einem anderen ("identifizierenden") Entity-Typ abhängig — erst die
-    Kombination aus einem lokalen Attribut und der Beziehung zum
-    identifizierenden Entity-Typ macht ihn eindeutig identifizierbar.
-<!-- MUSTERLOESUNG-ENDE -->
+    <!-- MUSTERLOESUNG-START -->
+    ??? question "Antwort anzeigen"
+        Er hat keinen eigenen Schlüssel und ist in seiner Existenz von
+        einem anderen ("identifizierenden") Entity-Typ abhängig — erst die
+        Kombination aus einem lokalen Attribut und der Beziehung zum
+        identifizierenden Entity-Typ macht ihn eindeutig identifizierbar.
+    <!-- MUSTERLOESUNG-ENDE -->
 
-**3. Was "erbt" ein Subtyp von seinem Supertyp?**
+3.  Was "erbt" ein Subtyp von seinem Supertyp?
 
-<!-- MUSTERLOESUNG-START -->
-??? tip "Antwort anzeigen"
-    Alle Attribute und Beziehungen des Supertyps, zusätzlich zu seinen
-    eigenen.
-<!-- MUSTERLOESUNG-ENDE -->
+    <!-- MUSTERLOESUNG-START -->
+    ??? question "Antwort anzeigen"
+        Alle Attribute und Beziehungen des Supertyps, zusätzlich zu seinen
+        eigenen.
+    <!-- MUSTERLOESUNG-ENDE -->
 
-### Das Szenario: eLibri <span class="zeitangabe">(ca. 5 Min.)</span>
+---
+
+### Das Szenario: eLibri <span class="zeitangabe">ca. 5 Min.</span> { data-toc-label="Das Szenario: eLibri" }
 
 > eLibri ist eine Einkaufsgenossenschaft von Buchhändlern, die
 > zusätzlich eine eigene Verkaufsplattform für Privatkunden betreibt.
@@ -86,7 +87,10 @@ komplett neues Beispiel an, das ihr noch nicht kennt.
 
 *(Fallbeispiel s. Lehrbrief, Kap. 3.5.2, S. 34.)*
 
-### Erstellung des ER-Modells <span class="zeitangabe">(ca. 20 Min.)</span>
+---
+
+### Erstellung des ER-Modells <span class="zeitangabe">ca. 20 Min.</span> { data-toc-label="Erstellung des ER-Modells" }
+
 Die textuell beschriebenen Spezifikationen werden nun Schritt für Schritt in einem ER-Diagramm modelliert.
 
 #### Kunde und Spezialisierung
@@ -181,7 +185,9 @@ bestellt -- "1" --- BUCH
 ```
 <!-- MUSTERLOESUNG-ENDE -->
 
-### Gesamtergebnis <span class="zeitangabe">(ca. 5 Min.)</span>
+---
+
+### Gesamtergebnis <span class="zeitangabe">ca. 5 Min.</span> { data-toc-label="Gesamtergebnis" }
 
 Damit ist das Kern-Modell vollständig. Es enthält bereits alle vier
 Bausteine (Spezialisierung, zwei normale Beziehungen, einen abhängigen
@@ -229,7 +235,9 @@ Ober-/Untergrenzen hier ergänzt):
   kann in beliebig vielen Positionen bestellt sein, muss aber nicht).
 <!-- MUSTERLOESUNG-ENDE -->
 
-### Was-wäre-wenn: Autor:innen ergänzen <span class="zeitangabe">(ca. 10 Min.)</span>
+---
+
+### Erweiterung: Autor:innen ergänzen <span class="zeitangabe">ca. 10 Min.</span> { data-toc-label="Was-wäre-wenn: Autor:innen ergänzen" }
 
 eLibri möchte zusätzlich erfassen, welche Autor:innen ein Buch
 geschrieben haben (inkl. Geburtsjahr) — ein Buch kann mehrere
@@ -260,7 +268,7 @@ Beziehung selbst ein Beziehungsattribut `reihenfolge` bekommen.
 
 ---
 
-## Betreutes Selbststudium: ER-Modell aufstellen
+## ER-Modell aufstellen { .modus-selbststudium }
 
 ### Worum geht es?
 
@@ -302,29 +310,30 @@ dritten Erweiterung versuchen (Teil C).
    für alle Kunden oder nur für eine der beiden Kundengruppen?
 
 <!-- MUSTERLOESUNG-START -->
-**Musterlösung Teil A:**
+???+ note "Musterlösung Teil A anzeigen"
+    ```mermaid
+    %%{init: {'flowchart': {'padding': 2}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph LR
+    PRIVATKUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>PRIVATKUNDE</b><hr/>vorname : string<br/>nachname : string</div>"]
+    KREDITKARTE["<div style='text-align:left; font-size: 0.6rem;'><b>KREDITKARTE</b><hr/>kartennr : string (PK)<br/>unternehmen : string<br/>ablaufdatum : date</div>"]
+    nutzt{{nutzt}}
+    PRIVATKUNDE -- "N" --- nutzt
+    nutzt -- "M" --- KREDITKARTE
+    ```
 
-```mermaid
-%%{init: {'flowchart': {'padding': 2}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
-graph LR
-PRIVATKUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>PRIVATKUNDE</b><hr/>vorname : string<br/>nachname : string</div>"]
-KREDITKARTE["<div style='text-align:left; font-size: 0.6rem;'><b>KREDITKARTE</b><hr/>kartennr : string (PK)<br/>unternehmen : string<br/>ablaufdatum : date</div>"]
-nutzt{{nutzt}}
-PRIVATKUNDE -- "N" --- nutzt
-nutzt -- "M" --- KREDITKARTE
-```
+    Die Beziehung hängt bewusst nur an `PRIVATKUNDE`, nicht am Supertyp
+    `KUNDE` und nicht an `HAENDLER` — anders als die Beziehung zu `AUFTRAG`
+    in der Übung, die am Supertyp hing. Ein Subtyp kann also zusätzlich zu
+    eigenen Attributen auch eigene Beziehungen haben, die der Supertyp und
+    der andere Subtyp nicht besitzen.
 
-Die Beziehung hängt bewusst nur an `PRIVATKUNDE`, nicht am Supertyp
-`KUNDE` und nicht an `HAENDLER` — anders als die Beziehung zu `AUFTRAG`
-in der Übung, die am Supertyp hing. Ein Subtyp kann also zusätzlich zu
-eigenen Attributen auch eigene Beziehungen haben, die der Supertyp und
-der andere Subtyp nicht besitzen.
-
-Kardinalitäten: Chen N:M. UML: aus Sicht `PRIVATKUNDE` **1..\***
-(mindestens eine Karte laut Aufgabenstellung, ggf. mehrere), aus Sicht
-`KREDITKARTE` **1..\*** (jede Karte gehört mindestens einem Kunden,
-kann sich aber mehrere Kunden teilen).
+    Kardinalitäten: Chen N:M. UML: aus Sicht `PRIVATKUNDE` **1..\***
+    (mindestens eine Karte laut Aufgabenstellung, ggf. mehrere), aus Sicht
+    `KREDITKARTE` **1..\*** (jede Karte gehört mindestens einem Kunden,
+    kann sich aber mehrere Kunden teilen).
 <!-- MUSTERLOESUNG-ENDE -->
+
+---
 
 #### Teil B — Versandkopplung
 
@@ -338,29 +347,30 @@ kann sich aber mehrere Kunden teilen).
 2. Vergib passende Rollennamen für die beiden Seiten der Beziehung.
 
 <!-- MUSTERLOESUNG-START -->
-**Musterlösung Teil B:**
+???+ note "Musterlösung Teil B anzeigen"
+    ```mermaid
+    %%{init: {'flowchart': {'padding': 2}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph LR
+    AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auftragsnr : int (PK)<br/>eingangsdatum : date</div>"]
+    versandt{{"versandt mit"}}
+    AUFTRAG -- "M (eigener Auftrag)" --- versandt
+    versandt -- "M (mitversendeter Auftrag)" --- AUFTRAG
+    ```
 
-```mermaid
-%%{init: {'flowchart': {'padding': 2}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
-graph LR
-AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auftragsnr : int (PK)<br/>eingangsdatum : date</div>"]
-versandt{{"versandt mit"}}
-AUFTRAG -- "M (eigener Auftrag)" --- versandt
-versandt -- "M (mitversendeter Auftrag)" --- AUFTRAG
-```
+    Es handelt sich um eine **rekursive** Beziehung (beide Seiten sind vom
+    Entity-Typ `AUFTRAG`) — deshalb sind Rollennamen nötig, um die beiden
+    Seiten unterscheidbar zu machen, z. B. "eigener Auftrag" und
+    "mitversendeter Auftrag". Im Unterschied zum Beispiel `MODUL
+    folgt_nach MODUL` aus Woche 2 ist diese Beziehung zusätzlich **M:N**
+    statt 1:N und **symmetrisch**: Wenn Auftrag A zusammen mit Auftrag B
+    verschickt wird, gilt das automatisch auch umgekehrt.
 
-Es handelt sich um eine **rekursive** Beziehung (beide Seiten sind vom
-Entity-Typ `AUFTRAG`) — deshalb sind Rollennamen nötig, um die beiden
-Seiten unterscheidbar zu machen, z. B. "eigener Auftrag" und
-"mitversendeter Auftrag". Im Unterschied zum Beispiel `MODUL
-folgt_nach MODUL` aus Woche 2 ist diese Beziehung zusätzlich **M:N**
-statt 1:N und **symmetrisch**: Wenn Auftrag A zusammen mit Auftrag B
-verschickt wird, gilt das automatisch auch umgekehrt.
-
-Kardinalitäten: Chen M:N. UML: aus beiden Sichten **0..\*** (ein
-Auftrag muss nicht mit anderen gekoppelt sein, kann aber mit beliebig
-vielen zusammen verschickt werden).
+    Kardinalitäten: Chen M:N. UML: aus beiden Sichten **0..\*** (ein
+    Auftrag muss nicht mit anderen gekoppelt sein, kann aber mit beliebig
+    vielen zusammen verschickt werden).
 <!-- MUSTERLOESUNG-ENDE -->
+
+---
 
 #### Teil C — Kundenbewertungen (optional)
 
@@ -375,62 +385,61 @@ vielen zusammen verschickt werden).
    dasselbe Modell gekommen, oder gibt es Unterschiede?
 
 <!-- MUSTERLOESUNG-START -->
-**Musterlösung Teil C:**
+???+ note "Musterlösung Teil C anzeigen"
+    Die Aufgabenstellung lässt bewusst offen, WORAUF sich eine Bewertung
+    genau bezieht — das lässt mindestens zwei unterschiedliche, jeweils in
+    sich schlüssige Modelle zu.
 
-Die Aufgabenstellung lässt bewusst offen, WORAUF sich eine Bewertung
-genau bezieht — das lässt mindestens zwei unterschiedliche, jeweils in
-sich schlüssige Modelle zu.
+    **Modell 1 — Bewertung gehört zum Buch allgemein** (unabhängig davon,
+    ob und wie oft die Person es bestellt hat):
 
-**Modell 1 — Bewertung gehört zum Buch allgemein** (unabhängig davon,
-ob und wie oft die Person es bestellt hat):
+    ```mermaid
+    %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph LR
+    KUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>KUNDE</b><hr/>kundennr : int (PK)<br/>anschrift : string</div>"]
+    BUCH["<div style='text-align:left; font-size: 0.6rem;'><b>BUCH</b><hr/>artikelnr : int (PK)<br/>bezeichnung : string<br/>preis : decimal<br/>lagerbestand : int</div>"]
+    bewertet{{bewertet}}
+    KUNDE -- "N" --- bewertet
+    bewertet -- "M" --- BUCH
+    ```
 
-```mermaid
-%%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
-graph LR
-KUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>KUNDE</b><hr/>kundennr : int (PK)<br/>anschrift : string</div>"]
-BUCH["<div style='text-align:left; font-size: 0.6rem;'><b>BUCH</b><hr/>artikelnr : int (PK)<br/>bezeichnung : string<br/>preis : decimal<br/>lagerbestand : int</div>"]
-bewertet{{bewertet}}
-KUNDE -- "N" --- bewertet
-bewertet -- "M" --- BUCH
-```
+    N:M-Beziehung zwischen `KUNDE` und `BUCH` mit den Beziehungsattributen
+    `sterne`, `kommentar` und `datum` an `bewertet`. Kardinalitäten: Chen
+    N:M. UML: aus Sicht `KUNDE` **0..\*** (kann mehrere Bücher bewerten
+    oder keins), aus Sicht `BUCH` **0..\*** (kann von mehreren Kund:innen
+    bewertet werden oder von keiner).
 
-N:M-Beziehung zwischen `KUNDE` und `BUCH` mit den Beziehungsattributen
-`sterne`, `kommentar` und `datum` an `bewertet`. Kardinalitäten: Chen
-N:M. UML: aus Sicht `KUNDE` **0..\*** (kann mehrere Bücher bewerten
-oder keins), aus Sicht `BUCH` **0..\*** (kann von mehreren Kund:innen
-bewertet werden oder von keiner).
+    **Modell 2 — Bewertung gehört zu einer konkreten Bestellung** (nur
+    tatsächlich bestellte Bücher dürfen bewertet werden):
 
-**Modell 2 — Bewertung gehört zu einer konkreten Bestellung** (nur
-tatsächlich bestellte Bücher dürfen bewertet werden):
+    ```mermaid
+    %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph LR
+    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+    style AUFTRAGSPOSITION fill:transparent,stroke:none
+    BEWERTUNG["<div style='text-align:left; font-size: 0.6rem;'><b>BEWERTUNG</b><hr/>bewertungsnr : int (PK)<br/>sterne : int<br/>kommentar : string<br/>datum : date</div>"]
+    bewertet_mit{{bewertet_mit}}
+    AUFTRAGSPOSITION -- "1" --- bewertet_mit
+    bewertet_mit -- "1" --- BEWERTUNG
+    ```
 
-```mermaid
-%%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
-graph LR
-AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
-style AUFTRAGSPOSITION fill:transparent,stroke:none
-BEWERTUNG["<div style='text-align:left; font-size: 0.6rem;'><b>BEWERTUNG</b><hr/>bewertungsnr : int (PK)<br/>sterne : int<br/>kommentar : string<br/>datum : date</div>"]
-bewertet_mit{{bewertet_mit}}
-AUFTRAGSPOSITION -- "1" --- bewertet_mit
-bewertet_mit -- "1" --- BEWERTUNG
-```
+    Eigener Entity-Typ `BEWERTUNG` mit 1:1-Beziehung zu
+    `AUFTRAGSPOSITION` statt zu `BUCH` — genau das bildet ab, dass sich
+    eine Bewertung auf eine konkrete Bestellung bezieht. Kardinalitäten:
+    Chen 1:1. UML: aus Sicht `AUFTRAGSPOSITION` **0..1** (nicht jede
+    Position wurde bewertet), aus Sicht `BEWERTUNG` **1..1** (jede
+    Bewertung gehört zu genau einer Position).
 
-Eigener Entity-Typ `BEWERTUNG` mit 1:1-Beziehung zu
-`AUFTRAGSPOSITION` statt zu `BUCH` — genau das bildet ab, dass sich
-eine Bewertung auf eine konkrete Bestellung bezieht. Kardinalitäten:
-Chen 1:1. UML: aus Sicht `AUFTRAGSPOSITION` **0..1** (nicht jede
-Position wurde bewertet), aus Sicht `BEWERTUNG` **1..1** (jede
-Bewertung gehört zu genau einer Position).
-
-**Lessons Learned:** Beide Modelle sind in sich schlüssig, führen aber
-zu unterschiedlichem Verhalten — z. B.: Darf man ein Buch bewerten,
-das man nie bestellt hat? Nur in Modell 1 möglich. Darf man dasselbe
-Buch mehrfach bewerten, wenn man es mehrfach bestellt hat? In Modell 2
-ja (eine Bewertung pro Auftragsposition), in Modell 1 kommt es auf die
-genaue Umsetzung der N:M-Beziehung an. Die Spezifikation allein
-entscheidet das nicht. Genau das ist eine Stärke des ER-Diagramms: Es
-macht solche Unklarheiten sichtbar, bevor auch nur eine Zeile SQL
-geschrieben wird — und zwingt euch, sie zu benennen und mit den
-technikfernen Anwender:innen der Datenbank vorab zu klären, statt sie
-stillschweigend zu entscheiden. Damit schließt sich der Kreis zur
-ersten Rückblick-Frage ganz oben: Genau dafür dient ein ER-Diagramm.
+    **Lessons Learned:** Beide Modelle sind in sich schlüssig, führen aber
+    zu unterschiedlichem Verhalten — z. B.: Darf man ein Buch bewerten,
+    das man nie bestellt hat? Nur in Modell 1 möglich. Darf man dasselbe
+    Buch mehrfach bewerten, wenn man es mehrfach bestellt hat? In Modell 2
+    ja (eine Bewertung pro Auftragsposition), in Modell 1 kommt es auf die
+    genaue Umsetzung der N:M-Beziehung an. Die Spezifikation allein
+    entscheidet das nicht. Genau das ist eine Stärke des ER-Diagramms: Es
+    macht solche Unklarheiten sichtbar, bevor auch nur eine Zeile SQL
+    geschrieben wird — und zwingt euch, sie zu benennen und mit den
+    technikfernen Anwender:innen der Datenbank vorab zu klären, statt sie
+    stillschweigend zu entscheiden. Damit schließt sich der Kreis zur
+    ersten Rückblick-Frage ganz oben: Genau dafür dient ein ER-Diagramm.
 <!-- MUSTERLOESUNG-ENDE -->

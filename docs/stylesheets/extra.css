@@ -28,11 +28,89 @@
 }
 
 
-/* Zeitangaben in Theoriephase-Dokumenten (z. B. "(ca. 5 Min.)") optisch
-   zurücknehmen, damit sie als grobe Orientierung dienen, ohne den
-   Lesefluss zu dominieren. */
+/* Überschriften mit Zeitangaben-Badge: Titel bleibt linksbündig, das
+   Badge rutscht in derselben Zeile an den rechten Rand. Die Zeitangabe
+   selbst steht als <span class="zeitangabe"> direkt im Text der
+   Überschrift (siehe CLAUDE.md "Zeitangaben-Konvention") - dass sie
+   trotzdem nicht im Inhaltsverzeichnis auftaucht, regelt das
+   data-toc-label-Attribut an der jeweiligen Überschrift, nicht CSS. */
+.md-typeset h1:has(> .zeitangabe),
+.md-typeset h2:has(> .zeitangabe),
+.md-typeset h3:has(> .zeitangabe),
+.md-typeset h4:has(> .zeitangabe) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.3em 0.75em;
+}
+
+/* Zeitangaben in Theoriephase-Dokumenten als dezentes Badge mit
+   Stoppuhr-Icon darstellen. */
 .zeitangabe {
-  color: #aaa;
-  font-size: 0.85em;
-  float: right;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.15em 0.7em;
+  border-radius: 1em;
+  font-size: 0.75em;
+  font-weight: 600;
+  color: var(--md-default-fg-color--light);
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+.zeitangabe::before {
+  content: "⏱";
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+
+/* Modus-Kennzeichnung an den beiden Hauptüberschriften eines
+   Theoriephase-Blocks ("## Übung: ..." / "## Betreutes Selbststudium:
+   ..."), per attr_list-Klasse gesetzt. Macht den Wechsel von "jetzt
+   gemeinsam" zu "jetzt eigenständig" auf einen Blick sichtbar - der
+   horizontale Trennstrich zwischen beiden Abschnitten bleibt zusätzlich
+   bestehen. */
+.md-typeset h2.modus-uebung,
+.md-typeset h2.modus-selbststudium {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.5em 0.8em;
+  border-radius: 0.3em;
+}
+
+.md-typeset h2.modus-uebung {
+  background-color: rgba(82, 108, 254, 0.08);
+  border-left: 4px solid rgb(82, 108, 254);
+}
+
+.md-typeset h2.modus-selbststudium {
+  background-color: rgba(255, 152, 0, 0.08);
+  border-left: 4px solid rgb(255, 152, 0);
+}
+
+.md-typeset h2.modus-uebung::before,
+.md-typeset h2.modus-selbststudium::before {
+  flex-shrink: 0;
+  font-size: 0.55em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3em 0.7em;
+  border-radius: 1em;
+  color: rgb(255, 255, 255);
+}
+
+.md-typeset h2.modus-uebung::before {
+  content: "👥 Übung";
+  background-color: rgb(82, 108, 254);
+}
+
+.md-typeset h2.modus-selbststudium::before {
+  content: "✏️ Betreutes Selbststudium";
+  background-color: rgb(255, 152, 0);
 }

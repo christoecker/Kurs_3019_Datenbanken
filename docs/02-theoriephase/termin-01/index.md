@@ -1,19 +1,20 @@
 ---
 typ: theoriephase-termin-uebersicht
 termin: 1
-datum: "2026-10-12"
+datum: "2026-10-20"
 thema_termin: "ER-Modell & Transformation"
 workload_minuten: 15
 lernziele:
   - "Ihr könnt die Kernbegriffe des ER-Modells (Entity-Typ, Beziehungstyp, Kardinalität, abhängiger Entity-Typ, Spezialisierung) und die sechs Transformationsregeln ins Relationenmodell aus dem Gedächtnis abrufen."
 bearbeitungsstatus: entworfen
+publish_date: 2026-10-12
 ---
 
-# 20.10.2026: Termin 1 — ER-Modell & Transformation
+# Termin 1 (20.10.2026) — ER-Modell & Transformation
 
 Heute geht es in zwei Schritten von der Idee zur fertigen
 Datenbank-Struktur. Im ersten Block, [ER-Modell
-aufstellen](block-01.md), modelliert ihr live gemeinsam ein neues
+aufstellen](block-01.md), modelliert ihr ein neues
 Fallbeispiel (eLibri) als ER-Diagramm und erweitert es anschließend
 selbstständig. Im zweiten Block, [Transformation ins
 Relationenmodell](block-02.md), überführt ihr genau dieses Modell
@@ -22,15 +23,15 @@ Implementierung in SQL Server (Termin 2). Beide Blöcke bauen direkt
 aufeinander auf: Was ihr im ersten Block modelliert, transformiert ihr
 im zweiten.
 
-## Vorbereitung
+> Zeitbedarf zur Vorbereitung: ca. 20 Minuten.
 
-<span class="zeitangabe">Zeitbedarf: ca. 15 Minuten.</span>
+## Vorbereitung
 
 ### Worum geht es?
 
 Termin 1 baut ausschließlich auf Themen auf, die ihr in der
 Praxisphase bereits vollständig durchgearbeitet habt — ER-Modell in
-Woche 2+3, Transformation ins Relationenmodell in Woche 4–6. Diese
+Woche 2 und 3, Transformation ins Relationenmodell in Woche 4–6. Diese
 Vorbereitung ist deshalb bewusst kurz: Frischt die folgenden
 Kernpunkte auf, dann seid ihr für beide Blöcke startklar.
 

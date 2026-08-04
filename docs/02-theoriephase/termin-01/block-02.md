@@ -2,23 +2,22 @@
 typ: theoriephase-block
 termin: 1
 block_id: "02"
-datum: "2026-10-12"
+datum: "2026-10-20"
 kurztitel: "Transformation ins Relationenmodell"
 thema: "Transformation des ER-Modells in das Relationenmodell anwenden"
 lernziele:
   - "Ihr könnt ein gegebenes ER-Modell (inkl. Spezialisierung, abhängigem Entity-Typ und mehreren Beziehungstypen) systematisch und in der empfohlenen Reihenfolge in ein vollständiges Relationenschema überführen."
   - "Ihr könnt begründen, warum bei einer N:M-Beziehung eine eigene Relation entsteht, bei einer 1:N-Beziehung dagegen nicht."
-musterloesungen_sichtbar: false
+musterloesungen_sichtbar: true
 fallstudie: "eLibri (Fortsetzung des ER-Modells aus Block 01)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: entworfen
+publish_date: 2026-10-12
 ---
 
 # Transformation ins Relationenmodell (20.10.2026)
 
----
-
-## Übung: Transformation ins Relationenmodell
+## Transformation ins Relationenmodell { .modus-uebung }
 
 ### Worum geht es?
 
@@ -39,49 +38,51 @@ aller Regeln findet ihr zum Nachschlagen auf der
     - Ihr könnt begründen, warum bei einer N:M-Beziehung eine eigene
       Relation entsteht, bei einer 1:N-Beziehung dagegen nicht.
 
-### Kurzer Rückblick <span class="zeitangabe">(ca. 7 Min.)</span>
+### Kurzer Rückblick <span class="zeitangabe">ca. 7 Min.</span> { data-toc-label="Kurzer Rückblick" }
 
-**1. Warum reicht das ER-Modell allein nicht aus, um eine Datenbank zu implementieren?**
+1.  Warum reicht das ER-Modell allein nicht aus, um eine Datenbank zu implementieren?
 
-<!-- MUSTERLOESUNG-START -->
-??? tip "Antwort anzeigen"
-    Dem ER-Modell fehlt eine Sprachkomponente, mit der man tatsächlich
-    Daten abfragen oder ändern könnte. Deshalb hat sich zur
-    Implementierung von Datenbanken das Relationenmodell durchgesetzt,
-    ergänzt um die Datenbanksprache SQL.
-<!-- MUSTERLOESUNG-ENDE -->
+    <!-- MUSTERLOESUNG-START -->
+    ??? question "Antwort anzeigen"
+        Dem ER-Modell fehlt eine Sprachkomponente, mit der man tatsächlich
+        Daten abfragen oder ändern könnte. Deshalb hat sich zur
+        Implementierung von Datenbanken das Relationenmodell durchgesetzt,
+        ergänzt um die Datenbanksprache SQL.
+    <!-- MUSTERLOESUNG-ENDE -->
 
-**2. Was unterscheidet die Transformation einer 1:N- von einer N:M-Beziehung?**
+2.  Was unterscheidet die Transformation einer 1:N- von einer N:M-Beziehung?
 
-<!-- MUSTERLOESUNG-START -->
-??? tip "Antwort anzeigen"
-    Bei einer 1:N-Beziehung verschmilzt die Beziehung mit der Relation
-    der N-Seite — ein einzelnes Fremdschlüsselattribut genügt. Bei
-    einer N:M-Beziehung entsteht dagegen immer eine eigene, dritte
-    Relation, weil ein einzelnes Fremdschlüsselattribut nicht
-    gleichzeitig auf mehrere Datensätze verweisen kann.
-<!-- MUSTERLOESUNG-ENDE -->
+    <!-- MUSTERLOESUNG-START -->
+    ??? question "Antwort anzeigen"
+        Bei einer 1:N-Beziehung verschmilzt die Beziehung mit der Relation
+        der N-Seite — ein einzelnes Fremdschlüsselattribut genügt. Bei
+        einer N:M-Beziehung entsteht dagegen immer eine eigene, dritte
+        Relation, weil ein einzelnes Fremdschlüsselattribut nicht
+        gleichzeitig auf mehrere Datensätze verweisen kann.
+    <!-- MUSTERLOESUNG-ENDE -->
 
-**3. Woraus setzt sich der Primärschlüssel einer Relation zusammen, die aus einem abhängigen Entity-Typ entsteht?**
+3.  Woraus setzt sich der Primärschlüssel einer Relation zusammen, die aus einem abhängigen Entity-Typ entsteht?
 
-<!-- MUSTERLOESUNG-START -->
-??? tip "Antwort anzeigen"
-    Aus dem lokalen Schlüsselattribut und dem Fremdschlüssel zum
-    identifizierenden Entity-Typ zusammen — das lokale Attribut allein
-    wäre nur innerhalb des identifizierenden Entity-Typs eindeutig,
-    nicht über die gesamte Relation hinweg.
-<!-- MUSTERLOESUNG-ENDE -->
+    <!-- MUSTERLOESUNG-START -->
+    ??? question "Antwort anzeigen"
+        Aus dem lokalen Schlüsselattribut und dem Fremdschlüssel zum
+        identifizierenden Entity-Typ zusammen — das lokale Attribut allein
+        wäre nur innerhalb des identifizierenden Entity-Typs eindeutig,
+        nicht über die gesamte Relation hinweg.
+    <!-- MUSTERLOESUNG-ENDE -->
 
-**4. In welcher Reihenfolge transformiert man ein vollständiges ER-Diagramm am besten?**
+4.  In welcher Reihenfolge transformiert man ein vollständiges ER-Diagramm am besten?
 
-<!-- MUSTERLOESUNG-START -->
-??? tip "Antwort anzeigen"
-    Zuerst Spezialisierungshierarchien, dann abhängige Entity-Typen,
-    zuletzt die (normalen) Beziehungstypen — jeweils erst, nachdem die
-    daran beteiligten Entity-Typen schon als Relation existieren.
-<!-- MUSTERLOESUNG-ENDE -->
+    <!-- MUSTERLOESUNG-START -->
+    ??? question "Antwort anzeigen"
+        Zuerst Spezialisierungshierarchien, dann abhängige Entity-Typen,
+        zuletzt die (normalen) Beziehungstypen — jeweils erst, nachdem die
+        daran beteiligten Entity-Typen schon als Relation existieren.
+    <!-- MUSTERLOESUNG-ENDE -->
 
-### Ausgangspunkt: Das eLibri-Modell aus der vorherigen Lehreinheit <span class="zeitangabe">(ca. 3 Min.)</span>
+---
+
+### Ausgangspunkt: Das eLibri-Modell aus der vorherigen Lehreinheit <span class="zeitangabe">ca. 3 Min.</span> { data-toc-label="Ausgangspunkt: Das eLibri-Modell aus der vorherigen Lehreinheit" }
 
 Das ist das Kern-Modell, das ihr gerade in der vorherigen Übung
 aufgestellt habt — genau das transformiert ihr jetzt:
@@ -117,7 +118,12 @@ Rückblick-Frage 4 hergeleitet habt: erst die Spezialisierung, dann die
 einfachen Entity-Typen, dann der abhängige Entity-Typ, zuletzt die
 1:N-Beziehungen.
 
-### Spezialisierung transformieren (Regel 6) <span class="zeitangabe">(ca. 8 Min.)</span>
+---
+
+### Erstellung des Relationenmodells <span class="zeitangabe">ca. 30 Min.</span> { data-toc-label="Erstellung des Relationenmodells" }
+
+
+#### Spezialisierung transformieren (Regel 6)
 
 `KUNDE`, `HAENDLER` und `PRIVATKUNDE` werden nach Regel 6 zu drei
 eigenen Relationen. Die beiden Subtyp-Relationen erhalten
@@ -126,14 +132,14 @@ Datensatz in `HAENDLER` bzw. `PRIVATKUNDE` existieren darf, ist dieser
 Fremdschlüssel gleichzeitig der Primärschlüssel der Subtyp-Relation.
 
 <!-- MUSTERLOESUNG-START -->
-**Relation `KUNDE`**
+**:octicons-table-16: Relation `KUNDE`**
 
 | Schlüssel | Attribut | Wertebereich | optional? |
 |---|---|---|---|
 | PK | kundennr | int | nein |
 | – | anschrift | string | nein |
 
-**Relation `HAENDLER`**
+**:octicons-table-16: Relation `HAENDLER`**
 
 | Schlüssel | Attribut | Wertebereich | optional? |
 |---|---|---|---|
@@ -141,7 +147,7 @@ Fremdschlüssel gleichzeitig der Primärschlüssel der Subtyp-Relation.
 | – | unternehmensname | string | nein |
 | – | zahlungsziel_tage | int | nein |
 
-**Relation `PRIVATKUNDE`**
+**:octicons-table-16: Relation `PRIVATKUNDE`**
 
 | Schlüssel | Attribut | Wertebereich | optional? |
 |---|---|---|---|
@@ -156,20 +162,20 @@ beiden Relationen vorkommen (laut eLibri-Szenario aber ausgeschlossen,
 da jeder Kunde entweder Händler oder Privatkunde ist).
 <!-- MUSTERLOESUNG-ENDE -->
 
-### Einfache Entity-Typen transformieren (Regel 1) <span class="zeitangabe">(ca. 5 Min.)</span>
+#### Einfache Entity-Typen transformieren (Regel 1)
 
 `AUFTRAG` und `BUCH` haben beide einen eigenen Schlüssel und keine
 Besonderheiten — sie werden ganz normal nach Regel 1 transformiert.
 
 <!-- MUSTERLOESUNG-START -->
-**Relation `AUFTRAG`** (vorläufig, ohne Fremdschlüssel)
+**:octicons-table-16: Relation `AUFTRAG`** (vorläufig, ohne Fremdschlüssel)
 
 | Schlüssel | Attribut | Wertebereich | optional? |
 |---|---|---|---|
 | PK | auftragsnr | int | nein |
 | – | eingangsdatum | date | nein |
 
-**Relation `BUCH`**
+**:octicons-table-16: Relation `BUCH`**
 
 | Schlüssel | Attribut | Wertebereich | optional? |
 |---|---|---|---|
@@ -183,14 +189,14 @@ Besonderheiten — sie werden ganz normal nach Regel 1 transformiert.
 von Regel 1.
 <!-- MUSTERLOESUNG-ENDE -->
 
-### Abhängigen Entity-Typ transformieren (Regel 5) <span class="zeitangabe">(ca. 7 Min.)</span>
+#### Abhängigen Entity-Typ transformieren (Regel 5)
 
 `AUFTRAGSPOSITION` hat keinen eigenen Schlüssel — `positionsnr` ist nur
 innerhalb eines Auftrags eindeutig. Nach Regel 5 verschmilzt
 `AUFTRAGSPOSITION` mit der identifizierenden Beziehung `umfasst`.
 
 <!-- MUSTERLOESUNG-START -->
-**Relation `AUFTRAGSPOSITION`** (vorläufig, ohne Fremdschlüssel zu `BUCH`)
+**:octicons-table-16: Relation `AUFTRAGSPOSITION`** (vorläufig, ohne Fremdschlüssel zu `BUCH`)
 
 | Schlüssel | Attribut | Wertebereich | optional? |
 |---|---|---|---|
@@ -205,7 +211,7 @@ diese Kombination identifiziert eine Auftragsposition eindeutig, genau
 wie beim Fertigungsauftrag-Beispiel aus Woche 6.
 <!-- MUSTERLOESUNG-ENDE -->
 
-### 1:N-Beziehungen einarbeiten (Regel 3) <span class="zeitangabe">(ca. 8 Min.)</span>
+#### 1:N-Beziehungen einarbeiten (Regel 3)
 
 Jetzt sind alle beteiligten Entity-Typen bereits Relationen — die
 beiden 1:N-Beziehungen können nach Regel 3 eingearbeitet werden:
@@ -214,7 +220,7 @@ beiden 1:N-Beziehungen können nach Regel 3 eingearbeitet werden:
 (Beziehung `bestellt`).
 
 <!-- MUSTERLOESUNG-START -->
-**Relation `AUFTRAG`** (vollständig)
+**:octicons-table-16: Relation `AUFTRAG`** (vollständig)
 
 | Schlüssel | Attribut | Wertebereich | optional? |
 |---|---|---|---|
@@ -222,7 +228,7 @@ beiden 1:N-Beziehungen können nach Regel 3 eingearbeitet werden:
 | FK | kundennr | int | nein |
 | – | eingangsdatum | date | nein |
 
-**Relation `AUFTRAGSPOSITION`** (vollständig)
+**:octicons-table-16: Relation `AUFTRAGSPOSITION`** (vollständig)
 
 | Schlüssel | Attribut | Wertebereich | optional? |
 |---|---|---|---|
@@ -238,8 +244,9 @@ Auftragsposition bezieht sich auf genau ein Buch — beides
 verpflichtende Teilnahmen.
 <!-- MUSTERLOESUNG-ENDE -->
 
+---
 
-### Gesamtergebnis <span class="zeitangabe">(ca. 5 Min.)</span>
+### Gesamtergebnis <span class="zeitangabe">ca. 5 Min.</span> { data-toc-label="Gesamtergebnis" }
 
 Das eLibri-Kern-Modell ist damit vollständig ins Relationenmodell
 überführt und enthält sechs Relationen insgesamt.
@@ -255,7 +262,7 @@ hier also möglich, obwohl das ER-Diagramm das eigentlich ausschließt.
 
 ---
 
-## Betreutes Selbststudium: Transformation ins Relationenmodell
+## Transformation ins Relationenmodell { .modus-selbststudium }
 
 ### Worum geht es?
 
@@ -295,31 +302,32 @@ Versandkopplung.
    Fremdschlüssel und ihres gemeinsamen Primärschlüssels.
 
 <!-- MUSTERLOESUNG-START -->
-**Musterlösung Teil A:**
+???+ note "Musterlösung Teil A anzeigen"
+    **:octicons-table-16: Relation `KREDITKARTE`**
 
-**Relation `KREDITKARTE`**
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK | kartennr | string | nein |
+    | – | unternehmen | string | nein |
+    | – | ablaufdatum | date | nein |
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK | kartennr | string | nein |
-| – | unternehmen | string | nein |
-| – | ablaufdatum | date | nein |
+    **:octicons-table-16: Neue Relation `KARTENNUTZUNG`** (aus der Beziehung `nutzt`, Regel 2)
 
-**Neue Relation `KARTENNUTZUNG`** (aus der Beziehung `nutzt`, Regel 2)
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK, FK1 | kundennr | int | nein |
+    | PK, FK2 | kartennr | string | nein |
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK, FK1 | kundennr | int | nein |
-| PK, FK2 | kartennr | string | nein |
-
-`FK1` referenziert `PRIVATKUNDE` (nicht `KUNDE` oder `HAENDLER` — die
-Beziehung galt ja nur für Privatkunden), `FK2` referenziert
-`KREDITKARTE`. Da `nutzt` eine N:M-Beziehung ist, kann kein einzelnes
-Fremdschlüsselattribut in einer der beiden bestehenden Relationen
-genügen: Ein Privatkunde müsste sonst mehrere Kartennummern
-gleichzeitig speichern können (und eine Karte mehrere Kundennummern)
-— deshalb die eigenständige Relation `KARTENNUTZUNG`.
+    `FK1` referenziert `PRIVATKUNDE` (nicht `KUNDE` oder `HAENDLER` — die
+    Beziehung galt ja nur für Privatkunden), `FK2` referenziert
+    `KREDITKARTE`. Da `nutzt` eine N:M-Beziehung ist, kann kein einzelnes
+    Fremdschlüsselattribut in einer der beiden bestehenden Relationen
+    genügen: Ein Privatkunde müsste sonst mehrere Kartennummern
+    gleichzeitig speichern können (und eine Karte mehrere Kundennummern)
+    — deshalb die eigenständige Relation `KARTENNUTZUNG`.
 <!-- MUSTERLOESUNG-ENDE -->
+
+---
 
 #### Teil B — Versandkopplung
 
@@ -334,28 +342,29 @@ gleichzeitig speichern können (und eine Karte mehrere Kundennummern)
    beide `auftragsnr` heißen?
 
 <!-- MUSTERLOESUNG-START -->
-**Musterlösung Teil B:**
+???+ note "Musterlösung Teil B anzeigen"
+    **:octicons-table-16: Neue Relation `VERSANDKOPPLUNG`** (aus der rekursiven Beziehung
+    "versandt mit", Regel 2)
 
-**Neue Relation `VERSANDKOPPLUNG`** (aus der rekursiven Beziehung
-"versandt mit", Regel 2)
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK, FK1 | auftragsnr_eigen | int | nein |
+    | PK, FK2 | auftragsnr_mitversendet | int | nein |
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK, FK1 | auftragsnr_eigen | int | nein |
-| PK, FK2 | auftragsnr_mitversendet | int | nein |
+    Beide Fremdschlüssel referenzieren `auftragsnr` in `AUFTRAG` — genau
+    wie beim `VERLAUF`-Beispiel aus Woche 5 müssen sie unterschiedliche
+    Namen tragen, sonst gäbe es in `VERSANDKOPPLUNG` zwei gleichnamige
+    Attribute und man könnte nicht mehr unterscheiden, welche Spalte für
+    welche Rolle steht.
 
-Beide Fremdschlüssel referenzieren `auftragsnr` in `AUFTRAG` — genau
-wie beim `VERLAUF`-Beispiel aus Woche 5 müssen sie unterschiedliche
-Namen tragen, sonst gäbe es in `VERSANDKOPPLUNG` zwei gleichnamige
-Attribute und man könnte nicht mehr unterscheiden, welche Spalte für
-welche Rolle steht.
-
-Zusatzgedanke: Da die Beziehung symmetrisch ist (wird Auftrag A
-zusammen mit B verschickt, gilt das auch umgekehrt), müsste man in der
-Praxis entweder jede Kopplung als zwei Datensätze speichern (A,B) und
-(B,A), oder man legt eine Konvention fest (z. B. immer die kleinere
-Auftragsnummer in `auftragsnr_eigen`), um Duplikate zu vermeiden.
+    Zusatzgedanke: Da die Beziehung symmetrisch ist (wird Auftrag A
+    zusammen mit B verschickt, gilt das auch umgekehrt), müsste man in der
+    Praxis entweder jede Kopplung als zwei Datensätze speichern (A,B) und
+    (B,A), oder man legt eine Konvention fest (z. B. immer die kleinere
+    Auftragsnummer in `auftragsnr_eigen`), um Duplikate zu vermeiden.
 <!-- MUSTERLOESUNG-ENDE -->
+
+---
 
 #### Teil C — Was-wäre-wenn: Versandkopplung als 1:N statt M:N (optional)
 
@@ -372,26 +381,25 @@ Auftragsnummer in `auftragsnr_eigen`), um Duplikate zu vermeiden.
    während Teil B eine eigene Relation brauchte?
 
 <!-- MUSTERLOESUNG-START -->
-**Musterlösung Teil C:**
+???+ note "Musterlösung Teil C anzeigen"
+    **:octicons-table-16: Relation `AUFTRAG`** (erweitert um den rekursiven Fremdschlüssel)
 
-**Relation `AUFTRAG`** (erweitert um den rekursiven Fremdschlüssel)
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK | auftragsnr | int | nein |
+    | FK | kundennr | int | nein |
+    | – | eingangsdatum | date | nein |
+    | FK | sammelauftragsnr | int | ja |
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK | auftragsnr | int | nein |
-| FK | kundennr | int | nein |
-| – | eingangsdatum | date | nein |
-| FK | sammelauftragsnr | int | ja |
+    `sammelauftragsnr` referenziert `auftragsnr` derselben Relation
+    `AUFTRAG` (analog zum `ersatz_maschinennr`-Beispiel aus Woche 5) und
+    ist optional, da nicht jeder Auftrag laut Aufgabenstellung einem
+    Sammel-Auftrag zugeordnet sein muss.
 
-`sammelauftragsnr` referenziert `auftragsnr` derselben Relation
-`AUFTRAG` (analog zum `ersatz_maschinennr`-Beispiel aus Woche 5) und
-ist optional, da nicht jeder Auftrag laut Aufgabenstellung einem
-Sammel-Auftrag zugeordnet sein muss.
-
-Ein einzelnes Fremdschlüsselattribut genügt hier, weil jeder Auftrag
-zu **höchstens einem** Sammel-Auftrag gehört (1:N) — bei Teil B konnte
-dagegen ein Auftrag mit **beliebig vielen** anderen Aufträgen gekoppelt
-sein (M:N), was ein einzelnes Attribut nicht abbilden kann. Der
-Unterschied zwischen 1:N- und N:M-Transformation hängt also einzig an
-der Kardinalität, nicht daran, ob die Beziehung rekursiv ist.
+    Ein einzelnes Fremdschlüsselattribut genügt hier, weil jeder Auftrag
+    zu **höchstens einem** Sammel-Auftrag gehört (1:N) — bei Teil B konnte
+    dagegen ein Auftrag mit **beliebig vielen** anderen Aufträgen gekoppelt
+    sein (M:N), was ein einzelnes Attribut nicht abbilden kann. Der
+    Unterschied zwischen 1:N- und N:M-Transformation hängt also einzig an
+    der Kardinalität, nicht daran, ob die Beziehung rekursiv ist.
 <!-- MUSTERLOESUNG-ENDE -->
