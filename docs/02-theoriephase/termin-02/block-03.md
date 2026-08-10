@@ -11,7 +11,7 @@ lernziele:
   - "Ihr könnt widersprüchliche Anforderungen in einer Spezifikation erkennen, euch begründet für eine Umsetzung entscheiden und belegen, warum eine Anforderung nicht (vollständig) umgesetzt wurde."
   - "Ihr könnt die Auswirkung einer nachträglichen Anforderungsänderung auf ein bestehendes Schema einschätzen, bevor ihr sie umsetzt, und KI gezielt zur Umsetzung einsetzen und deren Vorschläge prüfen."
 musterloesungen_sichtbar: true
-nachtrag_sichtbar: true
+nachtrag_sichtbar: false
 fallstudie: "Übung: Kompressor-Zustandsüberwachung; betreutes Selbststudium: Lackproduktion Schnüffel GmbH (beides eigene MEA-Szenarien)"
 ki_einsatz: stufe_2_pair_programmer
 bearbeitungsstatus: entworfen
@@ -516,6 +516,8 @@ Plant für diesen Teil ca. 15 Minuten ein. Diesen Teil bearbeitet ihr
     für den Fremdschlüssel `rezept_id` aus `CHARGE` (`rezept_id` allein
     ist in `REZEPT_PARAMETER` kein Schlüssel), und in der Praxis kämen
     dort später ohnehin weitere Attribute dazu.
+
+    [🔗 Musterlösung Teil A in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=kcXyMHQK7twO6rdA3rPs#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -613,12 +615,7 @@ Die Schnüffel GmbH hat dazu Folgendes zusammengestellt:
     | – | einheit | string | nein |
     | – | pruefverfahren | string | nein |
 
-    Das vollständige Schema nach Teil A **und** Teil B gibt es auch als
-    Diagramm zum Weiterarbeiten:
-
-    [🔗 Musterlösung in draw.io öffnen (als Kopie)](https://app.diagrams.net/#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
-
-    [⬇ .drawio-Datei herunterladen](code/aufg-03-prozessdatenbank.drawio)
+    [🔗 Musterlösung Teil B in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=KmU5hiBMG3OvSqviw_yH#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 <!-- NACHTRAG-START -->
@@ -708,6 +705,14 @@ Plant für diesen Teil ca. 18 Minuten ein.
     zusammengesetztem Schlüssel gewählt. Häufig übersehen KI-Vorschläge
     außerdem die Verknüpfung `CHARGE_EINSATZ` komplett, weil sie in der
     Anforderung nicht ausdrücklich genannt ist.
+
+    [🔗 Musterlösung Teil C in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=xPvhkduKNkkRyXKQXQVn#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
+
+    ---
+
+    Alle drei Teilaufgaben liegen als Tabellenblätter in **einer** Datei:
+
+    [⬇ Gesamte .drawio-Datei mit allen Teilaufgaben herunterladen](code/aufg-03-prozessdatenbank.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 <!-- NACHTRAG-ENDE -->
