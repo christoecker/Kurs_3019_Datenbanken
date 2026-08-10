@@ -7,7 +7,7 @@ workload_minuten: 15
 lernziele:
   - "Ihr könnt die Kernbegriffe der Normalisierung (funktionale Abhängigkeit, 1.-3. Normalform, Redundanz) aus dem Gedächtnis abrufen."
 bearbeitungsstatus: idee
-publish_date: 2026-10-19
+publish_date: 2026-05-19
 ---
 
 # Termin 2 (27.10.2026) — Normalisierung & Implementierung
