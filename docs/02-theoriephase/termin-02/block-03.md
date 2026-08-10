@@ -171,7 +171,7 @@ Ein erster Entwurf für die minütliche Messwerterfassung sieht so aus:
 Prüft: Hat jedes Attribut einen atomaren Wertebereich?
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     `druckwerte` fasst zwei eigentlich unabhängige Messgrößen (Eingangs-
     und Ausgangsdruck) in einem einzigen Attribut zusammen — das verletzt
     die 1NF, die von jedem Attribut einen atomaren, nicht weiter
@@ -217,7 +217,7 @@ Schlüssel (`analyse_lauf_id` + `algorithmus_id`) ab, oder nur von einem
 Teil davon?
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     `schädigungswert` hängt vom vollen Schlüssel ab — er ist das Ergebnis
     genau dieses Algorithmus innerhalb genau dieses Laufs. Die übrigen
     Attribute verletzen die 2NF jeweils auf einer anderen Seite des
@@ -275,7 +275,7 @@ Prüft die neu entstandene Relation `ALGORITHMUS`: Hängen
 Nichtschlüsselattribut?
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     `grenzwert_meldung` und `grenzwert_alarm` beschreiben nicht den
     einzelnen Algorithmus, sondern das verwendete `verfahren` — sie
     hängen also nur transitiv über `verfahren` vom Schlüssel ab:
@@ -326,7 +326,7 @@ identifizierten lokalen Maxima/Minima der Druckdifferenz festhält.
 | – | verarbeitet | boolean | nein |
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     Damit besteht das vollständige, normalisierte Kompressor-Datenmodell
     aus sechs Relationen: `MESSUNG`, `EXTREMWERT`, `ANALYSE_LAUF`,
     `SCHAEDIGUNG`, `ALGORITHMUS` und `VERFAHREN`. Jede Redundanz, die
@@ -346,7 +346,7 @@ Trotzdem wird er zusätzlich in `EXTREMWERT` gespeichert.
 Diskutiert: Ist das ein Normalform-Verstoß? Ist es sinnvoll die Druckdifferenz an ausgewählten Zeitpunkten zu speichern?
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     Formal ist das **keine** 2NF- oder 3NF-Verletzung: Beide Normalformen
     prüfen funktionale Abhängigkeiten zwischen Attributen *derselben*
     Relation über deren Schlüssel — `wert` hängt korrekt vom vollen
@@ -395,10 +395,10 @@ ER-Diagramm; euer Schema baut ihr in [drawDB](https://drawdb.app) auf.
 
 ??? info "Bezug zu Lehrinhalten"
     Normalformen und funktionale Abhängigkeiten: Praxisphase Woche 7
-    sowie die Übung oben. Schlüssel, Fremdschlüssel und
-    Fremdschlüsselintegrität: Praxisphase Woche 4. KI-Einsatz nach
-    Stufe 2 ("KI als Pair Programmer") laut
-    [KI-Nutzungsrichtlinie](../../03-ki-erweiterungsaufgaben/ki-nutzungsrichtlinie.md):
+    sowie die Übung oben. <br>
+    Schlüssel, Fremdschlüssel und
+    Fremdschlüsselintegrität: Praxisphase Woche 4. <br>
+    KI-Einsatz gem. [KI-Nutzungsrichtlinie](../../03-ki-erweiterungsaufgaben/ki-nutzungsrichtlinie.md):
     ab Teil B ausdrücklich erlaubt — Teil A bearbeitet ihr ohne KI.
 
 #### Ausgangslage
@@ -612,6 +612,13 @@ Die Schnüffel GmbH hat dazu Folgendes zusammengestellt:
     | PK | kennzahl | string | nein |
     | – | einheit | string | nein |
     | – | pruefverfahren | string | nein |
+
+    Das vollständige Schema nach Teil A **und** Teil B gibt es auch als
+    Diagramm zum Weiterarbeiten:
+
+    [🔗 Musterlösung in draw.io öffnen (als Kopie)](https://app.diagrams.net/#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
+
+    [⬇ .drawio-Datei herunterladen](code/aufg-03-prozessdatenbank.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 <!-- NACHTRAG-START -->

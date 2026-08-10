@@ -107,7 +107,7 @@ einzelnes Attribut `anschrift` — ob und wie man so etwas aufteilen
 sollte, schaut ihr euch in Termin 2 bei der Normalisierung genauer an.
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph TD
@@ -131,7 +131,7 @@ Privatkunden können Aufträge aufgeben. Das ist genau das, was ein
 Subtyp vom Supertyp "erbt".
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
@@ -153,7 +153,7 @@ Kardinalität aus Sicht `AUFTRAGSPOSITION` ist deshalb immer genau 1,
 wie bei jedem abhängigen Entity-Typ.
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
@@ -176,7 +176,7 @@ sind ja pro Position unterschiedlich. Fragt euch dabei ruhig: Ist
 kein Objekt mit eigener Existenz.
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
@@ -198,7 +198,7 @@ Bausteine (Spezialisierung, zwei normale Beziehungen, einen abhängigen
 Entity-Typ).
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph TD
@@ -253,7 +253,7 @@ geschrieben haben. Was ändert sich am Diagramm?
 es "nur" ein Attribut?
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'flowchart': {'padding': 2}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR

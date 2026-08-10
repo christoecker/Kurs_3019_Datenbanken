@@ -132,7 +132,7 @@ Datensatz in `HAENDLER` bzw. `PRIVATKUNDE` existieren darf, ist dieser
 Fremdschlüssel gleichzeitig der Primärschlüssel der Subtyp-Relation.
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     **:octicons-table-16: Relation `KUNDE`**
 
     | Schlüssel | Attribut | Wertebereich | optional? |
@@ -169,7 +169,7 @@ Fremdschlüssel gleichzeitig der Primärschlüssel der Subtyp-Relation.
 Besonderheiten — sie werden ganz normal nach Regel 1 transformiert.
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     **:octicons-table-16: Relation `AUFTRAG`** (vorläufig, ohne Fremdschlüssel)
 
     | Schlüssel | Attribut | Wertebereich | optional? |
@@ -198,7 +198,7 @@ innerhalb eines Auftrags eindeutig. Nach Regel 5 verschmilzt
 `AUFTRAGSPOSITION` mit der identifizierenden Beziehung `umfasst`.
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     **:octicons-table-16: Relation `AUFTRAGSPOSITION`** (vorläufig, ohne Fremdschlüssel zu `BUCH`)
 
     | Schlüssel | Attribut | Wertebereich | optional? |
@@ -223,7 +223,7 @@ beiden 1:N-Beziehungen können nach Regel 3 eingearbeitet werden:
 (Beziehung `bestellt`).
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     **:octicons-table-16: Relation `AUFTRAG`** (vollständig)
 
     | Schlüssel | Attribut | Wertebereich | optional? |
@@ -256,7 +256,7 @@ Das eLibri-Kern-Modell ist damit vollständig ins Relationenmodell
 überführt und enthält sechs Relationen insgesamt.
 
 <!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Antwort"
+!!! quote musterloesung-hervorgehoben "Lösung"
     Ein Hinweis zum Schluss: Nicht jede Information aus dem ER-Diagramm
     bleibt bei der Transformation erhalten. Im ER-Modell musste jeder Auftrag mindestens
     eine Auftragsposition haben — diese Untergrenze lässt sich im
