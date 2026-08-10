@@ -11,7 +11,11 @@ Arbeitsauftrag oder einer Übung nicht mehr geläufig ist.
 ("identifizierenden") Entity-Typ abhängen und keinen eigenen Schlüssel
 besitzen — sie werden erst durch die Kombination aus einem lokalen
 Attribut und der Beziehung zum identifizierenden Entity-Typ eindeutig
-identifizierbar.
+identifizierbar. Ein abhängiger Entity-Typ kann auch von mehreren
+Eigentümer-Entity-Typen gleichzeitig abhängen — dann braucht er
+entsprechend mehrere identifizierende Beziehungen, und erst die
+Kombination aus lokalem Attribut und allen beteiligten
+Fremdschlüsseln macht ihn eindeutig identifizierbar.
 
 **Anforderungsanalyse**
 : Erste Phase des Datenbankentwurfs: informelles Erfassen und
@@ -43,6 +47,14 @@ Kardinalitäten nur als Obergrenze (1, N, M) angegeben werden, nicht als
 Untergrenze.
 
 ## D
+
+**Denormalisierung (bewusster Verzicht auf Normalform)**
+: Die bewusste Entscheidung, eine Relation trotz erkannter Redundanz
+nicht (vollständig) zu normalisieren bzw. zusätzlich abgeleitete
+(aus anderen Daten berechenbare) Werte zu speichern — meist aus
+pragmatischen Gründen wie Lese-Performance. Anders als eine
+Normalform-Verletzung ist das eine begründete Entwurfsentscheidung,
+kein handwerklicher Fehler.
 
 **Dateiansatz**
 : Verwaltung von Massendaten direkt in einzelnen Dateien ohne DBMS;
@@ -150,7 +162,9 @@ dieselbe Struktur.
 **Identifizierende Beziehung**
 : Die Beziehung zwischen einem abhängigen Entity-Typ und dem Entity-Typ,
 über den er eindeutig identifiziert wird; im ER-Diagramm durch
-Unterstreichen gekennzeichnet.
+Unterstreichen gekennzeichnet. Ein abhängiger Entity-Typ kann auch
+mehrere identifizierende Beziehungen zu unterschiedlichen
+Eigentümer-Entity-Typen gleichzeitig haben.
 
 **Informationssystem**
 : Ein Softwaresystem zur Erfassung, Verarbeitung, Speicherung,

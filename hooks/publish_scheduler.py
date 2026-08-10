@@ -20,12 +20,21 @@ Ein taeglicher, zeitgesteuerter Rebuild (siehe
 .github/workflows/deploy-docs.yml) sorgt dafuer, dass eine Seite am
 Stichtag automatisch erscheint, ohne dass dafuer erneut gepusht werden
 muss.
+
+Testmodus: Ist die Umgebungsvariable MKDOCS_TESTMODE auf "1" gesetzt,
+wird die gesamte publish_date-Filterlogik uebersprungen - alle Seiten
+werden unabhaengig von ihrem publish_date eingebunden, so als laege das
+Datum immer in der Vergangenheit. Ausschliesslich fuer den lokalen
+Aufruf von "mkdocs serve" gedacht (siehe CLAUDE.md); im automatischen
+Deploy-Workflow (.github/workflows/deploy-docs.yml) darf diese
+Variable nicht gesetzt werden.
 """
 
 from __future__ import annotations
 
 import datetime
 import logging
+import os
 
 from mkdocs.structure.files import Files
 from mkdocs.structure.nav import Link, Navigation, Section
@@ -61,6 +70,14 @@ def _parse_publish_date(value: object) -> datetime.date | None:
 def on_files(files: Files, config):
     """Entfernt Seiten mit zukuenftigem "publish_date" komplett aus dem Build."""
     _excluded_src_uris.clear()
+
+    if os.environ.get("MKDOCS_TESTMODE") == "1":
+        log.info(
+            "MKDOCS_TESTMODE=1 - publish_date-Filterung wird uebersprungen, "
+            "alle Seiten werden eingebunden."
+        )
+        return files
+
     today = datetime.date.today()
     kept = []
 

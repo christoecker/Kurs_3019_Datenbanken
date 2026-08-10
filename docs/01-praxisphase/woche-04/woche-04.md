@@ -111,6 +111,43 @@ Fertigungsaufträge benötigt, sowie seine Lieferanten:
    Unique Key, und begründe deine Wahl. Kennzeichne außerdem, welches
    Attribut optional (NULL-fähig) ist.
 
+??? note "Musterlösung anzeigen"
+    **1. Entity-Typ `ROHSTOFF` (ER-Modell, vor der Transformation)**
+
+    ```mermaid
+    %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph LR
+    ROHSTOFF["<div style='text-align:left; font-size: 0.6rem;'><b>ROHSTOFF</b><hr/>rohstoffnr : int (Schlüssel)<br/>artikelcode : string (Schlüssel)<br/>bezeichnung : string<br/>lagerort : string<br/>mindestbestand : int</div>"]
+    ```
+
+    Sowohl `rohstoffnr` als auch `artikelcode` identifizieren einen
+    Rohstoff eindeutig — im ER-Modell sind das zunächst zwei
+    gleichwertige Schlüsselkandidaten. Erst bei der Transformation ins
+    Relationenmodell muss entschieden werden, welcher davon Primärschlüssel
+    wird.
+
+    **2. Relationenschema `ROHSTOFF`**
+
+    | Schlüssel | Attribut | Wertebereich | optional (NULL-fähig)? |
+    |---|---|---|---|
+    | PK | rohstoffnr | int | nein |
+    | UK | artikelcode | string | nein |
+    | – | bezeichnung | string | nein |
+    | – | lagerort | string | ja |
+    | – | mindestbestand | int | nein |
+
+    Begründung für die Wahl von `rohstoffnr` als Primärschlüssel statt
+    `artikelcode`: Der Primärschlüssel sollte möglichst stabil sein, da
+    andere Relationen ihn später über Fremdschlüssel referenzieren.
+    `rohstoffnr` wird intern vom Betrieb selbst vergeben und ändert sich
+    nie. `artikelcode` stammt dagegen vom Hersteller — wechselt der
+    Betrieb den Lieferanten für einen Rohstoff oder ändert der
+    Hersteller sein Kodierschema, könnte sich der Artikelcode ändern.
+    Deshalb bleibt `artikelcode` zwar Schlüsselkandidat (als Unique Key
+    weiterhin vor doppelten Werten geschützt), wird aber nicht
+    Primärschlüssel. `lagerort` ist das einzige optionale Attribut, da
+    er laut Aufgabenstellung anfangs unbekannt sein kann.
+
 **Teil B — Fremdschlüssel**
 
 Die Relation `LIEFERANT` ist bereits fertig transformiert:
@@ -134,43 +171,7 @@ Die Relation `LIEFERANT` ist bereits fertig transformiert:
    darf.
 
 ??? note "Musterlösung anzeigen"
-    **1. Entity-Typ `ROHSTOFF` (ER-Modell, vor der Transformation)**
-
-    ```mermaid
-    %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
-    graph LR
-    ROHSTOFF["<div style='text-align:left; font-size: 0.6rem;'><b>ROHSTOFF</b><hr/>rohstoffnr : int (Schlüssel)<br/>artikelcode : string (Schlüssel)<br/>bezeichnung : string<br/>lagerort : string<br/>mindestbestand : int</div>"]
-    ```
-
-    Sowohl `rohstoffnr` als auch `artikelcode` identifizieren einen
-    Rohstoff eindeutig — im ER-Modell sind das zunächst zwei
-    gleichwertige Schlüsselkandidaten. Erst bei der Transformation ins
-    Relationenmodell muss entschieden werden, welcher davon Primärschlüssel
-    wird.
-
-    **2. Relationenschema `ROHSTOFF` (Teil A)**
-
-    | Schlüssel | Attribut | Wertebereich | optional (NULL-fähig)? |
-    |---|---|---|---|
-    | PK | rohstoffnr | int | nein |
-    | UK | artikelcode | string | nein |
-    | – | bezeichnung | string | nein |
-    | – | lagerort | string | ja |
-    | – | mindestbestand | int | nein |
-
-    Begründung für die Wahl von `rohstoffnr` als Primärschlüssel statt
-    `artikelcode`: Der Primärschlüssel sollte möglichst stabil sein, da
-    andere Relationen ihn später über Fremdschlüssel referenzieren.
-    `rohstoffnr` wird intern vom Betrieb selbst vergeben und ändert sich
-    nie. `artikelcode` stammt dagegen vom Hersteller — wechselt der
-    Betrieb den Lieferanten für einen Rohstoff oder ändert der
-    Hersteller sein Kodierschema, könnte sich der Artikelcode ändern.
-    Deshalb bleibt `artikelcode` zwar Schlüsselkandidat (als Unique Key
-    weiterhin vor doppelten Werten geschützt), wird aber nicht
-    Primärschlüssel. `lagerort` ist das einzige optionale Attribut, da
-    er laut Aufgabenstellung anfangs unbekannt sein kann.
-
-    **3.-4. Relationenschema `ROHSTOFF` inkl. Fremdschlüssel (Teil B)**
+    **1.-2. Relationenschema `ROHSTOFF` inkl. Fremdschlüssel**
 
     | Schlüssel | Attribut | Wertebereich | optional (NULL-fähig)? |
     |---|---|---|---|
@@ -190,7 +191,7 @@ Die Relation `LIEFERANT` ist bereits fertig transformiert:
     Rohstoffe laut Aufgabenstellung keinen Ersatz haben — für sie steht
     dort der NULL-Wert.
 
-    **5. Warum `ersatz_rohstoffnr` nicht `rohstoffnr` heißen darf**
+    **3. Warum `ersatz_rohstoffnr` nicht `rohstoffnr` heißen darf**
 
     Ein Fremdschlüssel referenziert hier einen Datensatz *derselben*
     Relation `ROHSTOFF` — genau in diesem Sonderfall müssen sich

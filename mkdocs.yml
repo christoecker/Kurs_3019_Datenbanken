@@ -49,6 +49,15 @@ extra_css:
 nav:
   - Start: index.md
   - Glossar: glossar.md
+  - Theoriephase:
+      - "Termin 1":
+          - 02-theoriephase/termin-01/index.md
+          - "ER-Modell aufstellen": 02-theoriephase/termin-01/block-01.md
+          - "Transformation ins Relationenmodell": 02-theoriephase/termin-01/block-02.md
+      - "Termin 2":
+          - 02-theoriephase/termin-02/index.md
+          - "Normalisierung anwenden": 02-theoriephase/termin-02/block-03.md
+          - "Relationenschema in SQL Server anlegen": 02-theoriephase/termin-02/block-04.md
   - Praxisphase:
       - "Woche 1": 01-praxisphase/woche-01/woche-01.md
       - "Woche 2": 01-praxisphase/woche-02/woche-02.md
@@ -62,8 +71,4 @@ nav:
       - "Woche 10": 01-praxisphase/woche-10/woche-10.md
       - "Woche 11": 01-praxisphase/woche-11/woche-11.md
       - "Woche 12": 01-praxisphase/woche-12/woche-12.md
-  - Theoriephase:
-      - "Termin 1":
-          - 02-theoriephase/termin-01/index.md
-          - "ER-Modell aufstellen": 02-theoriephase/termin-01/block-01.md
-          - "Transformation ins Relationenmodell": 02-theoriephase/termin-01/block-02.md
+  

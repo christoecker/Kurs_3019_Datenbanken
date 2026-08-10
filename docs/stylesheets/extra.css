@@ -114,3 +114,34 @@
   content: "✏️ Betreutes Selbststudium";
   background-color: rgb(255, 152, 0);
 }
+
+
+/* Musterloesungen im Uebungsteil der Theoriephase (Modellierungsschritte,
+   Gesamtergebnis, Vertiefung) stecken in einer "!!! quote
+   musterloesung-hervorgehoben "Antwort""-Admonition (siehe
+   block.template.md). Die Zusatzklasse hebt sie zusaetzlich per sehr
+   hellem Hintergrund vom umgebenden Aufgabentext ab - staerkere visuelle
+   Absetzung als der graue "quote"-Rahmen allein. Theme-aware ueber die
+   Material-Variable statt fixer Hex-Farbe, damit es in Hell- und
+   Dunkelmodus funktioniert. */
+.md-typeset .admonition.musterloesung-hervorgehoben,
+.md-typeset details.musterloesung-hervorgehoben {
+  background-color: var(--md-default-fg-color--lightest);
+  /* Material setzt fuer Admonitions standardmaessig font-size: .64rem,
+     kleiner als der umgebende Fliesstext (.md-typeset: .8rem). "inherit"
+     uebernimmt stattdessen die tatsaechliche, bereits fuer die aktuelle
+     Bildschirmbreite berechnete Fliesstext-Groesse des Elternelements. */
+  font-size: inherit;
+}
+
+/* Passenderes Icon statt des Standard-Anführungszeichens der "quote"-
+   Admonition: ein Haken (wiederverwendet aus Materials eingebautem
+   "success"-Icon-Set über die vorhandene CSS-Variable, keine eigene SVG
+   nötig), da diese Blöcke Antworten/Musterlösungen zeigen. Rahmen-/
+   Titelfarbe (grau, vom "quote"-Typ) bleiben bewusst unverändert - nur
+   das Icon selbst wird ausgetauscht. */
+.md-typeset .admonition.musterloesung-hervorgehoben > .admonition-title::before,
+.md-typeset details.musterloesung-hervorgehoben > summary::before {
+  -webkit-mask-image: var(--md-admonition-icon--success);
+  mask-image: var(--md-admonition-icon--success);
+}

@@ -16,6 +16,8 @@ Domänen zeigt.
 | `mea-sensormessreihen` | eigen, MEA-Bezug | Zeitreihen aus Sensoren/SPS | SQLite/TwinCAT-Termin, später NoSQL-Ausblick |
 | `bestTec` / `eLibri` | aus dem Lehrbrief, optional | Handel / Bibliothek | Ergänzend, falls Abwechslung gewünscht |
 | `mea-pruefmittel` | eigen, MEA-Bezug | Prüfmittelverwaltung, Kalibrierung | 1:N-Beziehung, abhängiger Entity-Typ, Normalisierung (Transfer-Aufgabe Woche 9) |
+| `mea-kompressor-zustandsueberwachung` | eigen, MEA-Bezug | Zustandsbasierte Wartung eines Kompressors (Sensordaten, Extremwert-Erkennung, Schädigungsauswertung) | Normalisierung inkl. bewusster Redundanz (Theoriephase Block 03); Gerät speichert eigenständig, ohne Geräte-ID |
+| `mea-lackproduktion` | eigen, MEA-Bezug | Chargenbetrieb einer Lackproduktion (Prozesswerte im 30-s-Raster, Rezepte, Reaktoren, Qualitätsanalysen, Wareneingang) | Normalisierung einer gewachsenen Bestandstabelle, Schema-Erweiterung aus einer Kundenspezifikation, Umgang mit widersprüchlichen und sich ändernden Anforderungen (Theoriephase Block 03, betreutes Selbststudium) |
 
 Jede Fallstudie bekommt bei Ausarbeitung einen eigenen Unterordner mit
 Schema (als SQL-Server-DDL-Skript) und einer kurzen Domänenbeschreibung.

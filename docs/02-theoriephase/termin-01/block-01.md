@@ -8,7 +8,7 @@ thema: "ER-Modell aufstellen (Fallbeispiel aus dem Lehrbrief, Live-Modellierung)
 lernziele:
   - "Ihr könnt zu einer neuen, unbekannten Beschreibung einer Anwendungswelt selbstständig ein ER-Modell entwerfen, das Spezialisierung, abhängige Entity-Typen und (rekursive) N:M-Beziehungen korrekt integriert."
   - "Ihr könnt begründen, warum ein Attribut oder eine Beziehung nur bei einem Subtyp und nicht beim gesamten Supertyp modelliert wird."
-musterloesungen_sichtbar: true
+musterloesungen_sichtbar: false
 fallstudie: "eLibri (Lehrbrief-Projektaufgabe 3.5.2)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: entworfen
@@ -107,18 +107,19 @@ einzelnes Attribut `anschrift` — ob und wie man so etwas aufteilen
 sollte, schaut ihr euch in Termin 2 bei der Normalisierung genauer an.
 
 <!-- MUSTERLOESUNG-START -->
-```mermaid
-%%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
-graph TD
-KUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>KUNDE</b><hr/>kundennr : int (PK)<br/>anschrift : string</div>"]
-spez((△))
-style spez fill:transparent,stroke:none
-HAENDLER["<div style='text-align:left; font-size: 0.6rem;'><b>HAENDLER</b><hr/>unternehmensname : string<br/>zahlungsziel_tage : int</div>"]
-PRIVATKUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>PRIVATKUNDE</b><hr/>vorname : string<br/>nachname : string</div>"]
-KUNDE --- spez
-spez --- HAENDLER
-spez --- PRIVATKUNDE
-```
+!!! quote musterloesung-hervorgehoben "Antwort"
+    ```mermaid
+    %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph TD
+    KUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>KUNDE</b><hr/>kundennr : int (PK)<br/>anschrift : string</div>"]
+    spez((△))
+    style spez fill:transparent,stroke:none
+    HAENDLER["<div style='text-align:left; font-size: 0.6rem;'><b>HAENDLER</b><hr/>unternehmensname : string<br/>zahlungsziel_tage : int</div>"]
+    PRIVATKUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>PRIVATKUNDE</b><hr/>vorname : string<br/>nachname : string</div>"]
+    KUNDE --- spez
+    spez --- HAENDLER
+    spez --- PRIVATKUNDE
+    ```
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### Auftrag
@@ -130,15 +131,16 @@ Privatkunden können Aufträge aufgeben. Das ist genau das, was ein
 Subtyp vom Supertyp "erbt".
 
 <!-- MUSTERLOESUNG-START -->
-```mermaid
-%%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
-graph LR
-KUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>KUNDE</b><hr/>kundennr : int (PK)<br/>anschrift : string</div>"]
-AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auftragsnr : int (PK)<br/>eingangsdatum : date</div>"]
-hat{{hat}}
-KUNDE -- "1" --- hat
-hat -- "N" --- AUFTRAG
-```
+!!! quote musterloesung-hervorgehoben "Antwort"
+    ```mermaid
+    %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph LR
+    KUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>KUNDE</b><hr/>kundennr : int (PK)<br/>anschrift : string</div>"]
+    AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auftragsnr : int (PK)<br/>eingangsdatum : date</div>"]
+    hat{{hat}}
+    KUNDE -- "1" --- hat
+    hat -- "N" --- AUFTRAG
+    ```
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### Auftragsposition (abhängiger Entity-Typ)
@@ -151,16 +153,17 @@ Kardinalität aus Sicht `AUFTRAGSPOSITION` ist deshalb immer genau 1,
 wie bei jedem abhängigen Entity-Typ.
 
 <!-- MUSTERLOESUNG-START -->
-```mermaid
-%%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
-graph LR
-AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auftragsnr : int (PK)<br/>eingangsdatum : date</div>"]
-AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
-style AUFTRAGSPOSITION fill:transparent,stroke:none
-umfasst{{"<u>umfasst</u>"}}
-AUFTRAG -- "1" --- umfasst
-umfasst -- "N" --- AUFTRAGSPOSITION
-```
+!!! quote musterloesung-hervorgehoben "Antwort"
+    ```mermaid
+    %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph LR
+    AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auftragsnr : int (PK)<br/>eingangsdatum : date</div>"]
+    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+    style AUFTRAGSPOSITION fill:transparent,stroke:none
+    umfasst{{"<u>umfasst</u>"}}
+    AUFTRAG -- "1" --- umfasst
+    umfasst -- "N" --- AUFTRAGSPOSITION
+    ```
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### Buch
@@ -173,16 +176,17 @@ sind ja pro Position unterschiedlich. Fragt euch dabei ruhig: Ist
 kein Objekt mit eigener Existenz.
 
 <!-- MUSTERLOESUNG-START -->
-```mermaid
-%%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
-graph LR
-AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
-style AUFTRAGSPOSITION fill:transparent,stroke:none
-BUCH["<div style='text-align:left; font-size: 0.6rem;'><b>BUCH</b><hr/>artikelnr : int (PK)<br/>bezeichnung : string<br/>preis : decimal<br/>lagerbestand : int</div>"]
-bestellt{{bestellt}}
-AUFTRAGSPOSITION -- "N" --- bestellt
-bestellt -- "1" --- BUCH
-```
+!!! quote musterloesung-hervorgehoben "Antwort"
+    ```mermaid
+    %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph LR
+    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+    style AUFTRAGSPOSITION fill:transparent,stroke:none
+    BUCH["<div style='text-align:left; font-size: 0.6rem;'><b>BUCH</b><hr/>artikelnr : int (PK)<br/>bezeichnung : string<br/>preis : decimal<br/>lagerbestand : int</div>"]
+    bestellt{{bestellt}}
+    AUFTRAGSPOSITION -- "N" --- bestellt
+    bestellt -- "1" --- BUCH
+    ```
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -194,45 +198,46 @@ Bausteine (Spezialisierung, zwei normale Beziehungen, einen abhängigen
 Entity-Typ).
 
 <!-- MUSTERLOESUNG-START -->
-```mermaid
-%%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
-graph TD
-KUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>KUNDE</b><hr/>kundennr : int (PK)<br/>anschrift : string</div>"]
-spez((△))
-style spez fill:transparent,stroke:none
-HAENDLER["<div style='text-align:left; font-size: 0.6rem;'><b>HAENDLER</b><hr/>unternehmensname : string<br/>zahlungsziel_tage : int</div>"]
-PRIVATKUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>PRIVATKUNDE</b><hr/>vorname : string<br/>nachname : string</div>"]
-KUNDE --- spez
-spez --- HAENDLER
-spez --- PRIVATKUNDE
-AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auftragsnr : int (PK)<br/>eingangsdatum : date</div>"]
-hat{{hat}}
-KUNDE -- "1" --- hat
-hat -- "N" --- AUFTRAG
-AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
-style AUFTRAGSPOSITION fill:transparent,stroke:none
-umfasst{{"<u>umfasst</u>"}}
-AUFTRAG -- "1" --- umfasst
-umfasst -- "N" --- AUFTRAGSPOSITION
-BUCH["<div style='text-align:left; font-size: 0.6rem;'><b>BUCH</b><hr/>artikelnr : int (PK)<br/>bezeichnung : string<br/>preis : decimal<br/>lagerbestand : int</div>"]
-bestellt{{bestellt}}
-AUFTRAGSPOSITION -- "N" --- bestellt
-bestellt -- "1" --- BUCH
-```
+!!! quote musterloesung-hervorgehoben "Antwort"
+    ```mermaid
+    %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph TD
+    KUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>KUNDE</b><hr/>kundennr : int (PK)<br/>anschrift : string</div>"]
+    spez((△))
+    style spez fill:transparent,stroke:none
+    HAENDLER["<div style='text-align:left; font-size: 0.6rem;'><b>HAENDLER</b><hr/>unternehmensname : string<br/>zahlungsziel_tage : int</div>"]
+    PRIVATKUNDE["<div style='text-align:left; font-size: 0.6rem;'><b>PRIVATKUNDE</b><hr/>vorname : string<br/>nachname : string</div>"]
+    KUNDE --- spez
+    spez --- HAENDLER
+    spez --- PRIVATKUNDE
+    AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auftragsnr : int (PK)<br/>eingangsdatum : date</div>"]
+    hat{{hat}}
+    KUNDE -- "1" --- hat
+    hat -- "N" --- AUFTRAG
+    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+    style AUFTRAGSPOSITION fill:transparent,stroke:none
+    umfasst{{"<u>umfasst</u>"}}
+    AUFTRAG -- "1" --- umfasst
+    umfasst -- "N" --- AUFTRAGSPOSITION
+    BUCH["<div style='text-align:left; font-size: 0.6rem;'><b>BUCH</b><hr/>artikelnr : int (PK)<br/>bezeichnung : string<br/>preis : decimal<br/>lagerbestand : int</div>"]
+    bestellt{{bestellt}}
+    AUFTRAGSPOSITION -- "N" --- bestellt
+    bestellt -- "1" --- BUCH
+    ```
 
-Kardinalitäten im Überblick (Chen-Notation im Diagramm, genaue
-Ober-/Untergrenzen hier ergänzt):
+    Kardinalitäten im Überblick (Chen-Notation im Diagramm, genaue
+    Ober-/Untergrenzen hier ergänzt):
 
-- `KUNDE`–`AUFTRAG`: aus Sicht `AUFTRAG` **1..1** (jeder Auftrag genau
-  ein Kunde), aus Sicht `KUNDE` **0..\*** (ein Kunde kann 0 bis viele
-  Aufträge haben).
-- `AUFTRAG`–`AUFTRAGSPOSITION` (identifizierend): aus Sicht
-  `AUFTRAGSPOSITION` **1..1** (wie bei jedem abhängigen Entity-Typ),
-  aus Sicht `AUFTRAG` **1..\*** (Annahme: ein Auftrag hat mindestens
-  eine Position, analog zum Fertigungsauftrag-Beispiel aus Woche 3).
-- `AUFTRAGSPOSITION`–`BUCH`: aus Sicht `AUFTRAGSPOSITION` **1..1**
-  (jede Position genau ein Buch), aus Sicht `BUCH` **0..\*** (ein Buch
-  kann in beliebig vielen Positionen bestellt sein, muss aber nicht).
+    - `KUNDE`–`AUFTRAG`: aus Sicht `AUFTRAG` **1..1** (jeder Auftrag genau
+      ein Kunde), aus Sicht `KUNDE` **0..\*** (ein Kunde kann 0 bis viele
+      Aufträge haben).
+    - `AUFTRAG`–`AUFTRAGSPOSITION` (identifizierend): aus Sicht
+      `AUFTRAGSPOSITION` **1..1** (wie bei jedem abhängigen Entity-Typ),
+      aus Sicht `AUFTRAG` **1..\*** (Annahme: ein Auftrag hat mindestens
+      eine Position, analog zum Fertigungsauftrag-Beispiel aus Woche 3).
+    - `AUFTRAGSPOSITION`–`BUCH`: aus Sicht `AUFTRAGSPOSITION` **1..1**
+      (jede Position genau ein Buch), aus Sicht `BUCH` **0..\*** (ein Buch
+      kann in beliebig vielen Positionen bestellt sein, muss aber nicht).
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -248,22 +253,23 @@ geschrieben haben. Was ändert sich am Diagramm?
 es "nur" ein Attribut?
 
 <!-- MUSTERLOESUNG-START -->
-```mermaid
-%%{init: {'flowchart': {'padding': 2}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
-graph LR
-BUCH["<div style='text-align:left; font-size: 0.6rem;'><b>BUCH</b><hr/>artikelnr : int (PK)<br/>bezeichnung : string<br/>preis : decimal<br/>lagerbestand : int</div>"]
-AUTOR["<div style='text-align:left; font-size: 0.6rem;'><b>AUTOR</b><hr/>autorennr : int (PK)<br/>name : string<br/>geburtsjahr : int</div>"]
-geschrieben_von{{geschrieben_von}}
-BUCH -- "M" --- geschrieben_von
-geschrieben_von -- "N" --- AUTOR
-```
+!!! quote musterloesung-hervorgehoben "Antwort"
+    ```mermaid
+    %%{init: {'flowchart': {'padding': 2}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph LR
+    BUCH["<div style='text-align:left; font-size: 0.6rem;'><b>BUCH</b><hr/>artikelnr : int (PK)<br/>bezeichnung : string<br/>preis : decimal<br/>lagerbestand : int</div>"]
+    AUTOR["<div style='text-align:left; font-size: 0.6rem;'><b>AUTOR</b><hr/>autorennr : int (PK)<br/>name : string<br/>geburtsjahr : int</div>"]
+    geschrieben_von{{geschrieben_von}}
+    BUCH -- "M" --- geschrieben_von
+    geschrieben_von -- "N" --- AUTOR
+    ```
 
-Neuer Entity-Typ `AUTOR` mit eigenen Attributen. Neu ist vor allem die
-Kardinalität: die erste **N:M**-Beziehung in diesem Modell, im
-Unterschied zu den bisherigen, ausschließlich 1:N-Beziehungen — beide
-Seiten können hier mehrere Partner haben. Weiterführend: Falls die
-Reihenfolge der Autor:innen auf dem Cover wichtig ist, könnte die
-Beziehung selbst ein Beziehungsattribut `reihenfolge` bekommen.
+    Neuer Entity-Typ `AUTOR` mit eigenen Attributen. Neu ist vor allem die
+    Kardinalität: die erste **N:M**-Beziehung in diesem Modell, im
+    Unterschied zu den bisherigen, ausschließlich 1:N-Beziehungen — beide
+    Seiten können hier mehrere Partner haben. Weiterführend: Falls die
+    Reihenfolge der Autor:innen auf dem Cover wichtig ist, könnte die
+    Beziehung selbst ein Beziehungsattribut `reihenfolge` bekommen.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -275,8 +281,8 @@ Beziehung selbst ein Beziehungsattribut `reihenfolge` bekommen.
 Ihr erweitert jetzt eigenständig (einzeln oder zu zweit) das eben
 gemeinsam entwickelte eLibri-Kern-Diagramm (Kunde/Spezialisierung,
 Auftrag, Auftragsposition, Buch) um zwei weitere Anforderungen. Wer
-damit schon fertig ist, kann sich zusätzlich an einer optionalen
-dritten Erweiterung versuchen (Teil C).
+damit schon fertig ist, kann sich zusätzlich an zwei optionalen
+weiteren Erweiterungen versuchen (Teil C und Teil D).
 
 !!! abstract "Lernziele"
     - Ihr könnt selbstständig ein bestehendes ER-Modell um eine
@@ -286,15 +292,21 @@ dritten Erweiterung versuchen (Teil C).
     - (Optional) Ihr könnt erkennen, wenn eine Anforderung mehrdeutig
       ist, mehrere gültige Modelle dafür entwickeln und begründen,
       warum das vorab mit den Anwender:innen geklärt werden sollte.
+    - (Optional) Ihr könnt erkennen, wann ein abhängiger Entity-Typ
+      von mehr als einem Eigentümer-Entity-Typ gleichzeitig abhängt,
+      und das korrekt mit zwei identifizierenden Beziehungen
+      modellieren.
 
 ### Aufgabe 01: eLibri erweitern — Kreditkarte & Versandkopplung
 
 ??? info "Bezug zu Lehrinhalten"
     Kardinalitäten und rekursive Beziehungen mit Rollennamen:
-    Praxisphase Woche 2. Spezialisierung: Praxisphase Woche 3. Das
-    Kern-Diagramm aus der Übung oben ist der Ausgangspunkt für alle drei
-    Teilaufgaben. Teil C knüpft an die erste Rückblick-Frage der Übung
-    oben an (wozu ein ER-Diagramm dient).
+    Praxisphase Woche 2. Spezialisierung und abhängige Entity-Typen:
+    Praxisphase Woche 3. Das Kern-Diagramm aus der Übung oben ist der
+    Ausgangspunkt für alle vier Teilaufgaben. Teil C knüpft an die
+    erste Rückblick-Frage der Übung oben an (wozu ein ER-Diagramm
+    dient). Teil D vertieft das Konzept des abhängigen Entity-Typs aus
+    Praxisphase Woche 3 um den Fall mehrerer Eigentümer-Entity-Typen.
 
 #### Teil A — Kreditkarte
 
@@ -310,7 +322,7 @@ dritten Erweiterung versuchen (Teil C).
    für alle Kunden oder nur für eine der beiden Kundengruppen?
 
 <!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil A anzeigen"
+???+ note "Musterlösung Teil A"
     ```mermaid
     %%{init: {'flowchart': {'padding': 2}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
@@ -347,7 +359,7 @@ dritten Erweiterung versuchen (Teil C).
 2. Vergib passende Rollennamen für die beiden Seiten der Beziehung.
 
 <!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil B anzeigen"
+???+ note "Musterlösung Teil B"
     ```mermaid
     %%{init: {'flowchart': {'padding': 2}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
@@ -374,8 +386,6 @@ dritten Erweiterung versuchen (Teil C).
 
 #### Teil C — Kundenbewertungen (optional)
 
-*Nur, falls ihr mit Teil A und B schon fertig seid.*
-
 > eLibri möchte Kundenbewertungen einführen: Kund:innen sollen Bücher
 > mit einer Sternebewertung (1–5) und einem optionalen Kommentar
 > bewerten können.
@@ -385,7 +395,7 @@ dritten Erweiterung versuchen (Teil C).
    dasselbe Modell gekommen, oder gibt es Unterschiede?
 
 <!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil C anzeigen"
+???+ note "Musterlösung Teil C"
     Die Aufgabenstellung lässt bewusst offen, WORAUF sich eine Bewertung
     genau bezieht — das lässt mindestens zwei unterschiedliche, jeweils in
     sich schlüssige Modelle zu.
@@ -442,4 +452,67 @@ dritten Erweiterung versuchen (Teil C).
     technikfernen Anwender:innen der Datenbank vorab zu klären, statt sie
     stillschweigend zu entscheiden. Damit schließt sich der Kreis zur
     ersten Rückblick-Frage ganz oben: Genau dafür dient ein ER-Diagramm.
+<!-- MUSTERLOESUNG-ENDE -->
+
+---
+
+#### Teil D — Auftragsposition mit zwei Eigentümer-Entity-Typen (optional)
+
+> eLibri betreibt inzwischen mehrere unabhängige Lagerstandorte, aus
+> denen Aufträge ausgeliefert werden. Bislang hat eLibri die
+> Positionsnummer einer Auftragsposition zentral pro Auftrag
+> fortlaufend vergeben. Das hat sich geändert: Jeder Lagerstandort
+> führt jetzt sein eigenes Kommissionierungssystem und vergibt
+> Positionsnummern unabhängig von den anderen Standorten — dabei
+> beginnt jeder Lagerstandort bei jedem Auftrag wieder bei 1. Zwei
+> Positionen desselben Auftrags, die aus unterschiedlichen
+> Lagerstandorten stammen, können dadurch dieselbe Positionsnummer
+> tragen.
+
+1. Ergänzt einen Entity-Typ `LAGERSTANDORT` mit passenden Attributen.
+2. Erweitert `AUFTRAGSPOSITION` um eine zweite identifizierende
+   Beziehung zu `LAGERSTANDORT`. Überlegt: Warum reicht die bisherige
+   identifizierende Beziehung zu `AUFTRAG` allein jetzt nicht mehr
+   aus, um eine Auftragsposition eindeutig zu identifizieren?
+
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung Teil D"
+    ```mermaid
+    %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
+    graph TD
+    AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auftragsnr : int (PK)<br/>eingangsdatum : date</div>"]
+    LAGERSTANDORT["<div style='text-align:left; font-size: 0.6rem;'><b>LAGERSTANDORT</b><hr/>standortnr : int (PK)<br/>ort : string</div>"]
+    umfasst{{"<u>umfasst</u>"}}
+    kommissioniert{{"<u>kommissioniert</u>"}}
+    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+    style AUFTRAGSPOSITION fill:transparent,stroke:none
+    AUFTRAG -- "1" --- umfasst
+    umfasst -- "N" --- AUFTRAGSPOSITION
+    LAGERSTANDORT -- "1" --- kommissioniert
+    kommissioniert -- "N" --- AUFTRAGSPOSITION
+    ```
+
+    `AUFTRAGSPOSITION` bleibt ein abhängiger Entity-Typ, hat jetzt aber
+    **zwei** identifizierende Beziehungen statt einer — zu `AUFTRAG`
+    (wie bisher) und zusätzlich zu `LAGERSTANDORT`. Weil jeder
+    Lagerstandort seine Positionsnummern jetzt unabhängig und
+    dezentral vergibt, ist `positionsnr` nicht mehr allein innerhalb
+    eines Auftrags eindeutig — zwei Positionen desselben Auftrags aus
+    unterschiedlichen Lagerstandorten könnten dieselbe Nummer tragen.
+    Eindeutig identifizierbar ist eine Auftragsposition deshalb erst
+    über die Kombination aus `auftragsnr`, `standortnr` **und**
+    `positionsnr` zusammen.
+
+    Kardinalitäten: Aus Sicht `AUFTRAGSPOSITION` ist es bei **beiden**
+    identifizierenden Beziehungen **1..1** — wie bei jedem abhängigen
+    Entity-Typ. Aus Sicht `AUFTRAG` bzw. `LAGERSTANDORT` **1..\***
+    (ein Auftrag bzw. Lagerstandort kann mehrere Positionen umfassen
+    bzw. kommissionieren).
+
+    Ein abhängiger Entity-Typ ist also nicht zwangsläufig auf genau
+    einen Eigentümer-Entity-Typ beschränkt — sobald ein lokales
+    Attribut nur noch innerhalb der Kombination mehrerer Beziehungen
+    eindeutig ist, braucht man entsprechend mehrere identifizierende
+    Beziehungen, und der Primärschlüssel der späteren Relation setzt
+    sich aus entsprechend mehr Teilen zusammen.
 <!-- MUSTERLOESUNG-ENDE -->

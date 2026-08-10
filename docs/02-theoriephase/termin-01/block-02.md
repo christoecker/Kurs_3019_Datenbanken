@@ -8,7 +8,7 @@ thema: "Transformation des ER-Modells in das Relationenmodell anwenden"
 lernziele:
   - "Ihr könnt ein gegebenes ER-Modell (inkl. Spezialisierung, abhängigem Entity-Typ und mehreren Beziehungstypen) systematisch und in der empfohlenen Reihenfolge in ein vollständiges Relationenschema überführen."
   - "Ihr könnt begründen, warum bei einer N:M-Beziehung eine eigene Relation entsteht, bei einer 1:N-Beziehung dagegen nicht."
-musterloesungen_sichtbar: true
+musterloesungen_sichtbar: false
 fallstudie: "eLibri (Fortsetzung des ER-Modells aus Block 01)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: entworfen
@@ -132,34 +132,35 @@ Datensatz in `HAENDLER` bzw. `PRIVATKUNDE` existieren darf, ist dieser
 Fremdschlüssel gleichzeitig der Primärschlüssel der Subtyp-Relation.
 
 <!-- MUSTERLOESUNG-START -->
-**:octicons-table-16: Relation `KUNDE`**
+!!! quote musterloesung-hervorgehoben "Antwort"
+    **:octicons-table-16: Relation `KUNDE`**
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK | kundennr | int | nein |
-| – | anschrift | string | nein |
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK | kundennr | int | nein |
+    | – | anschrift | string | nein |
 
-**:octicons-table-16: Relation `HAENDLER`**
+    **:octicons-table-16: Relation `HAENDLER`**
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK, FK | kundennr | int | nein |
-| – | unternehmensname | string | nein |
-| – | zahlungsziel_tage | int | nein |
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK, FK | kundennr | int | nein |
+    | – | unternehmensname | string | nein |
+    | – | zahlungsziel_tage | int | nein |
 
-**:octicons-table-16: Relation `PRIVATKUNDE`**
+    **:octicons-table-16: Relation `PRIVATKUNDE`**
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK, FK | kundennr | int | nein |
-| – | vorname | string | nein |
-| – | nachname | string | nein |
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK, FK | kundennr | int | nein |
+    | – | vorname | string | nein |
+    | – | nachname | string | nein |
 
-`FK` in `HAENDLER` bzw. `PRIVATKUNDE` referenziert jeweils `kundennr`
-in `KUNDE`. Ein Kunde kann so höchstens einmal als Händler und
-höchstens einmal als Privatkunde auftauchen, aber auch in keiner der
-beiden Relationen vorkommen (laut eLibri-Szenario aber ausgeschlossen,
-da jeder Kunde entweder Händler oder Privatkunde ist).
+    `FK` in `HAENDLER` bzw. `PRIVATKUNDE` referenziert jeweils `kundennr`
+    in `KUNDE`. Ein Kunde kann so höchstens einmal als Händler und
+    höchstens einmal als Privatkunde auftauchen, aber auch in keiner der
+    beiden Relationen vorkommen (laut eLibri-Szenario aber ausgeschlossen,
+    da jeder Kunde entweder Händler oder Privatkunde ist).
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### Einfache Entity-Typen transformieren (Regel 1)
@@ -168,25 +169,26 @@ da jeder Kunde entweder Händler oder Privatkunde ist).
 Besonderheiten — sie werden ganz normal nach Regel 1 transformiert.
 
 <!-- MUSTERLOESUNG-START -->
-**:octicons-table-16: Relation `AUFTRAG`** (vorläufig, ohne Fremdschlüssel)
+!!! quote musterloesung-hervorgehoben "Antwort"
+    **:octicons-table-16: Relation `AUFTRAG`** (vorläufig, ohne Fremdschlüssel)
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK | auftragsnr | int | nein |
-| – | eingangsdatum | date | nein |
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK | auftragsnr | int | nein |
+    | – | eingangsdatum | date | nein |
 
-**:octicons-table-16: Relation `BUCH`**
+    **:octicons-table-16: Relation `BUCH`**
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK | artikelnr | int | nein |
-| – | bezeichnung | string | nein |
-| – | preis | decimal | nein |
-| – | lagerbestand | int | nein |
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK | artikelnr | int | nein |
+    | – | bezeichnung | string | nein |
+    | – | preis | decimal | nein |
+    | – | lagerbestand | int | nein |
 
-`AUFTRAG` bekommt seinen Fremdschlüssel zu `KUNDE` erst im
-übernächsten Schritt (1:N-Beziehungen) — das ist Teil von Regel 3, nicht
-von Regel 1.
+    `AUFTRAG` bekommt seinen Fremdschlüssel zu `KUNDE` erst im
+    übernächsten Schritt (1:N-Beziehungen) — das ist Teil von Regel 3, nicht
+    von Regel 1.
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### Abhängigen Entity-Typ transformieren (Regel 5)
@@ -196,19 +198,20 @@ innerhalb eines Auftrags eindeutig. Nach Regel 5 verschmilzt
 `AUFTRAGSPOSITION` mit der identifizierenden Beziehung `umfasst`.
 
 <!-- MUSTERLOESUNG-START -->
-**:octicons-table-16: Relation `AUFTRAGSPOSITION`** (vorläufig, ohne Fremdschlüssel zu `BUCH`)
+!!! quote musterloesung-hervorgehoben "Antwort"
+    **:octicons-table-16: Relation `AUFTRAGSPOSITION`** (vorläufig, ohne Fremdschlüssel zu `BUCH`)
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK, FK | auftragsnr | int | nein |
-| PK | positionsnr | int | nein |
-| – | bestellmenge | int | nein |
-| – | lieferstatus | string | nein |
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK, FK | auftragsnr | int | nein |
+    | PK | positionsnr | int | nein |
+    | – | bestellmenge | int | nein |
+    | – | lieferstatus | string | nein |
 
-Der Primärschlüssel setzt sich aus `positionsnr` (lokal) und dem
-Fremdschlüssel `auftragsnr` (referenziert `AUFTRAG`) zusammen — erst
-diese Kombination identifiziert eine Auftragsposition eindeutig, genau
-wie beim Fertigungsauftrag-Beispiel aus Woche 6.
+    Der Primärschlüssel setzt sich aus `positionsnr` (lokal) und dem
+    Fremdschlüssel `auftragsnr` (referenziert `AUFTRAG`) zusammen — erst
+    diese Kombination identifiziert eine Auftragsposition eindeutig, genau
+    wie beim Fertigungsauftrag-Beispiel aus Woche 6.
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### 1:N-Beziehungen einarbeiten (Regel 3)
@@ -220,28 +223,29 @@ beiden 1:N-Beziehungen können nach Regel 3 eingearbeitet werden:
 (Beziehung `bestellt`).
 
 <!-- MUSTERLOESUNG-START -->
-**:octicons-table-16: Relation `AUFTRAG`** (vollständig)
+!!! quote musterloesung-hervorgehoben "Antwort"
+    **:octicons-table-16: Relation `AUFTRAG`** (vollständig)
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK | auftragsnr | int | nein |
-| FK | kundennr | int | nein |
-| – | eingangsdatum | date | nein |
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK | auftragsnr | int | nein |
+    | FK | kundennr | int | nein |
+    | – | eingangsdatum | date | nein |
 
-**:octicons-table-16: Relation `AUFTRAGSPOSITION`** (vollständig)
+    **:octicons-table-16: Relation `AUFTRAGSPOSITION`** (vollständig)
 
-| Schlüssel | Attribut | Wertebereich | optional? |
-|---|---|---|---|
-| PK, FK1 | auftragsnr | int | nein |
-| PK | positionsnr | int | nein |
-| FK2 | artikelnr | int | nein |
-| – | bestellmenge | int | nein |
-| – | lieferstatus | string | nein |
+    | Schlüssel | Attribut | Wertebereich | optional? |
+    |---|---|---|---|
+    | PK, FK1 | auftragsnr | int | nein |
+    | PK | positionsnr | int | nein |
+    | FK2 | artikelnr | int | nein |
+    | – | bestellmenge | int | nein |
+    | – | lieferstatus | string | nein |
 
-Beide neuen Fremdschlüssel sind **nicht optional**: Laut eLibri-
-Szenario gehört jeder Auftrag zu genau einem Kunden, und jede
-Auftragsposition bezieht sich auf genau ein Buch — beides
-verpflichtende Teilnahmen.
+    Beide neuen Fremdschlüssel sind **nicht optional**: Laut eLibri-
+    Szenario gehört jeder Auftrag zu genau einem Kunden, und jede
+    Auftragsposition bezieht sich auf genau ein Buch — beides
+    verpflichtende Teilnahmen.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -252,12 +256,13 @@ Das eLibri-Kern-Modell ist damit vollständig ins Relationenmodell
 überführt und enthält sechs Relationen insgesamt.
 
 <!-- MUSTERLOESUNG-START -->
-Ein Hinweis zum Schluss: Nicht jede Information aus dem ER-Diagramm
-bleibt bei der Transformation erhalten. Im ER-Modell musste jeder Auftrag mindestens
-eine Auftragsposition haben — diese Untergrenze lässt sich im
-Relationenmodell nicht erzwingen (Stichwort Erhaltung der
-Informationskapazität, Woche 6). Ein Auftrag ganz ohne Position wäre
-hier also möglich, obwohl das ER-Diagramm das eigentlich ausschließt.
+!!! quote musterloesung-hervorgehoben "Antwort"
+    Ein Hinweis zum Schluss: Nicht jede Information aus dem ER-Diagramm
+    bleibt bei der Transformation erhalten. Im ER-Modell musste jeder Auftrag mindestens
+    eine Auftragsposition haben — diese Untergrenze lässt sich im
+    Relationenmodell nicht erzwingen (Stichwort Erhaltung der
+    Informationskapazität, Woche 6). Ein Auftrag ganz ohne Position wäre
+    hier also möglich, obwohl das ER-Diagramm das eigentlich ausschließt.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -269,7 +274,8 @@ hier also möglich, obwohl das ER-Diagramm das eigentlich ausschließt.
 Ihr transformiert jetzt eigenständig (einzeln oder zu zweit) die
 beiden Erweiterungen, die ihr selbst im betreuten Selbststudium zu
 Block 01 modelliert habt: die Kreditkarte-Beziehung und die
-Versandkopplung.
+Versandkopplung. Wer damit schon fertig ist, kann sich zusätzlich an
+zwei optionalen weiteren Aufgaben versuchen (Teil C und Teil D).
 
 !!! abstract "Lernziele"
     - Ihr könnt selbstständig eine N:M-Beziehung nach Regel 2 in eine
@@ -280,6 +286,9 @@ Versandkopplung.
     - (Optional) Ihr könnt erklären, wie sich das
       Transformationsergebnis ändert, wenn sich die Kardinalität einer
       Beziehung ändert.
+    - (Optional) Ihr könnt eine strukturelle Schwachstelle der
+      Spezialisierungs-Transformation erkennen und einen pragmatischen
+      Lösungsansatz auf Tabellenebene entwickeln.
 
 ### Aufgabe 02: eLibri-Erweiterungen transformieren — Kreditkarte & Versandkopplung
 
@@ -288,7 +297,8 @@ Versandkopplung.
     Beziehungstypen: Praxisphase Woche 5, Abschnitt "N:M-Beziehungen"
     bzw. "Rekursive Beziehungen" (vgl. dort auch das `VERLAUF`-Beispiel
     zwischen Modulen). Eine Übersicht aller Regeln steht auf der
-    [Termin-Übersichtsseite](index.md).
+    [Termin-Übersichtsseite](index.md). Teil D knüpft an die
+    Spezialisierungs-Transformation (Regel 6) aus der Übung oben an.
 
 #### Teil A — Kreditkarte
 
@@ -302,7 +312,7 @@ Versandkopplung.
    Fremdschlüssel und ihres gemeinsamen Primärschlüssels.
 
 <!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil A anzeigen"
+??? note "Musterlösung Teil A"
     **:octicons-table-16: Relation `KREDITKARTE`**
 
     | Schlüssel | Attribut | Wertebereich | optional? |
@@ -342,7 +352,7 @@ Versandkopplung.
    beide `auftragsnr` heißen?
 
 <!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil B anzeigen"
+??? note "Musterlösung Teil B"
     **:octicons-table-16: Neue Relation `VERSANDKOPPLUNG`** (aus der rekursiven Beziehung
     "versandt mit", Regel 2)
 
@@ -368,8 +378,6 @@ Versandkopplung.
 
 #### Teil C — Was-wäre-wenn: Versandkopplung als 1:N statt M:N (optional)
 
-*Nur, falls ihr mit Teil A und B schon fertig seid.*
-
 > Stellt euch vor, eLibri würde die Versandkopplung einschränken:
 > Jeder Auftrag könnte höchstens einem anderen, bereits existierenden
 > "Sammel-Auftrag" zugeordnet werden — die Beziehung wäre dann nicht
@@ -381,7 +389,7 @@ Versandkopplung.
    während Teil B eine eigene Relation brauchte?
 
 <!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil C anzeigen"
+??? note "Musterlösung Teil C"
     **:octicons-table-16: Relation `AUFTRAG`** (erweitert um den rekursiven Fremdschlüssel)
 
     | Schlüssel | Attribut | Wertebereich | optional? |
@@ -402,4 +410,93 @@ Versandkopplung.
     sein (M:N), was ein einzelnes Attribut nicht abbilden kann. Der
     Unterschied zwischen 1:N- und N:M-Transformation hängt also einzig an
     der Kardinalität, nicht daran, ob die Beziehung rekursiv ist.
+<!-- MUSTERLOESUNG-ENDE -->
+
+---
+
+#### Teil D — Lücke in der Spezialisierungs-Transformation (optional)
+
+Die Transformation der Spezialisierung aus der Übung oben (Regel 6)
+hat drei Relationen erzeugt: `KUNDE`, `HAENDLER` und `PRIVATKUNDE`. Es soll nun angenommen werden, dass zu den Relationen Datensätze angelegt wurden.
+Betrachtet die folgenden Tabellenausschnitte:
+
+**:octicons-table-16: Relation `KUNDE`**
+
+| kundennr | anschrift |
+|---|---|
+| 1 | Musterstraße 1, 12345 Musterstadt |
+| 2 | Beispielweg 5, 54321 Beispielhausen |
+| 3 | Teststraße 9, 99999 Testdorf |
+
+**:octicons-table-16: Relation `HAENDLER`**
+
+| kundennr | unternehmensname | zahlungsziel_tage |
+|---|---|---|
+| 1 | Buchhandlung Müller | 30 |
+
+**:octicons-table-16: Relation `PRIVATKUNDE`**
+
+| kundennr | vorname | nachname |
+|---|---|---|
+| 2 | Anna | Schmidt |
+
+1. Was fällt bei Kunde `kundennr = 3` auf, wenn ihr die drei Tabellen
+   vergleicht? Warum widerspricht das eigentlich dem ER-Modell, das ihr gerade transformiert habt?
+2. Entwickelt eine Idee, wie man die **Tabellenstruktur selbst** so
+   verändern könnte, dass ein solcher Datensatz gar nicht erst
+   entstehen kann. Trigger, Transaktionen und CHECK-Constraints kennt
+   ihr noch nicht — überlegt rein auf Ebene der Tabellen.
+
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung Teil D"
+    **Teil 1 — Das Problem:** Kunde `3` existiert in `KUNDE`, hat aber
+    weder in `HAENDLER` noch in `PRIVATKUNDE` einen passenden
+    Datensatz. Laut ER-Modell aus Block 01 ist die Spezialisierung
+    aber vollständig (jeder Kunde ist entweder Händler oder
+    Privatkunde, eine dritte Möglichkeit gibt es nicht) — Kunde `3`
+    dürfte in diesem Zustand also gar nicht existieren. Die drei
+    separaten Relationen erzwingen das aber nicht: Beim Einfügen eines
+    neuen `KUNDE`-Datensatzes verlangt nichts in der Tabellenstruktur,
+    dass gleichzeitig auch ein passender `HAENDLER`- oder
+    `PRIVATKUNDE`-Datensatz angelegt wird.
+
+    **Teil 2 — Ein pragmatischer Lösungsansatz:** Ohne Trigger,
+    Transaktionen oder CHECK-Constraints lässt sich das Problem rein
+    über die Tabellenstruktur entschärfen, indem man auf die
+    gemeinsame Relation `KUNDE` verzichtet und stattdessen nur noch
+    zwei Relationen führt, die jeweils die vorher gemeinsamen
+    Attribute mit übernehmen:
+
+    **:octicons-table-16: Relation `HAENDLER`** (ohne `KUNDE`)
+
+    | kundennr | anschrift | unternehmensname | zahlungsziel_tage |
+    |---|---|---|---|
+    | 1 | Musterstraße 1, 12345 Musterstadt | Buchhandlung Müller | 30 |
+
+    **:octicons-table-16: Relation `PRIVATKUNDE`** (ohne `KUNDE`)
+
+    | kundennr | anschrift | vorname | nachname |
+    |---|---|---|---|
+    | 2 | Beispielweg 5, 54321 Beispielhausen | Anna | Schmidt |
+
+    Ein Kunde entsteht jetzt nur noch dadurch, dass er direkt als
+    Datensatz in `HAENDLER` oder `PRIVATKUNDE` angelegt wird — einen
+    Datensatz wie Kunde `3`, der in keiner der beiden Rollen steckt,
+    kann es in dieser Struktur gar nicht mehr geben.
+
+    Das ist allerdings kein kostenloser Gewinn: `anschrift` ist jetzt
+    in zwei Relationen definiert statt zentral in einer (auch wenn
+    dadurch nicht dieselbe Anschrift doppelt gespeichert wird — jeder
+    Kunde steckt ja weiterhin nur in genau einer der beiden Tabellen).
+    Außerdem gibt es keine gemeinsame "alle Kunden"-Sicht mehr — eine
+    Abfrage über alle Kund:innen hinweg braucht jetzt z. B. eine
+    Vereinigung (`UNION`) beider Tabellen. Der eigentliche, sauberere
+    Weg, eine verpflichtende Zuordnung zu genau einer Rolle *und*
+    gleichzeitig eine gemeinsame `KUNDE`-Relation zu erzwingen, führt
+    über Mechanismen wie CHECK-Constraints, Trigger oder Transaktionen
+    — die lernt ihr erst in einem späteren Termin kennen. Für jetzt
+    reicht die Erkenntnis: Nicht jede Eigenschaft eines ER-Modells
+    überträgt sich automatisch ins Relationenmodell — hier geht die
+    verpflichtende Teilnahme an der Spezialisierung verloren, wenn man
+    nur die reine Tabellenstruktur betrachtet.
 <!-- MUSTERLOESUNG-ENDE -->
