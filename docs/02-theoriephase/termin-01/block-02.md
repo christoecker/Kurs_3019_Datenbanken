@@ -43,7 +43,7 @@ aller Regeln findet ihr zum Nachschlagen auf der
 1.  Warum reicht das ER-Modell allein nicht aus, um eine Datenbank zu implementieren?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Dem ER-Modell fehlt eine Sprachkomponente, mit der man tatsächlich
         Daten abfragen oder ändern könnte. Deshalb hat sich zur
         Implementierung von Datenbanken das Relationenmodell durchgesetzt,
@@ -53,7 +53,7 @@ aller Regeln findet ihr zum Nachschlagen auf der
 2.  Was unterscheidet die Transformation einer 1:N- von einer N:M-Beziehung?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Bei einer 1:N-Beziehung verschmilzt die Beziehung mit der Relation
         der N-Seite — ein einzelnes Fremdschlüsselattribut genügt. Bei
         einer N:M-Beziehung entsteht dagegen immer eine eigene, dritte
@@ -64,7 +64,7 @@ aller Regeln findet ihr zum Nachschlagen auf der
 3.  Woraus setzt sich der Primärschlüssel einer Relation zusammen, die aus einem abhängigen Entity-Typ entsteht?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Aus dem lokalen Schlüsselattribut und dem Fremdschlüssel zum
         identifizierenden Entity-Typ zusammen — das lokale Attribut allein
         wäre nur innerhalb des identifizierenden Entity-Typs eindeutig,
@@ -74,7 +74,7 @@ aller Regeln findet ihr zum Nachschlagen auf der
 4.  In welcher Reihenfolge transformiert man ein vollständiges ER-Diagramm am besten?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Zuerst Spezialisierungshierarchien, dann abhängige Entity-Typen,
         zuletzt die (normalen) Beziehungstypen — jeweils erst, nachdem die
         daran beteiligten Entity-Typen schon als Relation existieren.

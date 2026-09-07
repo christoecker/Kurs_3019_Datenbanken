@@ -118,7 +118,7 @@ Definiere in eigenen Worten die Begriffe "Informationssystem", "Datenbank"
 und "Datenbanksystem". Worin genau unterscheiden sich "Datenbank" und
 "Datenbanksystem"?
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Ein **Informationssystem** ist ein Softwaresystem zur Erfassung,
     Verarbeitung, Speicherung, Auswertung und Anzeige von Informationen
     — z. B. eine Warenwirtschafts- oder Kundenverwaltungssoftware mit
@@ -142,7 +142,7 @@ Nenne mindestens vier der im Lehrbrief beschriebenen Nachteile, die
 auftreten, wenn Massendaten mit einem reinen Dateiansatz statt mit einem
 Datenbanksystem verwaltet werden.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     - **Redundanz**: Daten werden getrennt und mehrfach gespeichert.
     - **Inkonsistenz**: Folge der Redundanz — Änderungen werden nicht
       überall synchron nachgezogen.
@@ -164,7 +164,7 @@ Datenbanksystem verwaltet werden.
 Die Drei-Ebenen-Schema-Architektur unterscheidet drei Ebenen. Wie heißen
 sie, und was ist der Zweck dieser Trennung?
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     1. **Externe Ebene** (mehrere externe Schemata/Sichten) — je eine
        Sicht pro Anwendergruppe oder Informationssystem.
     2. **Logische Ebene** (ein konzeptuelles Schema) — legt fest, welche
@@ -183,7 +183,7 @@ Nenne die vier Phasen des Datenbankentwurfs in der richtigen Reihenfolge.
 Ordne jeder Phase zu, welches Schema bzw. Ergebnis am Ende dieser Phase
 steht.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     1. **Anforderungsanalyse** → informell dokumentierte
        Datenbankanforderungen.
     2. **Konzeptueller Datenbankentwurf** → konzeptuelles Schema
@@ -198,7 +198,7 @@ steht.
 Nenne zwei Eigenschaften, die laut Lehrbrief die Datenbanksprache SQL
 charakterisieren.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Z. B.: an die englische Umgangssprache angelehnt, mengenorientiert
     (statt satzorientiert), deskriptiv (statt prozedural), mathematisch
     wohldefiniert, standardisiert, aus mehreren orthogonalen

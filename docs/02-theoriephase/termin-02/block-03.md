@@ -11,7 +11,7 @@ lernziele:
   - "Ihr könnt widersprüchliche Anforderungen in einer Spezifikation erkennen, euch begründet für eine Umsetzung entscheiden und belegen, warum eine Anforderung nicht (vollständig) umgesetzt wurde."
   - "Ihr könnt die Auswirkung einer nachträglichen Anforderungsänderung auf ein bestehendes Schema einschätzen, bevor ihr sie umsetzt, und KI gezielt zur Umsetzung einsetzen und deren Vorschläge prüfen."
 musterloesungen_sichtbar: true
-nachtrag_sichtbar: false
+nachtrag_sichtbar: true
 fallstudie: "Übung: Kompressor-Zustandsüberwachung; betreutes Selbststudium: Lackproduktion Schnüffel GmbH (beides eigene MEA-Szenarien)"
 ki_einsatz: stufe_2_pair_programmer
 bearbeitungsstatus: entworfen
@@ -70,7 +70,7 @@ Relation *nicht* vollständig zu normalisieren.
 1.  Wozu dient Normalisierung grundsätzlich?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Normalisierung prüft ein bereits transformiertes
         Relationenschema auf Qualität und deckt Redundanz auf, die zu
         Inkonsistenzen führen kann. Mit der ersten, zweiten und dritten
@@ -82,7 +82,7 @@ Relation *nicht* vollständig zu normalisieren.
 2.  Was verlangt die erste Normalform von einer Relation?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Dass jedes Attribut einen atomaren, nicht weiter zerlegbaren
         Wertebereich hat — eine einzelne Zelle darf also nicht mehrere
         Werte gleichzeitig enthalten (z. B. kein Tupel, keine Liste).
@@ -91,7 +91,7 @@ Relation *nicht* vollständig zu normalisieren.
 3.  Was versteht man unter einer funktionalen Abhängigkeit zwischen zwei Attributen?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Der Wert des einen Attributs legt den Wert des anderen
         eindeutig fest — zwei Datensätze mit demselben Wert im ersten
         Attribut müssen dann auch im zweiten Attribut übereinstimmen.
@@ -100,7 +100,7 @@ Relation *nicht* vollständig zu normalisieren.
 4.  Wann verletzt eine Relation die zweite Normalform?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Wenn ein Nichtschlüsselattribut nur von einem *Teil* eines
         zusammengesetzten Schlüssels abhängt, nicht vom vollständigen
         Schlüssel.
@@ -109,7 +109,7 @@ Relation *nicht* vollständig zu normalisieren.
 5.  Wann verletzt eine Relation die dritte Normalform — und wie unterscheidet sich das von einer 2NF-Verletzung?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Wenn ein Nichtschlüsselattribut nur indirekt (transitiv) über
         ein *anderes* Nichtschlüsselattribut vom Schlüssel abhängt. Im
         Unterschied zur 2NF geht es hier nicht um das Verhältnis
@@ -517,7 +517,7 @@ Plant für diesen Teil ca. 15 Minuten ein. Diesen Teil bearbeitet ihr
     ist in `REZEPT_PARAMETER` kein Schlüssel), und in der Praxis kämen
     dort später ohnehin weitere Attribute dazu.
 
-    [🔗 Musterlösung Teil A in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=kcXyMHQK7twO6rdA3rPs#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
+    [🔗 Musterlösung Teil A in draw.io öffnen](https://app.diagrams.net/?page-id=kcXyMHQK7twO6rdA3rPs#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -615,7 +615,7 @@ Die Schnüffel GmbH hat dazu Folgendes zusammengestellt:
     | – | einheit | string | nein |
     | – | pruefverfahren | string | nein |
 
-    [🔗 Musterlösung Teil B in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=KmU5hiBMG3OvSqviw_yH#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
+    [🔗 Musterlösung Teil B in draw.io öffnen](https://app.diagrams.net/?page-id=KmU5hiBMG3OvSqviw_yH#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 <!-- NACHTRAG-START -->
@@ -624,7 +624,7 @@ Die Schnüffel GmbH hat dazu Folgendes zusammengestellt:
 
 #### Teil C — Nachtrag der Schnüffel GmbH
 
-Plant für diesen Teil ca. 18 Minuten ein.
+Plant für diesen Teil ca. 20 Minuten ein.
 
 > Kurz nachdem eure erste Version steht, meldet sich der Kunde noch
 > einmal:
@@ -706,7 +706,7 @@ Plant für diesen Teil ca. 18 Minuten ein.
     außerdem die Verknüpfung `CHARGE_EINSATZ` komplett, weil sie in der
     Anforderung nicht ausdrücklich genannt ist.
 
-    [🔗 Musterlösung Teil C in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=xPvhkduKNkkRyXKQXQVn#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
+    [🔗 Musterlösung Teil C in draw.io öffnen](https://app.diagrams.net/?page-id=xPvhkduKNkkRyXKQXQVn#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
 
     ---
 

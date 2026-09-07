@@ -222,7 +222,7 @@ Ohne die Abfrage in Zeile 8 auszuführen: Wie viele Zeilen liefert
 zurück, wenn du dir die Beispieldaten aus Schritt 2 genau ansiehst?
 Zu welchem Prüfmittel gehört diese Zeile?
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Genau **eine** Zeile: der Datensatz mit `pruefmittelnr = 200` und
     `kalibriernr = 1` — das ist in den Beispieldaten aus Schritt 2 die
     einzige Kalibrierung, deren `ergebnis` als `'nicht bestanden'`

@@ -118,7 +118,7 @@
 
 /* Musterloesungen im Uebungsteil der Theoriephase (Modellierungsschritte,
    Gesamtergebnis, Vertiefung) stecken in einer "!!! quote
-   musterloesung-hervorgehoben "Antwort""-Admonition (siehe
+   musterloesung-hervorgehoben "Lösung""-Admonition (siehe
    block.template.md). Die Zusatzklasse hebt sie zusaetzlich per sehr
    hellem Hintergrund vom umgebenden Aufgabentext ab - staerkere visuelle
    Absetzung als der graue "quote"-Rahmen allein. Theme-aware ueber die

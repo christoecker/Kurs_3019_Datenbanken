@@ -181,7 +181,7 @@ Erkläre am Beispiel der Relation `EINSATZ` aus der Aufgabe (oder einem
 eigenen Beispiel), warum die Verletzung der zweiten Normalform zu
 Redundanz und potentiellen Inkonsistenzen führen kann.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     In `EINSATZ` würden `maschinennr` und `standort` für jeden
     Mitarbeiter, der am selben Auftrag arbeitet, erneut gespeichert —
     arbeiten z. B. drei Mitarbeiter an Auftrag 500, steht
@@ -232,7 +232,7 @@ Erkläre den Unterschied zwischen einer Verletzung der 2NF und einer
 Verletzung der 3NF in eigenen Worten: Worauf genau bezieht sich die
 jeweilige Abhängigkeit?
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Bei einer 2NF-Verletzung hängt ein Nichtschlüsselattribut nur von
     einem *Teil* eines zusammengesetzten Schlüssels ab, nicht vom
     vollständigen Schlüssel — die Abhängigkeit betrifft hier also das

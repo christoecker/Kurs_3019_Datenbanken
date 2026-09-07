@@ -205,7 +205,7 @@ Aufgabe oben) für eine Spezialisierung aus deinem Praxisbetrieb
 oder Alltag. Benenne den Supertyp, mindestens einen Subtyp und ein
 zusätzliches Attribut, das nur der Subtyp hat.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Ein mögliches Beispiel: Supertyp `MITARBEITER` (Attribute z. B.
     `personalnr`, `name`). Subtyp `AUSZUBILDENDER` mit dem zusätzlichen
     Attribut `ausbildungsjahr`, das nur für Auszubildende Sinn ergibt,
@@ -219,7 +219,7 @@ Was ist der Unterschied zwischen Spezialisierung und Generalisierung?
 Sind das zwei unterschiedliche Modellierungstechniken oder zwei
 Blickrichtungen auf dasselbe Ergebnis?
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Es ist dieselbe Struktur (ein Supertyp mit einem oder mehreren
     Subtypen, verbunden über das Spezialisierungsdreieck), nur mit
     unterschiedlichem gedanklichem Ausgangspunkt. **Spezialisierung**

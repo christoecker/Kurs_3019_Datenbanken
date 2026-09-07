@@ -193,7 +193,7 @@ abhängigen Entity-Typ entsteht, aus zwei Teilen zusammensetzt, und was
 passieren würde, wenn man nur das lokale Attribut als Primärschlüssel
 verwenden würde.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Das lokale Attribut (z. B. `positionsnr`) identifiziert einen
     Datensatz nur *innerhalb* seines identifizierenden Entity-Typs
     eindeutig, nicht aber über alle Datensätze der gesamten Relation
@@ -238,7 +238,7 @@ dem Lehrbrief) für eine Untergrenze aus einem ER-Diagramm, die bei der
 Transformation ins Relationenmodell nicht mehr sichergestellt werden
 kann.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Ein mögliches Beispiel: Im ER-Diagramm könnte gefordert sein, dass
     jede `MASCHINE` mindestens einen `WARTUNGSAUFTRAG` haben muss
     (Untergrenze 1 aus Sicht der Maschine). Nach der Transformation

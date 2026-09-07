@@ -207,7 +207,7 @@ welcher Begriff aus der OOP welchem Begriff aus dem ER-Modell
 entspricht, und nenne mindestens einen Punkt, an dem diese Analogie an
 ihre Grenzen stößt.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Ein **Entity-Typ** entspricht in etwa einer **Klasse**: Er legt —
     wie eine Klassendefinition — nur die Struktur fest (welche
     Attribute es gibt), ohne selbst ein konkretes Objekt zu sein. Ein
@@ -234,7 +234,7 @@ Was versteht man unter einer *rekursiven Beziehung*? Nenne ein
 Beispiel aus deinem Praxisbetrieb, bei dem ein **Rollenname**
 sinnvoll wäre, und begründe kurz, warum.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Eine rekursive Beziehung ist ein Beziehungstyp, bei dem beide
     beteiligten "Seiten" derselbe Entity-Typ sind — die
     Beziehungsraute wird also zweifach mit demselben Entity-Typ-Kasten

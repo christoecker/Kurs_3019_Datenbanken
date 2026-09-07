@@ -221,7 +221,7 @@ Erkläre in eigenen Worten den Unterschied zwischen
 Entity-/Schlüsselintegrität und Fremdschlüsselintegrität. Nutze dazu die
 Relationen `ROHSTOFF` und `LIEFERANT` aus der Aufgabe als Beispiel.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Die **Entity-/Schlüsselintegrität** betrifft eine einzelne Relation
     für sich genommen: Sie stellt sicher, dass keine zwei Datensätze
     einer Relation in den Werten ihres Primärschlüssels übereinstimmen —
@@ -263,7 +263,7 @@ Ein Fremdschlüssel darf grundsätzlich denselben Namen tragen wie der
 Schlüssel, den er referenziert. Es gibt aber genau eine Situation, in
 der das nicht erlaubt ist. Welche, und warum?
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Die Ausnahme betrifft einen **selbstreferenzierenden Fremdschlüssel**
     — einen Fremdschlüssel, der auf einen Datensatz *derselben* Relation
     verweist (wie `ersatz_rohstoffnr` in `ROHSTOFF`, das wieder auf

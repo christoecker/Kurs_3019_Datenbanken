@@ -264,7 +264,7 @@ Erkläre, warum bei einer 1:N-Beziehung im Gegensatz zu einer N:M-
 Beziehung keine eigene, dritte Relation entsteht, sondern die Beziehung
 mit einer bestehenden Relation verschmilzt.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Bei einer N:M-Beziehung muss ein eigenständiges Relationenschema
     für die Beziehung angelegt werden, weil sonst nicht abgebildet
     werden könnte, dass ein Objekt der einen Seite mit *beliebig
@@ -284,7 +284,7 @@ hinzugefügte Fremdschlüsselattribut zusätzlich als Unique Key (UK)
 gekennzeichnet wird, obwohl das bei der Transformation einer
 1:N-Beziehung nicht der Fall ist.
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     Bei einer 1:1-Beziehung darf zu jedem Datensatz der referenzierten
     Relation höchstens ein Datensatz der verschmolzenen Relation
     existieren — das ist gerade die "1" auf beiden Seiten der
@@ -318,7 +318,7 @@ die daraus entstehende Relation `VERLAUF` zwei Fremdschlüssel, die
 beide auf dieselbe Relation `MODUL` verweisen, und warum müssen diese
 zwei Fremdschlüssel unterschiedliche Namen tragen?
 
-??? question "Antwort anzeigen"
+??? note "Musterlösung anzeigen"
     `ist-Vorgänger-von` ist eine N:M-Beziehung zwischen zwei Modulen
     (ein Modul kann mehrere Nachfolgemodule und mehrere Vorgänger-
     module haben). Nach Regel 2 entsteht dafür eine eigene Relation

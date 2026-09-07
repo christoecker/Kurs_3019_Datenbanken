@@ -40,7 +40,7 @@ komplett neues Beispiel an, das ihr noch nicht kennt.
 1.  Wozu dient ein ER-Diagramm eigentlich?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Es ist das zentrale Werkzeug des konzeptuellen Datenbankentwurfs —
         ein grafisches, technikfernes Modell, mit dem man sich mit
         Anwender:innen über die relevanten Daten einer Anwendungswelt
@@ -51,7 +51,7 @@ komplett neues Beispiel an, das ihr noch nicht kennt.
 2.  Was macht einen Entity-Typ zu einem abhängigen Entity-Typ?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Er hat keinen eigenen Schlüssel und ist in seiner Existenz von
         einem anderen ("identifizierenden") Entity-Typ abhängig — erst die
         Kombination aus einem lokalen Attribut und der Beziehung zum
@@ -61,7 +61,7 @@ komplett neues Beispiel an, das ihr noch nicht kennt.
 3.  Was "erbt" ein Subtyp von seinem Supertyp?
 
     <!-- MUSTERLOESUNG-START -->
-    ??? question "Antwort anzeigen"
+    ??? note "Musterlösung anzeigen"
         Alle Attribute und Beziehungen des Supertyps, zusätzlich zu seinen
         eigenen.
     <!-- MUSTERLOESUNG-ENDE -->
