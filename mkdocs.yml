@@ -1,14 +1,25 @@
 site_name: "Datenbanken (Kurs 3019) – Mechatronik/Automatisierung"
 docs_dir: docs
 site_dir: site
+copyright: "© 2026 Christian Stöcker · Hochschule Bielefeld · Datenbanken (Kurs 3019) · Wintersemester 2026/27"
 
 theme:
   name: material
   language: de
+  favicon: assets/favicon.svg
+  icon:
+    logo: material/database
+  palette:
+    scheme: default
+    primary: custom
+    accent: custom
   features:
-    - navigation.sections
+    - navigation.tabs
     - navigation.indexes
     - content.code.copy
+
+extra:
+  generator: false
 
 hooks:
   - hooks/publish_scheduler.py
@@ -42,6 +53,7 @@ exclude_docs: |
   01-praxisphase/_template/
   02-theoriephase/_templates/
   00-projektsteuerung/stundenplan.md
+  02-theoriephase/termin-07-twincat-sps/
 
 extra_css:
   - stylesheets/extra.css

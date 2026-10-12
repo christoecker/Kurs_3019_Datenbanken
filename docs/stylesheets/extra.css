@@ -1,3 +1,19 @@
+/* Farbschema (helles Schema, mkdocs.yml: palette primary/accent "custom"):
+   Kopfzeile + Reiterzeile in Petrol-Blau, Akzentfarbe fuer Links beim Hover. */
+:root {
+  --md-primary-fg-color: #009BBB;
+  --md-primary-fg-color--light: #26B1CF;
+  --md-primary-fg-color--dark: #007A94;
+  --md-accent-fg-color: #00B4D8;
+  --md-accent-fg-color--transparent: #00B4D81A;
+}
+
+/* Hauptmenue (navigation.tabs): Reiter mittig statt linksbuendig. */
+.md-tabs__list {
+  justify-content: center;
+}
+
+
 /* Ausrichtung von umgebrochenem Text bei Quiz-Antworten:
    Checkbox/Radio-Button und Text sollen nebeneinander stehen, umgebrochener
    Text soll an der ersten Zeile ausgerichtet sein (nicht unter der Checkbox). */
