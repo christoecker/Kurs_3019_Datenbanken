@@ -21,6 +21,29 @@ und zu verantworten.
 
 Das ersetzt das frühere Konzept eines wachsenden Querschnittsprojekts.
 
+## Ausrichtung ab 2026-10-12: mehr KI, Ziel Verständnis
+
+KI-Nutzung bekommt im Kurs mehr Raum als ursprünglich geplant — bewusst
+**ohne** eigenen Themenblock. Hintergrund: KI erzeugt Code (SQL) schnell
+und meist syntaktisch korrekt; knapp wird deshalb die Fähigkeit, Ergebnisse
+zu *verstehen, zu prüfen und zu verantworten*. Konsequenzen:
+
+- Einfache SQL-Abfragen werden weiterhin händisch geschrieben (Zweck:
+  Verständnis aufbauen), komplexere Statements entstehen mit KI.
+- Der Schwerpunkt der Aufgaben verschiebt sich vom Schreiben zum
+  **Herleiten, Bewerten und Prüfen** (Formate: Bewertungsaufgabe Typ A/B,
+  Fehlersuche, KI-Aufgabe mit Verifikation, siehe `block.template.md`).
+- Rahmenbedingungen (DSGVO, Betriebs-/Anlagendaten, lokale vs.
+  Cloud-KI) werden als Teilfrage in einzelne KI-Aufgaben integriert,
+  nicht als eigener Block unterrichtet.
+- Verifikationsstrategie, die in den Aufgaben immer wieder angewendet
+  wird: Hand-Herleitung am Testdatensatz (inkl. Randfälle), Fehlerbild-
+  katalog, Ausführungsplan grob lesen, Gegenprobe mit zweiter
+  Formulierung.
+- Die Klausur berücksichtigt keine KI-Nutzung; die Übungen müssen die
+  Bewertungs-Fähigkeit daher so trainieren, dass sie ohne KI abrufbar ist
+  (Bewertungsaufgaben im Klausurformat).
+
 ## Format: Erweiterungsaufgaben
 
 Eine Erweiterungsaufgabe besteht aus:
