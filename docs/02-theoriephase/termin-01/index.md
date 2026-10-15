@@ -6,7 +6,7 @@ thema_termin: "ER-Modell & Transformation"
 workload_minuten: 15
 lernziele:
   - "Ihr könnt die Kernbegriffe des ER-Modells (Entity-Typ, Beziehungstyp, Kardinalität, abhängiger Entity-Typ, Spezialisierung) und die sechs Transformationsregeln ins Relationenmodell aus dem Gedächtnis abrufen."
-bearbeitungsstatus: entworfen
+bearbeitungsstatus: final
 publish_date: 2026-10-12
 ---
 

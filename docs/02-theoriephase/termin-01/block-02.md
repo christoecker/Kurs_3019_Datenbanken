@@ -11,7 +11,7 @@ lernziele:
 musterloesungen_sichtbar: true
 fallstudie: "eLibri (Fortsetzung des ER-Modells aus Block 01)"
 ki_einsatz: stufe_0_ohne
-bearbeitungsstatus: entworfen
+bearbeitungsstatus: final
 publish_date: 2026-10-12
 ---
 
@@ -246,6 +246,15 @@ Das eLibri-Kern-Modell ist damit vollständig ins Relationenmodell
     Relationenmodell nicht erzwingen (Stichwort Erhaltung der
     Informationskapazität, Woche 6). Ein Auftrag ganz ohne Position wäre
     hier also möglich, obwohl das ER-Diagramm das eigentlich ausschließt.
+
+    **Zum Ausprobieren:** Das Relationenmodell liegt auch als Datei für
+    [drawDB](https://drawdb.app) vor — dem Werkzeug, mit dem ihr ab dem
+    nächsten Termin selbst arbeitet. Ihr könnt es dort importieren, euch
+    das Schema ansehen und das Tool schon einmal ausprobieren:
+
+    [⬇ Relationenmodell für drawDB herunterladen (.ddb)](code/uebung-02-elibri-relationenmodell.ddb) —
+    in drawDB über **Datei → Importieren → JSON** in ein neues, leeres
+    Diagramm der Datenbank „MSSQL“ laden.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -355,6 +364,11 @@ zwei optionalen weiteren Aufgaben versuchen (Teil C und Teil D).
     Praxis entweder jede Kopplung als zwei Datensätze speichern (A,B) und
     (B,A), oder man legt eine Konvention fest (z. B. immer die kleinere
     Auftragsnummer in `auftragsnr_eigen`), um Duplikate zu vermeiden.
+
+    [⬇ Relationenmodell mit den Ergänzungen aus Teil A und B für drawDB herunterladen (.ddb)](code/aufg-02-elibri-erweiterung.ddb) —
+    das vollständige eLibri-Schema aus der Übung plus `KREDITKARTE`,
+    `KARTENNUTZUNG` und `VERSANDKOPPLUNG` (Import wie in der Übung; die
+    optionalen Teile C und D sind nicht enthalten).
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---

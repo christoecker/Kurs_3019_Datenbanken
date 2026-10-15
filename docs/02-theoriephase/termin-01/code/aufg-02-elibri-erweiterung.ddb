@@ -1,0 +1,627 @@
+{
+  "author": "Kurs 3019 Datenbanken",
+  "title": "eLibri – Relationenmodell mit Ergänzungen aus Teil A und B",
+  "date": "2026-10-15",
+  "database": "transactsql",
+  "tables": [
+    {
+      "id": 0,
+      "name": "KUNDE",
+      "x": 380,
+      "y": 40,
+      "fields": [
+        {
+          "id": "0_0",
+          "name": "kundennr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "0_1",
+          "name": "anschrift",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 100
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 1,
+      "name": "HAENDLER",
+      "x": 200,
+      "y": 260,
+      "fields": [
+        {
+          "id": "1_0",
+          "name": "kundennr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "1_1",
+          "name": "unternehmensname",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "1_2",
+          "name": "zahlungsziel_tage",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 2,
+      "name": "PRIVATKUNDE",
+      "x": 460,
+      "y": 260,
+      "fields": [
+        {
+          "id": "2_0",
+          "name": "kundennr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "2_1",
+          "name": "vorname",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "2_2",
+          "name": "nachname",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 3,
+      "name": "AUFTRAG",
+      "x": 720,
+      "y": 40,
+      "fields": [
+        {
+          "id": "3_0",
+          "name": "auftragsnr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "3_1",
+          "name": "kundennr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "3_2",
+          "name": "eingangsdatum",
+          "type": "DATE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 4,
+      "name": "AUFTRAGSPOSITION",
+      "x": 1060,
+      "y": 40,
+      "fields": [
+        {
+          "id": "4_0",
+          "name": "auftragsnr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "4_1",
+          "name": "positionsnr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "4_2",
+          "name": "artikelnr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "4_3",
+          "name": "bestellmenge",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "4_4",
+          "name": "lieferstatus",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 20
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 5,
+      "name": "BUCH",
+      "x": 1060,
+      "y": 360,
+      "fields": [
+        {
+          "id": "5_0",
+          "name": "artikelnr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "5_1",
+          "name": "bezeichnung",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "5_2",
+          "name": "preis",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "10,2"
+        },
+        {
+          "id": "5_3",
+          "name": "lagerbestand",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 6,
+      "name": "KREDITKARTE",
+      "x": 780,
+      "y": 560,
+      "fields": [
+        {
+          "id": "6_0",
+          "name": "kartennr",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "6_1",
+          "name": "unternehmen",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "6_2",
+          "name": "ablaufdatum",
+          "type": "DATE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 7,
+      "name": "KARTENNUTZUNG",
+      "x": 460,
+      "y": 520,
+      "fields": [
+        {
+          "id": "7_0",
+          "name": "kundennr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "7_1",
+          "name": "kartennr",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 8,
+      "name": "VERSANDKOPPLUNG",
+      "x": 720,
+      "y": 300,
+      "fields": [
+        {
+          "id": "8_0",
+          "name": "auftragsnr_eigen",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "8_1",
+          "name": "auftragsnr_mitversendet",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r0",
+      "name": "fk_HAENDLER_kundennr_KUNDE",
+      "startTableId": 1,
+      "startFieldId": "1_0",
+      "endTableId": 0,
+      "endFieldId": "0_0",
+      "fields": [
+        {
+          "startFieldId": "1_0",
+          "endFieldId": "0_0"
+        }
+      ],
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r1",
+      "name": "fk_PRIVATKUNDE_kundennr_KUNDE",
+      "startTableId": 2,
+      "startFieldId": "2_0",
+      "endTableId": 0,
+      "endFieldId": "0_0",
+      "fields": [
+        {
+          "startFieldId": "2_0",
+          "endFieldId": "0_0"
+        }
+      ],
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r2",
+      "name": "fk_AUFTRAG_kundennr_KUNDE",
+      "startTableId": 3,
+      "startFieldId": "3_1",
+      "endTableId": 0,
+      "endFieldId": "0_0",
+      "fields": [
+        {
+          "startFieldId": "3_1",
+          "endFieldId": "0_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r3",
+      "name": "fk_AUFTRAGSPOSITION_auftragsnr_AUFTRAG",
+      "startTableId": 4,
+      "startFieldId": "4_0",
+      "endTableId": 3,
+      "endFieldId": "3_0",
+      "fields": [
+        {
+          "startFieldId": "4_0",
+          "endFieldId": "3_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r4",
+      "name": "fk_AUFTRAGSPOSITION_artikelnr_BUCH",
+      "startTableId": 4,
+      "startFieldId": "4_2",
+      "endTableId": 5,
+      "endFieldId": "5_0",
+      "fields": [
+        {
+          "startFieldId": "4_2",
+          "endFieldId": "5_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r5",
+      "name": "fk_KARTENNUTZUNG_kundennr_PRIVATKUNDE",
+      "startTableId": 7,
+      "startFieldId": "7_0",
+      "endTableId": 2,
+      "endFieldId": "2_0",
+      "fields": [
+        {
+          "startFieldId": "7_0",
+          "endFieldId": "2_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r6",
+      "name": "fk_KARTENNUTZUNG_kartennr_KREDITKARTE",
+      "startTableId": 7,
+      "startFieldId": "7_1",
+      "endTableId": 6,
+      "endFieldId": "6_0",
+      "fields": [
+        {
+          "startFieldId": "7_1",
+          "endFieldId": "6_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r7",
+      "name": "fk_VERSANDKOPPLUNG_auftragsnr_eigen_AUFTRAG",
+      "startTableId": 8,
+      "startFieldId": "8_0",
+      "endTableId": 3,
+      "endFieldId": "3_0",
+      "fields": [
+        {
+          "startFieldId": "8_0",
+          "endFieldId": "3_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r8",
+      "name": "fk_VERSANDKOPPLUNG_auftragsnr_mitversendet_AUFTRAG",
+      "startTableId": 8,
+      "startFieldId": "8_1",
+      "endTableId": 3,
+      "endFieldId": "3_0",
+      "fields": [
+        {
+          "startFieldId": "8_1",
+          "endFieldId": "3_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "types": [],
+  "enums": []
+}

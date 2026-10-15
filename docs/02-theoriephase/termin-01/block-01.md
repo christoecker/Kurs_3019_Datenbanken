@@ -11,7 +11,7 @@ lernziele:
 musterloesungen_sichtbar: true
 fallstudie: "eLibri (Lehrbrief-Projektaufgabe 3.5.2)"
 ki_einsatz: stufe_0_ohne
-bearbeitungsstatus: entworfen
+bearbeitungsstatus: final
 publish_date: 2026-10-12
 ---
 
