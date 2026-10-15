@@ -60,7 +60,8 @@ extra_css:
 
 nav:
   - Start: index.md
-  - Glossar: glossar.md
+  - Info:
+      - Glossar: glossar.md
   - Theoriephase:
       - "Termin 1":
           - 02-theoriephase/termin-01/index.md

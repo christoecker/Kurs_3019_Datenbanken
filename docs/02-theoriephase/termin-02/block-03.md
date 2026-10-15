@@ -43,7 +43,7 @@ publish_date: 2026-10-19
 
 # Normalisierung anwenden (27.10.2026)
 
-## Normalisierung anwenden { .modus-uebung }
+## Übung { .modus-uebung }
 
 ### Worum geht es?
 
@@ -368,7 +368,7 @@ Diskutiert: Ist das ein Normalform-Verstoß? Ist es sinnvoll die Druckdifferenz 
 
 ---
 
-## Normalisierung anwenden { .modus-selbststudium }
+## Betreutes Selbststudium { .modus-selbststudium }
 
 ### Worum geht es?
 

@@ -108,7 +108,7 @@ Diagramm-Tool ist nicht nötig.
     graph LR
     PRUEFMITTELART["<div style='text-align:left; font-size: 0.6rem;'><b>PRÜFMITTELART</b><hr/>artnr : int (PK)<br/>artbezeichnung : string<br/>kalibrierintervall_monate : int</div>"]
     PRUEFMITTEL["<div style='text-align:left; font-size: 0.6rem;'><b>PRÜFMITTEL</b><hr/>prüfmittelnr : int (PK)<br/>bezeichnung : string<br/>messbereich : string</div>"]
-    KALIBRIERUNG["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>KALIBRIERUNG</b><hr/><u>kalibriernr</u> : int (lokal)<br/>datum : date<br/>ergebnis : string<br/>labornr : int<br/>laborname : string<br/>laboradresse : string</div>"]
+    KALIBRIERUNG["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(0, 180, 216); background: rgba(0, 180, 216, 0.1); padding: 8px;'><b>KALIBRIERUNG</b><hr/><u>kalibriernr</u> : int (lokal)<br/>datum : date<br/>ergebnis : string<br/>labornr : int<br/>laborname : string<br/>laboradresse : string</div>"]
     style KALIBRIERUNG fill:transparent,stroke:none
     gehoertzu{{gehört_zu}}
     hat{{"<u>hat</u>"}}

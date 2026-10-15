@@ -91,7 +91,7 @@ davon abhängige Entity-Typ `AUFTRAGSPOSITION` (lokales Attribut
 %%{init: {'flowchart': {'padding': 5}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
 graph LR
 FERTIGUNGSAUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>FERTIGUNGSAUFTRAG</b><hr/>auftragsnr : int (PK)<br/>starttermin : date</div>"]
-AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>produktnr : int<br/>menge : int</div>"]
+AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(0, 180, 216); background: rgba(0, 180, 216, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>produktnr : int<br/>menge : int</div>"]
 style AUFTRAGSPOSITION fill:transparent,stroke:none
 umfasst{{"<u>umfasst</u>"}}
 FERTIGUNGSAUFTRAG -- "1" --- umfasst

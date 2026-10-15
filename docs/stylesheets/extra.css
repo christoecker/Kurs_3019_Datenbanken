@@ -84,11 +84,13 @@
 
 
 /* Modus-Kennzeichnung an den beiden Hauptüberschriften eines
-   Theoriephase-Blocks ("## Übung: ..." / "## Betreutes Selbststudium:
-   ..."), per attr_list-Klasse gesetzt. Macht den Wechsel von "jetzt
-   gemeinsam" zu "jetzt eigenständig" auf einen Blick sichtbar - der
-   horizontale Trennstrich zwischen beiden Abschnitten bleibt zusätzlich
-   bestehen. */
+   Theoriephase-Blocks ("## Übung" / "## Betreutes Selbststudium"), per
+   attr_list-Klasse gesetzt. Die Überschrift selbst trägt nur den
+   Modus-Namen; das farbig unterlegte Icon davor kommt per ::before.
+   Macht den Wechsel von "jetzt gemeinsam" zu "jetzt eigenständig" auf
+   einen Blick sichtbar - der horizontale Trennstrich zwischen beiden
+   Abschnitten bleibt zusätzlich bestehen. Übung nutzt die Akzentfarbe
+   des Themes (wie die Mermaid-Knoten), Selbststudium Orange. */
 .md-typeset h2.modus-uebung,
 .md-typeset h2.modus-selbststudium {
   display: flex;
@@ -100,8 +102,8 @@
 }
 
 .md-typeset h2.modus-uebung {
-  background-color: rgba(82, 108, 254, 0.08);
-  border-left: 4px solid rgb(82, 108, 254);
+  background-color: var(--md-accent-fg-color--transparent);
+  border-left: 4px solid var(--md-accent-fg-color);
 }
 
 .md-typeset h2.modus-selbststudium {
@@ -112,22 +114,20 @@
 .md-typeset h2.modus-uebung::before,
 .md-typeset h2.modus-selbststudium::before {
   flex-shrink: 0;
-  font-size: 0.55em;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.3em 0.7em;
+  font-size: 0.7em;
+  line-height: 1;
+  padding: 0.35em 0.55em;
   border-radius: 1em;
   color: rgb(255, 255, 255);
 }
 
 .md-typeset h2.modus-uebung::before {
-  content: "👥 Übung";
-  background-color: rgb(82, 108, 254);
+  content: "👥";
+  background-color: var(--md-accent-fg-color);
 }
 
 .md-typeset h2.modus-selbststudium::before {
-  content: "✏️ Betreutes Selbststudium";
+  content: "✏️";
   background-color: rgb(255, 152, 0);
 }
 
@@ -137,12 +137,13 @@
    musterloesung-hervorgehoben "Lösung""-Admonition (siehe
    block.template.md). Die Zusatzklasse hebt sie zusaetzlich per sehr
    hellem Hintergrund vom umgebenden Aufgabentext ab - staerkere visuelle
-   Absetzung als der graue "quote"-Rahmen allein. Theme-aware ueber die
-   Material-Variable statt fixer Hex-Farbe, damit es in Hell- und
-   Dunkelmodus funktioniert. */
+   Absetzung als der graue "quote"-Rahmen allein. Der Grauton des
+   Inhalts ist bewusst nur eine Spur (1,2 % Schwarz) - die Variante mit
+   --md-default-fg-color--lightest (7 %) wirkte zu dunkel. Die Titelleiste
+   behält die Standard-Tönung des "quote"-Typs (grau). */
 .md-typeset .admonition.musterloesung-hervorgehoben,
 .md-typeset details.musterloesung-hervorgehoben {
-  background-color: var(--md-default-fg-color--lightest);
+  background-color: rgba(0, 0, 0, 0.012);
   /* Material setzt fuer Admonitions standardmaessig font-size: .64rem,
      kleiner als der umgebende Fliesstext (.md-typeset: .8rem). "inherit"
      uebernimmt stattdessen die tatsaechliche, bereits fuer die aktuelle
