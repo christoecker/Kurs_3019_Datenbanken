@@ -37,10 +37,10 @@
         <mxCell id="c7" value="N" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="hat" target="auftrag">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="pos" value="&lt;b&gt;AUFTRAGSPOSITION&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;u&gt;positionsnr&lt;/u&gt; : int (lokal)&lt;br/&gt;bestellmenge : int&lt;br/&gt;lieferstatus : string" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;shape=ext;double=1;strokeColor=#00B4D8;strokeWidth=1;fillColor=#E6F8FB;" vertex="1" parent="1">
+        <mxCell id="pos" value="&lt;b&gt;AUFTRAGSPOSITION&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;u&gt;positionsnr&lt;/u&gt; : int (lokal)&lt;br/&gt;bestellmenge : int&lt;br/&gt;lieferstatus : string" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;shape=ext;double=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="1050.0" y="34.0" width="210" height="94" as="geometry" />
         </mxCell>
-        <mxCell id="umfasst" value="&lt;u&gt;umfasst&lt;/u&gt;" style="shape=rhombus;double=1;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;fontSize=12;strokeColor=#00B4D8;fillColor=#E6F8FB;" vertex="1" parent="1">
+        <mxCell id="umfasst" value="&lt;u&gt;umfasst&lt;/u&gt;" style="shape=rhombus;double=1;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;fontSize=12;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="870.0" y="51.0" width="110" height="60" as="geometry" />
         </mxCell>
         <mxCell id="c8" value="1" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="auftrag" target="umfasst">
@@ -75,7 +75,7 @@
         <mxCell id="gv" value="geschrieben_von" style="rhombus;whiteSpace=wrap;html=1;fontSize=12;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="425.0" y="51.0" width="150" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="autor" value="&lt;b&gt;AUTOR&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;autorennr : int (PK)&lt;br/&gt;name : string&lt;br/&gt;geburtsjahr : int" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#D6B656;fillColor=#FFF2CC;" vertex="1" parent="1">
+        <mxCell id="autor" value="&lt;b&gt;AUTOR&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;autorennr : int (PK)&lt;br/&gt;name : string&lt;br/&gt;geburtsjahr : int" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="670.0" y="34.0" width="200" height="94" as="geometry" />
         </mxCell>
         <mxCell id="c3" value="M" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="buch" target="gv">

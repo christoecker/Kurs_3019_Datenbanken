@@ -238,6 +238,8 @@ Entity-Typ).
     - `AUFTRAGSPOSITION`–`BUCH`: aus Sicht `AUFTRAGSPOSITION` **1..1**
       (jede Position genau ein Buch), aus Sicht `BUCH` **0..\*** (ein Buch
       kann in beliebig vielen Positionen bestellt sein, muss aber nicht).
+
+    [🔗 Kern-Modell in draw.io öffnen](https://app.diagrams.net/?page-id=bseP2d33L5JswQIz3_y5#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Fuebung-01-elibri-kern-modell.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -270,19 +272,8 @@ es "nur" ein Attribut?
     Seiten können hier mehrere Partner haben. Weiterführend: Falls die
     Reihenfolge der Autor:innen auf dem Cover wichtig ist, könnte die
     Beziehung selbst ein Beziehungsattribut `reihenfolge` bekommen.
-<!-- MUSTERLOESUNG-ENDE -->
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Ergebnis der Übung zum Download"
-    Das Ergebnis der Übung liegt als **eine** draw.io-Datei mit zwei
-    Tabellenblättern vor — als Ausgangspunkt für das betreute
-    Selbststudium und zum Nachbauen:
-
-    [🔗 Kern-Modell in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=bseP2d33L5JswQIz3_y5#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Fuebung-01-elibri-kern-modell.drawio)
-
-    [🔗 Erweiterung um Autor:innen in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=OjjynIg3yCyPwdFJOA26#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Fuebung-01-elibri-kern-modell.drawio)
-
-    [⬇ Gesamte .drawio-Datei herunterladen](code/uebung-01-elibri-kern-modell.drawio)
+    [🔗 Erweiterung um Autor:innen in draw.io öffnen](https://app.diagrams.net/?page-id=OjjynIg3yCyPwdFJOA26#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Fuebung-01-elibri-kern-modell.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -357,7 +348,6 @@ weiteren Erweiterungen versuchen (Teil C und Teil D).
     `KREDITKARTE` **1..\*** (jede Karte gehört mindestens einem Kunden,
     kann sich aber mehrere Kunden teilen).
 
-    [🔗 Musterlösung Teil A in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=Tpbz7UZFDHpYYbl4oV3A#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Faufg-01-elibri-erweiterung.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -396,14 +386,7 @@ weiteren Erweiterungen versuchen (Teil C und Teil D).
     Auftrag muss nicht mit anderen gekoppelt sein, kann aber mit beliebig
     vielen zusammen verschickt werden).
 
-    [🔗 Musterlösung Teil B in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=CIyQWUfkGvtdVe2YO9Ly#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Faufg-01-elibri-erweiterung.drawio)
-
-    ---
-
-    Die Teilaufgaben A und B liegen als Tabellenblätter in **einer** Datei
-    (die optionalen Teile C und D sind darin nicht enthalten):
-
-    [⬇ Gesamte .drawio-Datei mit Teil A und B herunterladen](code/aufg-01-elibri-erweiterung.drawio)
+    [🔗 Musterlösung mit den Ergänzungen aus Teil A und B öffnen](https://app.diagrams.net/#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Faufg-01-elibri-erweiterung.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
