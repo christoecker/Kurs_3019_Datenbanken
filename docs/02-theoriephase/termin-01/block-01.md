@@ -239,7 +239,7 @@ Entity-Typ).
       (jede Position genau ein Buch), aus Sicht `BUCH` **0..\*** (ein Buch
       kann in beliebig vielen Positionen bestellt sein, muss aber nicht).
 
-    [🔗 Kern-Modell in draw.io öffnen](https://app.diagrams.net/?page-id=bseP2d33L5JswQIz3_y5#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Fuebung-01-elibri-kern-modell.drawio)
+    [🔗 Modell in draw.io öffnen](https://app.diagrams.net/?page-id=bseP2d33L5JswQIz3_y5#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Fuebung-01-elibri-kern-modell.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
