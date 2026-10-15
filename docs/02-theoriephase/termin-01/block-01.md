@@ -17,7 +17,7 @@ publish_date: 2026-10-12
 
 # ER-Modell aufstellen (20.10.2026)
 
-## ER-Modell aufstellen { .modus-uebung }
+## Übung { .modus-uebung }
 
 ### Worum geht es?
 
@@ -158,7 +158,7 @@ wie bei jedem abhängigen Entity-Typ.
     %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
     AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auftragsnr : int (PK)<br/>eingangsdatum : date</div>"]
-    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(0, 180, 216); background: rgba(0, 180, 216, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
     style AUFTRAGSPOSITION fill:transparent,stroke:none
     umfasst{{"<u>umfasst</u>"}}
     AUFTRAG -- "1" --- umfasst
@@ -180,7 +180,7 @@ kein Objekt mit eigener Existenz.
     ```mermaid
     %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
-    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(0, 180, 216); background: rgba(0, 180, 216, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
     style AUFTRAGSPOSITION fill:transparent,stroke:none
     BUCH["<div style='text-align:left; font-size: 0.6rem;'><b>BUCH</b><hr/>artikelnr : int (PK)<br/>bezeichnung : string<br/>preis : decimal<br/>lagerbestand : int</div>"]
     bestellt{{bestellt}}
@@ -214,7 +214,7 @@ Entity-Typ).
     hat{{hat}}
     KUNDE -- "1" --- hat
     hat -- "N" --- AUFTRAG
-    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(0, 180, 216); background: rgba(0, 180, 216, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
     style AUFTRAGSPOSITION fill:transparent,stroke:none
     umfasst{{"<u>umfasst</u>"}}
     AUFTRAG -- "1" --- umfasst
@@ -272,9 +272,22 @@ es "nur" ein Attribut?
     Beziehung selbst ein Beziehungsattribut `reihenfolge` bekommen.
 <!-- MUSTERLOESUNG-ENDE -->
 
+<!-- MUSTERLOESUNG-START -->
+!!! quote musterloesung-hervorgehoben "Ergebnis der Übung zum Download"
+    Das Ergebnis der Übung liegt als **eine** draw.io-Datei mit zwei
+    Tabellenblättern vor — als Ausgangspunkt für das betreute
+    Selbststudium und zum Nachbauen:
+
+    [🔗 Kern-Modell in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=bseP2d33L5JswQIz3_y5#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Fuebung-01-elibri-kern-modell.drawio)
+
+    [🔗 Erweiterung um Autor:innen in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=OjjynIg3yCyPwdFJOA26#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Fuebung-01-elibri-kern-modell.drawio)
+
+    [⬇ Gesamte .drawio-Datei herunterladen](code/uebung-01-elibri-kern-modell.drawio)
+<!-- MUSTERLOESUNG-ENDE -->
+
 ---
 
-## ER-Modell aufstellen { .modus-selbststudium }
+## Betreutes Selbststudium { .modus-selbststudium }
 
 ### Worum geht es?
 
@@ -343,6 +356,8 @@ weiteren Erweiterungen versuchen (Teil C und Teil D).
     (mindestens eine Karte laut Aufgabenstellung, ggf. mehrere), aus Sicht
     `KREDITKARTE` **1..\*** (jede Karte gehört mindestens einem Kunden,
     kann sich aber mehrere Kunden teilen).
+
+    [🔗 Musterlösung Teil A in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=Tpbz7UZFDHpYYbl4oV3A#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Faufg-01-elibri-erweiterung.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -380,6 +395,15 @@ weiteren Erweiterungen versuchen (Teil C und Teil D).
     Kardinalitäten: Chen M:N. UML: aus beiden Sichten **0..\*** (ein
     Auftrag muss nicht mit anderen gekoppelt sein, kann aber mit beliebig
     vielen zusammen verschickt werden).
+
+    [🔗 Musterlösung Teil B in draw.io öffnen (als Kopie)](https://app.diagrams.net/?page-id=CIyQWUfkGvtdVe2YO9Ly#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Faufg-01-elibri-erweiterung.drawio)
+
+    ---
+
+    Die Teilaufgaben A und B liegen als Tabellenblätter in **einer** Datei
+    (die optionalen Teile C und D sind darin nicht enthalten):
+
+    [⬇ Gesamte .drawio-Datei mit Teil A und B herunterladen](code/aufg-01-elibri-erweiterung.drawio)
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -425,7 +449,7 @@ weiteren Erweiterungen versuchen (Teil C und Teil D).
     ```mermaid
     %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
-    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(0, 180, 216); background: rgba(0, 180, 216, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
     style AUFTRAGSPOSITION fill:transparent,stroke:none
     BEWERTUNG["<div style='text-align:left; font-size: 0.6rem;'><b>BEWERTUNG</b><hr/>bewertungsnr : int (PK)<br/>sterne : int<br/>kommentar : string<br/>datum : date</div>"]
     bewertet_mit{{bewertet_mit}}
@@ -484,7 +508,7 @@ weiteren Erweiterungen versuchen (Teil C und Teil D).
     LAGERSTANDORT["<div style='text-align:left; font-size: 0.6rem;'><b>LAGERSTANDORT</b><hr/>standortnr : int (PK)<br/>ort : string</div>"]
     umfasst{{"<u>umfasst</u>"}}
     kommissioniert{{"<u>kommissioniert</u>"}}
-    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+    AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(0, 180, 216); background: rgba(0, 180, 216, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
     style AUFTRAGSPOSITION fill:transparent,stroke:none
     AUFTRAG -- "1" --- umfasst
     umfasst -- "N" --- AUFTRAGSPOSITION

@@ -81,7 +81,13 @@ Praxisphase Woche 4–6, Lehrbrief Kap. 4–5:
       jeden Subtyp; jede Subtyp-Relation erhält den Supertyp-Schlüssel
       als Fremd- **und** Primärschlüssel.
 - Empfohlene Reihenfolge beim Transformieren eines vollständigen
-  ER-Diagramms: zuerst Spezialisierungshierarchien, dann abhängige
-  Entity-Typen, zuletzt die (normalen) Beziehungstypen — jeweils erst,
-  nachdem die daran beteiligten Entity-Typen schon als Relation
-  existieren (Kap. 5.5, S. 49).
+  ER-Diagramms (Kap. 5.5, S. 49) — eine Empfehlung für den Überblick
+  bei großen Diagrammen, keine Pflicht:
+    1. **Einfache Entity-Typen** (Regel 1).
+    2. **Spezialisierungshierarchien**, vom Supertyp nach unten
+       (Regel 6).
+    3. **Abhängige Entity-Typen** (Regel 5).
+    4. **Beziehungstypen**, erst nachdem alle Entity-Typen als Relation
+       existieren: zuerst N:M (Regel 2), dann 1:N (Regel 3), zuletzt
+       1:1 (Regel 4). Dabei müssen zuvor festgelegte Fremdschlüssel
+       gegebenenfalls angepasst werden.

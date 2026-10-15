@@ -17,7 +17,7 @@ publish_date: 2026-10-12
 
 # Transformation ins Relationenmodell (20.10.2026)
 
-## Transformation ins Relationenmodell { .modus-uebung }
+## Übung { .modus-uebung }
 
 ### Worum geht es?
 
@@ -75,9 +75,13 @@ aller Regeln findet ihr zum Nachschlagen auf der
 
     <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
-        Zuerst Spezialisierungshierarchien, dann abhängige Entity-Typen,
-        zuletzt die (normalen) Beziehungstypen — jeweils erst, nachdem die
-        daran beteiligten Entity-Typen schon als Relation existieren.
+        Zuerst die einfachen Entity-Typen (Regel 1), dann die
+        Spezialisierungshierarchien (vom Supertyp nach unten), dann die
+        abhängigen Entity-Typen (Regel 5) und zuletzt die Beziehungstypen —
+        erst N:M, dann 1:N, zuletzt 1:1. Beziehungen werden dabei erst
+        abgebildet, wenn alle beteiligten Entity-Typen schon als Relation
+        existieren. Die Reihenfolge ist eine Empfehlung, die vor allem bei
+        großen Diagrammen den Überblick sichert — keine Pflicht.
     <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -102,7 +106,7 @@ AUFTRAG["<div style='text-align:left; font-size: 0.6rem;'><b>AUFTRAG</b><hr/>auf
 hat{{hat}}
 KUNDE -- "1" --- hat
 hat -- "N" --- AUFTRAG
-AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(82, 108, 254); background: rgba(82, 108, 254, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
+AUFTRAGSPOSITION["<div style='text-align:left; font-size: 0.6rem; border: 3px double rgb(0, 180, 216); background: rgba(0, 180, 216, 0.1); padding: 8px;'><b>AUFTRAGSPOSITION</b><hr/><u>positionsnr</u> : int (lokal)<br/>bestellmenge : int<br/>lieferstatus : string</div>"]
 style AUFTRAGSPOSITION fill:transparent,stroke:none
 umfasst{{"<u>umfasst</u>"}}
 AUFTRAG -- "1" --- umfasst
@@ -113,10 +117,12 @@ AUFTRAGSPOSITION -- "N" --- bestellt
 bestellt -- "1" --- BUCH
 ```
 
-Wir gehen jetzt genau in der Reihenfolge vor, die ihr gerade in
-Rückblick-Frage 4 hergeleitet habt: erst die Spezialisierung, dann die
-einfachen Entity-Typen, dann der abhängige Entity-Typ, zuletzt die
-1:N-Beziehungen.
+Die Reihenfolge aus Rückblick-Frage 4 ist ein Leitfaden für große
+ER-Diagramme. Bei diesem kleinen Modell wählen wir eine Variante, bei
+der jede Relation nur ein einziges Mal geschrieben wird: erst die
+Spezialisierung, dann die einfachen Entity-Typen, zuletzt der abhängige
+Entity-Typ. Beziehungen arbeiten wir jeweils sofort als Fremdschlüssel
+ein, sobald die Relation, auf die sie verweisen, schon existiert.
 
 ---
 
@@ -163,18 +169,23 @@ Fremdschlüssel gleichzeitig der Primärschlüssel der Subtyp-Relation.
     da jeder Kunde entweder Händler oder Privatkunde ist).
 <!-- MUSTERLOESUNG-ENDE -->
 
-#### Einfache Entity-Typen transformieren (Regel 1)
+#### Einfache Entity-Typen transformieren (Regel 1 und 3)
 
 `AUFTRAG` und `BUCH` haben beide einen eigenen Schlüssel und keine
-Besonderheiten — sie werden ganz normal nach Regel 1 transformiert.
+Besonderheiten — sie werden nach Regel 1 transformiert. `AUFTRAG`
+steht außerdem auf der N-Seite der Beziehung `hat`. Da die Relation
+`KUNDE` bereits existiert, kann der Fremdschlüssel gleich mit
+eingearbeitet werden (Regel 3) — die Relation muss später nicht noch
+einmal angefasst werden.
 
 <!-- MUSTERLOESUNG-START -->
 !!! quote musterloesung-hervorgehoben "Lösung"
-    **:octicons-table-16: Relation `AUFTRAG`** (vorläufig, ohne Fremdschlüssel)
+    **:octicons-table-16: Relation `AUFTRAG`**
 
     | Schlüssel | Attribut | Wertebereich | optional? |
     |---|---|---|---|
     | PK | auftragsnr | int | nein |
+    | FK | kundennr | int | nein |
     | – | eingangsdatum | date | nein |
 
     **:octicons-table-16: Relation `BUCH`**
@@ -186,53 +197,23 @@ Besonderheiten — sie werden ganz normal nach Regel 1 transformiert.
     | – | preis | decimal | nein |
     | – | lagerbestand | int | nein |
 
-    `AUFTRAG` bekommt seinen Fremdschlüssel zu `KUNDE` erst im
-    übernächsten Schritt (1:N-Beziehungen) — das ist Teil von Regel 3, nicht
-    von Regel 1.
+    Der Fremdschlüssel `kundennr` ist **nicht optional**: Laut
+    eLibri-Szenario gehört jeder Auftrag zu genau einem Kunden —
+    verpflichtende Teilnahme.
 <!-- MUSTERLOESUNG-ENDE -->
 
-#### Abhängigen Entity-Typ transformieren (Regel 5)
+#### Abhängigen Entity-Typ transformieren (Regel 5 und 3)
 
 `AUFTRAGSPOSITION` hat keinen eigenen Schlüssel — `positionsnr` ist nur
 innerhalb eines Auftrags eindeutig. Nach Regel 5 verschmilzt
-`AUFTRAGSPOSITION` mit der identifizierenden Beziehung `umfasst`.
+`AUFTRAGSPOSITION` mit der identifizierenden Beziehung `umfasst` und
+erhält den Schlüssel von `AUFTRAG` als Fremdschlüssel. Auch die
+Relation `BUCH` existiert jetzt bereits, sodass die Beziehung
+`bestellt` direkt mit eingearbeitet werden kann (Regel 3).
 
 <!-- MUSTERLOESUNG-START -->
 !!! quote musterloesung-hervorgehoben "Lösung"
-    **:octicons-table-16: Relation `AUFTRAGSPOSITION`** (vorläufig, ohne Fremdschlüssel zu `BUCH`)
-
-    | Schlüssel | Attribut | Wertebereich | optional? |
-    |---|---|---|---|
-    | PK, FK | auftragsnr | int | nein |
-    | PK | positionsnr | int | nein |
-    | – | bestellmenge | int | nein |
-    | – | lieferstatus | string | nein |
-
-    Der Primärschlüssel setzt sich aus `positionsnr` (lokal) und dem
-    Fremdschlüssel `auftragsnr` (referenziert `AUFTRAG`) zusammen — erst
-    diese Kombination identifiziert eine Auftragsposition eindeutig, genau
-    wie beim Fertigungsauftrag-Beispiel aus Woche 6.
-<!-- MUSTERLOESUNG-ENDE -->
-
-#### 1:N-Beziehungen einarbeiten (Regel 3)
-
-Jetzt sind alle beteiligten Entity-Typen bereits Relationen — die
-beiden 1:N-Beziehungen können nach Regel 3 eingearbeitet werden:
-`AUFTRAG` bekommt einen Fremdschlüssel zu `KUNDE` (Beziehung `hat`),
-`AUFTRAGSPOSITION` zusätzlich einen Fremdschlüssel zu `BUCH`
-(Beziehung `bestellt`).
-
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
-    **:octicons-table-16: Relation `AUFTRAG`** (vollständig)
-
-    | Schlüssel | Attribut | Wertebereich | optional? |
-    |---|---|---|---|
-    | PK | auftragsnr | int | nein |
-    | FK | kundennr | int | nein |
-    | – | eingangsdatum | date | nein |
-
-    **:octicons-table-16: Relation `AUFTRAGSPOSITION`** (vollständig)
+    **:octicons-table-16: Relation `AUFTRAGSPOSITION`**
 
     | Schlüssel | Attribut | Wertebereich | optional? |
     |---|---|---|---|
@@ -242,10 +223,12 @@ beiden 1:N-Beziehungen können nach Regel 3 eingearbeitet werden:
     | – | bestellmenge | int | nein |
     | – | lieferstatus | string | nein |
 
-    Beide neuen Fremdschlüssel sind **nicht optional**: Laut eLibri-
-    Szenario gehört jeder Auftrag zu genau einem Kunden, und jede
-    Auftragsposition bezieht sich auf genau ein Buch — beides
-    verpflichtende Teilnahmen.
+    Der Primärschlüssel setzt sich aus `positionsnr` (lokal) und dem
+    Fremdschlüssel `auftragsnr` (referenziert `AUFTRAG`) zusammen — erst
+    diese Kombination identifiziert eine Auftragsposition eindeutig, genau
+    wie beim Fertigungsauftrag-Beispiel aus Woche 6. Der Fremdschlüssel
+    `artikelnr` ist ebenfalls **nicht optional**: Jede Auftragsposition
+    bezieht sich laut Szenario auf genau ein Buch.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -267,7 +250,7 @@ Das eLibri-Kern-Modell ist damit vollständig ins Relationenmodell
 
 ---
 
-## Transformation ins Relationenmodell { .modus-selbststudium }
+## Betreutes Selbststudium { .modus-selbststudium }
 
 ### Worum geht es?
 
