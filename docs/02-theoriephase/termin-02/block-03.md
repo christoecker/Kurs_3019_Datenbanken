@@ -128,7 +128,7 @@ Relation *nicht* vollständig zu normalisieren.
 > vorausschauende Instandhaltung sein. Die Datenhaltung läuft dabei
 > vollständig auf einem **am Kompressor angeschlossenen Industrie-PC**. Erfasst werden minütlich fünf Messgrößen:
 > Eingangs- und Ausgangsdruck, Volumenstrom, Temperatur und
-> Luftfeuchtigkeit — diese Messreihen dienen zur langfristigen Rekonstruktion der Fahrweise und zur Analyse des "Gesundheitszustands" der Maschine..
+> Luftfeuchtigkeit — diese Messreihen dienen zur langfristigen Rekonstruktion der Fahrweise und zur Analyse des "Gesundheitszustands" der Maschine.
 >
 > Einmal täglich läuft ein Analyse-Lauf: Er identifiziert lokale
 > Maxima/Minima der Druckdifferenz, verarbeitet bislang unverarbeitete
@@ -262,9 +262,10 @@ Teil davon?
 
     Wie im Szenario beschrieben, sind `verfahren` und `version`
     gemeinsam UNIQUE — `algorithmus_id` ist trotzdem der gewählte
-    Primärschlüssel, weil `version` allein (wie in der Übung zu PK vs.
-    Unique Key aus Woche 4) nicht eindeutig ist: Zwei unterschiedliche
-    Verfahren könnten zufällig dieselbe Versionsnummer tragen.
+    Primärschlüssel, weil `version` allein (wie in der
+    [Übung zu PK vs. Unique Key aus Woche 4](../../01-praxisphase/woche-04/woche-04.md#aufgabe))
+    nicht eindeutig ist: Zwei unterschiedliche Verfahren könnten
+    zufällig dieselbe Versionsnummer tragen.
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### Dritte Normalform: Grenzwerte prüfen
@@ -379,6 +380,10 @@ als sauber entworfen. Zuerst bringt ihr sie in Ordnung, danach
 erweitert ihr sie um neue Anforderungen des Kunden. Anders als bisher
 geht ihr dabei **direkt ins Relationenmodell**, ohne den Umweg über ein
 ER-Diagramm; euer Schema baut ihr in [drawDB](https://drawdb.app) auf.
+Legt das Diagramm dort mit der Datenbank **MSSQL** an. drawDB speichert
+nur in eurem Browser — sichert euer Ergebnis deshalb am Ende über
+**Datei → Exportieren als → JSON** (oder als SQL über **Datei → SQL
+exportieren**).
 
 !!! abstract "Lernziele"
     - Ihr könnt eine gewachsene, unnormalisierte Bestandstabelle
@@ -450,7 +455,7 @@ Plant für diesen Teil ca. 15 Minuten ein. Diesen Teil bearbeitet ihr
    zweiten und dritten Normalform. Schaut dabei nicht nur auf das
    Relationenschema, sondern auch auf die Beispieldaten.
 2. Überführt die Tabelle in ein sauberes Schema und baut es in drawDB
-   auf.
+   auf (Datenbank **MSSQL**).
 
 <!-- MUSTERLOESUNG-START -->
 ???+ note "Musterlösung Teil A anzeigen"
@@ -517,7 +522,8 @@ Plant für diesen Teil ca. 15 Minuten ein. Diesen Teil bearbeitet ihr
     ist in `REZEPT_PARAMETER` kein Schlüssel), und in der Praxis kämen
     dort später ohnehin weitere Attribute dazu.
 
-    [🔗 Musterlösung Teil A in draw.io öffnen](https://app.diagrams.net/?page-id=kcXyMHQK7twO6rdA3rPs#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
+    [⬇ Musterlösung Teil A für drawDB herunterladen (.ddb)](code/aufg-03-prozessdatenbank-teil-a.ddb) — in drawDB über **Datei → Importieren → JSON** in ein neues, leeres
+    Diagramm der Datenbank „MSSQL“ laden.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -615,7 +621,8 @@ Die Schnüffel GmbH hat dazu Folgendes zusammengestellt:
     | – | einheit | string | nein |
     | – | pruefverfahren | string | nein |
 
-    [🔗 Musterlösung Teil B in draw.io öffnen](https://app.diagrams.net/?page-id=KmU5hiBMG3OvSqviw_yH#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
+    [⬇ Musterlösung Teil B für drawDB herunterladen (.ddb)](code/aufg-03-prozessdatenbank-teil-b.ddb) — enthält das vollständige Schema bis einschließlich Teil B
+    (Import wie bei Teil A).
 <!-- MUSTERLOESUNG-ENDE -->
 
 <!-- NACHTRAG-START -->
@@ -706,13 +713,8 @@ Plant für diesen Teil ca. 20 Minuten ein.
     außerdem die Verknüpfung `CHARGE_EINSATZ` komplett, weil sie in der
     Anforderung nicht ausdrücklich genannt ist.
 
-    [🔗 Musterlösung Teil C in draw.io öffnen](https://app.diagrams.net/?page-id=xPvhkduKNkkRyXKQXQVn#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-02%2Fcode%2Faufg-03-prozessdatenbank.drawio)
-
-    ---
-
-    Alle drei Teilaufgaben liegen als Tabellenblätter in **einer** Datei:
-
-    [⬇ Gesamte .drawio-Datei mit allen Teilaufgaben herunterladen](code/aufg-03-prozessdatenbank.drawio)
+    [⬇ Musterlösung Teil C für drawDB herunterladen (.ddb)](code/aufg-03-prozessdatenbank-teil-c.ddb) — enthält das vollständige Schema bis einschließlich Teil C
+    (Import wie bei Teil A).
 <!-- MUSTERLOESUNG-ENDE -->
 
 <!-- NACHTRAG-ENDE -->
