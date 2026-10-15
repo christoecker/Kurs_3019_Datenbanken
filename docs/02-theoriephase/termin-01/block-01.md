@@ -8,7 +8,7 @@ thema: "ER-Modell aufstellen (Fallbeispiel aus dem Lehrbrief, Live-Modellierung)
 lernziele:
   - "Ihr könnt zu einer neuen, unbekannten Beschreibung einer Anwendungswelt selbstständig ein ER-Modell entwerfen, das Spezialisierung, abhängige Entity-Typen und (rekursive) N:M-Beziehungen korrekt integriert."
   - "Ihr könnt begründen, warum ein Attribut oder eine Beziehung nur bei einem Subtyp und nicht beim gesamten Supertyp modelliert wird."
-musterloesungen_sichtbar: false
+musterloesungen_sichtbar: true
 fallstudie: "eLibri (Lehrbrief-Projektaufgabe 3.5.2)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: entworfen
