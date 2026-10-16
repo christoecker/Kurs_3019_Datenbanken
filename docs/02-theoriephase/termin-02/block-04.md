@@ -9,7 +9,7 @@ lernziele:
   - "Ihr könnt die Relationen eines Relationenschemas selbstständig in T-SQL anlegen (Datenbank, Tabellen, Datentypen, Primär- und Fremdschlüssel) und die Reihenfolge der Anweisungen begründen."
   - "Ihr könnt aus den Regeln einer Anwendungswelt die passenden Constraints (NOT NULL, UNIQUE, CHECK, DEFAULT) ableiten und vorhersagen, welche Datenänderungen die Datenbank daraufhin ablehnt."
   - "Ihr könnt ein (KI-)generiertes Skript zum Anlegen von Tabellen auf Logikfehler prüfen, die der Server nicht meldet, und sie begründet korrigieren."
-musterloesungen_sichtbar: false
+musterloesungen_sichtbar: true
 fallstudie: "Übung: Kompressor-Zustandsüberwachung (Fortsetzung aus der Übung zur Normalisierung); betreutes Selbststudium: Lackproduktion Schnüffel GmbH (Fortsetzung aus Aufgabe 03) - beides eigene MEA-Szenarien"
 ki_einsatz: stufe_2_pair_programmer
 bearbeitungsstatus: entworfen
@@ -23,7 +23,7 @@ publish_date: 2026-10-27
 ### Worum geht es?
 
 Bisher habt ihr Datenbanken **entworfen**: erst als ER-Modell, dann als
-Relationenschema, zuletzt normalisiert. Heute macht ihr den nächsten
+Relationenschema, zuletzt normalisiert. Jetzt macht ihr den nächsten
 Schritt und bringt ein Schema in eine echte Datenbank: Ihr legt
 Datenbank und Tabellen in SQL Server an. In Woche 11 der Praxisphase
 habt ihr solche Skripte schon ausgeführt — heute schreibt ihr sie
@@ -63,14 +63,16 @@ fehlerhafte Daten selbstständig ablehnt.
     Datensätzen ab.
 <!-- MUSTERLOESUNG-ENDE -->
 
-**3. Warum mussten in Woche 11 die `INSERT`-Blöcke in einer bestimmten Reihenfolge stehen?**
+**3. Eine Tabelle `AUFTRAG` hat einen Fremdschlüssel auf die Tabelle `KUNDE`. Was muss gelten, damit ein neuer Datensatz in `AUFTRAG` überhaupt eingetragen werden kann — und was bedeutet das für die Reihenfolge, in der man Daten einträgt?**
 
 <!-- MUSTERLOESUNG-START -->
 ??? note "Musterlösung anzeigen"
-    Wegen der Fremdschlüsselintegrität: Der Datensatz, auf den ein
-    Fremdschlüssel verweist, muss bereits existieren. Also müssen die
-    "referenzierten" Tabellen zuerst befüllt werden, die "verweisenden"
-    danach.
+    Wegen der Fremdschlüsselintegrität muss der Kunde, auf den der
+    Auftrag verweist, bereits in `KUNDE` existieren. Ein Auftrag kann
+    also erst eingetragen werden, wenn die Beziehung zu einem
+    vorhandenen Datensatz der anderen Tabelle hergestellt werden kann.
+    Daten müssen deshalb zuerst in die Tabelle, auf die verwiesen wird
+    (`KUNDE`), und erst danach in die verweisende Tabelle (`AUFTRAG`).
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -78,14 +80,14 @@ fehlerhafte Daten selbstständig ablehnt.
 ### Das Szenario: Kompressor-Datenbank wird real <span class="zeitangabe">ca. 2 Min.</span> { data-toc-label="Das Szenario: Kompressor-Datenbank wird real" }
 
 > Das Datenmodell der Kompressor-Zustandsüberwachung von Pustefix & Co.
-> kennt ihr aus der Normalisierungs-Übung: Auf dem Industrie-PC am
-> Kompressor werden minütlich Messwerte gespeichert, einmal täglich
+> kennt ihr aus der Normalisierungs-Übung: Am Kompressor werden
+> minütlich Messwerte gespeichert, einmal täglich
 > läuft ein Analyse-Lauf, der mit mehreren Auswertealgorithmen
 > Schädigungswerte berechnet und lokale Extremwerte der Druckdifferenz
 > verarbeitet. Dieses Modell besteht aus sechs Relationen:
 > `MESSUNG`, `VERFAHREN`, `ALGORITHMUS`, `ANALYSE_LAUF`, `SCHAEDIGUNG`
-> und `EXTREMWERT`. Heute legt ihr diese sechs Tabellen auf dem
-> Industrie-PC an — in SQL Server.
+> und `EXTREMWERT`. Heute legt ihr diese sechs Tabellen auf eurem
+> eigenen Rechner an — in SQL Server.
 
 ---
 
@@ -155,6 +157,12 @@ minütlichen Messung sinnvoll? Wie genau muss der Zeitstempel sein?
     bei einer minütlichen Messung genügt das. `NOT NULL` steht bei
     jedem Attribut, das im Schema "nicht optional" war; der
     Primärschlüssel `zeitstempel` ist ohnehin nie leer.
+
+    `PRIMARY KEY` direkt hinter dem Attribut ist die übliche
+    Kurzschreibweise. Sie hat einen kleinen Nachteil: SQL Server vergibt
+    den Namen des Schlüssels dabei selbst (im Object Explorer unter
+    der Tabelle bei *Keys* einsehbar). Wie ihr Schlüsseln einen eigenen
+    Namen gebt, schauen wir uns im Abschnitt zu den Constraints an.
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### VERFAHREN und ALGORITHMUS
@@ -192,13 +200,28 @@ neuen Algorithmus selbst vergeben?
 
     `VERFAHREN` muss zuerst angelegt werden: Der Fremdschlüssel in
     `ALGORITHMUS` verweist auf `VERFAHREN(verfahren)`, und SQL Server
-    prüft schon beim Anlegen, ob das Ziel existiert.
+    prüft schon beim Anlegen, ob das Ziel existiert. Auch die
+    `FOREIGN KEY`-Zeile ist eine Kurzschreibweise, bei der SQL Server
+    den Namen vergibt.
 
     `IDENTITY(1,1)` lässt SQL Server die Nummern selbst vergeben
     (Startwert 1, Schrittweite 1). Beim `INSERT` lässt man die Spalte
     einfach weg. Das ist die übliche Umsetzung eines
     Surrogatschlüssels; Lücken in der Nummernfolge sind dabei normal
     (z. B. wenn ein `INSERT` scheitert).
+
+    **Abweichung vom Relationenschema:** In `ALGORITHMUS` heißen zwei
+    Spalten anders als in der Tabelle oben — `version` wurde zu `ver`
+    und `status` zu `release_status`. Beide Wörter haben in T-SQL eine
+    besondere Bedeutung bzw. sind als Schlüsselwörter belegt. Als
+    Spaltennamen führen solche Wörter schnell zu Verwechslungen und
+    zu Fehlern, die man erst suchen muss (je nach Fall müsste man sie
+    in eckige Klammern setzen). Im Relationenschema stören sie nicht,
+    es ist ja noch kein SQL; beim Umsetzen weicht man deshalb auf einen
+    unkritischen Namen aus. Das ist ein typischer Fall, in dem sich die
+    Implementierung bewusst vom Entwurf unterscheidet — die Abweichung
+    gehört dokumentiert. Auch im weiteren Verlauf der Übung heißen die
+    Spalten `ver` und `release_status`.
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### ANALYSE_LAUF, SCHAEDIGUNG und EXTREMWERT
@@ -248,12 +271,13 @@ welchen Datentyp hat ein "boolean" in SQL Server?
 
     Die Tabellen sind damit angelegt, aber noch nicht abgesichert:
     Nichts verhindert bisher, dass jemand einen Schädigungswert von 250
-    % einträgt oder den Status eines Algorithmus mit "fertig" angibt.
+    % einträgt oder den Freigabestatus eines Algorithmus mit "fertig"
+    angibt.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
-### Constraints: die Regeln der Datenbank <span class="zeitangabe">ca. 14 Min.</span> { data-toc-label="Constraints: die Regeln der Datenbank" }
+### Constraints: die Regeln der Datenbank <span class="zeitangabe">ca. 16 Min.</span> { data-toc-label="Constraints: die Regeln der Datenbank" }
 
 #### Was Constraints leisten
 
@@ -277,12 +301,14 @@ davon kennt ihr schon, ohne sie so genannt zu haben:
 Aus dem Szenario ergeben sich noch ein paar Regeln, die die Tabellen
 bisher nicht durchsetzen:
 
-1. Verfahren und Version zusammen legen einen Algorithmus eindeutig fest.
+1. Verfahren und Version (`ver`) zusammen legen einen Algorithmus
+   eindeutig fest.
 2. Zu jedem Zeitpunkt gibt es höchstens einen Analyse-Lauf.
 3. Schädigungswerte sind Prozentangaben zwischen 0 und 100.
 4. Die Melde- und Alarm-Grenzwerte eines Verfahrens sind ebenfalls
    Prozentangaben zwischen 0 und 100.
-5. Der Status eines Algorithmus ist `alpha`, `beta` oder `stable`.
+5. Der Freigabestatus (`release_status`) eines Algorithmus ist
+   `alpha`, `beta` oder `stable`.
 6. Ein Extremwert ist entweder ein `Maximum` oder ein `Minimum`.
 7. Ein neu erfasster Extremwert gilt zunächst als unverarbeitet.
 
@@ -295,9 +321,23 @@ ALTER TABLE <Tabelle>
     ADD CONSTRAINT <Name> <Definition>;
 ```
 
+Für `<Definition>` kommen die Constraint-Arten aus der Tabelle oben in
+Frage:
+
+| Constraint | `<Definition>` |
+|---|---|
+| `PRIMARY KEY` | `PRIMARY KEY (spalte [, spalte ...])` |
+| `FOREIGN KEY` | `FOREIGN KEY (spalte) REFERENCES zieltabelle(zielspalte)` |
+| `UNIQUE` | `UNIQUE (spalte [, spalte ...])` |
+| `CHECK` | `CHECK (bedingung)` |
+| `DEFAULT` | `DEFAULT wert FOR spalte` |
+
+(Primär- und Fremdschlüssel gibt es in unseren Tabellen schon; für die
+sieben Regeln unten braucht ihr nur `UNIQUE`, `CHECK` und `DEFAULT`.)
+
 Gebt jedem Constraint einen sprechenden Namen nach dem Schema
-`UQ_` / `CK_` / `DF_` + Tabelle + Gegenstand. (Nur `DEFAULT` hat eine
-leicht abweichende Form: `DEFAULT <Wert> FOR <Spalte>`.)
+`PK_` / `FK_` / `UQ_` / `CK_` / `DF_` + Tabelle + Gegenstand, z. B.
+`UQ_ANALYSE_LAUF_ZEITSTEMPEL`.
 
 <!-- MUSTERLOESUNG-START -->
 !!! quote musterloesung-hervorgehoben "Lösung"
@@ -306,7 +346,7 @@ leicht abweichende Form: `DEFAULT <Wert> FOR <Spalte>`.)
     ```
 
     Regel 1 und 2 sind `UNIQUE`-Constraints (Regel 1 über *zwei*
-    Spalten gemeinsam — einzeln dürfen sich Verfahren und Version
+    Spalten gemeinsam — einzeln dürfen sich Verfahren und Version (`ver`)
     durchaus wiederholen). Regel 3, 4, 5 und 6 sind `CHECK`-Constraints:
     ein Wertebereich (`BETWEEN`) bzw. eine Liste erlaubter Werte (`IN`).
     Regel 7 ist ein `DEFAULT`: Wird beim `INSERT` kein Wert für
@@ -346,7 +386,7 @@ INSERT INTO VERFAHREN (verfahren, grenzwert_meldung, grenzwert_alarm) VALUES
     ('DIN', 60, 80),
     ('PFIX', 50, 75);
 
-INSERT INTO ALGORITHMUS (verfahren, version, release_datum, status) VALUES
+INSERT INTO ALGORITHMUS (verfahren, ver, release_datum, release_status) VALUES
     ('DIN', '1.00', '2025-03-01', 'stable'),
     ('DIN', '1.01', '2025-09-15', 'beta');
 
@@ -366,11 +406,11 @@ INSERT INTO SCHAEDIGUNG VALUES (1, 1, 45);
 INSERT INTO SCHAEDIGUNG VALUES (1, 2, 120);
 
 -- 3
-INSERT INTO ALGORITHMUS (verfahren, version, release_datum, status)
+INSERT INTO ALGORITHMUS (verfahren, ver, release_datum, release_status)
     VALUES ('DIN', '1.01', '2026-01-10', 'alpha');
 
 -- 4
-INSERT INTO ALGORITHMUS (verfahren, version, release_datum, status)
+INSERT INTO ALGORITHMUS (verfahren, ver, release_datum, release_status)
     VALUES ('XYZ', '1.00', '2026-01-10', 'stable');
 
 -- 5
@@ -387,7 +427,7 @@ INSERT INTO SCHAEDIGUNG VALUES (1, 1, 50);
     |---|---|---|
     | 1 | läuft durch | Lauf 1 und Algorithmus 1 existieren, 45 liegt zwischen 0 und 100. |
     | 2 | abgelehnt | `CK_SCHAEDIGUNG_WERT`: 120 liegt außerhalb von 0–100. |
-    | 3 | abgelehnt | `UQ_ALGORITHMUS_VERFAHREN_VERSION`: Verfahren `DIN` in Version `1.01` gibt es schon. |
+    | 3 | abgelehnt | `UQ_ALGORITHMUS_VERFAHREN_VER`: Verfahren `DIN` in Version `1.01` gibt es schon. |
     | 4 | abgelehnt | Fremdschlüssel von `ALGORITHMUS`: Das Verfahren `XYZ` gibt es in `VERFAHREN` nicht. |
     | 5 | läuft durch | `verarbeitet` fehlt, `DEFAULT` setzt `0`. Mit `SELECT * FROM EXTREMWERT` könnt ihr das nachsehen. |
     | 6 | abgelehnt | Primärschlüssel von `SCHAEDIGUNG`: Die Kombination (1, 1) gibt es seit Anweisung 1 schon. |
@@ -397,10 +437,41 @@ INSERT INTO SCHAEDIGUNG VALUES (1, 1, 50);
     steht der Name, den *ihr* vergeben habt, in der Meldung — man sieht
     sofort, welche Regel gegriffen hat. Bei Nr. 4 und 6 steht dagegen
     ein von SQL Server erzeugter Name wie `FK__ALGORITHM__verfa__...`
-    bzw. `PK__SCHAEDIG__...`, denn die Primär- und Fremdschlüssel haben
-    wir oben nicht benannt. Genau deshalb benennt man *alle*
-    Constraints, wie im Gesamtskript unten.
+    bzw. `PK__SCHAEDIG__...`, denn Primär- und Fremdschlüssel haben wir
+    oben in der Kurzschreibweise angelegt, bei der SQL Server den Namen
+    vergibt. Mit so einer Meldung lässt sich schlecht arbeiten — wie
+    ihr auch diese Schlüssel selbst benennt, zeigt der nächste
+    Abschnitt.
 <!-- MUSTERLOESUNG-ENDE -->
+
+#### Primär- und Fremdschlüssel mit eigenem Namen
+
+Die Kurzschreibweise `PRIMARY KEY` hinter dem Attribut bzw.
+`FOREIGN KEY (...) REFERENCES ...` als eigene Zeile ist üblich und
+funktioniert einwandfrei. Sie ist aber nur die Kurzform der
+ausführlichen Schreibweise mit `CONSTRAINT`, und bei der Kurzform
+vergibt SQL Server den Namen selbst. Ihr könnt diese Namen im Object
+Explorer ansehen (Datenbank → *Tables* → Tabelle → *Keys*); sie sind
+lang und nichtssagend. Mit `CONSTRAINT <Name>` bestimmt ihr den Namen
+selbst — so wie ihr im Relationenschema die Beziehungen auch
+bezeichnet:
+
+```sql
+-- Kurzform: SQL Server vergibt die Namen selbst
+algorithmus_id  INT IDENTITY(1,1)  NOT NULL PRIMARY KEY,
+FOREIGN KEY (verfahren) REFERENCES VERFAHREN(verfahren)
+
+-- Langform: ihr vergebt die Namen selbst
+CONSTRAINT PK_ALGORITHMUS PRIMARY KEY (algorithmus_id),
+CONSTRAINT FK_ALGORITHMUS_VERFAHREN
+    FOREIGN KEY (verfahren) REFERENCES VERFAHREN(verfahren)
+```
+
+In der Langform stehen die Constraints als eigene Zeilen unter den
+Attributen (bei `NOT NULL` und `IDENTITY` ändert sich nichts). Das
+vollständige Skript im Gesamtergebnis unten ist durchgehend so
+geschrieben: Dort tragen *alle* Constraints einen Namen, und jede
+Fehlermeldung nennt die verletzte Regel im Klartext.
 
 #### Reihenfolge und Fremdschlüssel
 
@@ -576,7 +647,7 @@ Plant für diesen Teil ca. 15 Minuten ein. Ab hier dürft ihr KI als
 Unterstützung nutzen — prüft aber jeden Vorschlag, ihr müsst ihn
 erklären können.
 
-Die Schnüffel GmbH hat in Aufgabe 03 zwei Erweiterungen beschlossen,
+Die Schnüffel GmbH hat in [Aufgabe 03](block-03.md#aufgabe-03-prozessdatenbank-der-schnuffel-gmbh) zwei Erweiterungen beschlossen,
 die jetzt in die Datenbank sollen: Die Leitwarte dokumentiert
 besondere Ereignisse während einer Charge (auch nachträglich und
 sekundengenau, ein Kommentar ist optional, denn bei einer Störung

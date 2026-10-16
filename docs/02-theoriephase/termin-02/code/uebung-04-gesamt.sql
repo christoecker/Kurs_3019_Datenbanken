@@ -26,15 +26,15 @@ CREATE TABLE VERFAHREN (
 CREATE TABLE ALGORITHMUS (
     algorithmus_id  INT IDENTITY(1,1)  NOT NULL,
     verfahren       VARCHAR(20)        NOT NULL,
-    version         VARCHAR(10)        NOT NULL,
+    ver             VARCHAR(10)        NOT NULL,
     release_datum   DATE               NOT NULL,
-    status          VARCHAR(10)        NOT NULL,
+    release_status  VARCHAR(10)        NOT NULL,
     CONSTRAINT PK_ALGORITHMUS PRIMARY KEY (algorithmus_id),
     CONSTRAINT FK_ALGORITHMUS_VERFAHREN
         FOREIGN KEY (verfahren) REFERENCES VERFAHREN(verfahren),
-    CONSTRAINT UQ_ALGORITHMUS_VERFAHREN_VERSION UNIQUE (verfahren, version),
-    CONSTRAINT CK_ALGORITHMUS_STATUS
-        CHECK (status IN ('alpha', 'beta', 'stable'))
+    CONSTRAINT UQ_ALGORITHMUS_VERFAHREN_VER UNIQUE (verfahren, ver),
+    CONSTRAINT CK_ALGORITHMUS_RELEASE_STATUS
+        CHECK (release_status IN ('alpha', 'beta', 'stable'))
 );
 
 CREATE TABLE ANALYSE_LAUF (
