@@ -41,5 +41,12 @@ Lehrbrief Kap. 5.6:
 - Zweite Normalform: Kriterium und Zerlegung (S. 51).
 - Dritte Normalform: Kriterium und Zerlegung (S. 52).
 
-**Für Block 2 (Relationenschema in SQL Server anlegen)** — wird bei
-der inhaltlichen Ausarbeitung von Block 4 ergänzt.
+**Für Block 2 (Relationenschema in SQL Server anlegen)** — aus
+Praxisphase Woche 11 und Woche 4:
+
+- Das Anlegen einer Datenbank und von Tabellen in SQL Server:
+  `CREATE DATABASE`, `CREATE TABLE` mit `PRIMARY KEY` und
+  `FOREIGN KEY` (Woche 11, Schritt 1).
+- Warum die Reihenfolge der Anweisungen wegen der
+  Fremdschlüsselintegrität nicht beliebig ist (Woche 11, Schritt 2,
+  und Woche 4).

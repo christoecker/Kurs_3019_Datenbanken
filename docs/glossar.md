@@ -29,6 +29,9 @@ Bezeichnung, Datum).
 
 ## B
 
+**Batch (GO)**
+: Ein zusammengehörender Block von SQL-Anweisungen, der gemeinsam an den Server geschickt wird. In SSMS trennt das Kommando `GO` ein Skript in mehrere Batches; es ist kein SQL-Befehl.
+
 **Beziehungsattribut**
 : Ein Attribut, das nicht zu einem Entity-Typ, sondern zu einem
 Beziehungstyp selbst gehört, weil die Information nur im Kontext der
@@ -41,10 +44,16 @@ Raute dargestellt.
 
 ## C
 
+**CHECK-Constraint**
+: Ein Constraint, der festlegt, welche Werte eine Spalte annehmen darf (z. B. ein Wertebereich oder eine Liste erlaubter Texte); die Datenbank lehnt jeden Wert außerhalb ab.
+
 **Chen-Notation**
 : Grafische Notation für ER-Diagramme (nach Peter Chen), bei der
 Kardinalitäten nur als Obergrenze (1, N, M) angegeben werden, nicht als
 Untergrenze.
+
+**Constraint**
+: Eine vom Datenbanksystem durchgesetzte Regel für die gespeicherten Daten, z. B. `NOT NULL`, `PRIMARY KEY`, `FOREIGN KEY`, `UNIQUE`, `CHECK` oder `DEFAULT`. Constraints lehnen regelwidrige Datenänderungen selbstständig ab, unabhängig davon, welches Programm sie auslöst.
 
 ## D
 
@@ -88,10 +97,19 @@ logischen Schemas in Datenstrukturen einer Datenbanksprache (z. B. SQL).
 Objekt der Anwendungswelt mit einem Wert für jedes Attribut der
 Relation.
 
+**Datentyp**
+: Legt in SQL fest, welche Art von Werten eine Spalte aufnimmt (z. B. Ganzzahl, Dezimalzahl mit festen Stellen, Text bis zu einer Maximallänge, Datum); er ist die konkrete Umsetzung des Wertebereichs aus dem Relationenschema.
+
 **Datenunabhängigkeit**
 : Eigenschaft der Drei-Ebenen-Schema-Architektur: Eine Ebene (z. B. die
 physische Speicherung) lässt sich ändern, ohne die anderen Ebenen (z. B.
 Anwendungen) anpassen zu müssen.
+
+**DDL (Data Definition Language)**
+: Der Teil von SQL, mit dem Strukturen angelegt, verändert und gelöscht werden (`CREATE`, `ALTER`, `DROP`) — im Unterschied zu Anweisungen, die Daten abfragen oder ändern.
+
+**DEFAULT-Wert**
+: Ein Wert, den die Datenbank automatisch einträgt, wenn beim Einfügen eines Datensatzes für eine Spalte nichts angegeben wird.
 
 **Drei-Ebenen-Schema-Architektur**
 : Aufteilung eines Datenbanksystems in externe Ebene (Sichten je
@@ -165,6 +183,9 @@ dieselbe Struktur.
 Unterstreichen gekennzeichnet. Ein abhängiger Entity-Typ kann auch
 mehrere identifizierende Beziehungen zu unterschiedlichen
 Eigentümer-Entity-Typen gleichzeitig haben.
+
+**IDENTITY**
+: Eigenschaft einer Spalte in SQL Server, bei der das Datenbanksystem die Werte (meist aufsteigende Ganzzahlen) beim Einfügen selbst vergibt; typische Umsetzung eines Surrogatschlüssels.
 
 **Informationssystem**
 : Ein Softwaresystem zur Erfassung, Verarbeitung, Speicherung,
