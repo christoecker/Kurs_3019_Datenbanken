@@ -10,12 +10,12 @@ lernziele:
   - "Ihr könnt begründen, wann eine bewusst nicht vollständig normalisierte bzw. redundante Datenhaltung eine gerechtfertigte Entwurfsentscheidung ist, statt ein Fehler."
   - "Ihr könnt widersprüchliche Anforderungen in einer Spezifikation erkennen, euch begründet für eine Umsetzung entscheiden und belegen, warum eine Anforderung nicht (vollständig) umgesetzt wurde."
   - "Ihr könnt die Auswirkung einer nachträglichen Anforderungsänderung auf ein bestehendes Schema einschätzen, bevor ihr sie umsetzt, und KI gezielt zur Umsetzung einsetzen und deren Vorschläge prüfen."
-musterloesungen_sichtbar: true
-nachtrag_sichtbar: true
+musterloesungen_sichtbar: false
+nachtrag_sichtbar: false
 fallstudie: "Übung: Kompressor-Zustandsüberwachung; betreutes Selbststudium: Lackproduktion Schnüffel GmbH (beides eigene MEA-Szenarien)"
 ki_einsatz: stufe_2_pair_programmer
 bearbeitungsstatus: entworfen
-publish_date: 2026-10-19
+publish_date: 2026-10-27
 ---
 
 <!-- ABLAUF-HINWEIS FÜR DIE LEHRPERSON (wird nicht gerendert):

@@ -8,11 +8,11 @@ thema: "Transformation des ER-Modells in das Relationenmodell anwenden"
 lernziele:
   - "Ihr könnt ein gegebenes ER-Modell (inkl. Spezialisierung, abhängigem Entity-Typ und mehreren Beziehungstypen) systematisch und in der empfohlenen Reihenfolge in ein vollständiges Relationenschema überführen."
   - "Ihr könnt begründen, warum bei einer N:M-Beziehung eine eigene Relation entsteht, bei einer 1:N-Beziehung dagegen nicht."
-musterloesungen_sichtbar: true
+musterloesungen_sichtbar: false
 fallstudie: "eLibri (Fortsetzung des ER-Modells aus Block 01)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: final
-publish_date: 2026-10-12
+publish_date: 2026-10-19
 ---
 
 # Transformation ins Relationenmodell (20.10.2026)
