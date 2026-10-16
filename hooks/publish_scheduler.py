@@ -16,6 +16,15 @@ dafuer sonst einen kaputten Link erzeugen (Klartext-Pfad auf die
 .md-Datei statt eines echten Seitenlinks). Der zweite Hook (on_nav)
 entfernt genau diese kaputten Verweise wieder aus der Navigation.
 
+Der dritte Hook (on_page_markdown) entschaerft Links im Fliesstext, die
+auf eine noch nicht veroeffentlichte Seite zeigen (z. B. der Link von
+einer bereits veroeffentlichten Termin-Uebersichtsseite auf eine
+Block-Seite, die erst am Veranstaltungstag erscheint): Der Link wird
+durch seinen reinen Linktext ersetzt, damit Studierende nicht auf einer
+404-Seite landen. Sobald die Zielseite veroeffentlicht ist, entsteht der
+Link beim naechsten Build automatisch wieder - es muss nichts im Text
+gepflegt werden.
+
 Ein taeglicher, zeitgesteuerter Rebuild (siehe
 .github/workflows/deploy-docs.yml) sorgt dafuer, dass eine Seite am
 Stichtag automatisch erscheint, ohne dass dafuer erneut gepusht werden
@@ -35,6 +44,8 @@ from __future__ import annotations
 import datetime
 import logging
 import os
+import posixpath
+import re
 
 from mkdocs.structure.files import Files
 from mkdocs.structure.nav import Link, Navigation, Section
@@ -132,3 +143,27 @@ def on_nav(nav: Navigation, config, files: Files):
     """Entfernt Navigationseintraege, die auf ausgeschlossene Seiten verweisen."""
     nav.items = _prune_nav_items(nav.items)
     return nav
+
+
+# Markdown-Inline-Link auf eine .md-Datei: [Text](pfad/datei.md#anker "Titel").
+# Der Linktext darf Zeilenumbrueche enthalten (Absaetze werden im Quelltext
+# umbrochen); Bilder ("![...](...)") werden bewusst nicht angefasst.
+_MD_LINK = re.compile(
+    r"(?<!!)\[(?P<text>[^\]]+)\]\((?P<target>[^)\s#]+\.md)(?:#[^)\s]*)?(?:\s+\"[^\"]*\")?\)"
+)
+
+
+def on_page_markdown(markdown, page, config, files):
+    """Ersetzt Links auf (noch) nicht veroeffentlichte Seiten durch ihren Linktext."""
+    if not _excluded_src_uris:
+        return markdown
+
+    base = posixpath.dirname(page.file.src_uri)
+
+    def _replace(match: re.Match) -> str:
+        target = posixpath.normpath(posixpath.join(base, match.group("target")))
+        if target in _excluded_src_uris:
+            return match.group("text")
+        return match.group(0)
+
+    return _MD_LINK.sub(_replace, markdown)
