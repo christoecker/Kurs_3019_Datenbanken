@@ -12,7 +12,7 @@ musterloesungen_sichtbar: false
 fallstudie: "eLibri (Lehrbrief-Projektaufgabe 3.5.2)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: final
-publish_date: 2026-10-19
+publish_date: 2026-10-20
 ---
 
 # ER-Modell aufstellen (20.10.2026)

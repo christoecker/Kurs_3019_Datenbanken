@@ -12,7 +12,7 @@ musterloesungen_sichtbar: false
 fallstudie: "eLibri (Fortsetzung des ER-Modells aus Block 01)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: final
-publish_date: 2026-10-19
+publish_date: 2026-10-20
 ---
 
 # Transformation ins Relationenmodell (20.10.2026)
