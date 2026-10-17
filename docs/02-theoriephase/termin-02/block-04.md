@@ -9,7 +9,7 @@ lernziele:
   - "Ihr könnt die Relationen eines Relationenschemas selbstständig in T-SQL anlegen (Datenbank, Tabellen, Datentypen, Primär- und Fremdschlüssel) und die Reihenfolge der Anweisungen begründen."
   - "Ihr könnt aus den Regeln einer Anwendungswelt die passenden Constraints (NOT NULL, UNIQUE, CHECK, DEFAULT) ableiten und vorhersagen, welche Datenänderungen die Datenbank daraufhin ablehnt."
   - "Ihr könnt ein (KI-)generiertes Skript zum Anlegen von Tabellen auf Logikfehler prüfen, die der Server nicht meldet, und sie begründet korrigieren."
-musterloesungen_sichtbar: true
+musterloesungen_sichtbar: false
 fallstudie: "Übung: Kompressor-Zustandsüberwachung (Fortsetzung aus der Übung zur Normalisierung); betreutes Selbststudium: Lackproduktion Schnüffel GmbH (Fortsetzung aus Aufgabe 03) - beides eigene MEA-Szenarien"
 ki_einsatz: stufe_2_pair_programmer
 bearbeitungsstatus: entworfen

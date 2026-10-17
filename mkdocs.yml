@@ -62,6 +62,8 @@ nav:
   - Start: index.md
   - Info:
       - Glossar: glossar.md
+      - "SQL Server und Lehrbrief": info/sql-server-vs-lehrbrief.md
+      - Fehlerbildkatalog: info/fehlerbildkatalog.md
   - Theoriephase:
       - "Termin 1":
           - 02-theoriephase/termin-01/index.md
@@ -71,6 +73,9 @@ nav:
           - 02-theoriephase/termin-02/index.md
           - "Normalisierung anwenden": 02-theoriephase/termin-02/block-03.md
           - "Relationenschema in SQL Server anlegen": 02-theoriephase/termin-02/block-04.md
+      - "Termin 3":
+          - 02-theoriephase/termin-03/index.md
+          - "SQL-Abfragen mit BestTec": 02-theoriephase/termin-03/block-05.md
   - Praxisphase:
       - "Woche 1": 01-praxisphase/woche-01/woche-01.md
       - "Woche 2": 01-praxisphase/woche-02/woche-02.md

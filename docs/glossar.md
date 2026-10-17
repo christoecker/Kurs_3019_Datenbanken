@@ -17,6 +17,9 @@ entsprechend mehrere identifizierende Beziehungen, und erst die
 Kombination aus lokalem Attribut und allen beteiligten
 Fremdschlüsseln macht ihn eindeutig identifizierbar.
 
+**Alias**
+: Ein kurzer Ersatzname für eine Tabelle oder eine Ergebnisspalte innerhalb einer Abfrage (`FROM ma x`, `gehalt * 12 AS jahresgehalt`). Bei Tabellen heißt er im Lehrbrief auch Tupelvariable; er wird u. a. beim Selbstverbund gebraucht, um die beiden Rollen derselben Tabelle zu unterscheiden.
+
 **Anforderungsanalyse**
 : Erste Phase des Datenbankentwurfs: informelles Erfassen und
 Dokumentieren, welche Daten gespeichert werden müssen und wer wie darauf
@@ -111,6 +114,9 @@ Anwendungen) anpassen zu müssen.
 **DEFAULT-Wert**
 : Ein Wert, den die Datenbank automatisch einträgt, wenn beim Einfügen eines Datensatzes für eine Spalte nichts angegeben wird.
 
+**DISTINCT**
+: Schlüsselwort in der `SELECT`-Zeile, das doppelte Zeilen aus dem Ergebnis entfernt. Es bezieht sich immer auf die gesamte Ergebniszeile, nicht nur auf die erste Spalte.
+
 **Drei-Ebenen-Schema-Architektur**
 : Aufteilung eines Datenbanksystems in externe Ebene (Sichten je
 Nutzergruppe), logische Ebene (ein Schema für alle gespeicherten Daten)
@@ -150,6 +156,9 @@ Datenbankentwurf mit den Grundkonzepten Entity, Relationship und
 Attribut.
 
 ## F
+
+**Fehlerbild**
+: Ein typisches Muster, nach dem eine syntaktisch korrekte Abfrage trotzdem ein falsches Ergebnis liefert (z. B. fehlende Verknüpfungsbedingung, Duplikate durch den Verbund, `AND`/`OR` ohne Klammern). Die gesammelten Fehlerbilder stehen im Fehlerbildkatalog auf der Info-Seite.
 
 **Fremdschlüssel (FK)**
 : Ein Attribut (oder eine Attributkombination) einer Relation, das den
@@ -217,6 +226,9 @@ dem Anwender.
 
 ## L
 
+**Kreuzprodukt**
+: Die Kombination jeder Zeile einer Tabelle mit jeder Zeile einer anderen. Es entsteht, wenn im `FROM`-Teil mehrere Tabellen stehen und keine Verknüpfungsbedingung angegeben ist; die Ergebnismenge ist dann meist unsinnig groß.
+
 **Logischer Datenbankentwurf** 
 : Dritte Phase des Datenbankentwurfs: Überführung des konzeptuellen
 Schemas in ein logisches Schema, i. d. R. das Relationenmodell.
@@ -255,12 +267,18 @@ einen bestimmten Datensatz keinen Wert hat.
 
 ## P
 
+**Platzhalter (Wildcard)**
+: Zeichen in einem `LIKE`-Muster, das für unbekannte Zeichen steht: `_` für genau ein beliebiges Zeichen, `%` für beliebig viele (auch null) Zeichen.
+
 **Primärschlüssel (PK)**
 : Der aus den Schlüsselkandidaten einer Relation für die Implementierung
 ausgewählte Schlüssel; darf keine optionalen Attribute enthalten und
 wird in der Notation mit PK gekennzeichnet.
 
 ## R
+
+**Projektion**
+: Das Auswählen bestimmter Spalten einer Tabelle für das Ergebnis einer Abfrage. In SQL steht sie in der Auswahlliste hinter `SELECT`.
 
 **Redundanz**
 : Mehrfache, getrennte Speicherung derselben Information; typische
@@ -311,6 +329,12 @@ Entity-Typs, dessen Wert(e) jedes Entity eindeutig identifizieren.
 Datensatz eindeutig identifiziert; eine Relation kann mehrere
 Schlüsselkandidaten besitzen.
 
+**Selbstverbund**
+: Ein Verbund, bei dem eine Tabelle mit sich selbst verknüpft wird, z. B. Mitarbeiter mit ihren Vorgesetzten. Dafür steht die Tabelle zweimal im `FROM`-Teil, mit zwei verschiedenen Aliasen.
+
+**Selektion**
+: Das Auswählen bestimmter Zeilen einer Tabelle anhand einer Bedingung. In SQL steht sie im `WHERE`-Teil.
+
 **Spezialisierung**
 : Die Ableitung eines neuen, spezielleren Entity-Typs (Subtyp) aus einem
 bereits bestehenden Entity-Typ (Supertyp); der Subtyp besitzt alle
@@ -360,12 +384,20 @@ ausdrücken kann.
 gewählt wurde; kann im Gegensatz zum Primärschlüssel auch optionale
 Attribute enthalten.
 
+## V
+
+**Verbund (Join)**
+: Das Zusammenführen von Zeilen aus mehreren Tabellen anhand einer Verknüpfungsbedingung, meist Fremdschlüssel = Primärschlüssel. In SQL entweder mit mehreren Tabellen im `FROM`-Teil und der Bedingung im `WHERE`, oder mit `INNER JOIN … ON`.
+
 ## W
 
 **Wertebereich (Domäne)**
 : Die Menge der für ein Attribut zulässigen Werte. Im Relationenmodell
 sind nur atomare Wertebereiche zulässig (z. B. Zahlen, Zeichenketten,
 Datumswerte) — Wertebereiche für Mengen oder Listen sind nicht erlaubt.
+
+**Werteausdruck**
+: Eine Berechnung mit Spalten, Konstanten und Funktionen, z. B. `gehalt * 12`, die in der Auswahlliste oder in einer Bedingung stehen darf. Das Ergebnis wird nicht in der Tabelle gespeichert.
 
 **Windows-Authentifizierung**
 : Ein Anmeldeverfahren, bei dem sich Nutzer mit ihrem bereits
