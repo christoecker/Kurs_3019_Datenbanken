@@ -17,6 +17,9 @@ entsprechend mehrere identifizierende Beziehungen, und erst die
 Kombination aus lokalem Attribut und allen beteiligten
 Fremdschlüsseln macht ihn eindeutig identifizierbar.
 
+**Aggregatfunktion (Gruppenfunktion)**
+: Eine Funktion wie `COUNT`, `SUM`, `AVG`, `MIN` oder `MAX`, die viele Zeilen zu einem Wert zusammenfasst. Mit `GROUP BY` wird sie je Gruppe ausgewertet; `NULL`-Werte übergeht sie (außer `COUNT(*)`).
+
 **Alias**
 : Ein kurzer Ersatzname für eine Tabelle oder eine Ergebnisspalte innerhalb einer Abfrage (`FROM ma x`, `gehalt * 12 AS jahresgehalt`). Bei Tabellen heißt er im Lehrbrief auch Tupelvariable; er wird u. a. beim Selbstverbund gebraucht, um die beiden Rollen derselben Tabelle zu unterscheiden.
 
@@ -117,6 +120,9 @@ Anwendungen) anpassen zu müssen.
 **DISTINCT**
 : Schlüsselwort in der `SELECT`-Zeile, das doppelte Zeilen aus dem Ergebnis entfernt. Es bezieht sich immer auf die gesamte Ergebniszeile, nicht nur auf die erste Spalte.
 
+**DML (Data Manipulation Language)**
+: Der Teil von SQL, mit dem Daten geändert werden: `INSERT` (einfügen), `UPDATE` (ändern) und `DELETE` (löschen). Jede Anweisung wirkt auf genau eine Tabelle.
+
 **Drei-Ebenen-Schema-Architektur**
 : Aufteilung eines Datenbanksystems in externe Ebene (Sichten je
 Nutzergruppe), logische Ebene (ein Schema für alle gespeicherten Daten)
@@ -183,6 +189,14 @@ zweiten Attribut übereinstimmen.
 gemeinsamer, allgemeinerer Entity-Typ (Supertyp) gebildet wird — die
 gedanklich umgekehrte Blickrichtung zur Spezialisierung, beschreibt aber
 dieselbe Struktur.
+
+**GROUP BY**
+: SQL-Klausel, die Zeilen mit gleichen Werten in den angegebenen Spalten zu Gruppen zusammenfasst, damit eine Gruppenfunktion je Gruppe ausgewertet werden kann. In SQL Server müssen alle nicht aggregierten Spalten der Auswahlliste auch dort stehen.
+
+## H
+
+**HAVING**
+: SQL-Klausel, die nach dem Gruppieren Gruppen auswählt (im Gegensatz zu `WHERE`, das einzelne Zeilen vor dem Gruppieren auswählt). Sie darf Gruppenfunktionen enthalten.
 
 ## I
 
@@ -383,6 +397,9 @@ ausdrücken kann.
 : Ein Schlüsselkandidat einer Relation, der nicht als Primärschlüssel
 gewählt wurde; kann im Gegensatz zum Primärschlüssel auch optionale
 Attribute enthalten.
+
+**Unteranfrage**
+: Eine SELECT-Abfrage innerhalb einer anderen Abfrage, meist im `WHERE`- oder `HAVING`-Teil. Sie liefert einen einzelnen Wert oder eine Liste, mit der die äußere Abfrage vergleicht (z. B. mit `>` oder `IN`).
 
 ## V
 

@@ -7,7 +7,7 @@ workload_minuten: 60
 lernziele:
   - "Ihr könnt die Kernbegriffe der Normalisierung (funktionale Abhängigkeit, 1.-3. Normalform, Redundanz) aus dem Gedächtnis abrufen."
   - "Ihr könnt anhand von Lehrbrief Kapitel 6 erklären, aus welchen Bestandteilen eine CREATE-TABLE-Anweisung besteht (Attribut-Definitionen, Primär-, Unique- und Fremdschlüssel-Constraints) und warum die Reihenfolge beim Anlegen von Tabellen zählt."
-bearbeitungsstatus: idee
+bearbeitungsstatus: final
 publish_date: 2026-10-20
 ---
 

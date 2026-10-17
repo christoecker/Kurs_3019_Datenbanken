@@ -7,7 +7,7 @@ workload_minuten: 120
 lernziele:
   - "Ihr könnt anhand von Lehrbrief Kapitel 7 erklären, aus welchen Klauseln eine SELECT-Anweisung besteht (SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY) und was jede Klausel leistet."
   - "Ihr könnt anhand von Lehrbrief Kapitel 8 beschreiben, wie Datensätze mit INSERT, UPDATE und DELETE eingefügt, geändert und gelöscht werden."
-bearbeitungsstatus: entworfen
+bearbeitungsstatus: final
 publish_date: 2026-10-27
 ---
 
@@ -15,8 +15,10 @@ publish_date: 2026-10-27
 
 Bisher habt ihr Datenbanken entworfen und angelegt — jetzt arbeitet ihr
 mit den Daten. Im ersten Block, [SQL-Abfragen mit BestTec](block-05.md),
-schreibt und lest ihr eure ersten Datenbankabfragen. Im zweiten Block
-folgen weitere Abfragen und die Änderung von Daten.
+schreibt und lest ihr eure ersten Datenbankabfragen. Im zweiten Block,
+[Eigene Abfragen und Datenänderung](block-06.md), fasst ihr Daten zusammen,
+ändert sie und prüft Statements, die ihr auch mit KI-Unterstützung
+erstellen dürft.
 
 > Zeitbedarf zur Vorbereitung: ca. 120 Minuten.
 

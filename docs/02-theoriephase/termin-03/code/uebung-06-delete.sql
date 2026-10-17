@@ -1,0 +1,2 @@
+DELETE FROM prj
+WHERE prjnr = 471;

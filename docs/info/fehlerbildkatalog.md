@@ -72,3 +72,101 @@ Gemeint war `OR` bzw. `IN`.
 **So erkennt ihr es:** Ein leeres Ergebnis ist nicht immer ein Fehler
 (niemand verdient mehr als sein Vorgesetzter) — prüft aber, ob die
 Bedingung für eine einzelne Zeile überhaupt erfüllbar ist.
+
+## F6 — `WHERE` statt `HAVING`
+
+**Symptom:** Gruppenwerte (Durchschnitt, Summe, Anzahl) sind zu hoch oder
+zu niedrig, oder es erscheinen Gruppen, die es nicht geben dürfte.
+
+**Ursache:** Eine Bedingung, die sich auf die **ganze Gruppe** bezieht
+(z. B. Durchschnitt über 4000), steht im `WHERE`-Teil. `WHERE` wirkt
+aber auf einzelne Zeilen **vor** der Gruppierung. Aus dem Durchschnitt aller Mitarbeiter wird der Durchschnitt
+der gut Verdienenden: Die Zentrale kommt auf 6500 statt 5100.
+
+**So erkennt ihr es:** Fragt euch, ob die Bedingung eine einzelne Zeile
+oder eine ganze Gruppe beschreibt. Gruppenbedingungen mit Gruppenfunktionen
+gehören in `HAVING`.
+
+## F7 — Falsche Aggregationsebene
+
+**Symptom:** Gezählte oder summierte Werte sind ein Vielfaches des
+erwarteten Werts.
+
+**Ursache:** Ein Verbund mit einer weiteren Tabelle vervielfacht die
+Zeilen, bevor gezählt wird. Beispiel: Engineering hat 6 Mitarbeiter und 3
+Projekte; über beide verbunden ergibt `COUNT(*)` 18.
+
+**So erkennt ihr es:** Prüft bei jedem Verbund, ob die Zeilen pro
+gezähltem Objekt mehrfach vorkommen. `COUNT(DISTINCT …)` zählt jedes Objekt nur einmal; oft ist es besser,
+die zusätzliche Tabelle gar nicht erst zu verbinden.
+
+## F8 — `NULL` in Rechnung, Vergleich oder Durchschnitt
+
+**Symptom:** Ein Wert ist leer (`NULL`) oder 0, obwohl er berechnet
+werden sollte; eine Abfrage mit `= NULL` findet nichts; ein Durchschnitt
+ist zu hoch.
+
+**Ursache:** Rechnen mit `NULL` ergibt `NULL`. Ein Vergleich mit `=` ist
+bei `NULL` nie wahr. Gruppenfunktionen wie `AVG` und `SUM` übergehen
+`NULL`-Werte; `AVG(prov)` mittelt nur über die 3 Mitarbeiter mit
+Provision.
+
+**So erkennt ihr es:** Prüft für jede beteiligte Spalte, ob sie `NULL`
+enthalten darf. Ersetzt `NULL` vor der Rechnung (`ISNULL(prov, 0)`), und prüft mit `IS NULL`. Achtet auf die Stelle des
+`ISNULL`: `ISNULL(prov + gehalt, 0)` hilft nicht.
+
+## F9 — `NOT IN` mit `NULL`
+
+**Symptom:** Das Ergebnis ist leer, obwohl es passende Zeilen geben
+müsste.
+
+**Ursache:** Enthält die Liste der Unteranfrage ein `NULL`, wird die
+`NOT IN`-Bedingung für jede Zeile unbekannt. Beispiel:
+`manr NOT IN (SELECT vorgnr FROM ma)`, denn Hansen hat keinen
+Vorgesetzten.
+
+**So erkennt ihr es:** Kann die Spalte der Unteranfrage `NULL` enthalten?
+Dann `WHERE spalte IS NOT NULL` in die Unteranfrage aufnehmen.
+
+## F10 — Änderung trifft zu viele Zeilen
+
+**Symptom:** Nach `UPDATE` oder `DELETE` meldet SQL Server mehr Zeilen
+als erwartet, oder Daten sind verändert, die nicht gemeint waren.
+
+**Ursache:** Das `WHERE` fehlt (dann sind alle Zeilen betroffen) oder ist
+zu weit gefasst, z. B. `OR` statt `AND`: `abtnr = 20 OR job = 'Engineer'`
+trifft 10 statt 6 Mitarbeiter.
+
+**So erkennt ihr es:** Führt dieselbe Bedingung vorher in einem `SELECT`
+aus und vergleicht die Zeilenzahl mit der Meldung „n Zeilen betroffen“.
+
+## F11 — Der Verbund blendet Zeilen ohne Partner aus
+
+**Symptom:** Zeilen fehlen im Ergebnis, die „keine“ zugehörigen Zeilen
+in der anderen Tabelle haben, z. B. Abteilungen ohne Projekt.
+
+**Ursache:** Ein Verbund über Schlüssel und Fremdschlüssel liefert nur
+Zeilen, die einen Partner haben. Soll auch „keiner“ im Ergebnis vorkommen
+(`höchstens ein Projekt`, `0` als Anzahl), zählt der Verbund sie nicht
+mit.
+
+**So erkennt ihr es:** Fragt euch, ob Zeilen ohne Partner in das Ergebnis
+gehören. Dann hilft z. B. eine Unteranfrage, die die Partner je Zeile
+zählt.
+
+## F12 — Spalte fehlt in `GROUP BY`
+
+**Symptom:** SQL Server meldet Fehler 8120: Eine Spalte der Auswahlliste
+sei ungültig, weil sie weder in einer Aggregatfunktion noch in der
+`GROUP BY`-Klausel enthalten ist.
+
+**Ursache:** Die Auswahlliste enthält neben der Gruppenfunktion eine
+Spalte, nach der nicht gruppiert wird. Die Datenbank kann dann nicht
+entscheiden, welchen der Werte einer Gruppe sie anzeigen soll.
+Beispiel: `SELECT abtnr, name, COUNT(*) FROM ma GROUP BY abtnr`.
+
+**So erkennt ihr es:** Prüft jede Spalte der Auswahlliste: Steht sie in
+einer Gruppenfunktion oder in `GROUP BY`? Gehört die Spalte fachlich zur
+Gruppe (z. B. die Bezeichnung zur Abteilungsnummer), nehmt sie in
+`GROUP BY` auf. Soll sie die Gruppen verfeinern (z. B. `job`), ändert
+sich das Ergebnis: Es gibt dann eine Zeile je Kombination.

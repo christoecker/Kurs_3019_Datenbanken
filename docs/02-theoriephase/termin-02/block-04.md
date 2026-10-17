@@ -12,7 +12,7 @@ lernziele:
 musterloesungen_sichtbar: false
 fallstudie: "Übung: Kompressor-Zustandsüberwachung (Fortsetzung aus der Übung zur Normalisierung); betreutes Selbststudium: Lackproduktion Schnüffel GmbH (Fortsetzung aus Aufgabe 03) - beides eigene MEA-Szenarien"
 ki_einsatz: stufe_2_pair_programmer
-bearbeitungsstatus: entworfen
+bearbeitungsstatus: final
 publish_date: 2026-10-27
 ---
 

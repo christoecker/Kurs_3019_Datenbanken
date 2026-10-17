@@ -8,11 +8,14 @@ thema: "SQL-Abfragen (DQL) an Fallbeispielen aus dem Lehrbrief: Projektion, Sele
 lernziele:
   - "Ihr könnt zu einer fachlichen Fragestellung eine SELECT-Abfrage mit Projektion, Selektion, Sortierung und Verbund über mehrere Tabellen aufbauen und ihr Ergebnis von Hand herleiten."
   - "Ihr könnt die Aussage einer fremden Abfrage lesen, ihr Ergebnis vorhersagen und typische Fehlerbilder (fehlende Verknüpfung, Duplikate, Klammerfehler) erkennen."
-musterloesungen_sichtbar: true
+musterloesungen_sichtbar: false
 fallstudie: "BestTec (Lehrbrief Anhang 9.2, S. 97–98)"
 ki_einsatz: stufe_0_ohne
-bearbeitungsstatus: entworfen
+bearbeitungsstatus: final
 publish_date: 2026-11-03
+quiz:
+  show_progress: false
+  disable_after_submit: false
 ---
 
 # SQL-Abfragen mit BestTec (03.11.2026)
@@ -113,46 +116,8 @@ Das Relationenschema besteht aus drei Relationen:
 | – | kdnr | string | nein |
 | – | titel | string | nein |
 
-Der Datenbestand, mit dem wir heute arbeiten (`NULL` steht für „kein
-Wert“):
-
-| abtnr | bezeichnung | sitz |
-|---|---|---|
-| 10 | Zentrale | Gütersloh |
-| 20 | Engineering | Verl |
-| 30 | Automotive | Paderborn |
-| 40 | Robotik | Bielefeld |
-| 50 | Education | Münster |
-
-| manr | name | job | vorgnr | gehalt | prov | abtnr |
-|---|---|---|---|---|---|---|
-| 7656 | Hansen | Geschäftsführer | NULL | 9800 | NULL | 10 |
-| 7900 | Karl | Manager | 7656 | 7200 | NULL | 20 |
-| 8801 | Langer | Vertrieb | 7656 | 4800 | 1200 | 10 |
-| 7329 | Frohn | Programmierer | 7900 | 2900 | NULL | 20 |
-| 8722 | Werther | Programmierer | 7900 | 2700 | NULL | 20 |
-| 7643 | Kurt | Vertrieb | 8801 | 3100 | 900 | 10 |
-| 7767 | John | Controller | 7656 | 4900 | NULL | 10 |
-| 7783 | Kron | Manager | 7656 | 5200 | NULL | 50 |
-| 8800 | Beier | Trainer | 7783 | 2700 | NULL | 50 |
-| 7621 | Klaas | Trainer | 7783 | 3200 | NULL | 50 |
-| 7768 | Schulte | Vertrieb | 8801 | 2900 | 500 | 10 |
-| 7745 | Meier | Manager | 7656 | 5500 | NULL | 40 |
-| 8956 | Dorn | Engineer | 7745 | 3000 | NULL | 40 |
-| 7112 | Born | Manager | 7656 | 4800 | NULL | 30 |
-| 8969 | Walter | Engineer | 7112 | 2500 | NULL | 30 |
-| 8322 | Frei | Engineer | 7745 | 2500 | NULL | 40 |
-| 7769 | Meyer | Engineer | 7900 | 5200 | NULL | 20 |
-| 8659 | Sorge | Engineer | 7900 | 5800 | NULL | 20 |
-| 8247 | Holle | Engineer | 7112 | 2900 | NULL | 30 |
-| 7739 | Meier | Projektleiter | 7900 | 3200 | NULL | 20 |
-
-| prjnr | abtnr | kdnr | titel |
-|---|---|---|---|
-| 232 | 20 | M341 | PeakControl |
-| 244 | 10 | T56 | AutoRob |
-| 212 | 20 | A12 | HydroControl |
-| 256 | 20 | M341 | AvisyTurb |
+Den Datenbestand, mit dem wir heute arbeiten, findet ihr auf der Seite
+[BestTec: Datenbestand](besttec-daten.md){ target="_blank" rel="noopener" }.
 
 Legt die Datenbank jetzt auf eurem Rechner an: Öffnet in SQL Server
 Management Studio zuerst das Skript
@@ -431,7 +396,7 @@ Kurs später nicht regelmäßig eigene SQL-Skripte. Das Schreiben ist hier
 ein Teil des **Lernwegs**: Wer jede Klausel einmal selbst benutzt hat,
 versteht, was ein fremdes Statement — zum Beispiel eines, das eine KI
 erstellt hat — wirklich aussagt, und kann beurteilen, ob es zur
-Anforderung passt. Darum geht es in diesem Block. KI-Werkzeuge nutzt ihr
+Anforderung passt. Darum geht es in dieser Einheit. KI-Werkzeuge nutzt ihr
 dafür bewusst noch nicht.
 
 !!! abstract "Lernziele"
@@ -544,10 +509,10 @@ euer Ergebnis kontrollieren könnt.
 
 #### Teil C — Ergebnis vorhersagen <span class="zeitangabe">ca. 8 Min.</span> { data-toc-label="Teil C — Ergebnis vorhersagen" }
 
-Leitet das Ergebnis jeweils
-zuerst von Hand aus den Tabellen im Szenario oben her, bevor ihr die
-Aussagen lest. Genau eine Aussage ist korrekt. Prüft euer Ergebnis erst
-danach in SQL Server.
+Zu jeder Abfrage beantwortet ihr zwei Fragen: Was ist ihr Ziel, und was
+liefert sie tatsächlich? Leitet das Ergebnis jeweils zuerst von Hand aus
+den Tabellen auf der Seite [BestTec: Datenbestand](besttec-daten.md){ target="_blank" rel="noopener" }
+her, bevor ihr eine Antwort wählt. Prüft es erst danach in SQL Server.
 
 **Abfrage 1**
 
@@ -557,13 +522,35 @@ FROM ma x, ma y
 WHERE x.vorgnr = y.manr AND x.gehalt > y.gehalt;
 ```
 
-Welche Aussage über das Ergebnis stimmt?
+<quiz>
+Was ist das Ziel dieser Abfrage?
 
-- a) Hansen erscheint, weil er das höchste Gehalt hat.
-- b) Es erscheinen alle 19 Mitarbeiter, die einen Vorgesetzten haben.
-- c) Das Ergebnis ist leer.
-- d) SQL Server meldet einen Fehler, weil `ma` zweimal im `FROM`-Teil steht.
-- e) Meyer und Sorge erscheinen, weil sie mehr als 5000 € verdienen.
+- [ ] Alle Vorgesetzten, die mehr verdienen als einer ihrer Untergebenen.
+  > Falsch: Die Rollen sind vertauscht. Ausgegeben und verglichen wird mit `x.gehalt > y.gehalt`, also das Gehalt des Untergebenen gegen das des Vorgesetzten.
+- [ ] Alle Mitarbeiter, die mehr verdienen als der Geschäftsführer.
+  > Falsch: Verglichen wird mit dem jeweiligen direkten Vorgesetzten (`vorgnr`), nicht mit einer festen Person. Nur bei Mitarbeitern, die Hansen unterstellt sind, wäre das zufällig derselbe.
+- [x] Alle Mitarbeiter, die mehr verdienen als ihr direkter Vorgesetzter.
+  > Richtig: `x` ist der Untergebene, `y` der Vorgesetzte (`x.vorgnr = y.manr`). Die Bedingung `x.gehalt > y.gehalt` wählt die Untergebenen aus, die mehr verdienen als der Vorgesetzte.
+- [ ] Alle Mitarbeiter, die mehr verdienen als ein Kollege aus derselben Abteilung.
+  > Falsch: Die Verknüpfung läuft über `vorgnr = manr`, nicht über die Abteilungsnummer.
+- [ ] Alle Mitarbeiter zusammen mit Namen und Gehalt ihres direkten Vorgesetzten.
+  > Falsch: Das wäre die Abfrage ohne `AND x.gehalt > y.gehalt`. Die zusätzliche Bedingung schränkt das Ergebnis ein.
+</quiz>
+
+<quiz>
+Welches Ergebnis liefert die Abfrage?
+
+- [ ] Alle 19 Mitarbeiter, die einen Vorgesetzten haben.
+  > Falsch: Das wäre das Ergebnis ohne die Gehaltsbedingung. Mit `x.gehalt > y.gehalt` bleiben nur Mitarbeiter, die mehr verdienen als ihr Vorgesetzter.
+- [ ] Zwei Zeilen: Meyer und Sorge.
+  > Falsch: Meyer (5200) und Sorge (5800) haben beide Karl (7200) als Vorgesetzten und verdienen weniger als er.
+- [ ] Eine Zeile: Hansen, der Geschäftsführer.
+  > Falsch: Hansen hat keinen Vorgesetzten (`vorgnr` ist `NULL`). Er fällt schon bei der Verknüpfung heraus und erscheint nie im Ergebnis.
+- [x] Das Ergebnis ist leer.
+  > Richtig: Kein Mitarbeiter verdient mehr als sein direkter Vorgesetzter. Ein leeres Ergebnis ist hier ein korrektes Ergebnis, kein Fehler.
+- [ ] SQL Server meldet einen Fehler, weil `ma` zweimal im `FROM`-Teil steht.
+  > Falsch: Mit zwei verschiedenen Aliasen (`x`, `y`) darf dieselbe Tabelle mehrfach im `FROM`-Teil stehen. Das ist der Selbstverbund.
+</quiz>
 
 **Abfrage 2**
 
@@ -573,46 +560,35 @@ FROM abt a, prj p
 WHERE a.abtnr = 20;
 ```
 
-Welche Aussage über das Ergebnis stimmt?
+<quiz>
+Was soll diese Abfrage erkennbar leisten?
 
-- a) 3 Zeilen: die drei Projekte der Abteilung Engineering.
-- b) 4 Zeilen: Engineering, kombiniert mit allen vier Projekten.
-- c) 20 Zeilen: alle Abteilungen mit allen Projekten.
-- d) 1 Zeile: Engineering mit dem ersten Projekt.
-- e) Eine Fehlermeldung, weil die Verknüpfungsbedingung fehlt.
+- [ ] Alle Projekte mit der Bezeichnung ihrer jeweiligen Abteilung.
+  > Falsch: Die Abfrage schränkt mit `a.abtnr = 20` auf eine einzige Abteilung ein, es sind also nicht alle Projekte gemeint.
+- [x] Die Projekte der Abteilung 20 mit der Bezeichnung dieser Abteilung.
+  > Richtig, das ist die erkennbare Absicht: Ausgegeben werden Abteilungsbezeichnung und Projekttitel, eingeschränkt auf Abteilung 20. Ob die Abfrage das auch erreicht, zeigt die nächste Frage.
+- [ ] Alle Abteilungen mit der Anzahl ihrer Projekte.
+  > Falsch: Es gibt weder eine Gruppenfunktion noch `GROUP BY`; ausgegeben werden einzelne Projekttitel.
+- [ ] Alle Abteilungen, die mindestens ein Projekt haben, mit dem Projekttitel.
+  > Falsch: Die Abfrage ist auf Abteilung 20 eingeschränkt, nicht auf Abteilungen mit Projekten.
+- [ ] Die Projekttitel der Abteilung 20, ohne Angabe der Abteilung.
+  > Falsch: In der Auswahlliste steht auch `a.bezeichnung`, die Abteilung wird also mit ausgegeben.
+</quiz>
 
-<!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil C anzeigen"
-    ```sql
-    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-c.sql"
-    ```
+<quiz>
+Welches Ergebnis liefert die Abfrage?
 
-    **Abfrage 1 — richtig ist c).** Niemand verdient mehr als sein
-    direkter Vorgesetzter (z. B. Meyer 5200 und Sorge 5800 bei Karl
-    mit 7200), also bleibt die Gehaltsbedingung für keine Zeile
-    erfüllt. Ein leeres Ergebnis ist hier ein korrektes Ergebnis.
-
-    - a) falsch: Hansen hat keinen Vorgesetzten (`vorgnr` ist `NULL`)
-      und fällt schon beim Verbund heraus.
-    - b) falsch: Das wäre das Ergebnis ohne die Gehaltsbedingung
-      (siehe Gegenprobe im Skript).
-    - d) falsch: Mit zwei verschiedenen Aliasen darf dieselbe Tabelle
-      mehrfach im `FROM`-Teil stehen.
-    - e) falsch: Eine Grenze von 5000 € kommt in der Abfrage nicht vor;
-      verglichen wird mit dem Gehalt des Vorgesetzten.
-
-    **Abfrage 2 — richtig ist b).** Die Bedingung `a.abtnr = 20` wählt
-    nur Zeilen aus `abt` aus (genau eine: Engineering); eine
-    Verknüpfung mit `prj` fehlt. Deshalb wird diese eine Zeile mit allen
-    vier Projekten kombiniert, auch mit dem Projekt AutoRob der
-    Zentrale. Das ist das Fehlerbild F1 im Fehlerbildkatalog.
-
-    - a) wäre das Ergebnis mit der Bedingung `a.abtnr = p.abtnr`.
-    - c) wäre das Ergebnis ganz ohne `WHERE`.
-    - d) falsch: Es gibt keinen Grund, nur das erste Projekt zu liefern.
-    - e) falsch: SQL Server prüft die Syntax, nicht den Sinn der
-      Abfrage. Eine fehlende Verknüpfung bemerkt die Datenbank nicht.
-<!-- MUSTERLOESUNG-ENDE -->
+- [ ] 3 Zeilen: die drei Projekte der Abteilung Engineering.
+  > Falsch: Das wäre das Ergebnis mit der zusätzlichen Bedingung `a.abtnr = p.abtnr`. Sie fehlt, deshalb bleibt es nicht bei den eigenen Projekten.
+- [x] 4 Zeilen: Engineering, kombiniert mit allen vier Projekten.
+  > Richtig: Die Bedingung `a.abtnr = 20` wählt genau eine Zeile aus `abt` (Engineering). Ohne Verknüpfung mit `prj` wird sie mit jedem der vier Projekte kombiniert, auch mit AutoRob der Zentrale. Das ist das Fehlerbild F1 im Fehlerbildkatalog.
+- [ ] 20 Zeilen: alle Abteilungen mit allen Projekten.
+  > Falsch: Das wäre das Ergebnis ganz ohne `WHERE`. Hier wird `abt` auf eine Zeile eingeschränkt.
+- [ ] 1 Zeile: Engineering mit dem ersten Projekt.
+  > Falsch: Es gibt keine Regel, die auf ein einzelnes Projekt einschränkt. Alle vier Kombinationen erfüllen die Bedingung.
+- [ ] Eine Fehlermeldung, weil die Verknüpfungsbedingung fehlt.
+  > Falsch: SQL Server prüft die Syntax, nicht den Sinn der Abfrage. Eine fehlende Verknüpfung bemerkt die Datenbank nicht.
+</quiz>
 
 ---
 
@@ -685,25 +661,4 @@ WHERE m.abtnr = a.abtnr
     | c) | `AND` bindet stärker als `OR`: gelesen als „(Verknüpfung und Verl) oder (Paderborn und kein Engineer)“ | F3 | 20 Zeilen: alle 6 Mitarbeiter aus Verl (auch die Engineers) plus Paderborn ohne Verknüpfung |
     | d) | `=` statt `<>`: es werden genau die Engineers geliefert | F4 | 4 Zeilen: Meyer, Sorge, Walter, Holle |
     | e) | Ein Sitz kann nicht gleichzeitig Verl und Paderborn sein | F5 | leer |
-<!-- MUSTERLOESUNG-ENDE -->
-
----
-
-#### Teil E — Zum Mitnehmen <span class="zeitangabe">ca. 3 Min.</span> { data-toc-label="Teil E — Zum Mitnehmen" }
-
-Ihr bekommt später Abfragen zu sehen, die jemand anderes geschrieben
-hat. Notiert drei Prüfpunkte, mit denen ihr in der ersten Minute
-einschätzt, ob eine Abfrage zur Anforderung passt.
-
-<!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil E anzeigen"
-    Mögliche Prüfpunkte:
-
-    - **Tabellen und Verknüpfungen zählen:** Gibt es für *n* Tabellen im
-      `FROM`-Teil mindestens *n − 1* Verknüpfungsbedingungen?
-    - **`AND` und `OR` prüfen:** Wo beide gemeinsam vorkommen, müssen
-      Klammern zur Absicht passen.
-    - **Ergebnis plausibilisieren:** Passt die Zeilenzahl ungefähr? Sind
-      Duplikate möglich? Stimmt mindestens eine Zeile, wenn ihr sie von
-      Hand nachrechnet?
 <!-- MUSTERLOESUNG-ENDE -->

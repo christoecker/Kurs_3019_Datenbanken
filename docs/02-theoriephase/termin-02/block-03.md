@@ -14,7 +14,7 @@ musterloesungen_sichtbar: false
 nachtrag_sichtbar: false
 fallstudie: "Übung: Kompressor-Zustandsüberwachung; betreutes Selbststudium: Lackproduktion Schnüffel GmbH (beides eigene MEA-Szenarien)"
 ki_einsatz: stufe_2_pair_programmer
-bearbeitungsstatus: entworfen
+bearbeitungsstatus: final
 publish_date: 2026-10-27
 ---
 
