@@ -2,7 +2,7 @@ USE BestTec;
 GO
 
 -- Personal: Mitarbeiterdaten komplett verwalten, Abteilungen nachschlagen
-GRANT SELECT, INSERT, UPDATE, DELETE ON ma TO r_personal;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ma TO r_personal; -- (1)!
 GRANT SELECT ON abt TO r_personal;
 
 -- Projektleiter (erste Fassung): Projekte verwalten, Rest lesen
@@ -19,5 +19,5 @@ GRANT SELECT ON testlauf TO r_controlling;
 
 -- Prüfstand (SPS): Testläufe eintragen, Projekte nachschlagen (nur Nummer und Titel)
 GRANT INSERT ON testlauf TO r_pruefstand;
-GRANT SELECT ON prj (prjnr, titel) TO r_pruefstand;
+GRANT SELECT ON prj (prjnr, titel) TO r_pruefstand; -- (2)!
 GO

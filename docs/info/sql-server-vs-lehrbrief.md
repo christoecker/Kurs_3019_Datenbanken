@@ -56,3 +56,26 @@ Grundidee ist dieselbe, die Befehle und der Aufbau unterscheiden sich.
 | Rechte ausprobieren | mit dem Konto anmelden | zusätzlich `EXECUTE AS USER = '…'` und `REVERT` | gilt nur für die aktuelle Sitzung |
 | Feste Rollen | – | z. B. `db_datareader`, `db_owner` | Vergeben sehr weitreichende Rechte (Fehlerbild F13); in diesem Kurs nicht verwenden |
 | Fehlermeldungen | – | 229: Recht auf Objekt fehlt; 230: Recht auf Spalte fehlt; 207: Spalte existiert nicht | |
+
+## Prozeduren und Trigger (Lehrbuch Kapitel 12)
+
+Das Lehrbuch erklärt Prozeduren und Trigger in PL/SQL. Die Konzepte
+übertragen sich, die Schreibweise und einige Eigenschaften nicht.
+
+| Thema | Lehrbuch (PL/SQL) | SQL Server (T-SQL) | Beispiel / Hinweis |
+|---|---|---|---|
+| Prozedur anlegen | `CREATE PROCEDURE … IS … BEGIN … END;` | `CREATE PROCEDURE … AS BEGIN … END;` | Parameter beginnen mit `@`: `@prjnr NUMERIC(3)`. |
+| Prozedur aufrufen | `CALL` bzw. aus PL/SQL-Block | `EXEC p_name @param = wert;` | Benannte Parameter sind lesbarer. |
+| Variablen | `DECLARE x …` | `DECLARE @x …` | Zuweisung mit `SET @x = …` oder `SELECT @x = …`. |
+| Eigenen Fehler auslösen | `RAISE_APPLICATION_ERROR` | `THROW 50001, 'Text', 1;` | Eigene Fehlernummern ab 50000. |
+| Zeitpunkt des Triggers | `BEFORE` oder `AFTER` | nur `AFTER` oder `INSTEAD OF` | Kein `BEFORE`: Werte prüft man besser mit `CHECK`. |
+| Ebene des Triggers | zeilenweise (`FOR EACH ROW`) oder je Anweisung | **immer je Anweisung**, einmal für alle Zeilen | Ein `UPDATE` auf 6 Zeilen löst den Trigger einmal aus. |
+| Alte und neue Werte | `:OLD` und `:NEW` | Pseudotabellen `deleted` (alt) und `inserted` (neu) | Bei `UPDATE` beide gefüllt, bei `INSERT` nur `inserted`, bei `DELETE` nur `deleted`. Zusammengehörige Zeilen über den Primärschlüssel verbinden. |
+| Trigger aktivieren/deaktivieren | `ALTER TRIGGER … ENABLE/DISABLE` | `ENABLE TRIGGER name ON tabelle;` und `DISABLE TRIGGER name ON tabelle;` | Direkt nach `CREATE TRIGGER` ist er aktiv. Status in `sys.triggers`. |
+| Namen von Prozeduren | beliebig | Präfix `sp_` vermeiden | `sp_` ist für Systemprozeduren reserviert; im Kurs `p_…`. |
+| Trennzeichen im Skript | `/` am Ende | `GO` zwischen den Anweisungen | `CREATE PROCEDURE` und `CREATE TRIGGER` müssen am Anfang eines Batches stehen. |
+
+!!! info "Gilt auch für KI-generierte Trigger"
+    Eine KI liefert oft Trigger im Stil eines anderen Systems (`BEFORE`,
+    `FOR EACH ROW`, `NEW`/`OLD`) oder mit der Annahme, dass nur eine Zeile
+    geändert wird. Beides erkennt ihr an den Fehlerbildern F16 und F17.

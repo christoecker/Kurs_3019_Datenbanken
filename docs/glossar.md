@@ -205,6 +205,9 @@ gemeinsamer, allgemeinerer Entity-Typ (Supertyp) gebildet wird — die
 gedanklich umgekehrte Blickrichtung zur Spezialisierung, beschreibt aber
 dieselbe Struktur.
 
+**Gespeicherte Prozedur (Stored Procedure)**
+: Ein Programm, das mit Namen in der Datenbank liegt und mehrere Schritte ausführt. Man übergibt ihm Werte (Parameter) und ruft es ausdrücklich auf, in SQL Server mit `EXEC`. Mit dem Recht `EXECUTE` kann man Nutzern erlauben, nur die Prozedur aufzurufen, statt direkt auf die Tabellen zuzugreifen.
+
 **GRANT**
 : SQL-Anweisung, die einem Benutzer oder einer Rolle ein Recht erteilt, z. B. `GRANT SELECT ON abt TO r_controlling`.
 
@@ -313,6 +316,9 @@ einen bestimmten Datensatz keinen Wert hat.
 ausgewählte Schlüssel; darf keine optionalen Attribute enthalten und
 wird in der Notation mit PK gekennzeichnet.
 
+**Pseudotabellen `inserted` und `deleted`**
+: Zwei Tabellen, die SQL Server einem Trigger zur Verfügung stellt. `inserted` enthält die neuen Zustände der betroffenen Zeilen, `deleted` die alten. Bei `UPDATE` sind beide gefüllt, bei `INSERT` nur `inserted`, bei `DELETE` nur `deleted`.
+
 ## R
 
 **Projektion**
@@ -418,6 +424,11 @@ wird; der ursprüngliche Schlüssel bleibt dabei als Unique Key erhalten.
 benötigten Datenbanken (bei SQL Server z. B. `master`, `tempdb`,
 `model`, `msdb`), die bereits direkt nach der Installation vorhanden
 sind, unabhängig von eigenen Anwendungsdatenbanken.
+
+## T
+
+**Trigger**
+: Ein Programm in der Datenbank, das automatisch ausgeführt wird, wenn sich Daten einer Tabelle durch `INSERT`, `UPDATE` oder `DELETE` ändern. In SQL Server läuft er einmal pro Anweisung für alle betroffenen Zeilen und kennt `AFTER` und `INSTEAD OF`.
 
 ## U
 

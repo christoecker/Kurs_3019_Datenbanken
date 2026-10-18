@@ -7,8 +7,8 @@ CREATE TABLE SCHAEDIGUNG (
     analyse_lauf_id   INT  NOT NULL,
     algorithmus_id    INT  NOT NULL,
     schaedigungswert  INT  NOT NULL,
-    PRIMARY KEY (analyse_lauf_id, algorithmus_id),
-    FOREIGN KEY (analyse_lauf_id) REFERENCES ANALYSE_LAUF(analyse_lauf_id),
+    PRIMARY KEY (analyse_lauf_id, algorithmus_id), -- (1)!
+    FOREIGN KEY (analyse_lauf_id) REFERENCES ANALYSE_LAUF(analyse_lauf_id), -- (2)!
     FOREIGN KEY (algorithmus_id)  REFERENCES ALGORITHMUS(algorithmus_id)
 );
 
@@ -16,5 +16,5 @@ CREATE TABLE EXTREMWERT (
     zeitstempel  DATETIME2(0)  NOT NULL PRIMARY KEY,
     typ          VARCHAR(7)    NOT NULL,
     wert         DECIMAL(6,2)  NOT NULL,
-    verarbeitet  BIT           NOT NULL
+    verarbeitet  BIT           NOT NULL -- (3)!
 );

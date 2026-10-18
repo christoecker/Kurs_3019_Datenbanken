@@ -86,18 +86,16 @@ Gruppe zählen.
     --8<-- "02-theoriephase/termin-03/code/uebung-06-gruppierung.sql"
     ```
 
-    `GROUP BY abtnr` teilt die Zeilen in Gruppen mit gleicher
-    Abteilungsnummer ein, die Gruppenfunktion wird dann **je Gruppe**
-    ausgewertet: eine Ergebniszeile pro Abteilung (hier 5). Regel in
-    SQL Server: Jede Spalte der Auswahlliste, die nicht in einer
-    Gruppenfunktion steht, muss auch in `GROUP BY` stehen.
-
-    Soll zusätzlich die Bezeichnung der Abteilung erscheinen, steht sie
-    in einer anderen Tabelle: `abt` wird verbunden, und die Bezeichnung
-    kommt als weitere Spalte in `GROUP BY` (zweites Statement). Das
-    Ergebnis hat weiterhin 5 Zeilen, denn die Bezeichnung ist je
-    Abteilung eindeutig. Fehlt sie in `GROUP BY`, meldet SQL Server
-    einen Fehler (Fehlerbild F12).
+    1. `GROUP BY abtnr` teilt die Zeilen in Gruppen mit gleicher
+       Abteilungsnummer ein, die Gruppenfunktion wird dann **je Gruppe**
+       ausgewertet: eine Ergebniszeile pro Abteilung (hier 5). Regel in SQL
+       Server: Jede Spalte der Auswahlliste, die nicht in einer
+       Gruppenfunktion steht, muss auch in `GROUP BY` stehen.
+    2. Soll zusätzlich die Bezeichnung der Abteilung erscheinen, steht sie in
+       einer anderen Tabelle: `abt` wird verbunden, und die Bezeichnung kommt
+       als weitere Spalte in `GROUP BY`. Das Ergebnis hat weiterhin 5 Zeilen,
+       denn die Bezeichnung ist je Abteilung eindeutig. Fehlt sie in `GROUP
+       BY`, meldet SQL Server einen Fehler (Fehlerbild F12).
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### Ein gegebenes Statement lesen
@@ -143,13 +141,11 @@ nicht eine Zeile, sondern eine **Gruppe** ausgewählt.
     --8<-- "02-theoriephase/termin-03/code/uebung-06-having.sql"
     ```
 
-    `WHERE` wählt Zeilen aus, **bevor** gruppiert wird. `HAVING` wählt
-    Gruppen aus, **nachdem** gruppiert wurde, und darf deshalb
-    Gruppenfunktionen verwenden. Ergebnis: Engineer (6) und Manager
-    (4). 
-    
-    Achtung: Der Alias `anzahl` darf in SQL Server in `HAVING` nicht
-    verwendet werden — dort steht `COUNT(*)` noch einmal.
+    1. `WHERE` wählt Zeilen aus, **bevor** gruppiert wird. `HAVING` wählt
+       Gruppen aus, **nachdem** gruppiert wurde, und darf deshalb
+       Gruppenfunktionen verwenden. Ergebnis: Engineer (6) und Manager (4).
+       Achtung: Der Alias `anzahl` darf in SQL Server in `HAVING` nicht
+       verwendet werden — dort steht `COUNT(*)` noch einmal.
 <!-- MUSTERLOESUNG-ENDE -->
 
 Gesucht sind die Abteilungen, deren **Durchschnittsgehalt** über 4000 €
@@ -194,11 +190,10 @@ und schaut euch die Ergebnisse von Hansen und John an.
     --8<-- "02-theoriephase/termin-03/code/uebung-06-null.sql"
     ```
 
-    Ein Rechenausdruck mit `NULL` ergibt wieder `NULL`: Wer keine
-    Provision hat, hat nach `gehalt + prov` kein Gesamtgehalt. Mit
-    `ISNULL(prov, 0)` (oder `COALESCE(prov, 0)`) wird ein fehlender Wert
-    **vor** der Addition durch 0 ersetzt. Hansen hat dann 9800, John
-    4900.
+    1. Ein Rechenausdruck mit `NULL` ergibt wieder `NULL`: Wer keine
+       Provision hat, hat nach `gehalt + prov` kein Gesamtgehalt.
+    2. `ISNULL(prov, 0)` (oder `COALESCE(prov, 0)`) ersetzt einen fehlenden
+       Wert **vor** der Addition durch 0. Hansen hat dann 9800, John 4900.
 <!-- MUSTERLOESUNG-ENDE -->
 
 Wie viele Mitarbeiter erhalten keine Provision? Gegeben ist dieses
@@ -303,9 +298,10 @@ Datensatz?
     --8<-- "02-theoriephase/termin-03/code/uebung-06-insert.sql"
     ```
 
-    `INSERT INTO` nennt die Tabelle und (empfohlen) die Spalten,
-    `VALUES` die passenden Werte in derselben Reihenfolge. Die Meldung
-    „1 Zeile betroffen“ bestätigt das Einfügen. Zuvor muss die
+    1. `INSERT INTO` nennt die Tabelle und (empfohlen) die Spalten.
+    2. `VALUES` nennt die passenden Werte in derselben Reihenfolge.
+
+    Die Meldung „1 Zeile betroffen“ bestätigt das Einfügen. Zuvor muss die
     Abteilung 30 existieren — sonst lehnt der Fremdschlüssel ab.
 <!-- MUSTERLOESUNG-ENDE -->
 
@@ -320,11 +316,11 @@ beschreibt man, welche Zeilen sich ändern und wie?
     --8<-- "02-theoriephase/termin-03/code/uebung-06-update.sql"
     ```
 
-    `SET` nennt die neue Wertzuweisung (hier ein Ausdruck mit dem
-    alten Wert), `WHERE` legt fest, welche Zeilen sich ändern. Vorab
-    zeigt dasselbe `WHERE` in einem `SELECT`, welche Zeilen getroffen
-    werden: Frohn und Werther. Die Meldung „2 Zeilen betroffen“ passt
-    dazu.
+    1. `SET` nennt die neue Wertzuweisung (hier ein Ausdruck mit dem alten
+       Wert).
+    2. `WHERE` legt fest, welche Zeilen sich ändern. Vorab zeigt dasselbe
+       `WHERE` in einem `SELECT`, welche Zeilen getroffen werden: Frohn und
+       Werther. Die Meldung „2 Zeilen betroffen“ passt dazu.
 <!-- MUSTERLOESUNG-ENDE -->
 
 Die Gehälter der gesamten Abteilung 20 sollen um 5 % steigen. Gegeben
@@ -364,12 +360,13 @@ Mitarbeiter arbeiten?
     --8<-- "02-theoriephase/termin-03/code/uebung-06-delete.sql"
     ```
 
+    1. `DELETE FROM` mit `WHERE` löscht die passenden Zeilen.
+
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-delete-abteilung.sql"
     ```
 
-    `DELETE FROM` mit `WHERE` löscht die passenden Zeilen. Beim Löschen
-    der Abteilung lehnt SQL Server mit einer Fehlermeldung zum
+    Beim Löschen der Abteilung lehnt SQL Server mit einer Fehlermeldung zum
     Fremdschlüssel `fk_ma_abt` ab: Mitarbeiter verweisen noch auf die
     Abteilung. Die Datenbank schützt so die
     Fremdschlüsselintegrität.

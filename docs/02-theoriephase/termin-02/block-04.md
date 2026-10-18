@@ -106,12 +106,14 @@ Datenbank ausgeführt werden sollen?
     --8<-- "02-theoriephase/termin-02/code/uebung-04-datenbank.sql"
     ```
 
-    `CREATE DATABASE` legt die Datenbank an, `USE` wechselt in sie. Das
-    `GO` ist, wie in Woche 11, kein SQL-Befehl, sondern ein
-    SSMS-Kommando: Es trennt das Skript in einzelne Ausführungsblöcke
-    (sogenannte Batches). Ohne `GO` hinter `CREATE DATABASE` würde `USE`
-    versuchen, in eine Datenbank zu wechseln, die zu diesem Zeitpunkt
-    noch nicht existiert.
+    1. `CREATE DATABASE` legt die Datenbank an.
+    2. `GO` ist, wie in Woche 11, kein SQL-Befehl, sondern ein SSMS-Kommando:
+       Es trennt das Skript in einzelne Ausführungsblöcke (sogenannte
+       Batches). Ohne `GO` hinter `CREATE DATABASE` würde `USE` versuchen, in
+       eine Datenbank zu wechseln, die zu diesem Zeitpunkt noch nicht
+       existiert.
+    3. `USE` wechselt in die Datenbank; alle folgenden Anweisungen gelten
+       dort.
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### Erste Tabelle: MESSUNG
@@ -141,6 +143,18 @@ minütlichen Messung sinnvoll? Wie genau muss der Zeitstempel sein?
     --8<-- "02-theoriephase/termin-02/code/uebung-04-messung.sql"
     ```
 
+    1. `DATETIME2(0)` speichert den Zeitstempel sekundengenau, bei einer
+       minütlichen Messung genügt das. `PRIMARY KEY` direkt hinter dem
+       Attribut ist die übliche Kurzschreibweise; der Primärschlüssel ist
+       ohnehin nie leer. Sie hat einen kleinen Nachteil: SQL Server vergibt
+       den Namen des Schlüssels dabei selbst (im Object Explorer unter der
+       Tabelle bei *Keys* einsehbar). Wie ihr Schlüsseln einen eigenen Namen
+       gebt, schauen wir uns im Abschnitt zu den Constraints an.
+    2. `DECIMAL(6,2)` erlaubt z. B. Werte bis 9999,99 mit zwei
+       Nachkommastellen — für Druck in bar und andere Prozessgrößen
+       reichlich. `NOT NULL` steht bei jedem Attribut, das im Schema "nicht
+       optional" war.
+
     Aus dem Wertebereich wird ein konkreter Datentyp:
 
     | Wertebereich im Relationenschema | Datentyp in SQL Server |
@@ -150,19 +164,6 @@ minütlichen Messung sinnvoll? Wie genau muss der Zeitstempel sein?
     | string | `VARCHAR(n)` — höchstens `n` Zeichen |
     | date | `DATE` |
     | datetime | `DATETIME2(n)` — `n` Nachkommastellen bei den Sekunden |
-
-    `DECIMAL(6,2)` erlaubt z. B. Werte bis 9999,99 mit zwei
-    Nachkommastellen — für Druck in bar und andere Prozessgrößen
-    reichlich. `DATETIME2(0)` speichert den Zeitstempel sekundengenau,
-    bei einer minütlichen Messung genügt das. `NOT NULL` steht bei
-    jedem Attribut, das im Schema "nicht optional" war; der
-    Primärschlüssel `zeitstempel` ist ohnehin nie leer.
-
-    `PRIMARY KEY` direkt hinter dem Attribut ist die übliche
-    Kurzschreibweise. Sie hat einen kleinen Nachteil: SQL Server vergibt
-    den Namen des Schlüssels dabei selbst (im Object Explorer unter
-    der Tabelle bei *Keys* einsehbar). Wie ihr Schlüsseln einen eigenen
-    Namen gebt, schauen wir uns im Abschnitt zu den Constraints an.
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### VERFAHREN und ALGORITHMUS
@@ -198,17 +199,15 @@ neuen Algorithmus selbst vergeben?
     --8<-- "02-theoriephase/termin-02/code/uebung-04-verfahren-algorithmus.sql"
     ```
 
-    `VERFAHREN` muss zuerst angelegt werden: Der Fremdschlüssel in
-    `ALGORITHMUS` verweist auf `VERFAHREN(verfahren)`, und SQL Server
-    prüft schon beim Anlegen, ob das Ziel existiert. Auch die
-    `FOREIGN KEY`-Zeile ist eine Kurzschreibweise, bei der SQL Server
-    den Namen vergibt.
-
-    `IDENTITY(1,1)` lässt SQL Server die Nummern selbst vergeben
-    (Startwert 1, Schrittweite 1). Beim `INSERT` lässt man die Spalte
-    einfach weg. Das ist die übliche Umsetzung eines
-    Surrogatschlüssels; Lücken in der Nummernfolge sind dabei normal
-    (z. B. wenn ein `INSERT` scheitert).
+    1. `IDENTITY(1,1)` lässt SQL Server die Nummern selbst vergeben
+       (Startwert 1, Schrittweite 1). Beim `INSERT` lässt man die Spalte
+       einfach weg. Das ist die übliche Umsetzung eines Surrogatschlüssels;
+       Lücken in der Nummernfolge sind dabei normal (z. B. wenn ein `INSERT`
+       scheitert).
+    2. Der Fremdschlüssel verweist auf `VERFAHREN(verfahren)`, und SQL Server
+       prüft schon beim Anlegen, ob das Ziel existiert. Deshalb muss
+       `VERFAHREN` zuerst angelegt werden. Auch die `FOREIGN KEY`-Zeile ist
+       eine Kurzschreibweise, bei der SQL Server den Namen vergibt.
 
     **Abweichung vom Relationenschema:** In `ALGORITHMUS` heißen zwei
     Spalten anders als in der Tabelle oben — `version` wurde zu `ver`
@@ -262,12 +261,13 @@ welchen Datentyp hat ein "boolean" in SQL Server?
     --8<-- "02-theoriephase/termin-02/code/uebung-04-lauf-schaedigung-extremwert.sql"
     ```
 
-    Ein zusammengesetzter Primärschlüssel wird nicht mehr direkt hinter
-    das Attribut geschrieben, sondern als eigene Zeile
-    `PRIMARY KEY (a, b)` unter die Attribute. Genauso stehen die beiden
-    Fremdschlüssel jeweils als eigene Zeile `FOREIGN KEY (...)
-    REFERENCES ...`. Für den Wahrheitswert gibt es in SQL Server keinen
-    Typ `BOOLEAN`, stattdessen `BIT` (0 oder 1).
+    1. Ein zusammengesetzter Primärschlüssel wird nicht mehr direkt hinter
+       das Attribut geschrieben, sondern als eigene Zeile `PRIMARY KEY (a,
+       b)` unter die Attribute.
+    2. Genauso stehen die beiden Fremdschlüssel jeweils als eigene Zeile
+       `FOREIGN KEY (...) REFERENCES ...`.
+    3. Für den Wahrheitswert gibt es in SQL Server keinen Typ `BOOLEAN`,
+       stattdessen `BIT` (0 oder 1).
 
     Die Tabellen sind damit angelegt, aber noch nicht abgesichert:
     Nichts verhindert bisher, dass jemand einen Schädigungswert von 250
@@ -345,12 +345,15 @@ Gebt jedem Constraint einen sprechenden Namen nach dem Schema
     --8<-- "02-theoriephase/termin-02/code/uebung-04-constraints.sql"
     ```
 
-    Regel 1 und 2 sind `UNIQUE`-Constraints (Regel 1 über *zwei*
-    Spalten gemeinsam — einzeln dürfen sich Verfahren und Version (`ver`)
-    durchaus wiederholen). Regel 3, 4, 5 und 6 sind `CHECK`-Constraints:
-    ein Wertebereich (`BETWEEN`) bzw. eine Liste erlaubter Werte (`IN`).
-    Regel 7 ist ein `DEFAULT`: Wird beim `INSERT` kein Wert für
-    `verarbeitet` angegeben, setzt SQL Server `0`.
+    1. Regel 1 und 2 sind `UNIQUE`-Constraints. Regel 1 gilt über *zwei*
+       Spalten gemeinsam — einzeln dürfen sich Verfahren und Version (`ver`)
+       durchaus wiederholen, nur die Kombination muss eindeutig sein.
+    2. Regel 3 und 4 sind `CHECK`-Constraints mit einem Wertebereich
+       (`BETWEEN`, beide Grenzen eingeschlossen).
+    3. Regel 5 und 6 sind `CHECK`-Constraints mit einer Liste erlaubter Werte
+       (`IN`).
+    4. Regel 7 ist ein `DEFAULT`: Wird beim `INSERT` kein Wert für
+       `verarbeitet` angegeben, setzt SQL Server `0`.
 <!-- MUSTERLOESUNG-ENDE -->
 
 !!! info "Tabelle und Constraints in einem Schritt"

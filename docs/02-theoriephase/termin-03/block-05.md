@@ -202,12 +202,13 @@ Datenbank, welche Zeilen ins Ergebnis gehören?
     --8<-- "02-theoriephase/termin-03/code/uebung-05-selektion-gehalt.sql"
     ```
 
-    Der `WHERE`-Teil enthält die Bedingung, die jede Zeile erfüllen
-    muss. Hier sind zwei Bedingungen mit `AND` verknüpft: ein
-    **Vergleich** (`gehalt > 4000`; weitere Operatoren sind `=`, `<>`,
-    `<`, `<=` und `>=`) und eine **Liste** (`abtnr IN (10, 20)` ist
-    die Kurzform für „Abteilung 10 oder Abteilung 20“). Ergebnis: 6
-    Zeilen (Hansen, Langer, John, Karl, Meyer, Sorge).
+    1. Eine **Liste**: `abtnr IN (10, 20)` ist die Kurzform für „Abteilung 10
+       oder Abteilung 20“.
+    2. Ein **Vergleich**; weitere Operatoren sind `=`, `<>`, `<`, `<=` und
+       `>=`. Der `WHERE`-Teil enthält die Bedingung, die jede Zeile erfüllen
+       muss; hier sind beide Bedingungen mit `AND` verknüpft.
+
+    Ergebnis: 6 Zeilen (Hansen, Langer, John, Karl, Meyer, Sorge).
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### Muster in Texten
@@ -222,11 +223,11 @@ beschreibt man ein solches Muster in SQL?
     --8<-- "02-theoriephase/termin-03/code/uebung-05-selektion-namen.sql"
     ```
 
-    `LIKE` vergleicht einen Text mit einem Muster. Der Unterstrich
-    `_` steht für **genau ein** beliebiges Zeichen, das Prozentzeichen
-    `%` für **beliebig viele** (auch null) Zeichen. `'_o__'` passt also
-    auf vierbuchstabige Namen mit „o“ an zweiter Stelle. Ergebnis:
-    Born und Dorn. Textwerte stehen immer in einfachen Hochkommas.
+    1. `LIKE` vergleicht einen Text mit einem Muster. Der Unterstrich `_`
+       steht für **genau ein** beliebiges Zeichen, das Prozentzeichen `%` für
+       **beliebig viele** (auch null) Zeichen. `'_o__'` passt also auf
+       vierbuchstabige Namen mit „o“ an zweiter Stelle (Ergebnis: Born und
+       Dorn). Textwerte stehen immer in einfachen Hochkommas.
 
     Noch eine Kurzform für Bereiche: `gehalt BETWEEN 2800 AND 3000`
     schließt beide Grenzen ein.
@@ -271,11 +272,12 @@ Datenbank, in welcher Reihenfolge sie die Zeilen liefern soll?
     --8<-- "02-theoriephase/termin-03/code/uebung-05-sortieren.sql"
     ```
 
-    Die Sortierung steht in `ORDER BY` am Ende der Abfrage.
-    `ASC` (aufsteigend) ist der Standard, `DESC` kehrt die Richtung
-    um. Mehrere Sortierkriterien werden durch Kommas getrennt; das
-    zweite gilt nur bei Gleichstand beim ersten. Ohne `ORDER BY`
-    garantiert die Datenbank keine bestimmte Reihenfolge — verlasst
+    1. Die Sortierung steht in `ORDER BY` am Ende der Abfrage. `ASC`
+       (aufsteigend) ist der Standard, `DESC` kehrt die Richtung um. Mehrere
+       Sortierkriterien werden durch Kommas getrennt; das zweite gilt nur bei
+       Gleichstand beim ersten.
+
+    Ohne `ORDER BY` garantiert die Datenbank keine bestimmte Reihenfolge — verlasst
     euch nie darauf, dass das Ergebnis „zufällig richtig“ sortiert ist.
 <!-- MUSTERLOESUNG-ENDE -->
 
@@ -315,16 +317,16 @@ Kundennummer, geordnet nach Abteilungsnummer.
     --8<-- "02-theoriephase/termin-03/code/uebung-05-verbund-projekte.sql"
     ```
 
-    Zusammengehörig sind genau die Zeilen, in denen der
-    **Fremdschlüssel** `prj.abtnr` gleich dem **Primärschlüssel**
-    `abt.abtnr` ist. Diese Gleichheit steht als Verknüpfungsbedingung
-    im `WHERE`-Teil — übrig bleiben 4 Zeilen. Weil `abtnr` in beiden
-    Tabellen vorkommt, muss ein Spaltenname eindeutig angegeben werden;
-    dafür vergibt man im `FROM`-Teil kurze **Aliase** (`x`, `y`).
-
-    Die zweite Abfrage ist gleichwertig, nur mit der Schreibweise
-    `INNER JOIN … ON`. Sie begegnet euch in KI-generierten Abfragen
-    häufig, deshalb solltet ihr beide Formen lesen können.
+    1. Weil `abtnr` in beiden Tabellen vorkommt, muss ein Spaltenname
+       eindeutig angegeben werden; dafür vergibt man im `FROM`-Teil kurze
+       **Aliase** (`x`, `y`).
+    2. Zusammengehörig sind genau die Zeilen, in denen der **Fremdschlüssel**
+       `prj.abtnr` gleich dem **Primärschlüssel** `abt.abtnr` ist. Diese
+       Gleichheit steht als Verknüpfungsbedingung im `WHERE`-Teil; übrig
+       bleiben 4 Zeilen.
+    3. Die zweite Abfrage ist gleichwertig, nur mit der Schreibweise `INNER
+       JOIN … ON`. Sie begegnet euch in KI-generierten Abfragen häufig,
+       deshalb solltet ihr beide Formen lesen können.
 <!-- MUSTERLOESUNG-ENDE -->
 
 #### Eine Tabelle mit sich selbst verknüpfen
@@ -340,14 +342,13 @@ löst man das?
     --8<-- "02-theoriephase/termin-03/code/uebung-05-selbstverbund.sql"
     ```
 
-    Die Tabelle `ma` wird zweimal in den `FROM`-Teil aufgenommen, mit
-    zwei verschiedenen Aliasen: `x` ist der Untergebene, `y` der
-    Vorgesetzte. Verknüpft werden sie über `x.vorgnr = y.manr`. Das
-    nennt man einen **Selbstverbund**. Ergebnis: Klaas (Differenz 2000)
-    und Beier (Differenz 2500).
-
-    Gleichwertig mit `INNER JOIN`: Die Verknüpfungsbedingung steht
-    dann hinter `ON`, im `WHERE`-Teil bleibt nur die Auswahl von Kron.
+    1. Die Tabelle `ma` wird zweimal in den `FROM`-Teil aufgenommen, mit zwei
+       verschiedenen Aliasen: `x` ist der Untergebene, `y` der Vorgesetzte.
+    2. Verknüpft werden sie über `x.vorgnr = y.manr`. Das nennt man einen
+       **Selbstverbund**. Ergebnis: Klaas (Differenz 2000) und Beier
+       (Differenz 2500).
+    3. Gleichwertig mit `INNER JOIN`: Die Verknüpfungsbedingung steht dann
+       hinter `ON`, im `WHERE`-Teil bleibt nur die Auswahl von Kron.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---

@@ -188,12 +188,13 @@ entstehen müssen.
     --8<-- "02-theoriephase/termin-04/code/uebung-07-anlegen.sql"
     ```
 
-    `CREATE LOGIN` legt die Anmeldung auf Serverebene an. Danach
-    verknüpft `CREATE USER … FOR LOGIN` das Login mit der Datenbank
-    BestTec. `CREATE ROLE` erzeugt die Rolle, `ALTER ROLE … ADD MEMBER`
-    nimmt den Benutzer auf. Die Passwörter gelten nur für diese Übung;
-    im Betrieb gelten Passwortrichtlinien oder die Anmeldung über
-    Windows.
+    1. `CREATE LOGIN` legt die Anmeldung auf Serverebene an. Die Passwörter
+       gelten nur für diese Übung; im Betrieb gelten Passwortrichtlinien oder
+       die Anmeldung über Windows.
+    2. `CREATE USER … FOR LOGIN` verknüpft das Login mit der Datenbank
+       BestTec.
+    3. `CREATE ROLE` erzeugt die Rolle.
+    4. `ALTER ROLE … ADD MEMBER` nimmt den Benutzer in die Rolle auf.
 
     Zum Zusammenhang von Login und Benutzer:
 
@@ -227,11 +228,13 @@ vergebt ihr zunächst das Leserecht auf die ganze Tabelle `ma`.
     --8<-- "02-theoriephase/termin-04/code/uebung-07-rechte.sql"
     ```
 
-    `GRANT <Operation> ON <Objekt> TO <Rolle>` erteilt ein Recht. Eine
-    Spaltenliste hinter dem Objekt beschränkt es auf diese Spalten. Alle
-    Rechte gehen an Rollen, nie an einzelne Benutzer. Das Leserecht
-    der Projektleiter auf ganz `ma` ist eine erste, bewusst einfache
-    Fassung, die wir gleich prüfen.
+    1. `GRANT <Operation> ON <Objekt> TO <Rolle>` erteilt ein Recht. Alle
+       Rechte gehen an Rollen, nie an einzelne Benutzer.
+    2. Eine Spaltenliste hinter dem Objekt beschränkt das Recht auf diese
+       Spalten.
+
+    Das Leserecht der Projektleiter auf ganz `ma` ist eine erste,
+    bewusst einfache Fassung, die wir gleich prüfen.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -275,11 +278,13 @@ genau diese beiden Spalten? Was passiert danach bei `SELECT *`?
     --8<-- "02-theoriephase/termin-04/code/uebung-07-deny.sql"
     ```
 
-    `DENY` verbietet ein Recht ausdrücklich — und das stärker als jedes
-    `GRANT`: Auch wenn dieselbe oder eine andere Rolle das Recht
-    erlaubt, bleibt es gesperrt. Die gesperrten Spalten lassen sich
-    nicht mehr lesen, schon ein `SELECT *` scheitert (Fehler 230). Mit
-    Spaltenliste ohne `gehalt` und `prov` funktioniert die Abfrage.
+    1. `DENY` verbietet ein Recht ausdrücklich — und das stärker als jedes
+       `GRANT`: Auch wenn dieselbe oder eine andere Rolle das Recht erlaubt,
+       bleibt es gesperrt.
+
+    Die gesperrten Spalten lassen sich nicht mehr lesen, schon ein `SELECT *`
+    scheitert (Fehler 230). Mit Spaltenliste ohne `gehalt` und `prov`
+    funktioniert die Abfrage.
 
     | Anweisung | Wirkung |
     |---|---|
@@ -309,12 +314,14 @@ die Rolle `r_projekt` dann auf `ma` — und was auf die Sicht?
     --8<-- "02-theoriephase/termin-04/code/uebung-07-view.sql"
     ```
 
-    Die Sicht `v_ma_projekt` wählt nur `manr`, `name`, `job`, `vorgnr`
-    und `abtnr` aus. `r_projekt` bekommt `SELECT` auf die Sicht, auf die
-    Tabelle `ma` selbst gar nichts mehr (`REVOKE` nimmt die frühere
-    Vergabe und das `DENY` zurück). Das reicht, weil Sicht und Tabelle
-    demselben Besitzer gehören: SQL Server prüft dann nur das Recht auf
-    die Sicht. Die Tabelle bleibt für die Projektleiter unsichtbar.
+    1. Die Sicht `v_ma_projekt` wählt nur `manr`, `name`, `job`, `vorgnr` und
+       `abtnr` aus.
+    2. `REVOKE` nimmt die frühere Vergabe und das `DENY` zurück. Auf die
+       Tabelle `ma` selbst hat `r_projekt` danach gar nichts mehr.
+    3. `r_projekt` bekommt `SELECT` auf die Sicht. Das reicht, weil Sicht und
+       Tabelle demselben Besitzer gehören: SQL Server prüft dann nur das
+       Recht auf die Sicht. Die Tabelle bleibt für die Projektleiter
+       unsichtbar.
 
     Wird `ma` später um eine Spalte erweitert, taucht sie in der Sicht
     nicht auf, die Freigabe bleibt also minimal. Eine Sicht kann außerdem

@@ -2,7 +2,7 @@ USE BestTec;
 GO
 
 -- Gehalt und Provision für die Projektleiter sperren
-DENY SELECT ON ma (gehalt, prov) TO r_projekt;
+DENY SELECT ON ma (gehalt, prov) TO r_projekt; -- (1)!
 GO
 
 EXECUTE AS USER = 'u_projektleiter';

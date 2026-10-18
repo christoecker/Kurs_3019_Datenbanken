@@ -216,3 +216,50 @@ alle ihre Mitglieder.
 **So erkennt ihr es:** Prüft bei jedem `DENY`, wer alles in der Rolle
 Mitglied ist und ob diese Personen das Recht über eine andere Rolle
 brauchen. Meist ist `REVOKE` (Recht zurücknehmen) besser als `DENY`.
+
+## F16 — Der Trigger geht von einer Zeile aus
+
+**Symptom:** Bei der Änderung einer einzelnen Zeile funktioniert der
+Trigger, bei einer Änderung vieler Zeilen entstehen zu wenige oder
+falsche Ergebnisse (z. B. nur eine Protokollzeile statt sechs).
+
+**Ursache:** Ein Trigger läuft in SQL Server einmal pro Anweisung. In
+`inserted` und `deleted` stehen alle betroffenen Zeilen. Wer mit
+Variablen arbeitet (`SELECT @x = spalte FROM inserted`), liest nur eine
+beliebige davon. Solcher Code stammt oft aus Beispielen anderer
+Datenbanksysteme, die zeilenweise arbeiten.
+
+**So erkennt ihr es:** Sucht im Trigger nach `DECLARE @…` und
+`SELECT @… = … FROM inserted/deleted`. Testet den Trigger immer mit
+einer Anweisung, die mehrere Zeilen ändert.
+
+## F17 — Syntax eines anderen Datenbanksystems
+
+**Symptom:** Das Anlegen einer Prozedur oder eines Triggers scheitert
+mit einem Syntaxfehler, z. B. bei `BEFORE UPDATE`, `FOR EACH ROW`,
+`OLD.spalte` oder `NEW.spalte`.
+
+**Ursache:** Die KI oder ein Lehrbuch verwendet die Schreibweise eines
+anderen Systems. SQL Server kennt `AFTER` und `INSTEAD OF`, keine
+zeilenweisen Trigger und stattdessen die Pseudotabellen `inserted` und
+`deleted`.
+
+**So erkennt ihr es:** Prüft die Stichwörter im Kopf des Triggers und
+den Zugriff auf alte und neue Werte. Nennt der KI im Prompt immer den
+Dialekt „Microsoft SQL Server (T-SQL)“.
+
+## F18 — Der Trigger feuert häufiger oder seltener als erwartet
+
+**Symptom:** Es entstehen Protokollzeilen, obwohl sich nichts geändert
+hat, oder erwartete Einträge fehlen.
+
+**Ursache:** Häufige Gründe: Der Trigger prüft nicht, welche Spalte sich
+geändert hat, oder vergleicht alte und neue Werte nicht. `IF
+UPDATE(spalte)` ist schon wahr, wenn die Spalte in `SET` vorkommt, auch
+wenn ihr Wert gleich bleibt. Ein Trigger für `UPDATE` löst bei `INSERT`
+oder `DELETE` nichts aus. Schlägt die Änderung an einem Constraint
+fehl, läuft ein `AFTER`-Trigger gar nicht erst.
+
+**So erkennt ihr es:** Spielt Anweisungen durch, die den Trigger auslösen
+sollen und die ihn nicht auslösen sollen (andere Spalte, gleicher Wert,
+keine passende Zeile, andere Anweisungsart), und zählt die Protokollzeilen.

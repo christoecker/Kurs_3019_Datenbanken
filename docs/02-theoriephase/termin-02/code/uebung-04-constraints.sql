@@ -1,6 +1,6 @@
 -- UNIQUE: Verfahren + Version legen einen Algorithmus eindeutig fest
 ALTER TABLE ALGORITHMUS
-    ADD CONSTRAINT UQ_ALGORITHMUS_VERFAHREN_VER UNIQUE (verfahren, ver);
+    ADD CONSTRAINT UQ_ALGORITHMUS_VERFAHREN_VER UNIQUE (verfahren, ver); -- (1)!
 
 -- UNIQUE: pro Zeitpunkt gibt es genau einen Analyse-Lauf
 ALTER TABLE ANALYSE_LAUF
@@ -9,7 +9,7 @@ ALTER TABLE ANALYSE_LAUF
 -- CHECK: Schädigungswerte und Grenzwerte sind Prozentangaben
 ALTER TABLE SCHAEDIGUNG
     ADD CONSTRAINT CK_SCHAEDIGUNG_WERT
-    CHECK (schaedigungswert BETWEEN 0 AND 100);
+    CHECK (schaedigungswert BETWEEN 0 AND 100); -- (2)!
 
 ALTER TABLE VERFAHREN
     ADD CONSTRAINT CK_VERFAHREN_GRENZWERTE
@@ -19,7 +19,7 @@ ALTER TABLE VERFAHREN
 -- CHECK: nur erlaubte Texte
 ALTER TABLE ALGORITHMUS
     ADD CONSTRAINT CK_ALGORITHMUS_RELEASE_STATUS
-    CHECK (release_status IN ('alpha', 'beta', 'stable'));
+    CHECK (release_status IN ('alpha', 'beta', 'stable')); -- (3)!
 
 ALTER TABLE EXTREMWERT
     ADD CONSTRAINT CK_EXTREMWERT_TYP
@@ -28,4 +28,4 @@ ALTER TABLE EXTREMWERT
 -- DEFAULT: ein neuer Extremwert ist zunächst unverarbeitet
 ALTER TABLE EXTREMWERT
     ADD CONSTRAINT DF_EXTREMWERT_VERARBEITET
-    DEFAULT 0 FOR verarbeitet;
+    DEFAULT 0 FOR verarbeitet; -- (4)!
