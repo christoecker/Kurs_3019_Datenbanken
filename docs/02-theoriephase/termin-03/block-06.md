@@ -537,7 +537,7 @@ jedes Statement: Welches Ergebnis erwartet ihr? Erfüllt es die
 Anforderung? Wenn nein: Was ist falsch, wie wirkt es sich auf das
 Ergebnis aus, wie lautet die Korrektur, und welches Fehlerbild liegt vor?
 
-**1.** Gesucht sind alle Abteilungen, denen **höchstens ein Projekt**
+1\. Gesucht sind alle Abteilungen, denen **höchstens ein Projekt**
 (also eines oder keines) zugeordnet ist. (Lehrbrief, Nr. 13, S. 89)
 
 ```sql
@@ -548,7 +548,19 @@ GROUP BY x.abtnr, x.bezeichnung
 HAVING COUNT(*) <= 1;
 ```
 
-**2.** Gesucht ist die **durchschnittliche Provision je Mitarbeiter**;
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung B.1 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-06-besttec-teil-b.sql:b1"
+    ```
+
+    **Erfüllt die Anforderung nicht** (Fehlerbild F11). Der Verbund
+    blendet Abteilungen ohne Projekt aus: Es erscheint nur die Zentrale,
+    die Abteilungen 30, 40 und 50 fehlen. Korrektur: die Projekte je
+    Abteilung in einer Unteranfrage zählen (4 Zeilen).
+<!-- MUSTERLOESUNG-ENDE -->
+
+2\. Gesucht ist die **durchschnittliche Provision je Mitarbeiter**;
 Mitarbeiter ohne Provision zählen mit 0.
 
 ```sql
@@ -556,7 +568,18 @@ SELECT AVG(prov) AS durchschnitt_prov
 FROM ma;
 ```
 
-**3.** Gesucht ist für jede Abteilung, die ein Projekt hat, die **Anzahl
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung B.2 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-06-besttec-teil-b.sql:b2"
+    ```
+
+    **Erfüllt die Anforderung nicht** (Fehlerbild F8). `AVG` ignoriert
+    `NULL`: Es zählen nur die 3 Mitarbeiter mit Provision, Ergebnis
+    866,67 statt 130. Korrektur: `AVG(ISNULL(prov, 0))`.
+<!-- MUSTERLOESUNG-ENDE -->
+
+3\. Gesucht ist für jede Abteilung, die ein Projekt hat, die **Anzahl
 ihrer Mitarbeiter**.
 
 ```sql
@@ -566,7 +589,19 @@ WHERE a.abtnr = m.abtnr AND a.abtnr = p.abtnr
 GROUP BY a.abtnr, a.bezeichnung;
 ```
 
-**4.** Gesucht sind die **Namen aller Mitarbeiter**, die in einer
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung B.3 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-06-besttec-teil-b.sql:b3"
+    ```
+
+    **Erfüllt die Anforderung nicht** (Fehlerbild F7). Der Verbund mit
+    `prj` vervielfacht die Mitarbeiter: Engineering hat 6 Mitarbeiter
+    und 3 Projekte, gezählt werden 18. Korrektur: `COUNT(DISTINCT
+    m.manr)`.
+<!-- MUSTERLOESUNG-ENDE -->
+
+4\. Gesucht sind die **Namen aller Mitarbeiter**, die in einer
 Abteilung mit **mindestens zwei Projekten** arbeiten.
 
 ```sql
@@ -576,17 +611,13 @@ WHERE abtnr IN (SELECT abtnr FROM prj GROUP BY abtnr HAVING COUNT(*) >= 2);
 ```
 
 <!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil B anzeigen"
+???+ note "Musterlösung B.4 anzeigen"
     ```sql
-    --8<-- "02-theoriephase/termin-03/code/aufg-06-besttec-teil-b.sql"
+    --8<-- "02-theoriephase/termin-03/code/aufg-06-besttec-teil-b.sql:b4"
     ```
 
-    | Nr. | Erfüllt die Anforderung? | Begründung | Fehlerbild |
-    |---|---|---|---|
-    | 1 | nein | Der Verbund blendet Abteilungen ohne Projekt aus: Es erscheint nur die Zentrale, die Abteilungen 30, 40 und 50 fehlen. Korrektur: die Projekte je Abteilung in einer Unteranfrage zählen (4 Zeilen). | F11 |
-    | 2 | nein | `AVG` ignoriert `NULL`: Es zählen nur die 3 Mitarbeiter mit Provision, Ergebnis 866,67 statt 130. Korrektur: `AVG(ISNULL(prov, 0))`. | F8 |
-    | 3 | nein | Der Verbund mit `prj` vervielfacht die Mitarbeiter: Engineering hat 6 Mitarbeiter und 3 Projekte, gezählt werden 18. Korrektur: `COUNT(DISTINCT m.manr)`. | F7 |
-    | 4 | ja | Die Unteranfrage liefert Abteilung 20 (3 Projekte); die 6 Mitarbeiter dieser Abteilung stehen im Ergebnis. | – |
+    **Erfüllt die Anforderung.** Die Unteranfrage liefert Abteilung 20
+    (3 Projekte); die 6 Mitarbeiter dieser Abteilung stehen im Ergebnis.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
@@ -688,48 +719,77 @@ jeder Änderung so vor: (1) mit einem `SELECT` und derselben
 ausführen, (3) die Meldung „n Zeilen betroffen“ mit eurer Erwartung
 vergleichen.
 
-1. Legt mit Hilfe der KI ein neues Projekt an: Nummer 471, Titel
-   „WindControl“, Kunde „A12“, Abteilung 30.
-2. Die Gehälter der Mitarbeiter der **Abteilung 20** sollen um 3 %
-   steigen. Gegeben ist dieses Statement:
-
-   ```sql
-   UPDATE ma
-   SET gehalt = gehalt * 1.03
-   WHERE abtnr = 20 OR job = 'Engineer';
-   ```
-
-   Wie viele Zeilen würden geändert? Erfüllt das Statement die
-   Anforderung? Prüft die Zeilenzahl mit einem `SELECT`, bevor ihr
-   korrigiert und ausführt.
-3. Mitarbeiter 7739 (Meier, Projektleiter) wechselt in die Abteilung 30
-   und bekommt Born (Personalnummer 7112) als neuen Vorgesetzten. Lasst
-   euch die Anweisung von der KI erstellen und prüft sie vor dem
-   Ausführen.
-4. Die Abteilung 40 (Robotik) wird aufgelöst. Was passiert, wenn ihr nur
-   `DELETE FROM abt WHERE abtnr = 40` ausführt? Lasst euch von der KI
-   eine Vorgehensweise vorschlagen und beurteilt, ob die Reihenfolge der
-   Anweisungen stimmt. Begründet sie.
+1\. Legt mit Hilfe der KI ein neues Projekt an: Nummer 471, Titel
+„WindControl“, Kunde „A12“, Abteilung 30.
 
 <!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil D anzeigen"
+???+ note "Musterlösung D.1 anzeigen"
     ```sql
-    --8<-- "02-theoriephase/termin-03/code/aufg-06-besttec-teil-d.sql"
+    --8<-- "02-theoriephase/termin-03/code/aufg-06-besttec-teil-d.sql:d1"
     ```
 
-    **Zu 2:** Wegen `OR` trifft das Statement auch die Engineers anderer
+    `INSERT INTO` nennt die Tabelle und die Spalten, `VALUES` die
+    passenden Werte in derselben Reihenfolge. Die Abteilung 30
+    existiert, deshalb nimmt der Fremdschlüssel `fk_prj_abt` die Zeile
+    an.
+<!-- MUSTERLOESUNG-ENDE -->
+
+2\. Die Gehälter der Mitarbeiter der **Abteilung 20** sollen um 3 %
+steigen. Gegeben ist dieses Statement:
+
+```sql
+UPDATE ma
+SET gehalt = gehalt * 1.03
+WHERE abtnr = 20 OR job = 'Engineer';
+```
+
+Wie viele Zeilen würden geändert? Erfüllt das Statement die
+Anforderung? Prüft die Zeilenzahl mit einem `SELECT`, bevor ihr
+korrigiert und ausführt.
+
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung D.2 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-06-besttec-teil-d.sql:d2"
+    ```
+
+    Wegen `OR` trifft das Statement auch die Engineers anderer
     Abteilungen (Dorn, Walter, Frei, Holle): 10 statt der 6 Zeilen der
     Abteilung 20. Richtig ist die Bedingung allein mit `abtnr = 20`
     (Fehlerbild F10).
+<!-- MUSTERLOESUNG-ENDE -->
 
-    **Zu 3:** Mit `SET abtnr = 30, vorgnr = 7112` werden beide Spalten in
-    einer Anweisung geändert; `WHERE manr = 7739` stellt sicher, dass nur
+3\. Mitarbeiter 7739 (Meier, Projektleiter) wechselt in die Abteilung 30
+und bekommt Born (Personalnummer 7112) als neuen Vorgesetzten. Lasst
+euch die Anweisung von der KI erstellen und prüft sie vor dem
+Ausführen.
+
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung D.3 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-06-besttec-teil-d.sql:d3"
+    ```
+
+    Mit `SET abtnr = 30, vorgnr = 7112` werden beide Spalten in einer
+    Anweisung geändert; `WHERE manr = 7739` stellt sicher, dass nur
     diese Zeile betroffen ist. Der Fremdschlüssel prüft, dass Abteilung
     30 und Mitarbeiter 7112 existieren.
+<!-- MUSTERLOESUNG-ENDE -->
 
-    **Zu 4:** Der Löschversuch scheitert am Fremdschlüssel, weil in der
-    Abteilung noch Mitarbeiter arbeiten. Außerdem verweisen Dorn und Frei
-    auf Meier (7745) als Vorgesetzten. Zulässige Reihenfolge: zuerst die
+4\. Die Abteilung 40 (Robotik) wird aufgelöst. Was passiert, wenn ihr nur
+`DELETE FROM abt WHERE abtnr = 40` ausführt? Lasst euch von der KI
+eine Vorgehensweise vorschlagen und beurteilt, ob die Reihenfolge der
+Anweisungen stimmt. Begründet sie.
+
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung D.4 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-06-besttec-teil-d.sql:d4"
+    ```
+
+    Der Löschversuch scheitert am Fremdschlüssel, weil in der Abteilung
+    noch Mitarbeiter arbeiten. Außerdem verweisen Dorn und Frei auf
+    Meier (7745) als Vorgesetzten. Zulässige Reihenfolge: zuerst die
     Untergebenen (8956, 8322), dann Meier, zuletzt die Abteilung. Wer
     zuerst Meier löscht, scheitert wieder am Fremdschlüssel `fk_vorg`.
 <!-- MUSTERLOESUNG-ENDE -->

@@ -40,3 +40,19 @@ Kurs-Server (SQL Server 2025 Express) ausprobiert.
     erzeugt in SQL Server oft eine Fehlermeldung (z. B. `NVL` oder
     `LENGTH`). Das ist ein guter Hinweis darauf, dass ihr der KI den
     Dialekt mitteilen müsst.
+
+## Zugriffsrechte (Lehrbuch Kapitel 11)
+
+Das Lehrbuch arbeitet mit einem anderen Datenbanksystem (MySQL); die
+Grundidee ist dieselbe, die Befehle und der Aufbau unterscheiden sich.
+
+| Thema | Lehrbuch / andere Systeme | SQL Server (T-SQL) | Beispiel / Hinweis |
+|---|---|---|---|
+| Nutzer anlegen | ein Benutzerkonto in einem Schritt | zwei Schritte: **Login** (Server) und **Benutzer** (Datenbank) | `CREATE LOGIN l_x WITH PASSWORD = '…'; CREATE USER u_x FOR LOGIN l_x;` |
+| Rollen | je nach System unterschiedlich | `CREATE ROLE`, Mitglieder mit `ALTER ROLE … ADD MEMBER` | `ALTER ROLE r_projekt ADD MEMBER u_projektleiter;` |
+| Rechte vergeben | `GRANT … ON … TO …` | gleiche Grundform, zusätzlich auf einzelne Spalten und Sichten | `GRANT SELECT ON prj (prjnr, titel) TO r_pruefstand;` |
+| Rechte verbieten | je nach System nicht vorhanden | `DENY` (stärker als `GRANT`) | `DENY SELECT ON ma (gehalt, prov) TO r_projekt;` |
+| Rechte zurücknehmen | `REVOKE` | `REVOKE`; nimmt `GRANT` und `DENY` zurück | `REVOKE SELECT ON ma FROM r_projekt;` |
+| Rechte ausprobieren | mit dem Konto anmelden | zusätzlich `EXECUTE AS USER = '…'` und `REVERT` | gilt nur für die aktuelle Sitzung |
+| Feste Rollen | – | z. B. `db_datareader`, `db_owner` | Vergeben sehr weitreichende Rechte (Fehlerbild F13); in diesem Kurs nicht verwenden |
+| Fehlermeldungen | – | 229: Recht auf Objekt fehlt; 230: Recht auf Spalte fehlt; 207: Spalte existiert nicht | |

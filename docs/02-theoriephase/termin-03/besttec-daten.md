@@ -56,3 +56,16 @@ in die Datenbank geladen.
 | 244 | 10 | T56 | AutoRob |
 | 212 | 20 | A12 | HydroControl |
 | 256 | 20 | M341 | AvisyTurb |
+
+## Ab Termin 4: Tabelle `testlauf`
+
+In Termin 4 kommt die Tabelle `testlauf` hinzu (angelegt durch
+[uebung-07-besttec-testlauf.sql](../termin-04/code/uebung-07-besttec-testlauf.sql)).
+Ein SPS-Prüfstand meldet damit Testergebnisse zu Projekten.
+
+| testnr | prjnr | zeitpunkt | ergebnis |
+|---|---|---|---|
+| 1 | 232 | 2026-11-10 08:15:00 | bestanden |
+| 2 | 232 | 2026-11-10 09:40:00 | fehlerhaft |
+| 3 | 244 | 2026-11-11 13:05:00 | bestanden |
+

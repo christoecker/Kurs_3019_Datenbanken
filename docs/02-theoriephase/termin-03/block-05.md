@@ -424,85 +424,129 @@ euer Ergebnis kontrollieren könnt.
 
 #### Teil A — Zeilen filtern und sortieren <span class="zeitangabe">ca. 10 Min.</span> { data-toc-label="Teil A — Zeilen filtern und sortieren" }
 
-1. Gesucht sind alle Mitarbeiter, die einem von zwei Profilen
-   entsprechen: *Entweder* ist das Grundgehalt kleiner als 5000 und die
-   Tätigkeit weder Programmierer noch Administrator, *oder* die
-   Tätigkeit ist Controller oder Trainer. Ausgabe: Name,
-   Abteilungsnummer, Tätigkeit, Gehalt. (Aufgabe nach Lehrbrief,
-   Kap. 7.10, Nr. 4, S. 88; Kontrolle: 12 Zeilen)
-2. Welche Mitarbeiter verdienen zwischen 2800 und 3000 € (einschließlich
-   der Grenzen)? Ausgabe: Name und Gehalt, das höchste Gehalt zuerst,
-   bei Gleichstand alphabetisch nach Name. (Kontrolle: 4 Zeilen)
-3. Welche Mitarbeiter haben einen Namen, der mit „M“ beginnt, und sind
-   keine Manager? Ausgabe: Name, Tätigkeit, Abteilungsnummer.
-   (Kontrolle: 2 Zeilen)
-4. Wie hoch ist das Jahresgehalt (zwölf Monatsgehälter) der
-   Mitarbeiter der Abteilung 30? Ausgabe: Name und Jahresgehalt, das
-   höchste zuerst. (Kontrolle: 3 Zeilen)
+1\. Gesucht sind alle Mitarbeiter, die einem von zwei Profilen
+entsprechen: *Entweder* ist das Grundgehalt kleiner als 5000 und die
+Tätigkeit weder Programmierer noch Administrator, *oder* die
+Tätigkeit ist Controller oder Trainer. Ausgabe: Name,
+Abteilungsnummer, Tätigkeit, Gehalt. (Aufgabe nach Lehrbrief,
+Kap. 7.10, Nr. 4, S. 88; Kontrolle: 12 Zeilen)
 
 <!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil A anzeigen"
+???+ note "Musterlösung A.1 anzeigen"
     ```sql
-    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-a.sql"
+    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-a.sql:a1"
     ```
 
-    **Zu 1:** Die beiden Profile sind zwei Bedingungen, die mit `OR`
-    verbunden werden; die Klammern um das erste Profil machen die
-    Struktur sichtbar. Die Bedingung `NOT IN` mit „Administrator“
-    schadet nicht, obwohl es diese Tätigkeit nicht gibt.
+    Die beiden Profile sind zwei Bedingungen, die mit `OR` verbunden
+    werden; die Klammern um das erste Profil machen die Struktur
+    sichtbar. Die Bedingung `NOT IN` mit „Administrator“ schadet nicht,
+    obwohl es diese Tätigkeit nicht gibt.
+<!-- MUSTERLOESUNG-ENDE -->
 
-    **Zu 2:** `BETWEEN` schließt beide Grenzen ein. Frohn, Schulte und
-    Holle verdienen gleich viel (2900) — das zweite Sortierkriterium
+2\. Welche Mitarbeiter verdienen zwischen 2800 und 3000 € (einschließlich
+der Grenzen)? Ausgabe: Name und Gehalt, das höchste Gehalt zuerst,
+bei Gleichstand alphabetisch nach Name. (Kontrolle: 4 Zeilen)
+
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung A.2 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-a.sql:a2"
+    ```
+
+    `BETWEEN` schließt beide Grenzen ein. Frohn, Schulte und Holle
+    verdienen gleich viel (2900) — das zweite Sortierkriterium
     entscheidet über ihre Reihenfolge.
+<!-- MUSTERLOESUNG-ENDE -->
 
-    **Zu 3:** Der zweite Meier (Abteilung 40) ist Manager und fällt
-    heraus; es bleiben Meier (Projektleiter) und Meyer.
+3\. Welche Mitarbeiter haben einen Namen, der mit „M“ beginnt, und sind
+keine Manager? Ausgabe: Name, Tätigkeit, Abteilungsnummer.
+(Kontrolle: 2 Zeilen)
 
-    **Zu 4:** Der Alias `jahresgehalt` darf in `ORDER BY` verwendet
-    werden.
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung A.3 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-a.sql:a3"
+    ```
+
+    Der zweite Meier (Abteilung 40) ist Manager und fällt heraus; es
+    bleiben Meier (Projektleiter) und Meyer.
+<!-- MUSTERLOESUNG-ENDE -->
+
+4\. Wie hoch ist das Jahresgehalt (zwölf Monatsgehälter) der
+Mitarbeiter der Abteilung 30? Ausgabe: Name und Jahresgehalt, das
+höchste zuerst. (Kontrolle: 3 Zeilen)
+
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung A.4 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-a.sql:a4"
+    ```
+
+    Der Alias `jahresgehalt` darf in `ORDER BY` verwendet werden.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
 #### Teil B — Über mehrere Tabellen abfragen <span class="zeitangabe">ca. 12 Min.</span> { data-toc-label="Teil B — Über mehrere Tabellen abfragen" }
 
-1. Welche Projekte finden in der Abteilung von Mitarbeiter 7739 statt?
-   Ausgabe: Abteilungsnummer, Bezeichnung, Titel, Kundennummer.
-   (Lehrbrief, Nr. 7, S. 88; Kontrolle: 3 Zeilen)
-2. Welche Projekte gehören zu Abteilungen, in denen es Mitarbeiter
-   gibt, die Engineer oder Programmierer sind? Ausgabe wie bei 1. Wie
-   viele Zeilen entstehen, wenn ihr `DISTINCT` weglasst — und warum?
-   (Lehrbrief, Nr. 8, S. 88; Kontrolle mit `DISTINCT`: 3 Zeilen)
-3. Welche Mitarbeiter arbeiten in Abteilungen mit Sitz in Verl oder
-   Münster? Ausgabe: Name, Bezeichnung der Abteilung und Sitz,
-   sortiert nach Sitz und Name. (Kontrolle: 9 Zeilen)
-4. Welche Mitarbeiter arbeiten in Abteilungen, die ein Projekt für den
-   Kunden „M341“ durchführen? Ausgabe: Name und Tätigkeit, jeder
-   Mitarbeiter nur einmal. (Kontrolle: 6 Zeilen)
+1\. Welche Projekte finden in der Abteilung von Mitarbeiter 7739 statt?
+Ausgabe: Abteilungsnummer, Bezeichnung, Titel, Kundennummer.
+(Lehrbrief, Nr. 7, S. 88; Kontrolle: 3 Zeilen)
 
 <!-- MUSTERLOESUNG-START -->
-???+ note "Musterlösung Teil B anzeigen"
+???+ note "Musterlösung B.1 anzeigen"
     ```sql
-    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-b.sql"
+    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-b.sql:b1"
     ```
 
-    **Zu 1:** Hier werden drei Tabellen verknüpft, also braucht es
-    zwei Verknüpfungsbedingungen (Mitarbeiter–Abteilung und
-    Abteilung–Projekt). Faustregel: *n* Tabellen, *n − 1*
-    Verknüpfungen.
+    Hier werden drei Tabellen verknüpft, also braucht es zwei
+    Verknüpfungsbedingungen (Mitarbeiter–Abteilung und
+    Abteilung–Projekt). Faustregel: *n* Tabellen, *n − 1* Verknüpfungen.
+<!-- MUSTERLOESUNG-ENDE -->
 
-    **Zu 2:** Ohne `DISTINCT` entstehen **12 Zeilen**: Abteilung 20
-    hat vier Mitarbeiter mit passender Tätigkeit (Frohn, Werther,
-    Meyer, Sorge) und drei Projekte, und der Verbund erzeugt jede
-    Kombination. Das ist ein typisches Fehlerbild (F2 im
-    Fehlerbildkatalog).
+2\. Welche Projekte gehören zu Abteilungen, in denen es Mitarbeiter
+gibt, die Engineer oder Programmierer sind? Ausgabe wie bei 1. Wie
+viele Zeilen entstehen, wenn ihr `DISTINCT` weglasst — und warum?
+(Lehrbrief, Nr. 8, S. 88; Kontrolle mit `DISTINCT`: 3 Zeilen)
 
-    **Zu 3:** Die Sortierung nach `a.sitz` und `m.name` kann sich auf
-    Spalten beider Tabellen beziehen.
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung B.2 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-b.sql:b2"
+    ```
 
-    **Zu 4:** Beide M341-Projekte (232 und 256) gehören zu Abteilung 20.
-    Ohne `DISTINCT` stünde jeder der sechs Mitarbeiter zweimal im
-    Ergebnis.
+    Ohne `DISTINCT` entstehen **12 Zeilen**: Abteilung 20 hat vier
+    Mitarbeiter mit passender Tätigkeit (Frohn, Werther, Meyer, Sorge)
+    und drei Projekte, und der Verbund erzeugt jede Kombination. Das ist
+    ein typisches Fehlerbild (F2 im Fehlerbildkatalog).
+<!-- MUSTERLOESUNG-ENDE -->
+
+3\. Welche Mitarbeiter arbeiten in Abteilungen mit Sitz in Verl oder
+Münster? Ausgabe: Name, Bezeichnung der Abteilung und Sitz,
+sortiert nach Sitz und Name. (Kontrolle: 9 Zeilen)
+
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung B.3 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-b.sql:b3"
+    ```
+
+    Die Sortierung nach `a.sitz` und `m.name` kann sich auf Spalten
+    beider Tabellen beziehen.
+<!-- MUSTERLOESUNG-ENDE -->
+
+4\. Welche Mitarbeiter arbeiten in Abteilungen, die ein Projekt für den
+Kunden „M341“ durchführen? Ausgabe: Name und Tätigkeit, jeder
+Mitarbeiter nur einmal. (Kontrolle: 6 Zeilen)
+
+<!-- MUSTERLOESUNG-START -->
+???+ note "Musterlösung B.4 anzeigen"
+    ```sql
+    --8<-- "02-theoriephase/termin-03/code/aufg-05-besttec-teil-b.sql:b4"
+    ```
+
+    Beide M341-Projekte (232 und 256) gehören zu Abteilung 20. Ohne
+    `DISTINCT` stünde jeder der sechs Mitarbeiter zweimal im Ergebnis.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---

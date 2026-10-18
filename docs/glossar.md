@@ -33,10 +33,19 @@ zugreifen soll.
 Entity bzw. jede Beziehung einen konkreten Wert annehmen kann (z. B.
 Bezeichnung, Datum).
 
+**Authentifizierung**
+: Der Nachweis, wer ein Nutzer ist, z. B. durch Login und Passwort. Sie ist die Voraussetzung für die Autorisierung.
+
+**Autorisierung**
+: Die Entscheidung, was ein (bereits angemeldeter) Nutzer tun darf. In einer Datenbank wird sie über Rechte geregelt, die an Rollen vergeben werden.
+
 ## B
 
 **Batch (GO)**
 : Ein zusammengehörender Block von SQL-Anweisungen, der gemeinsam an den Server geschickt wird. In SSMS trennt das Kommando `GO` ein Skript in mehrere Batches; es ist kein SQL-Befehl.
+
+**Benutzer (Datenbank-Benutzer)**
+: Ein Konto innerhalb einer Datenbank, das mit einem Login des Servers verknüpft ist. Erst als Benutzer kann man in der Datenbank Rechte besitzen, direkt oder über Rollen.
 
 **Beziehungsattribut**
 : Ein Attribut, das nicht zu einem Entity-Typ, sondern zu einem
@@ -111,11 +120,17 @@ Relation.
 physische Speicherung) lässt sich ändern, ohne die anderen Ebenen (z. B.
 Anwendungen) anpassen zu müssen.
 
+**DCL (Data Control Language)**
+: Der Teil von SQL, der Zugriffsrechte vergibt und entzieht (`GRANT`, `DENY`, `REVOKE`).
+
 **DDL (Data Definition Language)**
 : Der Teil von SQL, mit dem Strukturen angelegt, verändert und gelöscht werden (`CREATE`, `ALTER`, `DROP`) — im Unterschied zu Anweisungen, die Daten abfragen oder ändern.
 
 **DEFAULT-Wert**
 : Ein Wert, den die Datenbank automatisch einträgt, wenn beim Einfügen eines Datensatzes für eine Spalte nichts angegeben wird.
+
+**DENY**
+: SQL-Anweisung, die ein Recht ausdrücklich verbietet. Ein `DENY` ist stärker als jedes `GRANT`, auch wenn dieses über eine andere Rolle kommt.
 
 **DISTINCT**
 : Schlüsselwort in der `SELECT`-Zeile, das doppelte Zeilen aus dem Ergebnis entfernt. Es bezieht sich immer auf die gesamte Ergebniszeile, nicht nur auf die erste Spalte.
@@ -190,6 +205,9 @@ gemeinsamer, allgemeinerer Entity-Typ (Supertyp) gebildet wird — die
 gedanklich umgekehrte Blickrichtung zur Spezialisierung, beschreibt aber
 dieselbe Struktur.
 
+**GRANT**
+: SQL-Anweisung, die einem Benutzer oder einer Rolle ein Recht erteilt, z. B. `GRANT SELECT ON abt TO r_controlling`.
+
 **GROUP BY**
 : SQL-Klausel, die Zeilen mit gleichen Werten in den angegebenen Spalten zu Gruppen zusammenfasst, damit eine Gruppenfunktion je Gruppe ausgewertet werden kann. In SQL Server müssen alle nicht aggregierten Spalten der Auswahlliste auch dort stehen.
 
@@ -243,6 +261,9 @@ dem Anwender.
 **Kreuzprodukt**
 : Die Kombination jeder Zeile einer Tabelle mit jeder Zeile einer anderen. Es entsteht, wenn im `FROM`-Teil mehrere Tabellen stehen und keine Verknüpfungsbedingung angegeben ist; die Ergebnismenge ist dann meist unsinnig groß.
 
+**Login**
+: Eine Anmeldung auf Serverebene (Name und Passwort bzw. Windows-Konto). Ein Login wird in einer Datenbank mit einem Benutzer verknüpft.
+
 **Logischer Datenbankentwurf** 
 : Dritte Phase des Datenbankentwurfs: Überführung des konzeptuellen
 Schemas in ein logisches Schema, i. d. R. das Relationenmodell.
@@ -253,6 +274,9 @@ Schemas in ein logisches Schema, i. d. R. das Relationenmodell.
 : Gleichzeitiger Zugriff mehrerer Nutzer auf denselben Datenbestand; ein
 Datenbanksystem koordiniert diesen Zugriff, ein reiner Dateiansatz kann
 das kaum.
+
+**Minimale Rechte (Prinzip)**
+: Jeder Nutzer bekommt nur die Rechte, die er für seine Aufgabe braucht. Das begrenzt den Schaden bei Fehlern oder gestohlenen Zugangsdaten.
 
 ## N
 
@@ -327,6 +351,12 @@ optional ist.
 : Eine konkrete Beziehung zwischen zwei (oder mehr) Objekten der
 Anwendungswelt; die Ausprägung eines Beziehungstyps.
 
+**REVOKE**
+: SQL-Anweisung, die eine frühere Vergabe zurücknimmt, ein `GRANT` ebenso wie ein `DENY`. Danach gilt weder Erlaubnis noch Verbot.
+
+**Rolle (Datenbankrolle)**
+: Ein Bündel von Rechten. Benutzer werden in eine Rolle aufgenommen und erhalten damit deren Rechte; ändert sich ein Recht, genügt eine Änderung an der Rolle.
+
 **Rollenname**
 : Optionale Beschriftung an der Verbindungslinie zwischen Entity-Typ und
 Beziehungstyp, die die Rolle des Entity-Typs in dieser Beziehung
@@ -348,6 +378,9 @@ Schlüsselkandidaten besitzen.
 
 **Selektion**
 : Das Auswählen bestimmter Zeilen einer Tabelle anhand einer Bedingung. In SQL steht sie im `WHERE`-Teil.
+
+**Sicht (View)**
+: Eine gespeicherte Abfrage, die sich wie eine Tabelle verwenden lässt. Sichten zeigen nur ausgewählte Spalten oder Zeilen und eignen sich, um sensible Daten gezielt freizugeben.
 
 **Spezialisierung**
 : Die Ableitung eines neuen, spezielleren Entity-Typs (Subtyp) aus einem

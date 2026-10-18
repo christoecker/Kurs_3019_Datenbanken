@@ -170,3 +170,49 @@ einer Gruppenfunktion oder in `GROUP BY`? Gehört die Spalte fachlich zur
 Gruppe (z. B. die Bezeichnung zur Abteilungsnummer), nehmt sie in
 `GROUP BY` auf. Soll sie die Gruppen verfeinern (z. B. `job`), ändert
 sich das Ergebnis: Es gibt dann eine Zeile je Kombination.
+
+## F13 — Zu weitreichende Rechte
+
+**Symptom:** Ein Nutzer darf mehr, als seine Aufgabe verlangt: Er kann
+Daten ändern oder löschen, obwohl er nur lesen soll, oder er sieht
+Tabellen, die ihn nichts angehen. Es erscheint keine Fehlermeldung.
+
+**Ursache:** Das Skript vergibt eine Sammelberechtigung statt der
+einzelnen nötigen Rechte, z. B. `GRANT CONTROL ON DATABASE::…`, die feste
+Rolle `db_owner` oder `db_datareader` (die auch später angelegte
+Tabellen freigibt) oder ein `GRANT … TO PUBLIC`. KI-Vorschläge greifen
+gern zu solchen Abkürzungen.
+
+**So erkennt ihr es:** Vergleicht jedes erteilte Recht mit der
+Anforderung: Wird jede Operation tatsächlich gebraucht? Prüft mit
+`EXECUTE AS`, ob der Nutzer etwas darf, das er nicht dürfen soll.
+
+## F14 — Recht gilt für mehr Spalten oder Zeilen als nötig
+
+**Symptom:** Ein Nutzer sieht vertrauliche Spalten (z. B. `gehalt`,
+`kdnr`) oder Zeilen, die für ihn nicht bestimmt sind.
+
+**Ursache:** Das Recht gilt für die ganze Tabelle, obwohl nur ein Teil
+der Spalten gebraucht wird (`GRANT SELECT ON prj` statt
+`GRANT SELECT ON prj (prjnr, titel)`). Oder ein Spaltenrecht wird
+eingesetzt, wo auch Zeilen eingeschränkt werden müssten: Ein
+Spaltenrecht blendet keine Zeilen aus. Dafür braucht es eine Sicht mit
+`WHERE`.
+
+**So erkennt ihr es:** Fragt euch für jedes Recht: Welche Spalten und
+welche Zeilen sind tatsächlich nötig? Fragt `SELECT *` ab, wie es der
+Nutzer täte, und zählt die Zeilen.
+
+## F15 — `DENY` trifft mehr als gedacht
+
+**Symptom:** Ein Nutzer, der ein Recht haben soll, bekommt Fehler 229
+oder 230.
+
+**Ursache:** Ein `DENY` schlägt jedes `GRANT`. Gehört ein Nutzer zu
+mehreren Rollen, sperrt ein `DENY` in einer davon das Recht auch dann,
+wenn eine andere Rolle es erlaubt. Ein `DENY` auf eine Rolle trifft
+alle ihre Mitglieder.
+
+**So erkennt ihr es:** Prüft bei jedem `DENY`, wer alles in der Rolle
+Mitglied ist und ob diese Personen das Recht über eine andere Rolle
+brauchen. Meist ist `REVOKE` (Recht zurücknehmen) besser als `DENY`.
