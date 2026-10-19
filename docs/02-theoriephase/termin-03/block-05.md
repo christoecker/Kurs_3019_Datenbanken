@@ -47,25 +47,21 @@ abweicht, steht es auf der Seite
 **1.** Wozu dient ein Fremdschlüssel, und woran erkennt ihr in einem
 Relationenschema, welche Tabellen miteinander zusammenhängen?
 
-<!-- MUSTERLOESUNG-START -->
 ??? note "Musterlösung anzeigen"
     Ein Fremdschlüssel verweist auf den Primärschlüssel einer anderen
     Relation und bildet so die Beziehung zwischen Datensätzen ab. Im
     Relationenschema erkennt man ihn an der Kennzeichnung „FK“; die
     Tabelle, auf die er verweist, ist die verbundene Tabelle. In
     BestTec verweisen z. B. `ma.abtnr` und `prj.abtnr` auf `abt.abtnr`.
-<!-- MUSTERLOESUNG-ENDE -->
 
 **2.** Ihr habt in Kapitel 7 die Grundform einer Abfrage gelesen. Aus
 welchen drei Teilen besteht sie, und was leistet jeder Teil?
 
-<!-- MUSTERLOESUNG-START -->
 ??? note "Musterlösung anzeigen"
     `SELECT` bestimmt die Spalten der Ergebnistabelle, `FROM` legt fest,
     aus welchen Tabellen die Daten gelesen werden, und `WHERE` nennt die
     Bedingung, die eine Zeile erfüllen muss, um ins Ergebnis zu gehören.
     `WHERE` ist optional; fehlt es, gehören alle Zeilen zum Ergebnis.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -136,8 +132,7 @@ Die Personalabteilung möchte eine Liste mit Name, Tätigkeit und
 Grundgehalt aller Mitarbeiter — ohne Vorgesetzten, Provision und
 Abteilung. Welche Angaben braucht die Datenbank, um das zu liefern?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-05-projektion-liste.sql"
     ```
@@ -149,7 +144,6 @@ Abteilung. Welche Angaben braucht die Datenbank, um das zu liefern?
     praktisch, in echten Abfragen nennt man die gewünschten Spalten
     besser ausdrücklich. Jede Abfrage liefert wieder eine Tabelle
     (Relation) als Ergebnis.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Rechnen und umbenennen
 
@@ -157,8 +151,7 @@ Die Geschäftsführung fragt nach dem Jahresgehalt jedes Mitarbeiters
 (zwölf Monatsgehälter). In der Tabelle gibt es dafür keine Spalte. Muss
 man die Tabelle erweitern?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-05-projektion-jahresgehalt.sql"
     ```
@@ -167,15 +160,13 @@ man die Tabelle erweitern?
     Berechnungen mit Spalten und Zahlen. Mit `AS` bekommt die
     berechnete Spalte einen Namen. Die Berechnung gilt nur für das
     Ergebnis — in der Tabelle `ma` ändert sich nichts.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Doppelte Werte entfernen
 
 Welche Tätigkeiten kommen im Unternehmen überhaupt vor? Was passiert,
 wenn man einfach nur die Spalte `job` abfragt?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-05-projektion-jobs.sql"
     ```
@@ -184,7 +175,6 @@ wenn man einfach nur die Spalte `job` abfragt?
     Mitarbeiter mit dieser Tätigkeit gibt (20 Zeilen). `DISTINCT`
     entfernt doppelte Ergebniszeilen — übrig bleiben die 8
     verschiedenen Tätigkeiten.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -196,8 +186,7 @@ Wer in den Abteilungen 10 oder 20 verdient mehr als 4000 €? Ausgegeben
 werden sollen Name, Gehalt und Abteilungsnummer. Womit sagt ihr der
 Datenbank, welche Zeilen ins Ergebnis gehören?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-05-selektion-gehalt.sql"
     ```
@@ -209,7 +198,6 @@ Datenbank, welche Zeilen ins Ergebnis gehören?
        muss; hier sind beide Bedingungen mit `AND` verknüpft.
 
     Ergebnis: 6 Zeilen (Hansen, Langer, John, Karl, Meyer, Sorge).
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Muster in Texten
 
@@ -217,8 +205,7 @@ Welche Mitarbeiter der Abteilungen 20, 30 oder 40 haben einen Namen mit
 genau vier Buchstaben, dessen zweiter Buchstabe ein „o“ ist? Wie
 beschreibt man ein solches Muster in SQL?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-05-selektion-namen.sql"
     ```
@@ -231,7 +218,6 @@ beschreibt man ein solches Muster in SQL?
 
     Noch eine Kurzform für Bereiche: `gehalt BETWEEN 2800 AND 3000`
     schließt beide Grenzen ein.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -242,8 +228,7 @@ sind **oder** mehr als 5000 € verdienen. Formuliert die Bedingung
 zuerst so, wie ihr den Satz sprecht, und sagt vorher: Wie viele Zeilen
 erwartet ihr? Vergleicht dann mit dem tatsächlichen Ergebnis.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-05-bedingungen.sql"
     ```
@@ -256,7 +241,6 @@ erwartet ihr? Vergleicht dann mit dem tatsächlichen Ergebnis.
     das gewünschte Ergebnis mit **4 Zeilen** (Hansen, Karl, Meyer,
     Sorge). Merkregel: Sobald `AND` und `OR` gemeinsam vorkommen,
     setzt man Klammern.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -266,8 +250,7 @@ Die Geschäftsführung möchte eine Gehaltsliste: das höchste Gehalt
 zuerst, bei gleichem Gehalt alphabetisch nach Name. Woran erkennt die
 Datenbank, in welcher Reihenfolge sie die Zeilen liefern soll?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-05-sortieren.sql"
     ```
@@ -279,7 +262,6 @@ Datenbank, in welcher Reihenfolge sie die Zeilen liefern soll?
 
     Ohne `ORDER BY` garantiert die Datenbank keine bestimmte Reihenfolge — verlasst
     euch nie darauf, dass das Ergebnis „zufällig richtig“ sortiert ist.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -292,8 +274,7 @@ Abteilung. Die Tabelle `prj` kennt nur die Abteilungsnummer — die
 Bezeichnung steht in `abt`. Schreibt einmal beide Tabellen in den
 `FROM`-Teil, ohne weitere Bedingung. Wie viele Zeilen erwartet ihr?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-05-kreuzprodukt.sql"
     ```
@@ -303,7 +284,6 @@ Bezeichnung steht in `abt`. Schreibt einmal beide Tabellen in den
     unsinnig sind (z. B. „Zentrale“ mit dem Projekt „PeakControl“,
     das zu Engineering gehört). Dieses Ergebnis heißt **Kreuzprodukt**.
     Bei `ma` und `abt` wären es schon 100 Zeilen.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Zeilen über den Fremdschlüssel verknüpfen
 
@@ -311,8 +291,7 @@ Welche Bedingung sortiert die unsinnigen Kombinationen aus? Gesucht ist
 dabei eine Liste mit Abteilungsnummer, Bezeichnung, Projekttitel und
 Kundennummer, geordnet nach Abteilungsnummer.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-05-verbund-projekte.sql"
     ```
@@ -327,7 +306,6 @@ Kundennummer, geordnet nach Abteilungsnummer.
     3. Die zweite Abfrage ist gleichwertig, nur mit der Schreibweise `INNER
        JOIN … ON`. Sie begegnet euch in KI-generierten Abfragen häufig,
        deshalb solltet ihr beide Formen lesen können.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Eine Tabelle mit sich selbst verknüpfen
 
@@ -336,8 +314,7 @@ seinem? Gesucht sind Name, Tätigkeit, Gehalt und die Gehaltsdifferenz.
 Vorgesetzter und Untergebener stehen beide in der Tabelle `ma` — wie
 löst man das?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-05-selbstverbund.sql"
     ```
@@ -349,14 +326,12 @@ löst man das?
        (Differenz 2500).
     3. Gleichwertig mit `INNER JOIN`: Die Verknüpfungsbedingung steht dann
        hinter `ON`, im `WHERE`-Teil bleibt nur die Auswahl von Kron.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
 ### Gesamtergebnis <span class="zeitangabe">ca. 2 Min.</span> { data-toc-label="Gesamtergebnis" }
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     Jede Abfrage, die ihr heute geschrieben habt, folgt diesem Gerüst:
 
     ```sql
@@ -379,7 +354,6 @@ löst man das?
     passenden Zeilen aus, berechnet danach die Spalten aus `SELECT` und
     sortiert zuletzt. Gruppierung und Unteranfragen kommen als Nächstes
     dazu.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 

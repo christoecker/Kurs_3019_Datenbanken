@@ -39,32 +39,26 @@ komplett neues Beispiel an, das ihr noch nicht kennt.
 
 1.  Wozu dient ein ER-Diagramm eigentlich?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Es ist das zentrale Werkzeug des konzeptuellen Datenbankentwurfs —
         ein grafisches, technikfernes Modell, mit dem man sich mit
         Anwender:innen über die relevanten Daten einer Anwendungswelt
         verständigen kann, bevor man sich um die technische Umsetzung
         (Tabellen, SQL) kümmert.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 2.  Was macht einen Entity-Typ zu einem abhängigen Entity-Typ?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Er hat keinen eigenen Schlüssel und ist in seiner Existenz von
         einem anderen ("identifizierenden") Entity-Typ abhängig — erst die
         Kombination aus einem lokalen Attribut und der Beziehung zum
         identifizierenden Entity-Typ macht ihn eindeutig identifizierbar.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 3.  Was "erbt" ein Subtyp von seinem Supertyp?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Alle Attribute und Beziehungen des Supertyps, zusätzlich zu seinen
         eigenen.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -106,8 +100,7 @@ Hausnummer, PLZ, Ort). Für das ER-Modell reicht euch hier zunächst ein
 einzelnes Attribut `anschrift` — ob und wie man so etwas aufteilen
 sollte, schaut ihr euch in Termin 2 bei der Normalisierung genauer an.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph TD
@@ -120,7 +113,6 @@ sollte, schaut ihr euch in Termin 2 bei der Normalisierung genauer an.
     spez --- HAENDLER
     spez --- PRIVATKUNDE
     ```
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Auftrag
 
@@ -130,8 +122,7 @@ Supertyp `KUNDE`, nicht an den Subtypen — sowohl Händler als auch
 Privatkunden können Aufträge aufgeben. Das ist genau das, was ein
 Subtyp vom Supertyp "erbt".
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
@@ -141,7 +132,6 @@ Subtyp vom Supertyp "erbt".
     KUNDE -- "1" --- hat
     hat -- "N" --- AUFTRAG
     ```
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Auftragsposition (abhängiger Entity-Typ)
 
@@ -152,8 +142,7 @@ Auftragsposition-Beispiel kennt, hier nur in neuer Domäne. Die
 Kardinalität aus Sicht `AUFTRAGSPOSITION` ist deshalb immer genau 1,
 wie bei jedem abhängigen Entity-Typ.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
@@ -164,7 +153,6 @@ wie bei jedem abhängigen Entity-Typ.
     AUFTRAG -- "1" --- umfasst
     umfasst -- "N" --- AUFTRAGSPOSITION
     ```
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Buch
 
@@ -175,8 +163,7 @@ sind ja pro Position unterschiedlich. Fragt euch dabei ruhig: Ist
 "Lieferstatus" ein eigener Entity-Typ? Nein — fester Wertebereich,
 kein Objekt mit eigener Existenz.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
@@ -187,7 +174,6 @@ kein Objekt mit eigener Existenz.
     AUFTRAGSPOSITION -- "N" --- bestellt
     bestellt -- "1" --- BUCH
     ```
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -197,8 +183,7 @@ Damit ist das Kern-Modell vollständig. Es enthält bereits alle vier
 Bausteine (Spezialisierung, zwei normale Beziehungen, einen abhängigen
 Entity-Typ).
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'flowchart': {'padding': 1}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph TD
@@ -240,7 +225,6 @@ Entity-Typ).
       kann in beliebig vielen Positionen bestellt sein, muss aber nicht).
 
     [🔗 Modell in draw.io öffnen](https://app.diagrams.net/?page-id=bseP2d33L5JswQIz3_y5#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Fuebung-01-elibri-kern-modell.drawio)
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -254,8 +238,7 @@ geschrieben haben. Was ändert sich am Diagramm?
 Überlegt: Wann bekommt etwas einen eigenen Entity-Typ und wann bleibt
 es "nur" ein Attribut?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```mermaid
     %%{init: {'flowchart': {'padding': 2}, 'themeVariables': {'fontSize': '0.6rem'}}}%%
     graph LR
@@ -274,7 +257,6 @@ es "nur" ein Attribut?
     Beziehung selbst ein Beziehungsattribut `reihenfolge` bekommen.
 
     [🔗 Erweiterung um Autor:innen in draw.io öffnen](https://app.diagrams.net/?page-id=OjjynIg3yCyPwdFJOA26#Uhttps%3A%2F%2Fchristoecker.github.io%2FKurs_3019_Datenbanken%2F02-theoriephase%2Ftermin-01%2Fcode%2Fuebung-01-elibri-kern-modell.drawio)
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 

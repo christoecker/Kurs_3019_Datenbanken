@@ -45,27 +45,22 @@ fehlerhafte Daten selbstständig ablehnt.
 
 **1. Was passiert in der letzten Phase des Datenbankentwurfs, der Datendefinition?**
 
-<!-- MUSTERLOESUNG-START -->
 ??? note "Musterlösung anzeigen"
     Das logische Schema (hier: das Relationenschema) wird in die
     Datenstrukturen einer Datenbanksprache umgesetzt — bei uns also in
     SQL-Anweisungen, die die Tabellen im Datenbanksystem anlegen.
-<!-- MUSTERLOESUNG-ENDE -->
 
 **2. Wie erkennt man im Relationenschema einen Primärschlüssel und einen Fremdschlüssel, und wofür sind sie da?**
 
-<!-- MUSTERLOESUNG-START -->
 ??? note "Musterlösung anzeigen"
     Der Primärschlüssel (PK) ist das Attribut bzw. die
     Attributkombination, die jeden Datensatz einer Relation eindeutig
     identifiziert. Ein Fremdschlüssel (FK) verweist auf den Schlüssel
     einer anderen Relation und bildet so die Beziehung zwischen den
     Datensätzen ab.
-<!-- MUSTERLOESUNG-ENDE -->
 
 **3. Eine Tabelle `AUFTRAG` hat einen Fremdschlüssel auf die Tabelle `KUNDE`. Was muss gelten, damit ein neuer Datensatz in `AUFTRAG` überhaupt eingetragen werden kann — und was bedeutet das für die Reihenfolge, in der man Daten einträgt?**
 
-<!-- MUSTERLOESUNG-START -->
 ??? note "Musterlösung anzeigen"
     Wegen der Fremdschlüsselintegrität muss der Kunde, auf den der
     Auftrag verweist, bereits in `KUNDE` existieren. Ein Auftrag kann
@@ -73,7 +68,6 @@ fehlerhafte Daten selbstständig ablehnt.
     vorhandenen Datensatz der anderen Tabelle hergestellt werden kann.
     Daten müssen deshalb zuerst in die Tabelle, auf die verwiesen wird
     (`KUNDE`), und erst danach in die verweisende Tabelle (`AUFTRAG`).
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -100,8 +94,7 @@ sollen. Welche Anweisung legt eine neue Datenbank an, und wie sagt ihr
 SQL Server anschließend, dass die folgenden Anweisungen *in dieser*
 Datenbank ausgeführt werden sollen?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-02/code/uebung-04-datenbank.sql"
     ```
@@ -114,7 +107,6 @@ Datenbank ausgeführt werden sollen?
        existiert.
     3. `USE` wechselt in die Datenbank; alle folgenden Anweisungen gelten
        dort.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Erste Tabelle: MESSUNG
 
@@ -137,8 +129,7 @@ will es genauer wissen. Überlegt: Wie viele Stellen braucht ein
 Druckwert in bar, wie viele Nachkommastellen sind bei einer
 minütlichen Messung sinnvoll? Wie genau muss der Zeitstempel sein?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-02/code/uebung-04-messung.sql"
     ```
@@ -164,7 +155,6 @@ minütlichen Messung sinnvoll? Wie genau muss der Zeitstempel sein?
     | string | `VARCHAR(n)` — höchstens `n` Zeichen |
     | date | `DATE` |
     | datetime | `DATETIME2(n)` — `n` Nachkommastellen bei den Sekunden |
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### VERFAHREN und ALGORITHMUS
 
@@ -193,8 +183,7 @@ angelegt werden? Und `algorithmus_id` ist ein künstlicher Schlüssel
 (ein Surrogatschlüssel) — muss man die Nummern wirklich bei jedem
 neuen Algorithmus selbst vergeben?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-02/code/uebung-04-verfahren-algorithmus.sql"
     ```
@@ -221,7 +210,6 @@ neuen Algorithmus selbst vergeben?
     Implementierung bewusst vom Entwurf unterscheidet — die Abweichung
     gehört dokumentiert. Auch im weiteren Verlauf der Übung heißen die
     Spalten `ver` und `release_status`.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### ANALYSE_LAUF, SCHAEDIGUNG und EXTREMWERT
 
@@ -255,8 +243,7 @@ Die drei restlichen Relationen:
 beide gleichzeitig Fremdschlüssel sind. Wie schreibt man das auf? Und
 welchen Datentyp hat ein "boolean" in SQL Server?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-02/code/uebung-04-lauf-schaedigung-extremwert.sql"
     ```
@@ -273,7 +260,6 @@ welchen Datentyp hat ein "boolean" in SQL Server?
     Nichts verhindert bisher, dass jemand einen Schädigungswert von 250
     % einträgt oder den Freigabestatus eines Algorithmus mit "fertig"
     angibt.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -339,8 +325,7 @@ Gebt jedem Constraint einen sprechenden Namen nach dem Schema
 `PK_` / `FK_` / `UQ_` / `CK_` / `DF_` + Tabelle + Gegenstand, z. B.
 `UQ_ANALYSE_LAUF_ZEITSTEMPEL`.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-02/code/uebung-04-constraints.sql"
     ```
@@ -354,7 +339,6 @@ Gebt jedem Constraint einen sprechenden Namen nach dem Schema
        (`IN`).
     4. Regel 7 ist ein `DEFAULT`: Wird beim `INSERT` kein Wert für
        `verarbeitet` angegeben, setzt SQL Server `0`.
-<!-- MUSTERLOESUNG-ENDE -->
 
 !!! info "Tabelle und Constraints in einem Schritt"
     Dass hier erst die Tabellen angelegt und die Constraints danach
@@ -424,8 +408,7 @@ INSERT INTO EXTREMWERT (zeitstempel, typ, wert)
 INSERT INTO SCHAEDIGUNG VALUES (1, 1, 50);
 ```
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     | Nr. | Ergebnis | Begründung |
     |---|---|---|
     | 1 | läuft durch | Lauf 1 und Algorithmus 1 existieren, 45 liegt zwischen 0 und 100. |
@@ -445,7 +428,6 @@ INSERT INTO SCHAEDIGUNG VALUES (1, 1, 50);
     vergibt. Mit so einer Meldung lässt sich schlecht arbeiten — wie
     ihr auch diese Schlüssel selbst benennt, zeigt der nächste
     Abschnitt.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Primär- und Fremdschlüssel mit eigenem Namen
 
@@ -483,15 +465,13 @@ Zum Schluss noch ein Experiment: Löscht die Tabelle `VERFAHREN` mit
 müsste man die Tabellen löschen, um die ganze Datenbank sauber
 abzubauen?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     SQL Server verweigert das Löschen: `ALGORITHMUS` hat einen
     Fremdschlüssel auf `VERFAHREN`, die Tabelle wird also noch
     gebraucht. Beim Abbau gilt deshalb die umgekehrte Reihenfolge wie
     beim Aufbau: zuerst die Tabellen, die auf andere verweisen
     (`SCHAEDIGUNG`, dann `ALGORITHMUS`), erst danach die Tabellen, auf
     die verwiesen wird (`VERFAHREN`, `ANALYSE_LAUF`).
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -500,8 +480,7 @@ abzubauen?
 So sieht das vollständige Skript aus, wenn Tabellen und Constraints in
 einem Schritt angelegt und alle Constraints benannt werden:
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-02/code/uebung-04-gesamt.sql"
     ```
@@ -519,7 +498,6 @@ einem Schritt angelegt und alle Constraints benannt werden:
     | Unique Key | `UNIQUE (...)` |
     | Regel zu Wertebereich/Liste | `CHECK (...)` |
     | Vorbelegter Wert | `DEFAULT ... ` |
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 

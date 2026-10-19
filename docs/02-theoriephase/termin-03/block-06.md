@@ -62,8 +62,7 @@ Wie viele Mitarbeiter hat BestTec, wie hoch ist die Gehaltssumme, und
 was sind das niedrigste und das höchste Gehalt? Was erwartet ihr als
 Ergebnis: eine Zeile je Mitarbeiter oder etwas anderes?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-aggregat.sql"
     ```
@@ -72,7 +71,6 @@ Ergebnis: eine Zeile je Mitarbeiter oder etwas anderes?
     `MIN` und `MAX` fassen viele Zeilen zu **einem** Wert zusammen. Das
     Ergebnis hat deshalb nur eine Zeile: 20 Mitarbeiter, Gehaltssumme
     84800, Durchschnitt 4240, niedrigstes Gehalt 2500, höchstes 9800.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Eine Kennzahl je Gruppe
 
@@ -80,8 +78,7 @@ Wie viele Mitarbeiter gibt es in jeder Abteilung? Die Datenbank soll die
 Mitarbeiter also nach Abteilung sortiert in Gruppen einteilen und jede
 Gruppe zählen.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-gruppierung.sql"
     ```
@@ -96,7 +93,6 @@ Gruppe zählen.
        als weitere Spalte in `GROUP BY`. Das Ergebnis hat weiterhin 5 Zeilen,
        denn die Bezeichnung ist je Abteilung eindeutig. Fehlt sie in `GROUP
        BY`, meldet SQL Server einen Fehler (Fehlerbild F12).
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Ein gegebenes Statement lesen
 
@@ -114,8 +110,7 @@ GROUP BY x.abtnr, x.bezeichnung;
 Welchen Wert erwartet ihr für die Abteilungen 10 und 20? Erfüllt das
 Statement die Anforderung?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-gesamtgehalt.sql"
     ```
@@ -126,7 +121,6 @@ Statement die Anforderung?
     `SUM(y.prov)` wäre für Engineering `NULL`, und `27000 + NULL` ergäbe
     ebenfalls `NULL`. Das Statement verbindet außerdem zwei Tabellen und
     gruppiert nach beiden Spalten der Auswahlliste.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -135,8 +129,7 @@ Statement die Anforderung?
 Zu welchen Tätigkeiten gibt es mehr als drei Mitarbeiter? Hier wird
 nicht eine Zeile, sondern eine **Gruppe** ausgewählt.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-having.sql"
     ```
@@ -146,7 +139,6 @@ nicht eine Zeile, sondern eine **Gruppe** ausgewählt.
        Gruppenfunktionen verwenden. Ergebnis: Engineer (6) und Manager (4).
        Achtung: Der Alias `anzahl` darf in SQL Server in `HAVING` nicht
        verwendet werden — dort steht `COUNT(*)` noch einmal.
-<!-- MUSTERLOESUNG-ENDE -->
 
 Gesucht sind die Abteilungen, deren **Durchschnittsgehalt** über 4000 €
 liegt. Gegeben ist dieses Statement:
@@ -160,8 +152,7 @@ GROUP BY abtnr;
 
 Welche Abteilungen und Werte liefert es? Erfüllt es die Anforderung?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-having-durchschnitt.sql"
     ```
@@ -174,7 +165,6 @@ Welche Abteilungen und Werte liefert es? Erfüllt es die Anforderung?
     `HAVING AVG(gehalt) > 4000`: Es bleiben Zentrale (5100) und
     Engineering (4500). Das ist das Fehlerbild F6 im
     [Fehlerbildkatalog](../../info/fehlerbildkatalog.md).
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -184,8 +174,7 @@ Wie hoch sind die Gesamtbezüge (Grundgehalt plus Provision) der
 Mitarbeiter der Abteilung 10? Probiert zuerst die einfachste Formulierung
 und schaut euch die Ergebnisse von Hansen und John an.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-null.sql"
     ```
@@ -194,7 +183,6 @@ und schaut euch die Ergebnisse von Hansen und John an.
        Provision hat, hat nach `gehalt + prov` kein Gesamtgehalt.
     2. `ISNULL(prov, 0)` (oder `COALESCE(prov, 0)`) ersetzt einen fehlenden
        Wert **vor** der Addition durch 0. Hansen hat dann 9800, John 4900.
-<!-- MUSTERLOESUNG-ENDE -->
 
 Wie viele Mitarbeiter erhalten keine Provision? Gegeben ist dieses
 Statement:
@@ -207,8 +195,7 @@ WHERE prov = NULL;
 
 Welchen Wert liefert es? Erfüllt es die Anforderung?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-null-vergleich.sql"
     ```
@@ -218,7 +205,6 @@ Welchen Wert liefert es? Erfüllt es die Anforderung?
     deshalb weder wahr noch falsch, und die Zeile fällt aus dem
     Ergebnis. Auf `NULL` prüft man mit `IS NULL` bzw. `IS NOT NULL`
     (Fehlerbild F8).
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -240,8 +226,7 @@ WHERE x.abtnr = y.abtnr
 Was liefert die Unteranfrage in den Klammern für sich allein? Welche
 Mitarbeiter erwartet ihr im Gesamtergebnis?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-unteranfrage.sql"
     ```
@@ -251,7 +236,6 @@ Mitarbeiter erwartet ihr im Gesamtergebnis?
     diesem Wert. Es bleiben Hansen, Karl, Meier und Sorge; Kron selbst
     fällt heraus, denn 5200 ist nicht größer als 5200. Man liest eine
     solche Abfrage von innen nach außen.
-<!-- MUSTERLOESUNG-ENDE -->
 
 Gesucht sind alle Mitarbeiter **ohne Untergebene** (Lehrbrief, Nr. 18).
 Gegeben ist dieses Statement:
@@ -265,8 +249,7 @@ WHERE manr NOT IN (SELECT vorgnr FROM ma);
 Welche Zeilen liefert die Unteranfrage? Wie viele Mitarbeiter erwartet
 ihr im Ergebnis?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-unteranfrage-notin.sql"
     ```
@@ -277,7 +260,6 @@ ihr im Ergebnis?
     werden, also ist die Bedingung für jede Zeile unbekannt. Abhilfe:
     `NULL` in der Unteranfrage mit `WHERE vorgnr IS NOT NULL`
     herausfiltern (Fehlerbild F9).
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -292,8 +274,7 @@ Die Abteilung 30 übernimmt ein neues Projekt: Nummer 471, Titel
 „WindControl“, Kunde „A12“. Wie bekommt die Datenbank diesen
 Datensatz?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-insert.sql"
     ```
@@ -303,15 +284,13 @@ Datensatz?
 
     Die Meldung „1 Zeile betroffen“ bestätigt das Einfügen. Zuvor muss die
     Abteilung 30 existieren — sonst lehnt der Fremdschlüssel ab.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Zeilen ändern
 
 Die Programmierer der Abteilung 20 bekommen 5 % mehr Gehalt. Wie
 beschreibt man, welche Zeilen sich ändern und wie?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-update.sql"
     ```
@@ -321,7 +300,6 @@ beschreibt man, welche Zeilen sich ändern und wie?
     2. `WHERE` legt fest, welche Zeilen sich ändern. Vorab zeigt dasselbe
        `WHERE` in einem `SELECT`, welche Zeilen getroffen werden: Frohn und
        Werther. Die Meldung „2 Zeilen betroffen“ passt dazu.
-<!-- MUSTERLOESUNG-ENDE -->
 
 Die Gehälter der gesamten Abteilung 20 sollen um 5 % steigen. Gegeben
 ist dieses Statement:
@@ -334,8 +312,7 @@ SET gehalt = gehalt * 1.05;
 Wie viele Zeilen werden geändert? Erfüllt das Statement die
 Anforderung?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-update-ohne-where.sql"
     ```
@@ -346,7 +323,6 @@ Anforderung?
     der Änderung die Meldung „n Zeilen betroffen“ mit der Erwartung
     vergleichen (Fehlerbild F10). Danach stellt ihr den Ausgangszustand
     mit den beiden Skripten wieder her.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Zeilen löschen
 
@@ -354,8 +330,7 @@ Das Projekt 471 wird wieder gestrichen. Und was passiert, wenn man die
 Abteilung 40 (Robotik) mit `DELETE` löschen möchte, obwohl dort noch
 Mitarbeiter arbeiten?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-03/code/uebung-06-delete.sql"
     ```
@@ -377,14 +352,12 @@ Mitarbeiter arbeiten?
     danach lässt sich die Abteilung ohne Fehlermeldung löschen. Die
     Reihenfolge ist also: erst die verweisenden Zeilen ändern (oder
     löschen), dann die Zeile, auf die verwiesen wurde.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
 ### Gesamtergebnis <span class="zeitangabe">ca. 2 Min.</span> { data-toc-label="Gesamtergebnis" }
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     **Abfragen.** Mit Gruppierung, `HAVING` und Unteranfragen ist die
     Grundform einer Abfrage vollständig. Heute sind zwei Klauseln
     dazugekommen: `GROUP BY` teilt die Zeilen in Gruppen ein, `HAVING`
@@ -423,7 +396,6 @@ Mitarbeiter arbeiten?
     unvollständiges `GROUP BY`, `NOT IN` mit `NULL`, Änderungen ohne oder
     mit zu weitem `WHERE` — stehen im
     [Fehlerbildkatalog](../../info/fehlerbildkatalog.md).
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 

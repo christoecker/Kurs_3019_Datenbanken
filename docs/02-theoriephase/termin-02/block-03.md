@@ -69,7 +69,6 @@ Relation *nicht* vollständig zu normalisieren.
 
 1.  Wozu dient Normalisierung grundsätzlich?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Normalisierung prüft ein bereits transformiertes
         Relationenschema auf Qualität und deckt Redundanz auf, die zu
@@ -77,38 +76,30 @@ Relation *nicht* vollständig zu normalisieren.
         Normalform bekommt man konkrete, prüfbare Kriterien an die
         Hand, um solche Redundanzen zu erkennen und durch Zerlegung in
         mehrere Relationen zu beseitigen.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 2.  Was verlangt die erste Normalform von einer Relation?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Dass jedes Attribut einen atomaren, nicht weiter zerlegbaren
         Wertebereich hat — eine einzelne Zelle darf also nicht mehrere
         Werte gleichzeitig enthalten (z. B. kein Tupel, keine Liste).
-    <!-- MUSTERLOESUNG-ENDE -->
 
 3.  Was versteht man unter einer funktionalen Abhängigkeit zwischen zwei Attributen?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Der Wert des einen Attributs legt den Wert des anderen
         eindeutig fest — zwei Datensätze mit demselben Wert im ersten
         Attribut müssen dann auch im zweiten Attribut übereinstimmen.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 4.  Wann verletzt eine Relation die zweite Normalform?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Wenn ein Nichtschlüsselattribut nur von einem *Teil* eines
         zusammengesetzten Schlüssels abhängt, nicht vom vollständigen
         Schlüssel.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 5.  Wann verletzt eine Relation die dritte Normalform — und wie unterscheidet sich das von einer 2NF-Verletzung?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Wenn ein Nichtschlüsselattribut nur indirekt (transitiv) über
         ein *anderes* Nichtschlüsselattribut vom Schlüssel abhängt. Im
@@ -116,7 +107,6 @@ Relation *nicht* vollständig zu normalisieren.
         zwischen einem Attribut und dem Schlüssel, sondern um das
         Verhältnis zwischen zwei Nichtschlüsselattributen
         untereinander.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -170,8 +160,7 @@ Ein erster Entwurf für die minütliche Messwerterfassung sieht so aus:
 
 Prüft: Hat jedes Attribut einen atomaren Wertebereich?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     `druckwerte` fasst zwei eigentlich unabhängige Messgrößen (Eingangs-
     und Ausgangsdruck) in einem einzigen Attribut zusammen — das verletzt
     die 1NF, die von jedem Attribut einen atomaren, nicht weiter
@@ -188,7 +177,6 @@ Prüft: Hat jedes Attribut einen atomaren Wertebereich?
     | – | volumenstrom | decimal | nein |
     | – | temperatur | decimal | nein |
     | – | luftfeuchtigkeit | decimal | nein |
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Zweite Normalform: Schädigungsauswertung prüfen
 
@@ -216,8 +204,7 @@ Prüft: Hängt jedes Nichtschlüsselattribut wirklich vom *vollständigen*
 Schlüssel (`analyse_lauf_id` + `algorithmus_id`) ab, oder nur von einem
 Teil davon?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     `schädigungswert` hängt vom vollen Schlüssel ab — er ist das Ergebnis
     genau dieses Algorithmus innerhalb genau dieses Laufs. Die übrigen
     Attribute verletzen die 2NF jeweils auf einer anderen Seite des
@@ -266,7 +253,6 @@ Teil davon?
     [Übung zu PK vs. Unique Key aus Woche 4](../../01-praxisphase/woche-04/woche-04.md#aufgabe))
     nicht eindeutig ist: Zwei unterschiedliche Verfahren könnten
     zufällig dieselbe Versionsnummer tragen.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Dritte Normalform: Grenzwerte prüfen
 
@@ -275,8 +261,7 @@ Prüft die neu entstandene Relation `ALGORITHMUS`: Hängen
 `algorithmus_id` ab, oder nur indirekt über ein anderes
 Nichtschlüsselattribut?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     `grenzwert_meldung` und `grenzwert_alarm` beschreiben nicht den
     einzelnen Algorithmus, sondern das verwendete `verfahren` — sie
     hängen also nur transitiv über `verfahren` vom Schlüssel ab:
@@ -307,7 +292,6 @@ Nichtschlüsselattribut?
     | PK | verfahren | string | nein |
     | – | grenzwert_meldung | int (0–100) | nein |
     | – | grenzwert_alarm | int (0–100) | nein |
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -326,14 +310,12 @@ identifizierten lokalen Maxima/Minima der Druckdifferenz festhält.
 | – | wert | decimal | nein |
 | – | verarbeitet | boolean | nein |
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     Damit besteht das vollständige, normalisierte Kompressor-Datenmodell
     aus sechs Relationen: `MESSUNG`, `EXTREMWERT`, `ANALYSE_LAUF`,
     `SCHAEDIGUNG`, `ALGORITHMUS` und `VERFAHREN`. Jede Redundanz, die
     sich über eine funktionale Abhängigkeit zwischen Attributen
     begründen ließ, ist damit beseitigt.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -346,8 +328,7 @@ Trotzdem wird er zusätzlich in `EXTREMWERT` gespeichert.
 
 Diskutiert: Ist das ein Normalform-Verstoß? Ist es sinnvoll die Druckdifferenz an ausgewählten Zeitpunkten zu speichern?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     Formal ist das **keine** 2NF- oder 3NF-Verletzung: Beide Normalformen
     prüfen funktionale Abhängigkeiten zwischen Attributen *derselben*
     Relation über deren Schlüssel — `wert` hängt korrekt vom vollen
@@ -365,7 +346,6 @@ Diskutiert: Ist das ein Normalform-Verstoß? Ist es sinnvoll die Druckdifferenz 
     Extremwert ein zweites Mal in den Algorithmus eingeht. Eine bewusste,
     gut begründete Entwurfsentscheidung also — kein handwerklicher Fehler
     wie die vorherigen 1NF-/2NF-/3NF-Verletzungen.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 

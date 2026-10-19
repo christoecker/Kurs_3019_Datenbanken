@@ -42,38 +42,31 @@ aller Regeln findet ihr zum Nachschlagen auf der
 
 1.  Warum reicht das ER-Modell allein nicht aus, um eine Datenbank zu implementieren?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Dem ER-Modell fehlt eine Sprachkomponente, mit der man tatsächlich
         Daten abfragen oder ändern könnte. Deshalb hat sich zur
         Implementierung von Datenbanken das Relationenmodell durchgesetzt,
         ergänzt um die Datenbanksprache SQL.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 2.  Was unterscheidet die Transformation einer 1:N- von einer N:M-Beziehung?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Bei einer 1:N-Beziehung verschmilzt die Beziehung mit der Relation
         der N-Seite — ein einzelnes Fremdschlüsselattribut genügt. Bei
         einer N:M-Beziehung entsteht dagegen immer eine eigene, dritte
         Relation, weil ein einzelnes Fremdschlüsselattribut nicht
         gleichzeitig auf mehrere Datensätze verweisen kann.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 3.  Woraus setzt sich der Primärschlüssel einer Relation zusammen, die aus einem abhängigen Entity-Typ entsteht?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Aus dem lokalen Schlüsselattribut und dem Fremdschlüssel zum
         identifizierenden Entity-Typ zusammen — das lokale Attribut allein
         wäre nur innerhalb des identifizierenden Entity-Typs eindeutig,
         nicht über die gesamte Relation hinweg.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 4.  In welcher Reihenfolge transformiert man ein vollständiges ER-Diagramm am besten?
 
-    <!-- MUSTERLOESUNG-START -->
     ??? note "Musterlösung anzeigen"
         Zuerst die einfachen Entity-Typen (Regel 1), dann die
         Spezialisierungshierarchien (vom Supertyp nach unten), dann die
@@ -82,7 +75,6 @@ aller Regeln findet ihr zum Nachschlagen auf der
         abgebildet, wenn alle beteiligten Entity-Typen schon als Relation
         existieren. Die Reihenfolge ist eine Empfehlung, die vor allem bei
         großen Diagrammen den Überblick sichert — keine Pflicht.
-    <!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -137,8 +129,7 @@ eigenen Relationen. Die beiden Subtyp-Relationen erhalten
 Datensatz in `HAENDLER` bzw. `PRIVATKUNDE` existieren darf, ist dieser
 Fremdschlüssel gleichzeitig der Primärschlüssel der Subtyp-Relation.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     **:octicons-table-16: Relation `KUNDE`**
 
     | Schlüssel | Attribut | Wertebereich | optional? |
@@ -167,7 +158,6 @@ Fremdschlüssel gleichzeitig der Primärschlüssel der Subtyp-Relation.
     höchstens einmal als Privatkunde auftauchen, aber auch in keiner der
     beiden Relationen vorkommen (laut eLibri-Szenario aber ausgeschlossen,
     da jeder Kunde entweder Händler oder Privatkunde ist).
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Einfache Entity-Typen transformieren (Regel 1 und 3)
 
@@ -178,8 +168,7 @@ steht außerdem auf der N-Seite der Beziehung `hat`. Da die Relation
 eingearbeitet werden (Regel 3) — die Relation muss später nicht noch
 einmal angefasst werden.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     **:octicons-table-16: Relation `AUFTRAG`**
 
     | Schlüssel | Attribut | Wertebereich | optional? |
@@ -200,7 +189,6 @@ einmal angefasst werden.
     Der Fremdschlüssel `kundennr` ist **nicht optional**: Laut
     eLibri-Szenario gehört jeder Auftrag zu genau einem Kunden —
     verpflichtende Teilnahme.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Abhängigen Entity-Typ transformieren (Regel 5 und 3)
 
@@ -211,8 +199,7 @@ erhält den Schlüssel von `AUFTRAG` als Fremdschlüssel. Auch die
 Relation `BUCH` existiert jetzt bereits, sodass die Beziehung
 `bestellt` direkt mit eingearbeitet werden kann (Regel 3).
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     **:octicons-table-16: Relation `AUFTRAGSPOSITION`**
 
     | Schlüssel | Attribut | Wertebereich | optional? |
@@ -229,7 +216,6 @@ Relation `BUCH` existiert jetzt bereits, sodass die Beziehung
     wie beim Fertigungsauftrag-Beispiel aus Woche 6. Der Fremdschlüssel
     `artikelnr` ist ebenfalls **nicht optional**: Jede Auftragsposition
     bezieht sich laut Szenario auf genau ein Buch.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -238,8 +224,7 @@ Relation `BUCH` existiert jetzt bereits, sodass die Beziehung
 Das eLibri-Kern-Modell ist damit vollständig ins Relationenmodell
 überführt und enthält sechs Relationen insgesamt.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     Ein Hinweis zum Schluss: Nicht jede Information aus dem ER-Diagramm
     bleibt bei der Transformation erhalten. Im ER-Modell musste jeder Auftrag mindestens
     eine Auftragsposition haben — diese Untergrenze lässt sich im
@@ -255,7 +240,6 @@ Das eLibri-Kern-Modell ist damit vollständig ins Relationenmodell
     [⬇ Relationenmodell für drawDB herunterladen (.ddb)](code/uebung-02-elibri-relationenmodell.ddb) —
     in drawDB über **Datei → Importieren → JSON** in ein neues, leeres
     Diagramm der Datenbank „MSSQL“ laden.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 

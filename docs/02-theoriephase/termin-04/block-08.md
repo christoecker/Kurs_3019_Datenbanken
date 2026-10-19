@@ -79,8 +79,7 @@ Der Prüfstand soll Testläufe über eine Prozedur melden. Welche Werte
 braucht sie als Eingabe? Was soll passieren, wenn es das gemeldete
 Projekt nicht gibt?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-08-prozedur.sql"
     ```
@@ -107,7 +106,6 @@ Projekt nicht gibt?
        bzw. `DEFAULT`), deshalb stehen sie nicht in der Spaltenliste.
 
     Die Prozedur trägt den Testlauf nur ein, wenn die Prüfung besteht.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Die Prozedur aufrufen
 
@@ -120,8 +118,7 @@ EXEC p_testlauf_melden @prjnr = 999, @ergebnis = 'bestanden';
 EXEC p_testlauf_melden @prjnr = 232, @ergebnis = 'unklar';
 ```
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-08-prozedur-aufruf.sql"
     ```
@@ -132,7 +129,6 @@ EXEC p_testlauf_melden @prjnr = 232, @ergebnis = 'unklar';
     sich: Der `CHECK`-Constraint erlaubt nur `bestanden` und
     `fehlerhaft` (Fehler 547). Regeln der Tabelle gelten also auch für
     Änderungen über eine Prozedur.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -142,8 +138,7 @@ Der Prüfstand soll Testläufe künftig nur noch über die Prozedur melden.
 Was muss sich am Rechtekonzept aus der vorherigen Einheit ändern? Und
 wie prüft ihr, ob es wirkt?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-08-prozedur-rechte.sql"
     ```
@@ -160,7 +155,6 @@ wie prüft ihr, ob es wirkt?
     Genau diese Konstruktion verwenden wir in Termin 7, wenn eine echte
     SPS Messdaten in die Datenbank schreibt: ein technischer Nutzer mit
     einer einzigen Berechtigung, nämlich `EXECUTE` auf eine Prozedur.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -178,8 +172,7 @@ Wie beschreibt man, dass bei jedem `UPDATE` auf `ma` etwas passieren
 soll? Und woher weiß der Trigger, welche Zeilen sich geändert haben und
 wie ihre alten und neuen Werte lauten?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-08-trigger.sql"
     ```
@@ -204,7 +197,6 @@ wie ihre alten und neuen Werte lauten?
 
     Weil der Trigger einmal pro Anweisung läuft, verarbeitet er bei einem
     `UPDATE` auf viele Zeilen alle auf einmal.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Die Wirkung vorhersagen
 
@@ -217,8 +209,7 @@ Leert vor jeder Anweisung das Protokoll mit `TRUNCATE TABLE gehalt_log;`.
 - (d) `UPDATE ma SET gehalt = gehalt WHERE abtnr = 20;`
 - (e) `UPDATE ma SET gehalt = 0 WHERE abtnr = 99;` (diese Abteilung gibt es nicht)
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-08-trigger-test.sql"
     ```
@@ -235,7 +226,6 @@ Leert vor jeder Anweisung das Protokoll mit `TRUNCATE TABLE gehalt_log;`.
     denn er ist nur für `UPDATE` angelegt. Genau darüber stolpern Trigger,
     die von KI erzeugt wurden: Sie feuern zu oft, zu selten oder
     verarbeiten nur eine Zeile (Fehlerbild F16 und F18).
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -246,8 +236,7 @@ ein `UPDATE` sechs Gehälter senkt und der Trigger eingreift? Was
 geschieht mit dem Protokoll des ersten Triggers? Und wie schaltet man
 einen Trigger ab und wieder an?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-08-trigger-senkung.sql"
     ```
@@ -284,7 +273,6 @@ einen Trigger ab und wieder an?
     Und hängen mehrere Trigger an derselben Tabelle, ist ihre
     Reihenfolge nicht festgelegt; sie sollten deshalb nicht voneinander
     abhängen.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -325,8 +313,7 @@ Testbarkeit.
 | 4. Gehälter sollen in der Oberfläche als „4.800,00 €“ angezeigt werden. | |
 | 5. Bei einem fehlerhaften Testlauf soll der Projektleiter eine E-Mail bekommen. | |
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     | Anforderung | Wohin? | Begründung |
     |---|---|---|
     | 1. Gehalt nie negativ | **Constraint** (`CHECK (gehalt > 0)`) | Einfache Wertregel, gilt für jeden Zugriffsweg, deklarativ und schnell. |
@@ -334,14 +321,12 @@ Testbarkeit.
     | 3. Fester Weg für Testläufe | **Prozedur** mit `EXECUTE`-Recht | Ein definierter Einstieg mit zentraler Prüfung; der Prüfstand braucht kein Tabellenrecht. |
     | 4. Anzeige als „4.800,00 €“ | **Anwendung** | Reine Darstellung, gehört nicht in die Datenbank. |
     | 5. E-Mail bei fehlerhaftem Testlauf | **Anwendung** (oder ein Dienst) | Eine Aktion außerhalb der Datenbank. Im Trigger würde sie jede Meldung verlangsamen, und ein Mailfehler ließe die Meldung scheitern. |
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
 ### Gesamtergebnis <span class="zeitangabe">ca. 2 Min.</span> { data-toc-label="Gesamtergebnis" }
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     | Mittel | Wann es greift | Gut für | Worauf achten |
     |---|---|---|---|
     | **Constraint** | bei jeder Änderung, automatisch | einfache Wertregeln (`CHECK`, `UNIQUE`, Fremdschlüssel) | kann nichts protokollieren oder berechnen |
@@ -359,7 +344,6 @@ Testbarkeit.
     (siehe [SQL Server und Lehrbuch/Lehrbrief: Abweichungen](../../info/sql-server-vs-lehrbrief.md)).
     Neben `AFTER` kennt SQL Server auch `INSTEAD OF`, ein Trigger, der
     die auslösende Anweisung ersetzt; den brauchen wir hier nicht.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 

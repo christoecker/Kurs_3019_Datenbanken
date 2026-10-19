@@ -64,6 +64,7 @@ extra_css:
 nav:
   - Start: index.md
   - Info:
+      - "Ablauf der Veranstaltung": info/ablauf.md
       - Glossar: glossar.md
       - "SQL Server und Lehrbrief": info/sql-server-vs-lehrbrief.md
       - Fehlerbildkatalog: info/fehlerbildkatalog.md

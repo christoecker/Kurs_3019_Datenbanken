@@ -50,7 +50,6 @@ BestTec.
 Welche weiteren Aufgaben übernimmt es, und welche davon hat mit dem
 heutigen Thema zu tun?
 
-<!-- MUSTERLOESUNG-START -->
 ??? note "Musterlösung anzeigen"
     Ein DBMS verwaltet den gleichzeitigen Zugriff mehrerer Nutzer, hält
     die Daten widerspruchsfrei (Integrität), sichert sie gegen Verlust
@@ -59,19 +58,16 @@ heutigen Thema zu tun?
     Drei-Ebenen-Architektur gehört dazu: Sie zeigt jeder Nutzergruppe
     nur den Ausschnitt der Daten, den sie braucht — in SQL Server
     heißen solche Ausschnitte Sichten (Views).
-<!-- MUSTERLOESUNG-ENDE -->
 
 **2.** Was passiert, wenn jemand ein `UPDATE` oder `DELETE` ohne
 `WHERE` ausführt? Und wer sollte so etwas überhaupt ausführen dürfen?
 
-<!-- MUSTERLOESUNG-START -->
 ??? note "Musterlösung anzeigen"
     Ohne `WHERE` sind alle Zeilen der Tabelle betroffen, und die
     Datenbank fragt nicht zurück. Ein solcher Fehler ist deshalb vor
     allem dann gefährlich, wenn viele Personen schreiben dürfen. Nur wer
     Daten ändern muss, sollte dazu berechtigt sein — alle anderen
     können ihn gar nicht erst machen. Genau das regeln Zugriffsrechte.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -154,8 +150,7 @@ Gilt ein Recht nur für einen Teil der Spalten, notiert, welche.
 | `r_controlling` (Controller) | | | | |
 | `r_pruefstand` (Prüfstand) | | | | |
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     | Rolle | `abt` | `ma` | `prj` | `testlauf` |
     |---|---|---|---|---|
     | `r_personal` | S | S, I, U, D | – | – |
@@ -170,7 +165,6 @@ Gilt ein Recht nur für einen Teil der Spalten, notiert, welche.
     lesen, was andere eingetragen haben, und sieht auch die
     vertrauliche Kundennummer nicht. Wie man „`ma` ohne `gehalt` und
     `prov`“ technisch umsetzt, klären wir in den nächsten Abschnitten.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -182,8 +176,7 @@ Wie legt ihr in SQL Server die vier Zugänge an, so dass jeder Nutzer
 einer Rolle angehört? Überlegt, in welcher Reihenfolge die Objekte
 entstehen müssen.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-07-anlegen.sql"
     ```
@@ -213,7 +206,6 @@ entstehen müssen.
       Login aber höchstens einen Benutzer. In unserem Beispiel gibt es
       nur BestTec, deshalb gehört hier zu jedem Login genau ein
       Benutzer.
-<!-- MUSTERLOESUNG-ENDE -->
 
 #### Rechte vergeben
 
@@ -222,8 +214,7 @@ Rolle eine Operation auf einer Tabelle? Wie beschränkt ihr das Recht des
 Prüfstands auf die Spalten `prjnr` und `titel`? Für die Projektleiter
 vergebt ihr zunächst das Leserecht auf die ganze Tabelle `ma`.
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-07-rechte.sql"
     ```
@@ -235,7 +226,6 @@ vergebt ihr zunächst das Leserecht auf die ganze Tabelle `ma`.
 
     Das Leserecht der Projektleiter auf ganz `ma` ist eine erste,
     bewusst einfache Fassung, die wir gleich prüfen.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -248,8 +238,7 @@ der Controller ein Gehalt ändern will? Was, wenn der Prüfstand ein
 Testergebnis einträgt und danach liest? Und was sehen die Projektleiter
 in der Tabelle `ma`?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-07-pruefen.sql"
     ```
@@ -263,7 +252,6 @@ in der Tabelle `ma`?
 
     Das Konzept hat aber eine Lücke: Die Projektleiter sehen
     `gehalt` und `prov`. Die Matrix verlangt das Gegenteil.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -272,8 +260,7 @@ in der Tabelle `ma`?
 Die Projektleiter dürfen `gehalt` und `prov` nicht sehen. Wie sperrt ihr
 genau diese beiden Spalten? Was passiert danach bei `SELECT *`?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-07-deny.sql"
     ```
@@ -297,7 +284,6 @@ genau diese beiden Spalten? Was passiert danach bei `SELECT *`?
     Projektleiter zunächst frei zugänglich, bis jemand daran denkt, sie
     zu sperren. Besser ist eine Freigabeliste: erlauben, was
     gebraucht wird, und sonst nichts.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
@@ -308,8 +294,7 @@ Tabelle verwenden lässt. Wie könnt ihr den Projektleitern genau die
 Spalten freigeben, die sie brauchen, ohne etwas zu sperren? Was bekommt
 die Rolle `r_projekt` dann auf `ma` — und was auf die Sicht?
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     ```sql
     --8<-- "02-theoriephase/termin-04/code/uebung-07-view.sql"
     ```
@@ -326,14 +311,12 @@ die Rolle `r_projekt` dann auf `ma` — und was auf die Sicht?
     Wird `ma` später um eine Spalte erweitert, taucht sie in der Sicht
     nicht auf, die Freigabe bleibt also minimal. Eine Sicht kann außerdem
     Zeilen filtern (mit `WHERE`), was Spaltenrechte nicht können.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
 ### Gesamtergebnis <span class="zeitangabe">ca. 2 Min.</span> { data-toc-label="Gesamtergebnis" }
 
-<!-- MUSTERLOESUNG-START -->
-!!! quote musterloesung-hervorgehoben "Lösung"
+??? quote musterloesung-hervorgehoben "Lösung"
     Das fertige Rechtekonzept von BestTec:
 
     | Rolle | `abt` | `ma` | `prj` | `testlauf` |
@@ -360,7 +343,6 @@ die Rolle `r_projekt` dann auf `ma` — und was auf die Sicht?
       mit minimalen Rechten, nie Administratorrechte.
     - Jedes Konzept testen: mit `EXECUTE AS` die Rolle wechseln und
       erlaubte wie verbotene Zugriffe ausprobieren.
-<!-- MUSTERLOESUNG-ENDE -->
 
 ---
 
