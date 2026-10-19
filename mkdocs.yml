@@ -53,6 +53,8 @@ markdown_extensions:
 exclude_docs: |
   01-praxisphase/_template/
   02-theoriephase/_templates/
+  02-theoriephase/_skript-werkzeuge/
+  02-theoriephase/termin-*/skript/
   00-projektsteuerung/stundenplan.md
   02-theoriephase/termin-07-twincat-sps/
 
