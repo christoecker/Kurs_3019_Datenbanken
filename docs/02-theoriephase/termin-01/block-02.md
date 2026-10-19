@@ -407,6 +407,17 @@ zwei optionalen weiteren Aufgaben versuchen (Teil C und Teil D).
     sein (M:N), was ein einzelnes Attribut nicht abbilden kann. Der
     Unterschied zwischen 1:N- und N:M-Transformation hängt also einzig an
     der Kardinalität, nicht daran, ob die Beziehung rekursiv ist.
+
+    Zusatzgedanke: Ein Fremdschlüssel prüft nur, dass der Sammel-Auftrag
+    **existiert** — nicht, dass er fachlich zum Auftrag passt. Eine
+    gemeinsame Versendung ergibt nur Sinn, wenn beide Aufträge an dieselbe
+    Adresse gehen, die Adresse steht aber in `KUNDE`, und `AUFTRAG` kennt
+    sie nur über `kundennr`. Das Schema würde also auch einen Auftrag von
+    Kunde 1 akzeptieren, der einem Sammel-Auftrag von Kunde 2 zugeordnet
+    ist. Solche Bedingungen zwischen zwei Zeilen lassen sich allein mit der
+    Tabellenstruktur nicht ausdrücken; sie müssen später mit weiteren
+    Mitteln der Datenbank (z. B. Triggern) oder in der Anwendung abgesichert
+    werden — ähnlich wie die Lücke in Teil D.
 <!-- MUSTERLOESUNG-ENDE -->
 
 ---
