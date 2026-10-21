@@ -55,6 +55,7 @@ exclude_docs: |
   02-theoriephase/_templates/
   02-theoriephase/_skript-werkzeuge/
   02-theoriephase/termin-*/skript/
+  02-theoriephase/termin-*/intern/
   00-projektsteuerung/stundenplan.md
   02-theoriephase/termin-07-twincat-sps/
 
