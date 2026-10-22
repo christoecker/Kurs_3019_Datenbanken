@@ -132,6 +132,60 @@
 }
 
 
+/* Mini-Projekt (Termin 5): ganzer Termin in einem Abschnitt, daher eigene
+   Modus-Kennzeichnung "## Mini-Projekt { .modus-miniprojekt }" in Gruen,
+   analog zu .modus-uebung / .modus-selbststudium. */
+.md-typeset h2.modus-miniprojekt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.5em 0.8em;
+  border-radius: 0.3em;
+  background-color: rgba(46, 125, 50, 0.08);
+  border-left: 4px solid rgb(46, 125, 50);
+}
+
+.md-typeset h2.modus-miniprojekt::before {
+  content: "🛠️";
+  flex-shrink: 0;
+  font-size: 0.7em;
+  line-height: 1;
+  padding: 0.35em 0.55em;
+  border-radius: 1em;
+  color: rgb(255, 255, 255);
+  background-color: rgb(46, 125, 50);
+}
+
+/* E-Mails des Auftraggebers im Mini-Projekt: "!!! email """-Admonition mit
+   Kopfzeile (Von/An/Datum/Betreff) als <div class="email-kopf">. Sieht aus
+   wie eine echte Nachricht; funktioniert in Hell- und Dunkelmodus ueber die
+   Material-Variablen. */
+.md-typeset .admonition.email {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: 4px solid var(--md-default-fg-color--light);
+  border-radius: 0.3em;
+  background-color: var(--md-default-bg-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  padding-bottom: 0.4em;
+}
+
+.md-typeset .email-kopf {
+  font-size: 0.68rem;
+  line-height: 1.8;
+  margin: 0.6em 0 1em;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .email-kopf b {
+  display: inline-block;
+  min-width: 4.5em;
+  color: var(--md-default-fg-color);
+}
+
+
 /* Musterloesungen im Uebungsteil der Theoriephase (Modellierungsschritte,
    Gesamtergebnis, Vertiefung) stecken in einer "!!! quote
    musterloesung-hervorgehoben "Lösung""-Admonition (siehe

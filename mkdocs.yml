@@ -60,7 +60,7 @@ exclude_docs: |
   02-theoriephase/termin-07-twincat-sps/
 
 extra_css:
-  - stylesheets/extra.css?v=20261015
+  - stylesheets/extra.css?v=20261022b
 
 nav:
   - Start: index.md
@@ -86,6 +86,9 @@ nav:
           - 02-theoriephase/termin-04/index.md
           - "Zugriffsrechte und Benutzerverwaltung": 02-theoriephase/termin-04/block-07.md
           - "Prozeduren und Trigger": 02-theoriephase/termin-04/block-08.md
+      - "Termin 5":
+          - 02-theoriephase/termin-05/index.md
+          - "Mini-Projekt: Ticketsystem Instandhaltung": 02-theoriephase/termin-05/block-09-10.md
   - Praxisphase:
       - "Woche 1": 01-praxisphase/woche-01/woche-01.md
       - "Woche 2": 01-praxisphase/woche-02/woche-02.md

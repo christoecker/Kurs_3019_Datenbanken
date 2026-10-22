@@ -360,6 +360,9 @@ Anwendungswelt; die Ausprägung eines Beziehungstyps.
 **REVOKE**
 : SQL-Anweisung, die eine frühere Vergabe zurücknimmt, ein `GRANT` ebenso wie ein `DENY`. Danach gilt weder Erlaubnis noch Verbot.
 
+**Rollback (ROLLBACK)**
+: SQL-Anweisung, die alle Änderungen einer offenen Transaktion zurücknimmt. In Tests sorgt sie dafür, dass die Daten nach dem Test wieder so sind wie vorher.
+
 **Rolle (Datenbankrolle)**
 : Ein Bündel von Rechten. Benutzer werden in eine Rolle aufgenommen und erhalten damit deren Rechte; ändert sich ein Recht, genügt eine Änderung an der Rolle.
 
@@ -426,6 +429,9 @@ benötigten Datenbanken (bei SQL Server z. B. `master`, `tempdb`,
 sind, unabhängig von eigenen Anwendungsdatenbanken.
 
 ## T
+
+**Testfall**
+: Eine kleine, wiederholbare Prüfung: Sie bereitet etwas vor, führt eine Aktion aus und vergleicht das Ergebnis mit der Erwartung (bestanden oder fehlgeschlagen). Gute Testfälle prüfen auch Fehlerfälle, also dass etwas abgelehnt wird.
 
 **Trigger**
 : Ein Programm in der Datenbank, das automatisch ausgeführt wird, wenn sich Daten einer Tabelle durch `INSERT`, `UPDATE` oder `DELETE` ändern. In SQL Server läuft er einmal pro Anweisung für alle betroffenen Zeilen und kennt `AFTER` und `INSTEAD OF`.
