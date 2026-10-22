@@ -45,8 +45,19 @@ eingegangen:
     hat und ob es überhaupt erledigt ist. Das führt zu Ärger zwischen den
     Schichten und der Instandhaltung.
 
-    Ich möchte ein System, in dem Störungen gemeldet werden und man jederzeit
-    sehen kann, was daraus geworden ist. Bauen Sie uns dafür bitte die
+    Ich stelle mir das so vor: Wenn an einer Maschine etwas nicht in Ordnung
+    ist, wird dazu eine Störungsmeldung erfasst, in der das technische Problem
+    beschrieben wird. In der Instandhaltung sollen diese Meldungen erfasst
+    werden, und daraus werden Wartungsaufträge erstellt. Unsere Techniker
+    arbeiten diese Aufträge ab und beheben so die Störungen.
+
+    Das System muss aber flexibel genug sein für Eilaufträge: Wenn eine Störung
+    so dringend ist, dass die Produktion ausfallen könnte, wird sie dem
+    Techniker oft nur mündlich mitgeteilt und steht deshalb nicht im System.
+    Auch dann soll er sofort einen Auftrag anlegen können.
+
+    Wer dabei was machen darf, was automatisch passieren soll und was nie
+    vorkommen darf, klären wir im Gespräch. Bauen Sie uns dafür bitte die
     Datenhaltung. Eine Bedienoberfläche brauchen wir noch nicht, das kommt
     später.
 
