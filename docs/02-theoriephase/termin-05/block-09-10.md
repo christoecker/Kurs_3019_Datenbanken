@@ -113,20 +113,47 @@ lesen und bestätigen, bevor ihr den Zugangscode eingeben könnt.
 entwerfen und die Regeln umzusetzen. Frau Vogel erzählt nur, was ihr
 fragt, und manches sagt sie nicht von selbst. Nutzt die Zeit gezielt.
 
-**Das müsst ihr nach dem Gespräch beantworten können:**
+**Das müsst ihr nach dem Gespräch beantworten können.** Zu jedem Bereich
+steht ein Beispiel dafür, welche Information ihr braucht:
 
-- **Beteiligte:** Wer arbeitet mit dem System, welche Gruppen gibt es, und
-  was muss man über sie festhalten?
-- **Funktionsweise des Systems:** Wie soll das Ticketsystem funktionieren?
-  Wie läuft ein Vorgang vom Melden bis zum Erledigen, wer löst wann was
-  aus, welche Zustände gibt es, und was soll automatisch passieren? 
-- **Daten:** Was muss festgehalten werden, und wann entsteht oder ändert
-  sich etwas?
-- **Regeln:** Was ist erlaubt, was verboten, was muss immer gelten?
-- **Rechte:** Wer darf was sehen und ändern?
-- **Auswertungen:** Was soll man jederzeit auf einen Blick sehen können?
-- **Priorität:** Was ist notwendig, was wäre schön, was ist ausdrücklich
-  noch nicht gewünscht?
+- **Beteiligte:** Wer arbeitet mit dem System, welche Gruppen von Nutzern
+  gibt es, ist eine Gruppe ein Teil einer anderen, und was muss man über
+  sie festhalten? Was davon ist eindeutig?<br>
+  *Beispiel:* Welche Angaben braucht ihr zu einem Mitarbeiter, und was ist
+  bei einem Techniker anders?
+- **Funktionsweise:** Wie läuft ein Vorgang von Anfang bis Ende ab, wer
+  löst wann welchen Schritt aus, welche Zustände gibt es, und welche
+  Wechsel zwischen ihnen sind erlaubt?<br>
+  *Beispiel:* Was passiert mit einer Störungsmeldung, nachdem sie angelegt
+  wurde, und wer entscheidet, wie es weitergeht?
+- **Daten:** Welche Dinge muss das System festhalten, welche Merkmale
+  haben sie, wie hängen sie zusammen (und wie viele gehören jeweils
+  zusammen), und gibt es Arten eines Dings oder Dinge, die nur zusammen mit
+  einem anderen existieren?<br>
+  *Beispiel:* Betrifft eine Störungsmeldung immer genau eine Maschine,
+  und kann zu einer Maschine mehr als eine Meldung vorliegen? Was
+  unterscheidet einen Wartungsauftrag von einem Eilauftrag?
+- **Regeln:** Was muss immer gelten, was darf nie passieren, und was soll
+  das System von selbst erledigen?<br>
+  *Beispiel:* Was soll automatisch passieren, wenn ein Auftrag erledigt
+  ist, und was darf gar nicht erst passieren?
+- **Rechte:** Wer darf was sehen, anlegen, ändern und löschen, und welche
+  Angaben dürfen nur bestimmte Gruppen sehen?<br>
+  *Beispiel:* Darf jeder Mitarbeiter einen Auftrag anlegen, wer darf eine
+  Meldung löschen, und welche Angaben sieht nicht jeder?
+- **Auswertungen:** Welche Übersichten braucht wer regelmäßig auf einen
+  Blick?<br>
+  *Beispiel:* Was will die Leitung morgens als Erstes sehen?
+- **Priorität:** Was ist notwendig, was wäre schön, und was ist
+  ausdrücklich erst für später gedacht?<br>
+  *Beispiel:* Ist es notwendig, dass ein Auftrag auch ohne vorherige
+  Meldung angelegt werden kann, oder wäre das nur schön?
+
+**Nicht alles sagt Frau Vogel von sich aus.** Sie ist keine
+Datenbank-Fachfrau und kennt zum Beispiel nicht die technischen Begriffe
+für Regeln oder Rechte. Manches müsst ihr deshalb durch Nachfragen
+herausbekommen, und manches entscheidet ihr selbst. Haltet solche
+Entscheidungen in der Spalte „Noch offen?“ eurer Tabelle fest.
 
 **Mitschreiben:** Eine einfache Tabelle hilft, später den Überblick zu
 behalten:
