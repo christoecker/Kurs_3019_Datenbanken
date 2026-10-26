@@ -61,7 +61,7 @@ denn genau darüber sprechen wir am Ende.
 
 Ihr arbeitet in **Gruppen mit höchstens drei Personen**, die ihr vor dem
 Termin selbst gebildet habt. Jede Gruppe bekommt zu Beginn eine
-**Gruppennummer**; sie braucht ihr für die Abgabe.
+**Gruppennummer** und den Zugangscode für den Chat.
 
 Der folgende Plan gibt euch eine Übersicht über den ungefähren Ablauf des Projekts:
 
@@ -77,9 +77,9 @@ Der folgende Plan gibt euch eine Übersicht über den ungefähren Ablauf des Pro
 Die Zeiten sind Richtwerte. Den Zwischentermin kündigt die
 Auftraggeberin per E-Mail an.
 
-**Abgabe:** Eure Ergebnisse könnt ihr freiwillig in ILIAS hochladen und
-bekommt dann eine Rückmeldung. Die Einzelheiten stehen später auf dieser
-Seite.
+**Musterlösung:** Nach dem Termin gibt es eine Musterlösung, die ihr
+einsehen könnt. Wo ihr sie findet, steht später auf dieser Seite. Fragen
+dazu werden gern beantwortet.
 
 ---
 
@@ -283,7 +283,8 @@ einen sauberen Stand:
   durch: Schema, Rechte, Prozeduren und Trigger, Testdaten, Tests.
 - Alle Tests laufen durch (`PASS`) oder ihr wisst, warum nicht.
 - Das **Entscheidungsdokument** ist vollständig (Vorlage:
-  [entscheidungen-template.txt](code/entscheidungen-template.txt)).
+  [entscheidungen-template.txt](code/entscheidungen-template.txt)). Es ist
+  für euch und für den Erfahrungsaustausch gedacht, ihr gebt es nicht ab.
 - Das Modell liegt als drawDB-Export vor.
 
 Wer fertig ist, kann den Optionalteil umsetzen, einen eigenen Test
@@ -312,41 +313,12 @@ Antworten auf diese Fragen vor:
   Baustein geprüft?
 - Was würdet ihr beim nächsten Mal anders machen?
 
----
-
-### Freiwillige Abgabe
-
-Ihr könnt eure Ergebnisse freiwillig in ILIAS hochladen. Ihr bekommt dann
-eine persönliche Rückmeldung zu eurem Projekt. Die Rückmeldung zeigt,
-was nach vier Terminen schon gut gelingt und wo ihr noch üben könnt.
-
-Ladet **eine ZIP-Datei** `gruppe-NN.zip` hoch (NN = eure Gruppennummer
-mit zwei Ziffern, zum Beispiel `gruppe-07.zip`). Die Frist steht im
-ILIAS-Objekt. Die ZIP-Datei enthält diese Dateien:
-
-| Datei | Inhalt |
-|---|---|
-| `gruppe-NN_entscheidungen.txt` | Entscheidungsdokument (Vorlage oben) |
-| `gruppe-NN_modell_zwischenstand.ddb` | drawDB-Export vom Zwischenstand |
-| `gruppe-NN_modell_final.ddb` | drawDB-Export vom Endstand |
-| `gruppe-NN_schema.sql` | Datenbank, Tabellen, Constraints, Sichten |
-| `gruppe-NN_rechte.sql` | Benutzer, Rollen, Rechte |
-| `gruppe-NN_logik.sql` | Prozeduren und Trigger |
-| `gruppe-NN_testdaten.sql` | Testdaten |
-| `gruppe-NN_abfragen.sql` | Abfragen und Datenänderungen |
-| `gruppe-NN_tests.sql` | eure Tests |
-
-Die SQL-Dateien zeigen den **Endstand**. Alle sollten auf einer leeren
-Instanz in der Reihenfolge Schema → Rechte → Logik → Testdaten → Tests
-ohne Fehler laufen. Ehrliche Dokumentation hilft euch mehr als ein
-perfekter Eindruck: Wenn etwas nicht klappt, schreibt es ins
-Entscheidungsdokument.
-
 <!-- MUSTERLOESUNG-START -->
 ---
 
 ### Musterlösung
 
-Die Musterlösung folgt nach dem Termin an dieser Stelle.
+Die Musterlösung steht nach dem Termin zur Einsicht bereit. Bei Fragen dazu
+meldet euch gern.
 <!-- MUSTERLOESUNG-ENDE -->
 <!-- NACHTRAG-ENDE -->

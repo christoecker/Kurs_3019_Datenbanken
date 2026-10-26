@@ -9,13 +9,11 @@ ki_genutzt: ja
 
 # Entscheidungsdokument Gruppe 0
 
-<!-- So füllt ihr das Dokument aus:
-     - Eine Textdatei (diese Vorlage, Markdown-Schreibweise), Dateiname:
-       gruppe-NN_entscheidungen.txt (NN = Gruppennummer mit zwei Ziffern).
-     - Die Zeilen "schluessel: wert" bei jeder Entscheidung bleiben
-       unverändert aufgebaut (Schlüssel nicht umbenennen), damit sie sich
-       auswerten lassen. Nur die Werte ändert ihr. Die Kommentare dürft ihr
-       löschen.
+<!-- So nutzt ihr das Dokument:
+     - Es ist für euch und für den Erfahrungsaustausch gedacht, eine Abgabe
+       gibt es nicht. Speichert es als normale Textdatei (Markdown-Schreibweise).
+     - Haltet die Zeilen "schluessel: wert" bei jeder Entscheidung einheitlich,
+       das erleichtert euch den Überblick. Die Kommentare dürft ihr löschen.
      - Zwei Beispiele unten zeigen die Ausführlichkeit. Löscht sie und tragt
        eure eigenen Entscheidungen ein. Es gibt keine Mindestzahl, aber
        etwa 10 bis 20 Einträge sind realistisch.
