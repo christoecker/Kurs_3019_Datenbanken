@@ -43,31 +43,31 @@ fehlerhafte Daten selbstständig ablehnt.
 
 ### Kurzer Rückblick <span class="zeitangabe">ca. 4 Min.</span> { data-toc-label="Kurzer Rückblick" }
 
-**1. Was passiert in der letzten Phase des Datenbankentwurfs, der Datendefinition?**
+1. Was passiert in der letzten Phase des Datenbankentwurfs, der Datendefinition?
 
-??? note "Musterlösung anzeigen"
-    Das logische Schema (hier: das Relationenschema) wird in die
-    Datenstrukturen einer Datenbanksprache umgesetzt — bei uns also in
-    SQL-Anweisungen, die die Tabellen im Datenbanksystem anlegen.
+    ??? note "Musterlösung anzeigen"
+        Das logische Schema (hier: das Relationenschema) wird in die
+        Datenstrukturen einer Datenbanksprache umgesetzt — bei uns also in
+        SQL-Anweisungen, die die Tabellen im Datenbanksystem anlegen.
 
-**2. Wie erkennt man im Relationenschema einen Primärschlüssel und einen Fremdschlüssel, und wofür sind sie da?**
+2. Wie erkennt man im Relationenschema einen Primärschlüssel und einen Fremdschlüssel, und wofür sind sie da?
 
-??? note "Musterlösung anzeigen"
-    Der Primärschlüssel (PK) ist das Attribut bzw. die
-    Attributkombination, die jeden Datensatz einer Relation eindeutig
-    identifiziert. Ein Fremdschlüssel (FK) verweist auf den Schlüssel
-    einer anderen Relation und bildet so die Beziehung zwischen den
-    Datensätzen ab.
+    ??? note "Musterlösung anzeigen"
+        Der Primärschlüssel (PK) ist das Attribut bzw. die
+        Attributkombination, die jeden Datensatz einer Relation eindeutig
+        identifiziert. Ein Fremdschlüssel (FK) verweist auf den Schlüssel
+        einer anderen Relation und bildet so die Beziehung zwischen den
+        Datensätzen ab.
 
-**3. Eine Tabelle `AUFTRAG` hat einen Fremdschlüssel auf die Tabelle `KUNDE`. Was muss gelten, damit ein neuer Datensatz in `AUFTRAG` überhaupt eingetragen werden kann — und was bedeutet das für die Reihenfolge, in der man Daten einträgt?**
+3. Eine Tabelle `AUFTRAG` hat einen Fremdschlüssel auf die Tabelle `KUNDE`. Was muss gelten, damit ein neuer Datensatz in `AUFTRAG` überhaupt eingetragen werden kann — und was bedeutet das für die Reihenfolge, in der man Daten einträgt?
 
-??? note "Musterlösung anzeigen"
-    Wegen der Fremdschlüsselintegrität muss der Kunde, auf den der
-    Auftrag verweist, bereits in `KUNDE` existieren. Ein Auftrag kann
-    also erst eingetragen werden, wenn die Beziehung zu einem
-    vorhandenen Datensatz der anderen Tabelle hergestellt werden kann.
-    Daten müssen deshalb zuerst in die Tabelle, auf die verwiesen wird
-    (`KUNDE`), und erst danach in die verweisende Tabelle (`AUFTRAG`).
+    ??? note "Musterlösung anzeigen"
+        Wegen der Fremdschlüsselintegrität muss der Kunde, auf den der
+        Auftrag verweist, bereits in `KUNDE` existieren. Ein Auftrag kann
+        also erst eingetragen werden, wenn die Beziehung zu einem
+        vorhandenen Datensatz der anderen Tabelle hergestellt werden kann.
+        Daten müssen deshalb zuerst in die Tabelle, auf die verwiesen wird
+        (`KUNDE`), und erst danach in die verweisende Tabelle (`AUFTRAG`).
 
 ---
 
