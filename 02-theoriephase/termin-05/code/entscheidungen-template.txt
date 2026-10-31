@@ -1,0 +1,85 @@
+---
+gruppe: 0
+mitglieder:
+  - "Name 1"
+  - "Name 2"
+datum: "2026-11-24"
+ki_genutzt: ja
+---
+
+# Entscheidungsdokument Gruppe 0
+
+<!-- So nutzt ihr das Dokument:
+     - Es ist für euch und für den Erfahrungsaustausch gedacht, eine Abgabe
+       gibt es nicht. Speichert es als normale Textdatei (Markdown-Schreibweise).
+     - Haltet die Zeilen "schluessel: wert" bei jeder Entscheidung einheitlich,
+       das erleichtert euch den Überblick. Die Kommentare dürft ihr löschen.
+     - Zwei Beispiele unten zeigen die Ausführlichkeit. Löscht sie und tragt
+       eure eigenen Entscheidungen ein. Es gibt keine Mindestzahl, aber
+       etwa 10 bis 20 Einträge sind realistisch.
+-->
+
+## 1. Anforderungen aus dem Gespräch
+
+Was habt ihr von der Auftraggeberin erfahren? Ordnet die wichtigsten Punkte
+ein. Vollständigkeit ist nicht nötig.
+
+- **Notwendig:** …
+- **Wäre schön (nur wenn Zeit bleibt):** …
+- **Ausdrücklich noch nicht gewünscht / Zukunftsidee:** …
+- **Offen geblieben, im Team entschieden:** …
+
+## 2. Entscheidungen
+
+Je Entscheidung ein Abschnitt. Erlaubte Werte:
+
+- `bereich`: schema, constraint, recht, prozedur, trigger, abfrage, sonstiges
+- `phase`: v1 (vor dem Zwischentermin), v2 (danach)
+- `herkunft`: selbst, ki-uebernommen, ki-korrigiert, ki-verworfen
+
+### E01
+
+bereich: schema
+phase: v1
+entscheidung: Beispiel (aus einem anderen Projekt, einer Werkzeugausgabe): Werkzeug und Ausleihe liegen in getrennten Tabellen.
+begruendung: Ein Werkzeug wird oft ausgeliehen; in einer einzigen Tabelle würden die Werkzeugdaten bei jeder Ausleihe wiederholt.
+alternative: Eine Tabelle mit allen Angaben. Verworfen wegen der Wiederholungen und weil Änderungen am Werkzeug an vielen Stellen nötig wären.
+herkunft: selbst
+
+### E02
+
+bereich: constraint
+phase: v1
+entscheidung: Beispiel (Werkzeugausgabe): Das Rückgabedatum darf nicht vor dem Ausleihdatum liegen, geprüft mit einem CHECK.
+begruendung: Die Regel betrifft nur zwei Spalten derselben Zeile, deshalb reicht ein Constraint; er gilt für jeden Weg, auf dem Daten ankommen.
+alternative: Prüfung in der Prozedur. Verworfen, weil direkte INSERTs sie umgehen würden.
+herkunft: ki-korrigiert
+
+<!-- Weitere Einträge E03, E04, … nach demselben Muster. -->
+
+## 3. Umgang mit Zukunftswünschen
+
+Welche Wünsche für die Zukunft habt ihr erfahren? Wie habt ihr euer Modell so
+gestaltet, dass sie später möglich bleiben, ohne sie jetzt umzusetzen? Oder
+warum habt ihr nichts besonders vorbereitet?
+
+## 4. Änderungsprotokoll (nach dem Zwischentermin)
+
+- **Was hat sich geändert?** …
+- **Was musste im Modell geändert werden?** …
+- **Welche Skripte, Rechte, Prozeduren und Trigger waren betroffen?** …
+- **Welche Tests mussten angepasst werden, welche sind neu?** …
+- **Was war schwierig oder hat länger gedauert, als gedacht?** …
+
+## 5. Umgang mit KI
+
+- **Wofür habt ihr KI eingesetzt?** …
+- **Wo war das Ergebnis falsch oder unpassend, und woran habt ihr es
+  gemerkt?** …
+- **Was habt ihr bewusst selbst gemacht?** …
+
+## 6. Rückblick
+
+- **Was hat gut funktioniert?** …
+- **Was würdet ihr beim nächsten Mal anders machen?** …
+- **Was ist in eurer Lösung noch nicht fertig oder unsicher?** …

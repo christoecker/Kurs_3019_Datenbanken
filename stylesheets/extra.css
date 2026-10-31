@@ -1,0 +1,218 @@
+/* Farbschema (helles Schema, mkdocs.yml: palette primary/accent "custom"):
+   Kopfzeile + Reiterzeile in Petrol-Blau, Akzentfarbe fuer Links beim Hover. */
+:root {
+  --md-primary-fg-color: #009BBB;
+  --md-primary-fg-color--light: #26B1CF;
+  --md-primary-fg-color--dark: #007A94;
+  --md-accent-fg-color: #00B4D8;
+  --md-accent-fg-color--transparent: #00B4D81A;
+}
+
+/* Hauptmenue (navigation.tabs): Reiter mittig statt linksbuendig. */
+.md-tabs__list {
+  justify-content: center;
+}
+
+
+/* Ausrichtung von umgebrochenem Text bei Quiz-Antworten:
+   Checkbox/Radio-Button und Text sollen nebeneinander stehen, umgebrochener
+   Text soll an der ersten Zeile ausgerichtet sein (nicht unter der Checkbox). */
+.md-typeset fieldset div:has(> input[type="checkbox"], > input[type="radio"]) {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+.md-typeset fieldset div:has(> input[type="checkbox"], > input[type="radio"]) input {
+  flex-shrink: 0;
+}
+
+.md-typeset fieldset div:has(> input[type="checkbox"], > input[type="radio"]) label {
+  flex: 1;
+}
+
+
+/* Geringerer vertikaler Abstand zwischen Begriff (dt) und Erklärung (dd)
+   im Glossar (Markdown-Definitionslisten) */
+.md-typeset dl dt {
+  margin-bottom: 0.15em;
+}
+
+.md-typeset dl dd {
+  margin-top: 0;
+  margin-bottom: 0.8em;
+}
+
+
+/* Überschriften mit Zeitangaben-Badge: Titel bleibt linksbündig, das
+   Badge rutscht in derselben Zeile an den rechten Rand. Die Zeitangabe
+   selbst steht als <span class="zeitangabe"> direkt im Text der
+   Überschrift (siehe CLAUDE.md "Zeitangaben-Konvention") - dass sie
+   trotzdem nicht im Inhaltsverzeichnis auftaucht, regelt das
+   data-toc-label-Attribut an der jeweiligen Überschrift, nicht CSS. */
+.md-typeset h1:has(> .zeitangabe),
+.md-typeset h2:has(> .zeitangabe),
+.md-typeset h3:has(> .zeitangabe),
+.md-typeset h4:has(> .zeitangabe) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.3em 0.75em;
+}
+
+/* Zeitangaben in Theoriephase-Dokumenten als dezentes Badge mit
+   Stoppuhr-Icon darstellen. */
+.zeitangabe {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.15em 0.7em;
+  border-radius: 1em;
+  font-size: 0.75em;
+  font-weight: 600;
+  color: var(--md-default-fg-color--light);
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+.zeitangabe::before {
+  content: "⏱";
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+
+/* Modus-Kennzeichnung an den beiden Hauptüberschriften eines
+   Theoriephase-Blocks ("## Übung" / "## Betreutes Selbststudium"), per
+   attr_list-Klasse gesetzt. Die Überschrift selbst trägt nur den
+   Modus-Namen; das farbig unterlegte Icon davor kommt per ::before.
+   Macht den Wechsel von "jetzt gemeinsam" zu "jetzt eigenständig" auf
+   einen Blick sichtbar - der horizontale Trennstrich zwischen beiden
+   Abschnitten bleibt zusätzlich bestehen. Übung nutzt die Akzentfarbe
+   des Themes (wie die Mermaid-Knoten), Selbststudium Orange. */
+.md-typeset h2.modus-uebung,
+.md-typeset h2.modus-selbststudium {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.5em 0.8em;
+  border-radius: 0.3em;
+}
+
+.md-typeset h2.modus-uebung {
+  background-color: var(--md-accent-fg-color--transparent);
+  border-left: 4px solid var(--md-accent-fg-color);
+}
+
+.md-typeset h2.modus-selbststudium {
+  background-color: rgba(255, 152, 0, 0.08);
+  border-left: 4px solid rgb(255, 152, 0);
+}
+
+.md-typeset h2.modus-uebung::before,
+.md-typeset h2.modus-selbststudium::before {
+  flex-shrink: 0;
+  font-size: 0.7em;
+  line-height: 1;
+  padding: 0.35em 0.55em;
+  border-radius: 1em;
+  color: rgb(255, 255, 255);
+}
+
+.md-typeset h2.modus-uebung::before {
+  content: "👥";
+  background-color: var(--md-accent-fg-color);
+}
+
+.md-typeset h2.modus-selbststudium::before {
+  content: "✏️";
+  background-color: rgb(255, 152, 0);
+}
+
+
+/* Mini-Projekt (Termin 5): ganzer Termin in einem Abschnitt, daher eigene
+   Modus-Kennzeichnung "## Mini-Projekt { .modus-miniprojekt }" in Gruen,
+   analog zu .modus-uebung / .modus-selbststudium. */
+.md-typeset h2.modus-miniprojekt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.5em 0.8em;
+  border-radius: 0.3em;
+  background-color: rgba(46, 125, 50, 0.08);
+  border-left: 4px solid rgb(46, 125, 50);
+}
+
+.md-typeset h2.modus-miniprojekt::before {
+  content: "🛠️";
+  flex-shrink: 0;
+  font-size: 0.7em;
+  line-height: 1;
+  padding: 0.35em 0.55em;
+  border-radius: 1em;
+  color: rgb(255, 255, 255);
+  background-color: rgb(46, 125, 50);
+}
+
+/* E-Mails des Auftraggebers im Mini-Projekt: "!!! email """-Admonition mit
+   Kopfzeile (Von/An/Datum/Betreff) als <div class="email-kopf">. Sieht aus
+   wie eine echte Nachricht; funktioniert in Hell- und Dunkelmodus ueber die
+   Material-Variablen. */
+.md-typeset .admonition.email {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: 4px solid var(--md-default-fg-color--light);
+  border-radius: 0.3em;
+  background-color: var(--md-default-bg-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  padding-bottom: 0.4em;
+}
+
+.md-typeset .email-kopf {
+  font-size: 0.68rem;
+  line-height: 1.8;
+  margin: 0.6em 0 1em;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .email-kopf b {
+  display: inline-block;
+  min-width: 4.5em;
+  color: var(--md-default-fg-color);
+}
+
+
+/* Musterloesungen im Uebungsteil der Theoriephase (Modellierungsschritte,
+   Gesamtergebnis, Vertiefung) stecken in einer "!!! quote
+   musterloesung-hervorgehoben "Lösung""-Admonition (siehe
+   block.template.md). Die Zusatzklasse hebt sie zusaetzlich per sehr
+   hellem Hintergrund vom umgebenden Aufgabentext ab - staerkere visuelle
+   Absetzung als der graue "quote"-Rahmen allein. Der Grauton des
+   Inhalts ist bewusst nur eine Spur (1,2 % Schwarz) - die Variante mit
+   --md-default-fg-color--lightest (7 %) wirkte zu dunkel. Die Titelleiste
+   behält die Standard-Tönung des "quote"-Typs (grau). */
+.md-typeset .admonition.musterloesung-hervorgehoben,
+.md-typeset details.musterloesung-hervorgehoben {
+  background-color: rgba(0, 0, 0, 0.012);
+  /* Material setzt fuer Admonitions standardmaessig font-size: .64rem,
+     kleiner als der umgebende Fliesstext (.md-typeset: .8rem). "inherit"
+     uebernimmt stattdessen die tatsaechliche, bereits fuer die aktuelle
+     Bildschirmbreite berechnete Fliesstext-Groesse des Elternelements. */
+  font-size: inherit;
+}
+
+/* Passenderes Icon statt des Standard-Anführungszeichens der "quote"-
+   Admonition: ein Haken (wiederverwendet aus Materials eingebautem
+   "success"-Icon-Set über die vorhandene CSS-Variable, keine eigene SVG
+   nötig), da diese Blöcke Antworten/Musterlösungen zeigen. Rahmen-/
+   Titelfarbe (grau, vom "quote"-Typ) bleiben bewusst unverändert - nur
+   das Icon selbst wird ausgetauscht. */
+.md-typeset .admonition.musterloesung-hervorgehoben > .admonition-title::before,
+.md-typeset details.musterloesung-hervorgehoben > summary::before {
+  -webkit-mask-image: var(--md-admonition-icon--success);
+  mask-image: var(--md-admonition-icon--success);
+}
