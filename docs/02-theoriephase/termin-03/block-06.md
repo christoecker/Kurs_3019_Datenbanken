@@ -9,7 +9,7 @@ lernziele:
   - "Ihr könnt Abfragen mit Aggregatfunktionen, GROUP BY, HAVING, NULL-Behandlung und einfachen Unteranfragen lesen, ihr Ergebnis vorhersagen und beurteilen, ob sie zur Anforderung passen."
   - "Ihr könnt INSERT-, UPDATE- und DELETE-Anweisungen lesen und schreiben und vorhersagen, welche Zeilen sie betreffen oder ob die Datenbank sie ablehnt."
   - "Ihr könnt ein von einer KI erstelltes Statement systematisch prüfen: Zeilenzahl kontrollieren, eine Zeile von Hand nachrechnen und das Fehlerbild zuordnen."
-musterloesungen_sichtbar: false
+musterloesungen_sichtbar: true
 fallstudie: "BestTec (Lehrbrief Anhang 9.2, S. 97–98)"
 ki_einsatz: stufe_2_pair_programmer
 bearbeitungsstatus: final
