@@ -44,24 +44,22 @@ abweicht, steht es auf der Seite
 
 ### Kurzer Rückblick <span class="zeitangabe">ca. 3 Min.</span> { data-toc-label="Kurzer Rückblick" }
 
-**1.** Wozu dient ein Fremdschlüssel, und woran erkennt ihr in einem
-Relationenschema, welche Tabellen miteinander zusammenhängen?
+1.  Wozu dient ein Fremdschlüssel, und woran erkennt ihr in einem Relationenschema, welche Tabellen miteinander zusammenhängen?
 
-??? note "Musterlösung anzeigen"
-    Ein Fremdschlüssel verweist auf den Primärschlüssel einer anderen
-    Relation und bildet so die Beziehung zwischen Datensätzen ab. Im
-    Relationenschema erkennt man ihn an der Kennzeichnung „FK“; die
-    Tabelle, auf die er verweist, ist die verbundene Tabelle. In
-    BestTec verweisen z. B. `ma.abtnr` und `prj.abtnr` auf `abt.abtnr`.
+    ??? note "Musterlösung anzeigen"
+        Ein Fremdschlüssel verweist auf den Primärschlüssel einer anderen
+        Relation und bildet so die Beziehung zwischen Datensätzen ab. Im
+        Relationenschema erkennt man ihn an der Kennzeichnung „FK“; die
+        Tabelle, auf die er verweist, ist die verbundene Tabelle. In
+        BestTec verweisen z. B. `ma.abtnr` und `prj.abtnr` auf `abt.abtnr`.
 
-**2.** Ihr habt in Kapitel 7 die Grundform einer Abfrage gelesen. Aus
-welchen drei Teilen besteht sie, und was leistet jeder Teil?
+2.  Ihr habt in Kapitel 7 die Grundform einer Abfrage gelesen. Aus welchen drei Teilen besteht sie, und was leistet jeder Teil?
 
-??? note "Musterlösung anzeigen"
-    `SELECT` bestimmt die Spalten der Ergebnistabelle, `FROM` legt fest,
-    aus welchen Tabellen die Daten gelesen werden, und `WHERE` nennt die
-    Bedingung, die eine Zeile erfüllen muss, um ins Ergebnis zu gehören.
-    `WHERE` ist optional; fehlt es, gehören alle Zeilen zum Ergebnis.
+    ??? note "Musterlösung anzeigen"
+        `SELECT` bestimmt die Spalten der Ergebnistabelle, `FROM` legt fest,
+        aus welchen Tabellen die Daten gelesen werden, und `WHERE` nennt die
+        Bedingung, die eine Zeile erfüllen muss, um ins Ergebnis zu gehören.
+        `WHERE` ist optional; fehlt es, gehören alle Zeilen zum Ergebnis.
 
 ---
 
