@@ -8,7 +8,7 @@ thema: "SQL-Abfragen (DQL) an Fallbeispielen aus dem Lehrbrief: Projektion, Sele
 lernziele:
   - "Ihr könnt zu einer fachlichen Fragestellung eine SELECT-Abfrage mit Projektion, Selektion, Sortierung und Verbund über mehrere Tabellen aufbauen und ihr Ergebnis von Hand herleiten."
   - "Ihr könnt die Aussage einer fremden Abfrage lesen, ihr Ergebnis vorhersagen und typische Fehlerbilder (fehlende Verknüpfung, Duplikate, Klammerfehler) erkennen."
-musterloesungen_sichtbar: false
+musterloesungen_sichtbar: true
 fallstudie: "BestTec (Lehrbrief Anhang 9.2, S. 97–98)"
 ki_einsatz: stufe_0_ohne
 bearbeitungsstatus: final
