@@ -1,0 +1,587 @@
+{
+  "author": "Kurs 3019 Datenbanken",
+  "title": "Prozessdatenbank Schnüffel GmbH – Musterlösung Teil B",
+  "date": "2026-10-15",
+  "database": "transactsql",
+  "tables": [
+    {
+      "id": 0,
+      "name": "PROZESSWERT",
+      "x": 40,
+      "y": 40,
+      "fields": [
+        {
+          "id": "0_0",
+          "name": "charge_nr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "0_1",
+          "name": "zeitstempel",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "0_2",
+          "name": "viskositaet",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "10,2"
+        },
+        {
+          "id": "0_3",
+          "name": "temperatur",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "10,2"
+        },
+        {
+          "id": "0_4",
+          "name": "fuellstand",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "10,2"
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 1,
+      "name": "CHARGE",
+      "x": 380,
+      "y": 40,
+      "fields": [
+        {
+          "id": "1_0",
+          "name": "charge_nr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "1_1",
+          "name": "reaktor_id",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "1_2",
+          "name": "rezept_id",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 2,
+      "name": "REAKTOR",
+      "x": 720,
+      "y": 20,
+      "fields": [
+        {
+          "id": "2_0",
+          "name": "reaktor_id",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "2_1",
+          "name": "saeureresistent",
+          "type": "BIT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 3,
+      "name": "REZEPT",
+      "x": 720,
+      "y": 230,
+      "fields": [
+        {
+          "id": "3_0",
+          "name": "rezept_id",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 4,
+      "name": "REZEPT_PARAMETER",
+      "x": 1060,
+      "y": 200,
+      "fields": [
+        {
+          "id": "4_0",
+          "name": "rezept_id",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "4_1",
+          "name": "parameter_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "4_2",
+          "name": "wert",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "10,2"
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 5,
+      "name": "EREIGNIS",
+      "x": 380,
+      "y": 300,
+      "fields": [
+        {
+          "id": "5_0",
+          "name": "ereignis_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "5_1",
+          "name": "charge_nr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "5_2",
+          "name": "zeitpunkt",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "5_3",
+          "name": "ereignistyp",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "5_4",
+          "name": "kommentar",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "5_5",
+          "name": "bediener",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 6,
+      "name": "QUALITAETSERGEBNIS",
+      "x": 40,
+      "y": 340,
+      "fields": [
+        {
+          "id": "6_0",
+          "name": "charge_nr",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "6_1",
+          "name": "kennzahl",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "6_2",
+          "name": "wert",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "10,2"
+        },
+        {
+          "id": "6_3",
+          "name": "pruefdatum",
+          "type": "DATE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    },
+    {
+      "id": 7,
+      "name": "KENNZAHL",
+      "x": 40,
+      "y": 640,
+      "fields": [
+        {
+          "id": "7_0",
+          "name": "kennzahl",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "7_1",
+          "name": "einheit",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "7_2",
+          "name": "pruefverfahren",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "locked": false,
+      "collapsed": false,
+      "width": 220
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r0",
+      "name": "fk_PROZESSWERT_charge_nr_CHARGE",
+      "startTableId": 0,
+      "startFieldId": "0_0",
+      "endTableId": 1,
+      "endFieldId": "1_0",
+      "fields": [
+        {
+          "startFieldId": "0_0",
+          "endFieldId": "1_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r1",
+      "name": "fk_CHARGE_reaktor_id_REAKTOR",
+      "startTableId": 1,
+      "startFieldId": "1_1",
+      "endTableId": 2,
+      "endFieldId": "2_0",
+      "fields": [
+        {
+          "startFieldId": "1_1",
+          "endFieldId": "2_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r2",
+      "name": "fk_CHARGE_rezept_id_REZEPT",
+      "startTableId": 1,
+      "startFieldId": "1_2",
+      "endTableId": 3,
+      "endFieldId": "3_0",
+      "fields": [
+        {
+          "startFieldId": "1_2",
+          "endFieldId": "3_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r3",
+      "name": "fk_REZEPT_PARAMETER_rezept_id_REZEPT",
+      "startTableId": 4,
+      "startFieldId": "4_0",
+      "endTableId": 3,
+      "endFieldId": "3_0",
+      "fields": [
+        {
+          "startFieldId": "4_0",
+          "endFieldId": "3_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r4",
+      "name": "fk_EREIGNIS_charge_nr_CHARGE",
+      "startTableId": 5,
+      "startFieldId": "5_1",
+      "endTableId": 1,
+      "endFieldId": "1_0",
+      "fields": [
+        {
+          "startFieldId": "5_1",
+          "endFieldId": "1_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r5",
+      "name": "fk_QUALITAETSERGEBNIS_charge_nr_CHARGE",
+      "startTableId": 6,
+      "startFieldId": "6_0",
+      "endTableId": 1,
+      "endFieldId": "1_0",
+      "fields": [
+        {
+          "startFieldId": "6_0",
+          "endFieldId": "1_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    },
+    {
+      "id": "r6",
+      "name": "fk_QUALITAETSERGEBNIS_kennzahl_KENNZAHL",
+      "startTableId": 6,
+      "startFieldId": "6_1",
+      "endTableId": 7,
+      "endFieldId": "7_0",
+      "fields": [
+        {
+          "startFieldId": "6_1",
+          "endFieldId": "7_0"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action"
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "types": [],
+  "enums": []
+}
