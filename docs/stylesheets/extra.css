@@ -216,3 +216,16 @@
   -webkit-mask-image: var(--md-admonition-icon--success);
   mask-image: var(--md-admonition-icon--success);
 }
+/* Mermaid-Diagramme mittig ausrichten */
+.md-typeset .mermaid {
+  display: flex;
+  justify-content: center;
+}
+
+/* Aufzählung mit Buchstaben "(a)", "(b)" ...: erstes <li> bekommt { .buchstaben } */
+.md-typeset ol:has(> li.buchstaben) {
+  list-style-type: lower-alpha;
+}
+.md-typeset ol:has(> li.buchstaben) > li::marker {
+  content: "(" counter(list-item, lower-alpha) ") ";
+}

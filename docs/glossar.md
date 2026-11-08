@@ -23,6 +23,9 @@ Fremdschlüsseln macht ihn eindeutig identifizierbar.
 **Alias**
 : Ein kurzer Ersatzname für eine Tabelle oder eine Ergebnisspalte innerhalb einer Abfrage (`FROM ma x`, `gehalt * 12 AS jahresgehalt`). Bei Tabellen heißt er im Lehrbrief auch Tupelvariable; er wird u. a. beim Selbstverbund gebraucht, um die beiden Rollen derselben Tabelle zu unterscheiden.
 
+**Amalgamation (SQLite)**
+: Die gesamte SQLite-Bibliothek als eine einzige C-Quelldatei (`sqlite3.c`) mit der zugehörigen Header-Datei (`sqlite3.h`). Man legt beide ins eigene Projekt und übersetzt sie zusammen mit dem Programm, ohne etwas zu installieren.
+
 **Anforderungsanalyse**
 : Erste Phase des Datenbankentwurfs: informelles Erfassen und
 Dokumentieren, welche Daten gespeichert werden müssen und wer wie darauf
@@ -146,6 +149,9 @@ erreichen.
 
 ## E
 
+**Eingebettete Datenbank**
+: Eine Datenbank, die kein eigener Server ist, sondern als Bibliothek in dem Programm läuft, das sie benutzt (z. B. SQLite). Das Programm greift direkt auf die Datenbankdatei zu; es gibt keine Anmeldung und keine Verbindung über das Netzwerk.
+
 **Entity**
 : Ein einzelnes, konkretes Objekt der Anwendungswelt, über das Daten
 gespeichert werden (z. B. eine bestimmte Maschine).
@@ -264,6 +270,9 @@ dem Anwender.
 **Kreuzprodukt**
 : Die Kombination jeder Zeile einer Tabelle mit jeder Zeile einer anderen. Es entsteht, wenn im `FROM`-Teil mehrere Tabellen stehen und keine Verknüpfungsbedingung angegeben ist; die Ergebnismenge ist dann meist unsinnig groß.
 
+**LEFT JOIN (äußerer Verbund)**
+: Ein Verbund, der alle Zeilen der linken Tabelle behält, auch wenn es in der rechten Tabelle keinen passenden Partner gibt. Die Spalten der rechten Tabelle enthalten dann `NULL`. So erscheint z. B. eine Lektion ohne Vokabeln trotzdem in der Liste, bei `COUNT(spalte)` mit dem Wert 0.
+
 **Login**
 : Eine Anmeldung auf Serverebene (Name und Passwort bzw. Windows-Konto). Ein Login wird in einer Datenbank mit einem Benutzer verknüpft.
 
@@ -311,6 +320,12 @@ einen bestimmten Datensatz keinen Wert hat.
 **Platzhalter (Wildcard)**
 : Zeichen in einem `LIKE`-Muster, das für unbekannte Zeichen steht: `_` für genau ein beliebiges Zeichen, `%` für beliebig viele (auch null) Zeichen.
 
+**PRAGMA**
+: Ein SQLite-Befehl, der Einstellungen der Datenbankverbindung abfragt oder ändert, z. B. `PRAGMA foreign_keys = ON;`. Die Einstellung gilt nur für die aktuelle Verbindung und muss nach jedem Öffnen neu gesetzt werden.
+
+**Prepared Statement (vorbereitete Anweisung, Parameterbindung)**
+: Ein SQL-Text, der einmal an die Datenbank übergeben (vorbereitet) wird und Platzhalter `?` für Werte enthält. Die Werte werden danach getrennt gebunden (in SQLite mit `sqlite3_bind_*`) und nie als SQL gelesen. Das verhindert Fehler bei Sonderzeichen wie dem Apostroph und schützt vor SQL-Injection.
+
 **Primärschlüssel (PK)**
 : Der aus den Schlüsselkandidaten einer Relation für die Implementierung
 ausgewählte Schlüssel; darf keine optionalen Attribute enthalten und
@@ -318,6 +333,9 @@ wird in der Notation mit PK gekennzeichnet.
 
 **Pseudotabellen `inserted` und `deleted`**
 : Zwei Tabellen, die SQL Server einem Trigger zur Verfügung stellt. `inserted` enthält die neuen Zustände der betroffenen Zeilen, `deleted` die alten. Bei `UPDATE` sind beide gefüllt, bei `INSERT` nur `inserted`, bei `DELETE` nur `deleted`.
+
+**Punkt-Befehl (SQLite-Konsole)**
+: Ein Befehl der Konsole `sqlite3`, der mit einem Punkt beginnt und kein Semikolon braucht, z. B. `.tables`, `.schema` oder `.quit`. Er gehört zur Konsole und ist kein SQL; ein Programm kann ihn nicht verwenden.
 
 ## R
 
@@ -371,6 +389,9 @@ Anwendungswelt; die Ausprägung eines Beziehungstyps.
 Beziehungstyp, die die Rolle des Entity-Typs in dieser Beziehung
 benennt; besonders hilfreich bei rekursiven Beziehungen.
 
+**Rückgabecode (SQLite)**
+: Jede Funktion der C-Schnittstelle von SQLite liefert eine Zahl, die über Erfolg oder Fehler Auskunft gibt. `SQLITE_OK` bedeutet Erfolg. Ein Programm muss den Code prüfen und bei einem Fehler mit `sqlite3_errmsg` den Klartext abfragen.
+
 ## S
 
 **Schlüsselattribut**
@@ -407,6 +428,12 @@ den SQL Server; wird getrennt vom Datenbankmanagementsystem selbst
 installiert und dient u. a. dazu, sich mit einer Instanz zu verbinden
 und SQL-Skripte auszuführen.
 
+**SQLite**
+: Eine eingebettete relationale Datenbank, die aus einer einzigen Datei besteht und als Bibliothek in Programme eingebunden wird. Sie kennt keine Benutzer und Rechte und keine gespeicherten Prozeduren und prüft Fremdschlüssel nur nach ausdrücklicher Aktivierung.
+
+**STRICT-Tabelle (SQLite)**
+: Eine mit `STRICT` angelegte SQLite-Tabelle, die den deklarierten Spaltentyp erzwingt (erlaubt sind `INTEGER`, `REAL`, `TEXT`, `BLOB` und `ANY`). Falsche Werte werden mit einem Fehler abgelehnt.
+
 **Subtyp**
 : Der speziellere Entity-Typ innerhalb einer Spezialisierung; jedes
 seiner Objekte ist automatisch auch ein Objekt des zugehörigen
@@ -434,7 +461,10 @@ sind, unabhängig von eigenen Anwendungsdatenbanken.
 : Eine kleine, wiederholbare Prüfung: Sie bereitet etwas vor, führt eine Aktion aus und vergleicht das Ergebnis mit der Erwartung (bestanden oder fehlgeschlagen). Gute Testfälle prüfen auch Fehlerfälle, also dass etwas abgelehnt wird.
 
 **Trigger**
-: Ein Programm in der Datenbank, das automatisch ausgeführt wird, wenn sich Daten einer Tabelle durch `INSERT`, `UPDATE` oder `DELETE` ändern. In SQL Server läuft er einmal pro Anweisung für alle betroffenen Zeilen und kennt `AFTER` und `INSTEAD OF`.
+: Ein Programm in der Datenbank, das automatisch ausgeführt wird, wenn sich Daten einer Tabelle durch `INSERT`, `UPDATE` oder `DELETE` ändern. In SQL Server läuft er einmal pro Anweisung für alle betroffenen Zeilen und kennt `AFTER` und `INSTEAD OF`. In SQLite läuft ein Trigger dagegen einmal pro betroffener Zeile und liest alte und neue Werte aus `OLD` und `NEW`.
+
+**Typaffinität (SQLite)**
+: Die Eigenschaft einer SQLite-Spalte, Werte in den vorgeschlagenen Typ umzuwandeln, wenn das möglich ist, und sie sonst unverändert zu speichern. Der angegebene Typ ist dadurch nur eine Empfehlung und kein Zwang.
 
 ## U
 
