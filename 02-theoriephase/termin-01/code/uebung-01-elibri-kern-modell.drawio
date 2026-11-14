@@ -1,0 +1,144 @@
+<mxfile host="app.diagrams.net" pages="2">
+  <diagram name="Kern-Modell" id="bseP2d33L5JswQIz3_y5">
+    <mxGraphModel dx="1414" dy="829" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="kunde" value="&lt;b&gt;KUNDE&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;kundennr : int (PK)&lt;br/&gt;anschrift : string" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="160.0" y="43.0" width="200" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="spez" value="" style="triangle;whiteSpace=wrap;html=1;direction=north;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="243.0" y="164.0" width="34" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="haendler" value="&lt;b&gt;HAENDLER&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;unternehmensname : string&lt;br/&gt;zahlungsziel_tage : int" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="20.0" y="232.0" width="200" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="privat" value="&lt;b&gt;PRIVATKUNDE&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;vorname : string&lt;br/&gt;nachname : string" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300.0" y="232.0" width="200" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="kunde" target="spez">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="spez" target="haendler">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="spez" target="privat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="auftrag" value="&lt;b&gt;AUFTRAG&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;auftragsnr : int (PK)&lt;br/&gt;eingangsdatum : date" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="600.0" y="43.0" width="200" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="hat" value="hat" style="rhombus;whiteSpace=wrap;html=1;fontSize=12;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="425.0" y="51.0" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" value="1" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="kunde" target="hat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" value="N" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="hat" target="auftrag">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pos" value="&lt;b&gt;AUFTRAGSPOSITION&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;u&gt;positionsnr&lt;/u&gt; : int (lokal)&lt;br/&gt;bestellmenge : int&lt;br/&gt;lieferstatus : string" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;shape=ext;double=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1050.0" y="34.0" width="210" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="umfasst" value="&lt;u&gt;umfasst&lt;/u&gt;" style="shape=rhombus;double=1;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;fontSize=12;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="870.0" y="51.0" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" value="1" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="auftrag" target="umfasst">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" value="N" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="umfasst" target="pos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="buch" value="&lt;b&gt;BUCH&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;artikelnr : int (PK)&lt;br/&gt;bezeichnung : string&lt;br/&gt;preis : decimal&lt;br/&gt;lagerbestand : int" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1055.0" y="284.0" width="200" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="bestellt" value="bestellt" style="rhombus;whiteSpace=wrap;html=1;fontSize=12;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1100.0" y="185.0" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" value="N" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="pos" target="bestellt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c11" value="1" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="bestellt" target="buch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Erweiterung Autor:innen" id="OjjynIg3yCyPwdFJOA26">
+    <mxGraphModel dx="1414" dy="829" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="kunde" value="&lt;b&gt;KUNDE&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;kundennr : int (PK)&lt;br/&gt;anschrift : string" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="160.0" y="43.0" width="200" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="spez" value="" style="triangle;whiteSpace=wrap;html=1;direction=north;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="243.0" y="164.0" width="34" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="haendler" value="&lt;b&gt;HAENDLER&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;unternehmensname : string&lt;br/&gt;zahlungsziel_tage : int" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="20.0" y="232.0" width="200" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="privat" value="&lt;b&gt;PRIVATKUNDE&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;vorname : string&lt;br/&gt;nachname : string" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300.0" y="232.0" width="200" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="kunde" target="spez">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="spez" target="haendler">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="spez" target="privat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="auftrag" value="&lt;b&gt;AUFTRAG&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;auftragsnr : int (PK)&lt;br/&gt;eingangsdatum : date" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="600.0" y="43.0" width="200" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="hat" value="hat" style="rhombus;whiteSpace=wrap;html=1;fontSize=12;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="425.0" y="51.0" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" value="1" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="kunde" target="hat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" value="N" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="hat" target="auftrag">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pos" value="&lt;b&gt;AUFTRAGSPOSITION&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;u&gt;positionsnr&lt;/u&gt; : int (lokal)&lt;br/&gt;bestellmenge : int&lt;br/&gt;lieferstatus : string" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;shape=ext;double=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1050.0" y="34.0" width="210" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="umfasst" value="&lt;u&gt;umfasst&lt;/u&gt;" style="shape=rhombus;double=1;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;fontSize=12;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="870.0" y="51.0" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" value="1" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="auftrag" target="umfasst">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" value="N" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="umfasst" target="pos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="buch" value="&lt;b&gt;BUCH&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;artikelnr : int (PK)&lt;br/&gt;bezeichnung : string&lt;br/&gt;preis : decimal&lt;br/&gt;lagerbestand : int" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1055.0" y="284.0" width="200" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="bestellt" value="bestellt" style="rhombus;whiteSpace=wrap;html=1;fontSize=12;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1100.0" y="185.0" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" value="N" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="pos" target="bestellt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c11" value="1" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="bestellt" target="buch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="autor" value="&lt;b&gt;AUTOR&lt;/b&gt;&lt;hr size=&quot;1&quot;/&gt;autorennr : int (PK)&lt;br/&gt;name : string&lt;br/&gt;geburtsjahr : int" style="whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=12;rounded=0;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="540.0" y="293.0" width="200" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="gv" value="geschrieben_von" style="rhombus;whiteSpace=wrap;html=1;fontSize=12;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="825.0" y="310.0" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" value="M" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="buch" target="gv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" value="N" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="gv" target="autor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
