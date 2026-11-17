@@ -10,7 +10,7 @@ lernziele:
   - "Ihr könnt für ein Szenario ein Rechtekonzept als Matrix entwerfen und mit CREATE ROLE, GRANT, DENY und REVOKE in SQL Server umsetzen."
   - "Ihr könnt erklären, wie eine Sicht sensible Spalten schützt, und die Wirkung eines Rechtekonzepts mit EXECUTE AS prüfen."
   - "Ihr könnt ein von einer KI erstelltes Rechteskript gegen die Anforderung prüfen und beurteilen, welche Informationen in einen KI-Prompt gehören."
-musterloesungen_sichtbar: false
+musterloesungen_sichtbar: true
 fallstudie: "BestTec (Lehrbrief Anhang 9.2, S. 97–98), erweitert um die Tabelle testlauf"
 ki_einsatz: stufe_2_pair_programmer
 bearbeitungsstatus: entworfen
@@ -27,8 +27,8 @@ quiz:
 ### Worum geht es?
 
 Bisher habt ihr in SQL Server als Administrator gearbeitet: Ihr durftet
-alles lesen, ändern und löschen. In einem echten Betrieb darf das nur
-eine einzige Person. Alle anderen — die Personalabteilung, die
+alles lesen, ändern und löschen. In einem echten Betrieb dürfen das nur
+wenige Personen. Alle anderen — die Personalabteilung, die
 Projektleiter, das Controlling und sogar eine Maschine wie ein
 SPS-gesteuerter Prüfstand — sollen genau das dürfen, was sie für ihre
 Arbeit brauchen, und nicht mehr. Heute entwerft ihr dafür ein
