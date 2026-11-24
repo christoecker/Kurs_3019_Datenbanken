@@ -318,7 +318,37 @@ Antworten auf diese Fragen vor:
 
 ### Musterlösung
 
-Die Musterlösung steht nach dem Termin zur Einsicht bereit. Bei Fragen dazu
-meldet euch gern.
+Hier findet ihr **eine mögliche Lösung** für das Projekt. Sie zeigt den Stand
+nach dem Zwischentermin und ist nicht die einzig richtige: Vergleicht sie mit
+euren Entscheidungen und fragt euch, wo und warum ihr anders entschieden habt.
+Fragen dazu werden gern beantwortet.
+
+| Datei | Inhalt |
+|---|---|
+| [01-schema.sql](code/musterloesung/01-schema.sql) | Datenbank, Tabellen, Constraints, Indizes |
+| [02-prozeduren.sql](code/musterloesung/02-prozeduren.sql) | Hilfsfunktion und Prozeduren |
+| [03-trigger.sql](code/musterloesung/03-trigger.sql) | Trigger |
+| [04-rollen-rechte.sql](code/musterloesung/04-rollen-rechte.sql) | Sichten, Rollen, Rechte, Testbenutzer |
+| [05-testdaten.sql](code/musterloesung/05-testdaten.sql) | Testdaten |
+| [06-abfragen.sql](code/musterloesung/06-abfragen.sql) | Abfragen und Datenänderungen |
+| [07-tests.sql](code/musterloesung/07-tests.sql) | Tests zum Pflichtteil |
+| [08-optional.sql](code/musterloesung/08-optional.sql) | Optionaler Teil: Fremdaufträge, Beschreibung ergänzen |
+| [09-tests-optional.sql](code/musterloesung/09-tests-optional.sql) | Tests zum optionalen Teil |
+
+**So führt ihr sie aus:** Öffnet die Dateien in SSMS und führt sie in der
+Reihenfolge 01 bis 05 und 08 aus, danach die Tests 07 und 09. Die Abfragen
+in 06 könnt ihr jederzeit danach ansehen. **Achtung:** `01-schema.sql` löscht
+und erstellt die Datenbank `Instandhaltung` neu. Habt ihr selbst eine Datenbank
+mit diesem Namen, benennt sie vorher um oder ändert den Namen in den Skripten.
+
+**Worauf ihr beim Vergleichen achten könnt:**
+
+- **Modell:** Wie ist die Art eines Auftrags (Wartung, Eilauftrag, Fremdauftrag)
+  abgebildet, und wo steckt die Beziehung mit eigenen Angaben?
+- **Regeln:** Welche Regel ist als Constraint, welche als Prozedur, welche als
+  Trigger umgesetzt, und stimmt eure Zuordnung damit überein?
+- **Rechte:** Wie ist verhindert, dass Mitarbeiter direkt in Tabellen schreiben
+  oder Personalnummer und Stunden sehen?
+- **Tests:** Prüfen die Tests das Ergebnis oder nur, dass kein Fehler auftritt?
 <!-- MUSTERLOESUNG-ENDE -->
 <!-- NACHTRAG-ENDE -->
