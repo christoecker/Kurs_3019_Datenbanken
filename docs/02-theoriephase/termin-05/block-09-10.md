@@ -12,8 +12,8 @@ lernziele:
   - "Ihr könnt eigene Testfälle schreiben, die die Regeln der Datenbank prüfen."
   - "Ihr könnt ein Datenbankmodell weiterentwickeln und die Auswirkungen auf Skripte, Rechte und Tests benennen."
   - "Ihr könnt KI-Ergebnisse gegen die Anforderung prüfen und dokumentieren, was ihr übernommen, korrigiert oder verworfen habt."
-musterloesungen_sichtbar: false
-nachtrag_sichtbar: false
+musterloesungen_sichtbar: true
+nachtrag_sichtbar: true
 fallstudie: "Brandt Kunststofftechnik: Ticketsystem für die Instandhaltung (eigenes MEA-Szenario)"
 ki_einsatz: stufe_3_pflicht_reflexion
 bearbeitungsstatus: entworfen
