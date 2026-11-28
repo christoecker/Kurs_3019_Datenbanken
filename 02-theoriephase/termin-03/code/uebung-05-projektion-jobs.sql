@@ -1,0 +1,2 @@
+SELECT DISTINCT job
+FROM ma;
